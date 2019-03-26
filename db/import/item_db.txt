@@ -1,0 +1,927 @@
+//=============================================================
+//= rAthenaCN 物品数据 www.rAthenaCN.com 转自 [ www.99Max.mE ]
+//=============================================================
+//= GIT 代码库 https://github.com/rAthenaCN/rAthenaCN.git
+//=============================================================
+//= 问题反馈 https://github.com/rAthenaCN/rAthenaCN/issues
+//=============================================================
+//=============================================================
+// 物品追加数据库 - 自定义的物品可以放在这里
+//=============================================================
+//
+// 数据库的格式说明:
+// ID,Name,Name,Type,Price,Sell,Weight,ATK[:MATK],DEF,Range,Slot,Job,Class,Gender,Loc,wLV,eLV[:maxLevel],Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
+//
+//=======================以下内容为正文========================
+2410,Sleipnir,史雷普尼尔之靴,3,,,,,,,,,,,,,,,,{},{},{}
+2629,Magingiorde,雷神腰带,3,,,,,,,,,,,,,,,,{},{},{}
+2630,Brysinggamen,女神颈链,3,,,,,,,,,,,,,,,,{},{},{}
+//
+4121,Phreeoni_Card,皮里恩卡片,6,,,10,,,,,,,,2,,,,,{  bonus bHit,100;  bonus2 bAddClass,Class_All,10;},{},{}
+4123,Eddga_Card,虎王卡片,6,,,10,,,,,,,,64,,,,,{ bonus bMaxHPrate,10; bonus bNoWalkDelay; },{},{}
+4128,Golden_Bug_Card,黄金虫卡片,6,,,10,,,,,,,,32,,,,,{ bonus bNoMagicDamage,30; bonus bMdef,30; },{},{}
+4132,Mistress_Card,蜂后卡片,6,,,10,,,,,,,,769,,,,,{ bonus bNoGemStone,0; bonus bInt,5;},{},{}
+4134,Dracula_Card,德古拉伯爵卡片,6,,,10,,,,,,,,136,,,,,{ bonus bCritAtkRate,10;bonus bCritical,5;},{},{}
+4135,Orc_Load_Card,兽人酋长卡片,6,,,10,,,,,,,,16,,,,,{ bonus bShortWeaponDamageReturn,30;bonus bMaxHPrate,10;},{},{}
+4137,Drake_Card,海盗之王卡片,6,,,10,,,,,,,,2,,,,,{ bonus bNoSizeFix,0;  bonus bint,3; bonus2 bSkillAtk,84,5; bonus2 bSkillAtk,89,5; bonus2 bSkillAtk,83,5; },{},{}
+4142,Doppelganger_Card,死灵卡片,6,,,10,,,,,,,,2,,,,,{ bonus bint,3; bonus2 bSkillAtk,254,5;bonus2 bAddRace,RC_DemiHuman,20; bonus2 bAddRace,RC_Player,20;  },{},{}
+4143,Orc_Hero_Card,兽人英雄卡片,6,,,10,,,,,,,,769,,,,,{ bonus bVit,3; bonus2 bResEff,Eff_Stun,10000; bonus2 bSkillAtk,397,5; bonus2 bSkillAtk,62,5;},{},{}
+4144,Osiris_Card,俄塞里斯卡片,6,,,10,,,,,,,,2,,,,,{ bonus bint,3; bonus2 bSkillAtk,534,5; bonus2 bSkillAtk,536,5; bonus2 bSkillAtk,537,5; bonus2 bSkillAtk,539,5; bonus2 bSkillAtk,540,5; bonus2 bSkillAtk,541,5; },{},{}
+4145,Berzebub_Card,贝雷杰卡片,6,,,10,,,,,,,,136,,,,,{ bonus bmAtkRate,10; bonus bNoWeaponDamage,5; bonus bNoMagicDamage,5; },{},{}
+4148,Pharaoh_Card,法老王卡片,6,,,10,,,,,,,,769,,,,,{ if(BaseJob == Job_Rogue){bonus bMatkRate,10; bonus bAtkRate,5;} bonus bStr,3; bonus2 bSkillAtk,136,5; bonus2 bSkillAtk,379,5; },{},{}
+4168,Dark_Lord_Card,黑暗之王卡片,6,,,10,,,,,,,,64,,,,,{ bonus2 bSkillAtk,485,5; bonus bStr,3;},{},{}
+4236,Amon_Ra_Card,古埃及王卡片,6,,,10,,,,,,,,64,,,,,{ bonus bAllStats,5; },{},{}
+4241,Archangeling_Card,圣天使波利卡片,6,,,10,,,,,,,,769,,,,,{ bonus2 bSkillAtk,271,5; bonus bStr,3;},{},{}
+4293,Cookie_Card,绿饼人卡片,6,,,10,,,,,,,,2,,,,,{ bonus bint,3; bonus2 bSkillAtk,156,10; },{},{}
+4318,Knight_Windstorm_Card,冰暴骑士卡片,6,,,10,,,,,,,,2,,,,,{ bonus3 bAutoSpell,"WZ_STORMGUST",5,20; bonus2 bAddEff,Eff_Freeze,2000; bonus bint,3;bonus2 bSkillAtk,490,5;bonus2 bSkillAtk,229,5;},{},{}
+
+4324,Garm_Card,卡仑卡片,6,,,10,,,,,,,,2,,,,,{ bonus bdex,3;bonus2 bSkillAtk,515,5; bonus2 bSkillAtk,516,5;},{},{}
+
+4330,Dark_Snake_Lord_Card,墨蛇君卡片,6,,,10,,,,,,,,769,,,,,{ bonus bInt,3; bonus2 bResEff,Eff_Blind,10000; bonus2 bResEff,Eff_Curse,10000;bonus2 bIgnoreMdefClassRate,Class_Boss,20;},{},{}
+
+4352,B_Ygnizem_Card,闇●剑士 赛尼亚卡片,6,,,10,,,,,,,,64,,,,,{ bonus bAddDamage,50000; bonus bAbsorbDMGMaxHp,10; },{},{}
+
+4357,B_Seyren_Card,闇●骑士领主 赛依连卡片,6,,,10,,,,,,,,769,,,,,{ skill "LK_BERSERK",1; bonus bMaxHPrate,-10; },{},{}
+4361,B_Harword_Card,闇●神工匠 哈沃得卡片,6,,,10,,,,,,,,2,,,,,{skill "BS_OVERTHRUST",1; skill "WS_OVERTHRUSTMAX",1;bonus2 bAddClass,Class_All,30; },{},{}
+4363,B_Magaleta_Card,闇●神官 玛嘉雷特卡片,6,,,10,,,,,,,,136,,,,,{  bonus bNoWeaponDamage,5; bonus bNoMagicDamage,5; bonus bLongAtkDef,10;bonus bmaxhprate,5;},{},{}
+4367,B_Shecil_Card,闇●神射手 迪文卡片,6,,,10,,,,,,,,2,,,,,{ bonus2 bHpDrainRate,500,15; bonus2 bAddClass,Class_Normal,30; bonus2 bAddClass,Class_Boss,50; bonus2 bMagicAddClass,Class_Boss,50; bonus2 bAddClass,Class_Guardian,30; bonus bCritAtkRate,20; },{},{}
+4372,Bacsojin_Card,白素贞卡片,6,,,10,,,,,,,,2,,,,,{ bonus bmAtkRate,10; bonus bInt,10; bonus2 bSkillAtk,490,10; },{},{}
+4374,Apocalips_H_Card,贝思波卡片,6,,,10,,,,,,,,769,,,,,{bonus bDex,3; bonus2 bSkillAtk,46,5; bonus2 bSkillAtk,382,5;bonus2 bSkillAtk,394,5;},{},{}
+4376,Lady_Tanee_Card,嗒妮小姐卡片,6,,,10,,,,,,,,64,,,,,{ bonus bMaxHPrate,-20; bonus bMaxSPrate,50; },{},{}
+4399,Thanatos_Card,达纳托斯的记忆卡片,6,,,10,,,,,,,,2,,,,,{ bonus bDefRatioAtkClass,Class_Boss; bonus2 bAddRace,RC_DemiHuman,35; bonus2 bAddRace,RC_Player,35; },{},{}
+4408,Gloom_Under_Night_Card,影魔卡片,6,,,10,,,,,,,,4,,,,,{ bonus2 bAddEle,Ele_Holy,40; bonus2 bAddEle,Ele_Dark,40; bonus2 bAddRace,RC_Angel,40; bonus2 bAddRace,RC_Demon,40; bonus2 bMagicAddEle,Ele_Holy,40; bonus2 bMagicAddEle,Ele_Dark,40; bonus2 bMagicAddRace,RC_Angel,40; bonus2 bMagicAddRace,RC_Demon,40; bonus bNoWeaponDamage,10; bonus bNoMagicDamage,10; bonus2 bSubEle,Ele_Neutral,25; },{},{}
+4419,Ktullanux_Card,寒冰龙卡片,6,,,10,,,,,,,,16,,,,,{ bonus bMaxHPrate,50; bonus bNoWeaponDamage,10; bonus bNoMagicDamage,10; bonus5 bAutoSpellWhenHit,182,1,300,BF_WEAPON|BF_MAGIC,1; bonus2 bResEff,Eff_Freeze,10000; },{},{}
+4425,Atroce_Card,阿特罗斯卡片,6,,,10,,,,,,,,2,,,,,{ bonus2 bAddClass,Class_Boss,50; },{},{}
+4430,Ifrit_Card,伊夫利特卡片,6,,,10,,,,,,,,136,,,,,{ bonus bAtkRate,10; bonus bNoWeaponDamage,5; bonus bNoMagicDamage,5; },{},{}
+4433,Imp_Card,熔岩魔卡片,6,,,10,,,,,,,,2,,,,,{ bonus bint,3;bonus2 bSkillAtk,14,5;bonus2 bSkillAtk,19,5; bonus2 bSkillAtk,20,5; },{},{}
+12622,Boarding_Halter,坐骑用缰绳,11,0,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_ALL_RIDING,-1,1; },{},{}
+// ==================================================================================================== //
+//                              自定义特色物品（预定范围：39001 - 39999）                               //
+// ==================================================================================================== //
+// 自定义消耗品
+39001,Fountain_Of_Life,生命之泉,0,20,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,0; },{},{}
+39002,Fountain_Of_Magic,魔法之泉,0,20,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 0,20; },{},{}
+39003,Magic_Spectacles_Weapon,魔力放大镜(武器),11,40,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc("recording",39003); },{},{}
+39004,Magic_Spectacles_Armor,魔力放大镜(防具),11,40,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "Ldentify"; },{},{}
+// Cash点数兑换箱子
+39006,Cash_Box_1,1点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 1"; },{},{}
+39007,Cash_Box_5,5点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 5"; },{},{}
+39008,Cash_Box_10,10点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 10"; },{},{}
+39009,Cash_Box_25,25点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 25"; },{},{}
+39010,Cash_Box_50,50点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 50"; },{},{}
+39011,Cash_Box_100,100点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 100"; },{},{}
+39012,Cash_Box_500,500点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 500"; },{},{}
+39013,Cash_Box_1000,1000点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 1000"; },{},{}
+39014,Cash_Box_2000,2000点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 2000"; },{},{}
+39015,Cash_Box_5000,5000点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 5000"; },{},{}
+// 自定义物品 - Zeny万元支票
+39016,Zeny_Cheque_1,1亿元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 100000000"; },{},{}
+39017,Zeny_Cheque_5,5万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 50000"; },{},{}
+39018,Zeny_Cheque_10,10万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 100000"; },{},{}
+39019,Zeny_Cheque_25,25万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 250000"; },{},{}
+39020,Zeny_Cheque_50,50万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 500000"; },{},{}
+39021,Zeny_Cheque_100,100万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 1000000"; },{},{}
+39022,Zeny_Cheque_500,500万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 5000000"; },{},{}
+39023,Zeny_Cheque_1000,1000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 10000000"; },{},{}
+39024,Zeny_Cheque_2000,2000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 20000000"; },{},{}
+39025,Zeny_Cheque_5000,5000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 50000000"; },{},{}
+39026,Jewel_Of_Prayer_2,初级宝箱,11,,,0,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "baoxiang1"; },{},{}
+39027,Jewel_Of_Prayer_3,中级宝箱,11,,,0,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "baoxiang2"; },{},{}
+39028,Jewel_Of_Prayer_4,高级宝箱,11,,,0,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "baoxiang3"; },{},{}
+39029,Jewel_Of_Prayer_5,究极宝箱,11,,,0,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "baoxiang4"; },{},{}
+39030,Jewel_Of_Prayer_6,初级钥匙,3,,,10,,,,,,,,,,,,,{},{},{}
+39031,Jewel_Of_Prayer_7,中级钥匙,3,,,10,,,,,,,,,,,,,{},{},{}
+39032,Jewel_Of_Prayer_8,高级钥匙,3,,,10,,,,,,,,,,,,,{},{},{}
+39033,Jewel_Of_Prayer_9,究极钥匙,3,,,10,,,,,,,,,,,,,{},{},{}
+39034,Runstone_Quality_1,筑基之石,3,,,10,,,,,,,,,,,,,{},{},{}
+39035,Runstone_Quality_2,结丹之石,3,,,10,,,,,,,,,,,,,{},{},{}
+39036,Runstone_Quality_3,元婴之石,3,,,10,,,,,,,,,,,,,{},{},{}
+39037,Runstone_Quality_4,大乘之石,3,,,10,,,,,,,,,,,,,{},{},{}
+39038,Runstone_Quality_5,飞仙之石,3,,,10,,,,,,,,,,,,,{},{},{}
+39039,Runstone_Quality_6,筑基灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,5; bonus bLuk,-3; bonus2 bAddClass,Class_Boss,20;bonus2 bMagicAddClass,Class_Boss,20; bonus2 bSubRace,RC_DemiHuman,3; bonus2 bSubRace,RC_Player,3;},{},{}
+39040,Runstone_Quality_7,结丹灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,10; bonus bLuk,-6; bonus2 bAddClass,Class_Boss,30;bonus2 bMagicAddClass,Class_Boss,30; bonus2 bSubRace,RC_DemiHuman,6; bonus2 bSubRace,RC_Player,6;},{},{}
+39041,Runstone_Quality_8,元婴灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,15; bonus bLuk,-9; bonus2 bAddClass,Class_Boss,40;bonus2 bMagicAddClass,Class_Boss,40; bonus2 bSubRace,RC_DemiHuman,9; bonus2 bSubRace,RC_Player,9;},{},{}
+39042,Runstone_Quality_9,大乘灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,20; bonus bLuk,-12; bonus2 bAddClass,Class_Boss,50;bonus2 bMagicAddClass,Class_Boss,50; bonus2 bSubRace,RC_DemiHuman,12; bonus2 bSubRace,RC_Player,12;},{},{}
+39043,Runstone_Quality_10,飞仙灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,25; bonus bLuk,-15; bonus2 bAddClass,Class_Boss,60;bonus2 bMagicAddClass,Class_Boss,60; bonus2 bSubRace,RC_DemiHuman,15; bonus2 bSubRace,RC_Player,15;},{},{}
+39044,newitem_51,黑龙战甲碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39045,newitem_52,黑龙之盾碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39046,newitem_53,黑龙战靴碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39047,newitem_54,黑龙臂环碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39048,newitem_55,黑龙护腕碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39049,newitem_56,黑龙武器碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39050,newitem_3,不灭之袍碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39051,newitem_4,不灭之盾碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39052,newitem_5,不灭之靴碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39053,newitem_6,不灭之心碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39054,newitem_7,不灭之羽碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39055,newitem_8,不灭武器碎片,3,,,10,,,,,,,,,,,,,{},{},{}
+39056,newitem_24,中级武器制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39057,newitem_26,中级靴子制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39058,newitem_27,中级披肩制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39059,newitem_28,中级装饰制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39060,newitem_29,中级盾牌制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39061,newitem_33,高级武器制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39062,newitem_35,高级靴子制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39063,newitem_36,高级披肩制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39064,newitem_37,高级装饰制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39065,newitem_38,高级盾牌制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39066,newitem_14,究极武器制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39067,newitem_16,究极靴子制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39068,newitem_17,究极披肩制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39069,newitem_18,究极装饰制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39070,newitem_19,究极盾牌制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39071,newitem_97,天界武器制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39072,newitem_98,天界铠甲制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39073,newitem_99,天界靴子制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39074,newitem_100,天界披肩制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39075,newitem_101,天界装饰制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39076,newitem_102,天界盾牌制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39077,newitem_103,天界头上制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39078,newitem_104,天界头中制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+39079,newitem_105,天界头下制作券,3,,,10,,,,,,,,,,,,,{},{},{}
+//39080,newitem_32,中级道场入场券,3,,,10,,,,,,,,,,,,,{},{},{}
+//39081,newitem_30,高级道场入场券,3,,,10,,,,,,,,,,,,,{},{},{}
+//39082,newitem_21,究极道场入场券,3,,,10,,,,,,,,,,,,,{},{},{}
+//39083,newitem_110,天界道场入场券,3,,,10,,,,,,,,,,,,,{},{},{}
+//39084,newitem_48,初之试炼入场券,3,,,10,,,,,,,,,,,,,{},{},{}
+//39085,newitem_49,毕业试炼入场券,3,,,10,,,,,,,,,,,,,{},{},{}
+//39086,newitem_50,最终试炼入场券,3,,,10,,,,,,,,,,,,,{},{},{}
+//39087,newitem_40,究极试炼入场券,3,,,10,,,,,,,,,,,,,{},{},{}
+39088,newitem_41,中级道场券10点,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ set zhongji,zhongji+10; dispbottom "[积分提示] - 增加10点中级道场积分,您目前的中级道场积分为:["+zhongji+"]."; },{},{}
+39089,newitem_42,高级道场券10点,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ set gaoji,gaoji+10; dispbottom "[积分提示] - 增加10点高级道场积分,您目前的高级道场积分为:["+gaoji+"]."; },{},{}
+39090,newitem_20,究极道场券10点,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ set jiuji,jiuji+10; dispbottom "[积分提示] - 增加10点究极道场积分,您目前的究极道场积分为:["+jiuji+"]."; },{},{}
+39091,newitem_109,天界道场券10点,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ set tjjf,tjjf+10; dispbottom "[积分提示] - 增加10点天界道场积分,您目前的天界道场积分为:["+tjjf+"]."; },{},{}
+39092,newitem_46,安全精炼券,3,,,10,,,,,,,,,,,,,{},{},{}
+39093,newitem_47,防爆券,3,,,10,,,,,,,,,,,,,{},{},{}
+39094,newitem_25,卡片进阶券,3,,,10,,,,,,,,,,,,,{},{},{}
+39095,newitem_58,公会经验石,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ atcommand "@guildlvlup 50" ; },{},{}
+39096,newitem_64,新人卡,2,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "xinshouka"; },{},{}
+39097,newitem_69,高级会员状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "vip_status"; },{},{}
+39098,newitem_70,赞助会员状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "s_vip_status"; },{},{}
+39099,newitem_72,关闭光环,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "gh321"; },{},{}
+39100,Infiltrator_Box_1,紫色梦幻天翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39101,Infiltrator_Box_2,超级赛亚人之光（神）箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39102,Infiltrator_Box_3,暗天使之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39103,Infiltrator_Box_4,火焰龙王翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39104,Infiltrator_Box_5,精灵王之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39105,Infiltrator_Box_6,超级赛亚人之光箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39106,Infiltrator_Box_7,永冻之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39107,Infiltrator_Box_8,火焰幼龙之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39108,Infiltrator_Box_9,火云剑阵箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39109,Infiltrator_Box_10,天仙之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39110,Infiltrator_Box_11,耀天使之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
+39111,Infiltrator_Box_12,自爆活动箱子,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{  callfunc "自爆箱"; },{},{}
+39112,newitem_75,会员补给箱,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "ghbox",7; },{},{}
+39113,newitem_76,公会补给箱,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "F_tzqihei",7; },{},{}
+39114,yzzs,影之钻石,3,1,,10,,,,,,,,,,,,,{},{},{}
+39115,rwsc,任务手册,11,100,,0,,,,,0xffffffff,15,2,,,,,,{ callfunc "renwushouce"; },{},{}
+39116,zdgg,自动公告系统控制台,11,50,,70,,,,,0xFFFFFFFF,15,2,,,,,,{ set #vip,1; callfunc "自动公告系统"; },{},{}
+39117,newitem_10,I阶进化石,3,,,,,,,,,,,,,,,,{},{},{}
+39118,newitem_11,II阶进化石,3,,,,,,,,,,,,,,,,{},{},{}
+39119,newitem_12,III阶进化石,3,,,,,,,,,,,,,,,,{},{},{}
+39120,newitem_13,Super进化石,3,,,,,,,,,,,,,,,,{},{},{}
+39121,nnew_45,月夜猫的帽子,3,,,,,,,,,,,,,,,,{},{},{}
+39122,nnew_46,黑白萝莉丝带,3,,,,,,,,,,,,,,,,{},{},{}
+39123,nnew_47,疯兔帽,3,,,,,,,,,,,,,,,,{},{},{}
+39124,nnew_48,黄色爱心帽,3,,,,,,,,,,,,,,,,{},{},{}
+39125,nnew_49,绿色幽灵帽,3,,,,,,,,,,,,,,,,{},{},{}
+39126,nnew_50,青蛙帽,3,,,,,,,,,,,,,,,,{},{},{}
+39127,nnew_51,恶魔女仆帽,3,,,,,,,,,,,,,,,,{},{},{}
+39128,nnew_52,恶魔侍者帽,3,,,,,,,,,,,,,,,,{},{},{}
+39129,My_Cion1,保卫战铜币,3,,,,,,,,,,,,,,,,{},{},{}
+39130,P10,任务积分1点,2,,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ set #rwjf,#rwjf+1; dispbottom "[积分提示] - 增长1点任务积分,您目前有:["+#rwjf+"]点任务积分";},{},{}
+39131,My_Cion2,任务积分10点,2,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ set #rwjf,#rwjf+10; dispbottom "[积分提示] - 增长10点任务积分,您目前有:["+#rwjf+"]点任务积分"; },{},{}
+39132,My_Cion3,保卫战积分100点,2,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ set jifen,jifen+100; dispbottom "[积分提示] - 增长100点保卫战积分,您目前有:["+jifen+"]点保卫战积分"; },{},{}
+39133,newitem_45,在线积分500点,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ set paodian,paodian+500; dispbottom "[积分提示] - 增长500点在线积分,您目前有:["+paodian+"]点在线积分"; },{},{}
+39134,miniys,迷你天使波利药水,11,,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 10,10;},{},{}
+39135,item_6,天使波利药水,11,,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 25,25;},{},{}
+39136,cjfm,初级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
+39137,zjfm,中级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
+39138,gjfm,高级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
+39139,jjfm,究极附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
+
+//
+39201,Strength1_1,HP+500,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,500;},{},{}
+39202,Strength1_2,HP+700,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,700;},{},{}
+39203,Strength1_3,HP+900,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,900;},{},{}
+39204,Strength1_4,HP+1100,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,1100;},{},{}
+39205,Strength1_5,HP+1300,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,1300;},{},{}
+39206,Strength1_6,HP+1500,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,1500;},{},{}
+39207,Strength1_7,HP+1700,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,1700;},{},{}
+39208,Strength1_8,HP+1900,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,1900;},{},{}
+39209,Strength1_9,HP+2100,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,2100;},{},{}
+39210,Strength1_10,HP+2300,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,2300;},{},{}
+39211,Strength1_11,HP+2500,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,2500;},{},{}
+39212,Strength1_12,HP+2700,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,2700;},{},{}
+39213,Strength1_13,HP+3000,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,3000;},{},{}
+39214,Strength1_14,HP+3200,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,3200;},{},{}
+39215,Strength1_15,HP+3400,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,3400;},{},{}
+39216,Strength1_16,HP+3600,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,3600;},{},{}
+39217,Strength1_17,HP+3800,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,3800;},{},{}
+39218,Strength1_18,HP+4000,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,4000;},{},{}
+39219,Strength1_19,HP+4200,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,4200;},{},{}
+39220,Strength1_20,HP+4400,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,4400;},{},{}
+39221,Strength1_21,HP+4600,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,4600;},{},{}
+39222,Strength1_22,HP+4800,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,4800;},{},{}
+39223,Strength1_23,HP+5000,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,5000;},{},{}
+39224,Strength1_24,HP+5200,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,5200;},{},{}
+39225,Strength1_25,HP+5400,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,5400;},{},{}
+39226,Strength1_26,HP+5600,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,5600;},{},{}
+39227,Strength1_27,HP+5800,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,5800;},{},{}
+39228,Strength1_28,HP+6000,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,6000;},{},{}
+39229,Strength1_29,HP+7000,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,7000;},{},{}
+//
+39231,Strength_1,STR+1,6,20,,10,,,,,,,,,,,,,{ bonus bStr,1; },{},{}
+39232,Strength_2,STR+2,6,20,,10,,,,,,,,,,,,,{ bonus bStr,2; },{},{}
+39233,Strength_3,STR+3,6,20,,10,,,,,,,,,,,,,{ bonus bStr,3; },{},{}
+39234,Strength_4,STR+4,6,20,,10,,,,,,,,,,,,,{ bonus bStr,4; },{},{}
+39235,Strength_5,STR+5,6,20,,10,,,,,,,,,,,,,{ bonus bStr,5; },{},{}
+39236,Strength_6,高级力量之石+5,6,20,,10,,,,,,,,,,,,,{ bonus bStr,5;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39237,Strength_7,高级力量之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bStr,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39238,Strength_8,高级力量之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bStr,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39239,Strength_9,究极力量之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bStr,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39240,Strength_10,究极力量之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bStr,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39241,Strength_11,究极力量之石+8,6,20,,10,,,,,,,,,,,,,{ bonus bStr,8;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39242,Strength_12,究极力量之石+9,6,20,,10,,,,,,,,,,,,,{ bonus bStr,9;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39243,Strength_13,究极力量之石+10,6,20,,10,,,,,,,,,,,,,{ bonus bStr,10;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+//
+39251,Inteligence_1,INT+1,6,20,,10,,,,,,,,,,,,,{ bonus bInt,1; },{},{}
+39252,Inteligence_2,INT+2,6,20,,10,,,,,,,,,,,,,{ bonus bInt,2; },{},{}
+39253,Inteligence_3,INT+3,6,20,,10,,,,,,,,,,,,,{ bonus bInt,3; },{},{}
+39254,Inteligence_4,INT+4,6,20,,10,,,,,,,,,,,,,{ bonus bInt,4; },{},{}
+39255,Inteligence_5,INT+5,6,20,,10,,,,,,,,,,,,,{ bonus bInt,5; },{},{}
+39256,Inteligence_6,高级智力之石+5,6,20,,10,,,,,,,,,,,,,{ bonus bInt,5;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39257,Inteligence_7,高级智力之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bInt,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39258,Inteligence_8,高级智力之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bInt,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39259,Intelige_9,究极智力之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bInt,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39260,Intelige_10,究极智力之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bInt,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39261,Intelige_11,究极智力之石+8,6,20,,10,,,,,,,,,,,,,{ bonus bInt,8;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39262,Intelige_12,究极智力之石+9,6,20,,10,,,,,,,,,,,,,{ bonus bInt,9;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39263,Intelige_13,究极智力之石+10,6,20,,10,,,,,,,,,,,,,{ bonus bInt,10;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+//
+39271,Dexterity_1,DEX+1,6,20,,10,,,,,,,,,,,,,{ bonus bDex,1; },{},{}
+39272,Dexterity_2,DEX+2,6,20,,10,,,,,,,,,,,,,{ bonus bDex,2; },{},{}
+39273,Dexterity_3,DEX+3,6,20,,10,,,,,,,,,,,,,{ bonus bDex,3; },{},{}
+39274,Dexterity_4,DEX+4,6,20,,10,,,,,,,,,,,,,{ bonus bDex,4; },{},{}
+39275,Dexterity_5,DEX+5,6,20,,10,,,,,,,,,,,,,{ bonus bDex,5; },{},{}
+39276,Dexterity_6,高级灵巧之石+5,6,20,,10,,,,,,,,,,,,,{ bonus bDex,5;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39277,Dexterity_7,高级灵巧之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bDex,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39278,Dexterity_8,高级灵巧之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bDex,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39279,Dexterity_9,究极灵巧之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bDex,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39280,Dexterity_10,究极灵巧之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bDex,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39281,Dexterity_11,究极灵巧之石+8,6,20,,10,,,,,,,,,,,,,{ bonus bDex,8;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39282,Dexterity_12,究极灵巧之石+9,6,20,,10,,,,,,,,,,,,,{ bonus bDex,9;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39283,Dexterity_13,究极灵巧之石+10,6,20,,10,,,,,,,,,,,,,{ bonus bDex,10;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+//
+39281,Agility_1,AGI+1,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,1; },{},{}
+39282,Agility_2,AGI+2,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,2; },{},{}
+39283,Agility_3,AGI+3,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,3; },{},{}
+39284,Agility_4,AGI+4,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,4; },{},{}
+39285,Agility_5,AGI+5,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,5; },{},{}
+39286,Agility_6,高级敏捷之石+5,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,5;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39287,Agility_7,高级敏捷之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39288,Agility_8,高级敏捷之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39289,Agility_9,究极敏捷之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39290,Agility_10,究极敏捷之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39291,Agility_11,究极敏捷之石+8,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,8;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39292,Agility_12,究极敏捷之石+9,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,9;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39293,Agility_13,究极敏捷之石+10,6,20,,10,,,,,,,,,,,,,{ bonus bAgi,10;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+//
+39301,Vitality_1,VIT+1,6,20,,10,,,,,,,,,,,,,{ bonus bVit,1; },{},{}
+39302,Vitality_2,VIT+2,6,20,,10,,,,,,,,,,,,,{ bonus bVit,2; },{},{}
+39303,Vitality_3,VIT+3,6,20,,10,,,,,,,,,,,,,{ bonus bVit,3; },{},{}
+39304,Vitality_4,VIT+4,6,20,,10,,,,,,,,,,,,,{ bonus bVit,4; },{},{}
+39305,Vitality_5,VIT+5,6,20,,10,,,,,,,,,,,,,{ bonus bVit,5; },{},{}
+39306,Vitality_6,高级体力之石+5,6,20,,10,,,,,,,,,,,,,{ bonus bVit,5;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39307,Vitality_7,高级体力之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bVit,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39308,Vitality_8,高级体力之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bVit,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39309,Vitality_9,究极体力之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bVit,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39310,Vitality_10,究极体力之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bVit,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39311,Vitality_11,究极体力之石+8,6,20,,10,,,,,,,,,,,,,{ bonus bVit,8;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39312,Vitality_12,究极体力之石+9,6,20,,10,,,,,,,,,,,,,{ bonus bVit,9;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39313,Vitality_13,究极体力之石+10,6,20,,10,,,,,,,,,,,,,{ bonus bVit,10;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+//
+39321,Luck_1,LUK+1,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,1; },{},{}
+39322,Luck_2,LUK+2,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,2; },{},{}
+39323,Luck_3,LUK+3,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,3; },{},{}
+39324,Luck_4,LUK+4,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,4; },{},{}
+39325,Luck_5,LUK+5,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,5; },{},{}
+39326,Luck_6,高级幸运之石+5,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,5;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39327,Luck_7,高级幸运之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39328,Luck_8,高级幸运之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,1; },{},{}
+39329,Luck_9,究极幸运之石+6,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,6;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39330,Luck_10,究极幸运之石+7,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,7;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39331,Luck_11,究极幸运之石+8,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,8;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39332,Luck_12,究极幸运之石+9,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,9;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+39333,Luck_13,究极幸运之石+10,6,20,,10,,,,,,,,,,,,,{ bonus bLuk,10;bonus2 bSubRace,RC_DemiHuman,1;bonus2 bSubRace,RC_Player,1;bonus2 bSubClass,Class_Boss,2; },{},{}
+//
+39341,fm_cj,初级全能之石,6,20,,10,,,,,,,,,,,,,{ bonus bAllstats,3; bonus bLuk,-3; bonus2 bSubClass,Class_Boss,1; bonus2 bAddClass,Class_Boss,10; bonus2 bMagicAddClass,Class_Boss,10; },{},{}
+39342,fm_zj,中级全能之石,6,20,,10,,,,,,,,,,,,,{ bonus bAllstats,5; bonus bLuk,-5; bonus2 bSubClass,Class_Boss,2; bonus2 bAddClass,Class_Boss,20; bonus2 bMagicAddClass,Class_Boss,20; },{},{}
+39343,fm_gj,高级全能之石,6,20,,10,,,,,,,,,,,,,{ bonus bAllstats,10; bonus bLuk,-10; bonus2 bSubClass,Class_Boss,3; bonus2 bAddClass,Class_Boss,30; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+39344,fm_cx,神佑初心,3,20,,10,,,,,,,,,,,,,{ bonus bAllstats,10;bonus bmaxhp,5000;bonus2 bSubClass,Class_Boss,10;bonus2 bAddClass,Class_Boss,30;bonus2 bMagicAddClass,Class_Boss,30;},{},{}
+
+//
+39501,Garm_Card_I,[进阶]卡仑卡片,6,,,10,,,,,,,,769,,,,,{ bonus bdex,5;bonus2 bSkillAtk,515,10; bonus2 bSkillAtk,516,10;},{},{}
+39502,Osiris_Card_I,[进阶]俄塞里斯卡片,6,,,10,,,,,,,,2,,,,,{bonus bint,5; bonus2 bSkillAtk,534,10; bonus2 bSkillAtk,536,10; bonus2 bSkillAtk,537,10; bonus2 bSkillAtk,539,10; bonus2 bSkillAtk,540,10; bonus2 bSkillAtk,541,10;},{},{}
+39503,Dark_Lord_Card_I,[进阶]黑暗之王卡片,6,,,10,,,,,,,,769,,,,,{ bonus2 bSkillAtk,485,10; bonus bStr,5;},{},{}
+39504,Lady_Tanee_Card_I,[进阶]嗒妮小姐卡片,6,,,10,,,,,,,,64,,,,,{bonus bMaxSPrate,60; },{},{}
+39505,Eddga_Card_I,[进阶]虎王卡片,6,,,10,,,,,,,,64,,,,,{ bonus bMaxHPrate,20; bonus bNoWalkDelay; },{},{}
+39506,Mistress_Card_I,[进阶]蜂后卡片,6,,,10,,,,,,,,769,,,,,{ bonus bNoGemStone,0; bonus bint,10;},{},{}
+39507,Pharaoh_Card_I,[进阶]法老王卡片,6,,,10,,,,,,,,769,,,,,{ if(BaseJob == Job_Rogue){bonus bMatkRate,15;bonus bAtkRate,10;} bonus bStr,5; bonus2 bSkillAtk,379,10; bonus2 bSkillAtk,136,10; },{},{}
+39508,Apocalips_H_Card_I,[进阶]贝思波卡片,6,,,10,,,,,,,,769,,,,,{bonus bDex,5; bonus2 bSkillAtk,46,10; bonus2 bSkillAtk,382,10;bonus2 bSkillAtk,394,10;},{},{}
+39509,Dracula_Card_I,[进阶]德古拉伯爵卡片,6,,,10,,,,,,,,136,,,,,{ bonus bCritAtkRate,20;bonus bCritical,10;},{},{}
+39510,BB_Card_I,[进阶]冰暴骑士卡片,6,,,10,,,,,,,,2,,,,,{ bonus3 bAutoSpell,"WZ_STORMGUST",10,30; bonus2 bAddEff,Eff_Freeze,3000; bonus bint,5;bonus2 bSkillAtk,490,10;bonus2 bSkillAtk,229,10;},{},{}
+39512,Dark_Snake_Lord_Card_I,[进阶]墨蛇君卡片,6,,,10,,,,,,,,769,,,,,{ bonus bInt,5; bonus2 bResEff,Eff_Blind,10000; bonus2 bResEff,Eff_Curse,10000;bonus2 bIgnoreMdefClassRate,Class_Boss,30; bonus bmatkrate,5;},{},{}
+39513,Phreeoni_Card_I,[进阶]皮里恩卡片,6,,,10,,,,,,,,2,,,,,{  bonus bHit,200;  bonus2 bAddClass,Class_All,20; },{},{}
+39514,Amon_Ra_Card_I,[进阶]古埃及王卡片,6,,,10,,,,,,,,64,,,,,{ bonus bAllStats,10; },{},{}
+39515,Orc_Hero_Card_I,[进阶]兽人英雄卡片,6,,,10,,,,,,,,769,,,,,{ bonus bVit,5; bonus2 bResEff,Eff_Stun,10000; bonus2 bSkillAtk,397,10; bonus2 bSkillAtk,62,10;},{},{}
+39516,Orc_Load_Card_I,[进阶]兽人酋长卡片,6,,,10,,,,,,,,16,,,,,{ bonus bShortWeaponDamageReturn,50; bonus bMaxHPrate,20;},{},{}
+39517,Doppelganger_Card_I,[进阶]死灵卡片,6,,,10,,,,,,,,2,,,,,{ bonus bint,5; bonus2 bSkillAtk,254,10;bonus2 bAddRace,RC_DemiHuman,25; bonus2 bAddRace,RC_Player,25; },{},{}
+39518,Drake_Card_I,[进阶]海盗之王卡片,6,,,10,,,,,,,,2,,,,,{ bonus bNoSizeFix,0;  bonus bint,5; bonus2 bSkillAtk,84,10; bonus2 bSkillAtk,89,10; bonus2 bSkillAtk,83,10; },{},{}
+39519,Archangeling_Card_I,[进阶]圣天使波利卡片,6,,,10,,,,,,,,769,,,,,{ bonus2 bSkillAtk,271,10; bonus bStr,5;},{},{}
+39520,Golden_Bug_Card_I,[进阶]黄金虫卡片,6,,,10,,,,,,,,32,,,,,{ bonus bNoMagicDamage,40; bonus bMdef,50; bonus2 bSubRace,RC_DemiHuman,10; bonus2 bSubRace,RC_Player,10; },{},{}
+39521,Cookie_Card_I,[进阶]绿饼人卡片,6,,,10,,,,,,,,2,,,,,{ bonus bint,5; bonus2 bSkillAtk,156,20; },{},{}
+39522,Ghostring_Card_I,[进阶]幽灵波利卡片,6,,,10,,,,,,,,16,,,,,{ bonus bDefEle,Ele_Ghost; bonus bMaxHPrate,20; },{},{}
+39523,Turtle_General_Card_I,[进阶]乌龟将军卡片,6,,,10,,,,,,,,2,,,,,{ bonus2 bAddClass,Class_All,30; bonus3 bAutoSpell,"SM_MAGNUM",10,300; },{},{}
+39524,Randgris_Card_I,[进阶]巴基力 兰特克力斯卡片,6,,,10,,,,,,,,2,,,,,{ bonus bUnbreakableWeapon,0; bonus2 bAddClass,Class_All,30; bonus3 bAutoSpell,"SA_DISPELL",1,300; bonus5 bAutoSpellWhenHit,289,1,300,BF_WEAPON,1; },{},{}
+39525,Angeling_Card_I,[进阶]天使波利卡片,6,,,10,,,,,,,,16,,,,,{ bonus bDefEle,Ele_Holy; bonus bMaxHPrate,20;},{},{}
+39526,Moonlight_Flower_Card_I,[进阶]月夜猫卡片,6,,,10,,,,,,,,64,,,,,{ bonus bSpeedAddRate,25; bonus bMaxHPrate,10;},{},{}
+39527,Incant_Samurai_Card_I,[进阶]元灵武士卡片,6,,,10,,,,,,,,2,,,,,{bonus bIgnoreDefClass,Class_Normal;bonus batkrate,10; },{},{}
+39528,Maya_Card_I,[进阶]蚁后卡片,6,,,10,,,,,,,,32,,,,,{ bonus bMagicDamageReturn,60; bonus bMaxHPrate,10;},{},{}
+39529,Rsx_0806_Card_I,[进阶]RSX-0806卡片,6,,,10,,,,,,,,16,,,,,{ bonus bVit,3; bonus bMaxHPrate,20; bonus bUnbreakableArmor,0; bonus bNoKnockback,0; },{},{}
+39530,Detale_Card_I,[进阶]迪塔勒泰晤勒斯卡片,6,,,10,,,,,,,,16,,,,,{ bonus bMdef,10; bonus2 bResEff,Eff_Freeze,10000; bonus5 bAutoSpellWhenHit,"SA_LANDPROTECTOR",5,140,BF_MAGIC,0; },{},{}
+39531,Imp_Card_I,[进阶]熔岩魔卡片,6,,,10,,,,,,,,2,,,,,{ bonus bint,5;bonus2 bSkillAtk,14,10;bonus2 bSkillAtk,19,10; bonus2 bSkillAtk,20,10; },{},{}
+39532,Fallen_Bishop_Card_I,[进阶]堕落大神官卡片,6,,,10,,,,,,,,64,,,,,{ bonus bMatkRate,15; bonus2 bMagicAddRace,RC_Angel,70; bonus2 bMagicAddRace,RC_DemiHuman,70; bonus2 bMagicAddRace,RC_Player,70;},{},{}
+39533,Deviling_Card_I,[进阶]恶魔波利卡片,6,,,10,,,,,,,,4,,,,,{ bonus2 bSubEle,Ele_Neutral,50; bonus2 bSubEle,Ele_Water,-15; bonus2 bSubEle,Ele_Earth,-15; bonus2 bSubEle,Ele_Fire,-15; bonus2 bSubEle,Ele_Wind,-15; bonus2 bSubEle,Ele_Poison,-15; bonus2 bSubEle,Ele_Holy,-15; bonus2 bSubEle,Ele_Dark,-15; bonus2 bSubEle,Ele_Ghost,-15; bonus2 bSubEle,Ele_Undead,-15; },{},{}
+39534,Maya_Puple_Card_I,[进阶]狂暴蚁后卡片,6,,,10,,,,,,,,769,,,,,{ bonus bIntravision,0; bonus bMaxHPrate,20; },{},{}
+39535,Tao_Gunka_Card_I,[进阶]塔奥群卡卡片,6,,,10,,,,,,,,16,,,,,{ bonus bMaxHPrate,100;},{},{}
+39536,Atroce_Card_I,[进阶]阿特罗斯卡片,6,,,10,,,,,,,,2,,,,,{ bonus2 bAddClass,Class_Boss,70; bonus bAtkRate,10; },{},{}
+39537,Bacsojin_Card_I,[进阶]白素贞卡片,6,,,10,,,,,,,,2,,,,,{ bonus bmAtkRate,20; bonus bInt,20; bonus2 bSkillAtk,490,20; },{},{}
+39538,B_Ygnizem_Card_I,[进阶]闇●剑士 赛尼亚卡片,6,,,10,,,,,,,,64,,,,,{ bonus bAddDamage,100000; bonus bAbsorbDMGMaxHp,20; },{},{}
+39539,God_Card,至高战神卡片,6,,,10,,,,,,,,64,,,,,{ bonus bAddDamage,200000; bonus bAbsorbDMGMaxHp,50; },{},{}
+39540,Moon_Card,月光女神卡片,6,,,10,,,,,,,,136,,,,,{ bonus2 bDropAddClass,Class_All,25; bonus bAtkrate,20; bonus2 bAddClass,Class_Boss,50; },{},{}
+39541,Dragon_Card_I,青冠龙卡片,6,,,10,,,,,,,,136,,,,,{ bonus2 bDropAddClass,Class_All,25; bonus bInt,30; bonus2 bMagicAddClass,Class_Boss,50;bonus2 bSkillAtk,490,50; },{},{}
+39542,Frog_Card_I,基因改造突变蛙卡片,6,,,10,,,,,,,,32,,,,,{ bonus2 bSubRace,RC_DemiHuman,30; bonus2 bSubRace,RC_Player,30; bonus bmaxhprate,10; },{},{}
+39543,MoWang_Card,魔王梦罗克卡片,6,,,10,,,,,,,,2,,,,,{ bonus bmAtkRate,120; bonus2 bMagicAddClass,Class_Boss,200; bonus2 bIgnoreMdefClassRate,Class_Boss,50; bonus2 bSkillAtk,490,250; bonus bInt,40; },{},{}
+39544,King_Card,国王波利卡片,6,,,10,,,,,,,,64,,,,,{ skill 2328,4; bonus bSpeedAddRate,25; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bAbsorbDMGMaxHp,10; },{},{}
+//
+//39544,Atroce_Card_II,[融合]阿特罗斯卡片,6,,,10,,,,,,,,2,,,,,{ bonus2 bAddClass,Class_Boss,90; bonus bAtkRate,15; bonus bCritAtkRate,20; bonus2 bAddDamageGroup,Group_Ninja,70; if( isequipped(9492)) { bonus2 bIgnoreDefRate,4,50; bonus2 bAddDamageGroup,Group_Ninja,70; } },{},{}
+//39545,Bacsojin_Card_II,[融合]白素贞卡片,6,,,10,,,,,,,,2,,,,,{ bonus bmAtkRate,30; bonus bInt,30; bonus2 bSkillAtk,490,30; if( isequipped(9491) ) { bonus2 bIgnoreMdefRate,4,35; bonus2 bMagicAddGroup,Group_Ninja,50; } },{},{}
+//39546,Deviling_Card_II,[融合]纳户特基格卡片,6,,,10,,,,,,,,769,,,,,{ bonus bAtkRate,15; bonus bMatkRate,15; bonus bHit,150; bonus ballstats,10;bonus bLuk,-7;{ if(BaseJob == Job_Alchemist) bonus bInt,15; } },{},{}
+//39547,B_Seyren_Card_II,[融合]闇●骑士领主 赛依连卡片,6,,,10,,,,,,,,769,,,,,{ skill "LK_BERSERK",1; bonus bMaxHPrate,10; bonus bCritAtkRate,40;},{},{}
+//39548,Gloom_Under_Night_Card_II,[融合]影魔卡片,6,,,10,,,,,,,,4,,,,,{ bonus2 bAddEle,Ele_Holy,70; bonus2 bAddEle,Ele_Dark,70; bonus2 bAddRace,RC_Angel,70; bonus2 bAddRace,RC_Demon,70; bonus2 bMagicAddEle,Ele_Holy,70; bonus2 bMagicAddEle,Ele_Dark,70; bonus2 bMagicAddRace,RC_Angel,70; bonus2 bMagicAddRace,RC_Demon,70; bonus bNoWeaponDamage,5; bonus bNoMagicDamage,5; bonus2 bSubEle,Ele_Neutral,50; bonus2 bSubDamageGroup,Group_Ninja,15; bonus2 bAddDamageGroup,Group_Ninja,70; bonus2 bMagicAddGroup,Group_Ninja,70; bonus2 bSubRaceMagic,7,-15; },{},{}
+//39549,Kiel_Card_II,[融合]基尔-D-01卡片,6,,,10,,,,,,,,769,,,,,{ bonus bDelayRate,-45;  bonus ballstats,10;bonus bLuk,-7;},{},{}
+//39550,Berzebub_Card_II,[融合]贝雷杰卡片,6,,,10,,,,,,,,136,,,,,{ bonus bmAtkRate,15; bonus bNoWeaponDamage,5; bonus bNoMagicDamage,5; bonus bAllStats,5; bonus bLuk,-2;},{},{}
+//39551,Ktullanux_Card_II,[融合]寒冰龙卡片,6,,,10,,,,,,,,16,,,,,{ bonus bMaxHPrate,100; bonus bNoWeaponDamage,10; bonus bNoMagicDamage,10; bonus5 bAutoSpellWhenHit,182,1,400,BF_WEAPON|BF_MAGIC,1; bonus2 bResEff,Eff_Freeze,10000; },{},{}
+//39552,Ifrit_Card_II,[融合]伊夫利特卡片,6,,,10,,,,,,,,136,,,,,{ bonus bAtkRate,15; bonus bNoWeaponDamage,5; bonus bNoMagicDamage,5;bonus bAllStats,5; bonus bLuk,-2;},{},{}
+//39553,ck_II,[融合]暗●十字刺客 艾勒梅斯卡片,6,,,10,,,,,,,,769,,,,,{ skill "AS_CLOAKING",10; bonus bAllStats,10; bonus bLuk,-7;},{},{}
+//39554,B_Shecil_Card_II,[融合]闇●神射手 迪文卡片,6,,,10,,,,,,,,2,,,,,{ bonus2 bHpDrainRate,500,15;bonus2 bAddClass,Class_Normal,40; bonus2 bAddClass,Class_Boss,80;bonus2 bMagicAddClass,Class_Boss,80;bonus2 bAddClass,Class_Guardian,40;bonus bCritAtkRate,40;bonus bCritical,20;},{},{}
+//39555,sgj_II,[融合]暗●神工匠 哈沃得卡片,6,,,10,,,,,,,,2,,,,,{ skill "BS_OVERTHRUST",2; skill "WS_OVERTHRUSTMAX",2;bonus2 bAddClass,Class_Normal,40; bonus2 bAddClass,Class_Boss,40; bonus2 bAddClass,Class_Guardian,40;},{},{}
+//39556,B_Katrinn_Card_II,[融合]暗●超魔导师 凯特莉娜卡片,6,,,10,,,,,,,,769,,,,,{ bonus bIgnoreMDefClass,Class_Normal; bonus bmatkrate,15; bonus bmaxhpRate,10; },{},{}
+//39557,Nahu_Card,纳户特基格卡片,6,,,10,,,,,,,,769,,,,,{ bonus bAtkRate,10; bonus bMatkRate,10; bonus bHit,100; { if(BaseJob == Job_Alchemist) bonus bInt,15; } },{},{}
+//39558,B_Magaleta_Card_II,[融合]暗●神官 玛嘉雷特卡片,6,,,10,,,,,,,,136,,,,,{ bonus bNoWeaponDamage,5; bonus bNoMagicDamage,5; bonus bLongAtkDef,15;bonus bmaxhprate,15;},{},{}
+//39559,MLK_Card_II,[融合]魔王梦罗克卡片,6,,,10,,,,,,,,2,,,,,{ bonus bmAtkRate,180; bonus2 bMagicAddClass,Class_Boss,200; bonus2 bIgnoreMdefClassRate,Class_Boss,50; bonus2 bSkillAtk,490,400; bonus bInt,80; if( isequipped(30157) ) { bonus2 bIgnoreMdefRate,4,50; bonus2 bMagicAddGroup,Group_Ninja,200; } },{},{}
+//39560,Thanatos_Card_II,[融合]达纳托斯的记忆卡片,6,,,10,,,,,,,,2,,,,,{ bonus bDefRatioAtkClass,1; bonus bDefRatioAtkClass,2; bonus bSPGainOnAttack,-1; bonus2 bAddRace,RC_DemiHuman,40; if( isequipped(30156) ) { bonus bDefRatioAtkRace,4; bonus2 bAddDamageGroup,Group_Ninja,500; } },{},{}
+// ==================================================================================================== //
+//                              自定义头饰/时装（预定范围：40001 - 40999）                              //
+// ==================================================================================================== //
+//头上
+40020,Yocci_suit_01_up,[时装]黑蝴蝶蕾丝帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3020,{},{},{}
+40022,Yocci_suit_02_up,[时装]百合花帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3022,{},{},{}
+40024,Yocci_suit_03_up,[时装]兰草花帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3024,{},{},{}
+40026,Yocci_suit_04_up,[时装]白珍珠蕾丝帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3026,{},{},{}
+40028,Yocci_suit_05_up,[时装]玫瑰花帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3028,{},{},{}
+40094,Yocci_Animal_01,卷尾猫帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3094,{},{},{}
+40095,Yocci_Animal_02,呼呼熊帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3095,{},{},{}
+40096,Yocci_Animal_03,咪露猫帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3096,{},{},{}
+40097,Yocci_Animal_04,黑夜猫帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3097,{},{},{}
+40098,Yocci_Animal_05,铃铛羊帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3098,{},{},{}
+40099,Yocci_Rainbow_01,樱桃草莓卷礼帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3099,{},{},{}
+40100,Yocci_Rainbow_02,滑雪防风眼镜帽,4,,,100,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,3100,{},{},{}
+40109,saiyan,超级赛亚人之发,4,20,,100,,0,,1,0xFFFFFFFF,7,2,1024,,1,0,2025,{},{},{}
+40110,anye49,超级赛亚人之发(神),4,20,,200,,0,,1,0xFFFFFFFF,7,2,1024,,1,0,2026,{},{},{}
+40111,halcyonspirit,大力神之魂,4,20,,100,,0,,1,0xFFFFFFFF,7,2,1024,,1,0,2027,{},{},{}
+40112,Saiyan_Hair_Ultimate,超级赛亚人IV,4,20,,100,,0,,1,0xFFFFFFFF,7,2,1024,,1,0,2028,{},{},{}
+40113,firehelm,火焰头盔,4,20,,100,,0,,1,0xFFFFFFFF,7,2,1024,,1,0,2029,{},{},{}
+
+40114,anye18,可爱波利,4,20,,200,,4,,1,0xFFFFFFFF,7,2,1024,,1,1,2069,{},{},{}
+40115,anye19,可爱土波利,4,20,,200,,4,,1,0xFFFFFFFF,7,2,1024,,1,1,2070,{},{},{}
+40116,anye20,可爱波波利,4,20,,200,,4,,1,0xFFFFFFFF,7,2,1024,,1,1,2071,{},{},{}
+40117,anye21,可爱冰波利,4,20,,200,,4,,1,0xFFFFFFFF,7,2,1024,,1,1,2072,{},{},{}
+40118,anye22,大笑冰波利,4,20,,200,,4,,1,0xFFFFFFFF,7,2,1024,,1,1,2073,{},{},{}
+40119,anye23,大笑波波利,4,20,,200,,4,,1,0xFFFFFFFF,7,2,1024,,1,1,2074,{},{},{}
+40120,anye24,大笑波利,4,20,,200,,4,,1,0xFFFFFFFF,7,2,1024,,1,1,2075,{},{},{}
+40121,anye25,大笑土波利,4,20,,200,,0,,1,0xFFFFFFFF,7,2,1024,,1,1,2076,{},{},{}
+
+
+//头中
+40019,Yocci_suit_01_mid,[时装]黑蝴蝶蕾丝翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3019,{},{},{}
+40021,Yocci_suit_02_mid,[时装]百合花翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3021,{},{},{}
+40023,Yocci_suit_03_mid,[时装]兰草花翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3023,{},{},{}
+40025,Yocci_suit_04_mid,[时装]白珍珠蕾丝翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3025,{},{},{}
+40027,Yocci_suit_05_mid,[时装]玫瑰花翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3027,{},{},{}
+40047,Yocci_Beast_Wing_01,[时装]白虎之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3047,{},{},{}
+40048,Yocci_Beast_Wing_02,[时装]麒麟之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3048,{},{},{}
+40049,Yocci_Beast_Wing_03,[时装]青龙之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3049,{},{},{}
+40050,Yocci_Beast_Wing_04,[时装]玄武之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3050,{},{},{}
+40051,Yocci_Beast_Wing_05,[时装]朱雀之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3051,{},{},{}
+40052,Yocci_Saint_Wing_01,[时装]帝释天之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3052,{},{},{}
+40053,Yocci_Saint_Wing_02,[时装]阿修罗之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3053,{},{},{}
+40054,Yocci_Saint_Wing_03,[时装]夜叉王之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3054,{},{},{}
+40055,Yocci_Saint_Wing_04,[时装]吉祥天之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3055,{},{},{}
+40056,Yocci_Saint_Wing_05,[时装]迦楼罗之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3056,{},{},{}
+40057,Yocci_Saint_Wing_06,[时装]乾达婆之翼,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3057,{},{},{}
+//40059,Ring_Angeling,[时装]天使波利守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3059,{},{},{}
+40060,Ring_Bee,[时装]蜜蜂守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3060,{},{},{}
+40061,Ring_Bling,[时装]星闪守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3061,{},{},{}
+//40062,Ring_Bubble,[时装]泡沫守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3062,{},{},{}
+40063,Ring_Candy,[时装]糖果守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3063,{},{},{}
+40064,Ring_Cookie,[时装]饼干守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3064,{},{},{}
+40065,Ring_Heart,[时装]爱心守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3065,{},{},{}
+40066,Ring_Melody,[时装]音符守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3066,{},{},{}
+40067,Ring_Night,[时装]夜色守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3067,{},{},{}
+40068,Ring_Rose,[时装]玫瑰守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3068,{},{},{}
+40069,Ring_Snow,[时装]雪花守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3069,{},{},{}
+40070,Ring_Star,[时装]明月守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3070,{},{},{}
+40071,Ring_Sunflower,[时装]向日葵守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3071,{},{},{}
+40072,Ring_Weather,[时装]天气守护,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3072,{},{},{}
+//40101,VB_Hat_01,幻彩天使翅膀,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3101,{},{},{}
+//40102,VB_Hat_02,幻彩堕天使翅膀,4,,,100,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,3102,{},{},{}
+
+40131,NewItem_188,妖翼,4,20,,200,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2030,{},{},{}
+40132,anye_48,超级赛亚人之光(神),4,20,,200,,4,,1,0xFFFFFFFF,7,2,2048,,1,0,2031,{},{},{}
+40133,anye_49,紫色梦幻天翼,4,20,,200,,4,,1,0xFFFFFFFF,7,2,2048,,1,0,2032,{},{},{}
+40134,anye_50,暗天使之翼,4,20,,200,,4,,1,0xFFFFFFFF,7,2,2048,,1,0,2033,{},{},{}
+40135,anye_51,火焰龙王翼,4,20,,200,,4,,1,0xFFFFFFFF,7,2,2048,,1,1,2034,{},{},{}
+40136,anye_52,精灵王之翼,4,20,,200,,4,,1,0xFFFFFFFF,7,2,2048,,1,0,2035,{},{},{}
+40137,saiyan_aura,超级赛亚人之光,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2036,{},{},{}
+40138,permafrost_wings,永冻之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2037,{},{},{}
+40139,Icarus_Wings,伊卡洛斯之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2038,{},{},{}
+40140,demon_fox_cloak,妖狐之魂,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2039,{},{},{}
+40141,ghost_claw,幽灵鬼爪,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2040,{},{},{}
+40142,Sasukes_Susanoo,鬼侍之魂,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2041,{},{},{}
+40143,SC345,火焰幼龙之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2042,{},{},{}
+40144,kaura,基尔之魂,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2043,{},{},{}
+40145,tyrael_wings,泰瑞尔之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2044,{},{},{}
+40146,archdevil_wings,魔龙之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2045,{},{},{}
+40147,blades_of_sparda,旋风刀阵,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2046,{},{},{}
+40148,hell_inferno_wings,火蝙之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2047,{},{},{}
+40149,Blue_Shield,幽冥盾牌,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2048,{},{},{}
+40150,redswordaura,火云剑阵,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2049,{},{},{}
+40151,revov2,飓风之魂,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2053,{},{},{}
+40152,Kuroihi_Fairy_Wings,暗精灵之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2054,{},{},{}
+40153,runes,runes,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2055,{},{},{}
+40154,Violent_Angel_Wings,天仙之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2056,{},{},{}
+40155,Wings_Of_Fairy,耀天使之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2057,{},{},{}
+40156,celestial_dark_flame,暗黑妖耳,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2058,{},{},{}
+
+40157,anye1,妖狐之尾,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2077,{},{},{}
+40158,anye2,风云剑,4,20,,100,,0,,1,0xFFFFFFFF,7,2,2048,,1,0,2078,{},{},{}
+
+//头下
+40006,Yocci_balloon_01,恶魔波利气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3006,{},{},{}
+40007,Yocci_balloon_02,疯兔气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3007,{},{},{}
+40008,Yocci_balloon_03,水母气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3008,{},{},{}
+40009,Yocci_balloon_04,天使波利气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3009,{},{},{}
+40010,Yocci_balloon_05,玩具熊气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3010,{},{},{}
+40011,Yocci_balloon_06,小恶魔气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3011,{},{},{}
+40012,Yocci_balloon_07,小野猪气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3012,{},{},{}
+40013,Yocci_balloon_08,幽灵波利气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3013,{},{},{}
+40014,Yocci_Boss_balloon_01,巴基力气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3014,{},{},{}
+40015,Yocci_Boss_balloon_02,俄塞里斯气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3015,{},{},{}
+40016,Yocci_Boss_balloon_03,黑暗之王气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3016,{},{},{}
+40017,Yocci_Boss_balloon_04,虎王气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3017,{},{},{}
+40018,Yocci_Boss_balloon_05,月夜猫气球,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3018,{},{},{}
+40029,Yocci_Back_decoration_01,[时装]BB奶瓶,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3029,{},{},{}
+40030,Yocci_Back_decoration_02,[时装]万能橡皮塞,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3030,{},{},{}
+40031,Yocci_Back_decoration_03,[时装]充气榔头,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3031,{},{},{}
+40032,Yocci_Back_decoration_04,[时装]弥天轮,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3032,{},{},{}
+40033,Yocci_Back_decoration_05,[时装]拂尘,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3033,{},{},{}
+40034,Yocci_Back_decoration_06,[时装]桃花伞,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3034,{},{},{}
+40035,Yocci_Back_decoration_07,[时装]波利竹篓,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3035,{},{},{}
+40036,Yocci_Back_decoration_08,[时装]炼制药水瓶,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3036,{},{},{}
+40037,Yocci_Back_decoration_09,[时装]皇家盾牌,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3037,{},{},{}
+40038,Yocci_Back_decoration_10,[时装]绷带葫芦,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3038,{},{},{}
+40039,Yocci_Back_decoration_11,[时装]羊皮卷轴,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3039,{},{},{}
+40040,Yocci_Back_decoration_12,[时装]花腰鼓,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3040,{},{},{}
+40041,Yocci_Back_decoration_13,[时装]蓝涡,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3041,{},{},{}
+40042,Yocci_Back_decoration_14,[时装]閰罗面具,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3042,{},{},{}
+40043,Yocci_Back_decoration_15,[时装]霸王弩,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3043,{},{},{}
+40044,Yocci_Back_decoration_16,[时装]风车,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3044,{},{},{}
+40045,Yocci_Back_decoration_17,[时装]骑士之剑,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3045,{},{},{}
+40046,Yocci_Back_decoration_18,[时装]黑色炸弹,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3046,{},{},{}
+40073,Scarf_Warm_brown,褐色温暖围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3073,{},{},{}
+40074,Scarf_Warm_green,碧绿温暖围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3074,{},{},{}
+40075,Scarf_Warm_purple,紫蓝温暖围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3075,{},{},{}
+40076,Scarf_Warm_red,金红温暖围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3076,{},{},{}
+40077,Scarf_Warm_white,灰白温暖围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3077,{},{},{}
+40078,Scarf_Warm_yellow,梨黄温暖围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3078,{},{},{}
+40079,Scarf_Color_black,黑白混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3079,{},{},{}
+40080,Scarf_Color_purple,紫白混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3080,{},{},{}
+40081,Scarf_Color_blue,米蓝混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3081,{},{},{}
+40082,Scarf_Color_goldgreen,金绿混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3082,{},{},{}
+40083,Scarf_Color_green,米绿混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3083,{},{},{}
+40084,Scarf_Color_gray,灰黄混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3084,{},{},{}
+40085,Scarf_Color_pink,粉红混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3085,{},{},{}
+40086,Scarf_Color_puepleblack,紫黑混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3086,{},{},{}
+40087,Scarf_Color_goldred,金红混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3087,{},{},{}
+40088,Scarf_Color_red,红白混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3088,{},{},{}
+40089,Scarf_Color_yellow,米黄混搭围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3089,{},{},{}
+40090,Scarf_Winter_01,桃红针织围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3090,{},{},{}
+40091,Scarf_Winter_02,珠红针织围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3091,{},{},{}
+40092,Scarf_Winter_03,纯白针织围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3092,{},{},{}
+40093,Scarf_Winter_04,条纹针织围巾,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3093,{},{},{}
+40103,VB_Hat_03,妖刀鲛肌,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3103,{},{},{}
+40104,VB_Hat_04,天使波利精灵,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3104,{},{},{}
+40105,VB_Hat_05,圣天使波利精灵,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3105,{},{},{}
+40106,VB_Hat_06,恶魔波利精灵,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3106,{},{},{}
+40107,ALH_001,欢乐海洋,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3107,{},{},{}
+40108,ALH_002,欢乐甜点,4,,,100,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,3108,{},{},{}
+40171,new_aura,精灵鬼火,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2059,{},{},{}
+40172,wizring,魔法阵,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2060,{},{},{}
+40173,Black_Chakra,能量查克拉,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2061,{},{},{}
+40174,Dark_Crescent,死神镰刀,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2062,{},{},{}
+40175,Blade_of_Dragon,水龙巨剑,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2063,{},{},{}
+40176,Black_Elfs_Aura,恶灵附身,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2064,{},{},{}
+40177,blueflame,幽灵蓝焰,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2065,{},{},{}
+40178,Flame_Sword,火麟剑,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2066,{},{},{}
+40179,Inuyasha_Sword,雪饮刀,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2067,{},{},{}
+40180,Soul_Eater_Sword,败亡之剑,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2068,{},{},{}
+
+40181,dore_j,海盗船长披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2079,{},{},{}
+40182,21040,黑海王披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2080,{},{},{}
+40183,21039,黄海王披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2081,{},{},{}
+40184,21037,粉海王披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2082,{},{},{}
+40185,dore_pur,紫海王披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2083,{},{},{}
+40186,dore_white,白海王披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2084,{},{},{}
+40187,dore_orange,橘海王披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2085,{},{},{}
+40188,dore_dgreen,绿海王披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2086,{},{},{}
+40189,dore_dblue,蓝海王披风,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2087,{},{},{}
+40190,anye12,炼狱妖火<红>,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2088,{},{},{}
+40191,anye13,炼狱妖火<黄>,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2089,{},{},{}
+40192,anye14,炼狱妖火<蓝>,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2090,{},{},{}
+40193,anye15,炼狱妖火<紫>,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2091,{},{},{}
+
+//披肩
+40201,pj_yh,永恒之翼,4,0,,0,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,1,{},{},{}
+40202,pj_mxj,冒险家背包,4,0,,0,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,2,{},{},{}
+40203,pj_yhd,永恒堕天使之翼,4,0,,0,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,3,{},{},{}
+40204,C_Amistr_Bag,艾咪斯可鲁包,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,4,{},{},{}
+40205,Love_Dad_Wings_2012,永恒军天使之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,5,{},{},{}
+40206,C_Kirin_Wing,麒麟之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,6,{},{},{}
+//40207,Ribbon_Piamat,Ribbon Piamat,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,7,{},{},{}
+40208,Wings_of_Seraph,永恒炽天使之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,8,{},{},{}
+40209,pj_fh,幸福之翼,4,0,,0,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,9,{},{},{}
+40210,C_GreatDevilWing,撒旦之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,10,{},{},{}
+40211,C_Little_Devil_Wings,小恶魔翅膀,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,12,{},{},{}
+40212,C_Cupids_Pink_Wings,粉红邱比特翅膀,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,14,{},{},{}
+40213,C_Poring_Bag,波利背包,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,16,{},{},{}
+40214,C_Wings_of_Uriel,乌列尔之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,17,{},{},{}
+//40215,Angel_Feather,Angel Feather,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,18,{},{},{}
+40216,C_SwordWing,天鹅之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,19,{},{},{}
+40217,C_Blue_Fairy_Wing,蓝色精灵之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,21,{},{},{}
+40218,C_Thanatos_Sword,魔剑,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,23,{},{},{}
+40219,C_Wings_of_Michael,米迦勒之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,24,{},{},{}
+40220,GiantCatBag,猫猫背包,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,25,{},{},{}
+40221,C_PinkButterfly_Wing,粉色精灵之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,35,{},{},{}
+40222,C_GoldButterfly_Wing,金色精灵之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,36,{},{},{}
+40223,C_Wings_of_Gabriel,加百利之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,37,{},{},{}
+40224,Violet_Halo,紫罗兰之轮,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,39,{},{},{}
+//新手装备
+40291,nnew_84,暖心之帽,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2022,{bonus ballstats,3;},{},{}
+40292,nnew_132,暖心爱神翼,4,,,200,,0,,1,0xFFFFFFFF,7,2,512,,0,0,2023,{bonus ballstats,3;},{},{}
+40293,nnew_104,暖心之围巾,4,,,200,,0,,1,0xFFFFFFFF,7,2,1,,0,0,2024,{bonus baspd,5;},{},{}
+40294,UnknownItem_1,天使☆铠甲,4,,,10,,3,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus bMaxHP,3000; bonus bAllStats,3; },{},{}
+40295,UnknownItem_2,天使☆皮靴,4,,,10,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,15;},{},{}
+40296,UnknownItem_3,天使☆斗篷,4,,,10,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bmdef,5;},{},{}
+40297,UnknownItem_88,天使☆盾牌,4,,,10,,3,,1,0xFFFFFFFF,7,2,32,,0,1,1,{bonus bmaxhprate,5; },{},{}
+40298,Magingiorde_new,[新手]雷神腰带,4,,,20,,0,,0,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,20;bonus bDex,5;},{},{}
+40299,Brysinggamen_new,[新手]女神颈链,4,,,20,,0,,0,0xFFFFFFFF,7,2,136,,1,0,0,{bonus bDex,5;bonus bAgi,3; bonus bInt,3; bonus bLuk,3;},{},{}
+//头上
+40301,nnew_26,蓝色女武神头盔,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2001,{ bonus ballstats,6; bonus bLuk,-3; },{},{}
+40302,nnew_25,绿色女武神头盔,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2002,{ bonus ballstats,9; bonus bLuk,-6; },{},{}
+40303,nnew_24,红色女武神头盔,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2003,{ bonus ballstats,12; bonus bLuk,-9; },{},{}
+40304,nnew_22,黑色女武神头盔,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2004,{ bonus ballstats,15; bonus bLuk,-12; },{},{}
+40305,nnew_149,<初级>白色女武神头盔,4,,,200,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,15; bonus bLuk,-12; bonus2 bAddClass,Class_Boss,15;bonus bAtkRate,9; },{},{}
+40306,nnew_154,<中级>白色女武神头盔,4,,,200,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,18; bonus bLuk,-15; bonus2 bAddClass,Class_Boss,20;bonus bAtkRate,12; },{},{}
+40307,nnew_159,<高级>白色女武神头盔,4,,,200,,5,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,21; bonus bLuk,-18; bonus2 bAddClass,Class_Boss,25;bonus bAtkRate,15;bonus2 bAddRace,RC_DemiHuman,getrefine();bonus2 bAddRace,RC_Player,getrefine(); },{},{}
+40308,nnew_165,<究极>白色女武神头盔,4,,,200,,6,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,24; bonus bLuk,-21; bonus2 bAddClass,Class_Boss,30;bonus bAtkRate,18;bonus2 bAddRace,RC_DemiHuman,getrefine()*3/2;bonus2 bAddRace,RC_Player,getrefine()*3/2; },{},{}
+40309,nnew_153,<初级>猩红女武神头盔,4,,,200,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,15; bonus bLuk,-12; bonus2 bMagicAddClass,Class_Boss,15; bonus bMatkRate,9; bonus2 bSkillAtk,490,5; },{},{}
+40310,nnew_158,<中级>猩红女武神头盔,4,,,200,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,18; bonus bLuk,-15; bonus2 bMagicAddClass,Class_Boss,20; bonus bMatkRate,12; bonus2 bSkillAtk,490,10; },{},{}
+40311,nnew_163,<高级>猩红女武神头盔,4,,,200,,5,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,21; bonus bLuk,-18; bonus2 bMagicAddClass,Class_Boss,25; bonus bMatkRate,15; bonus2 bMagicAddRace,RC_DemiHuman,getrefine();bonus2 bMagicAddRace,RC_Player,getrefine();bonus2 bSkillAtk,490,15; },{},{}
+40312,nnew_166,<究极>猩红女武神头盔,4,,,200,,6,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,24; bonus bLuk,-21; bonus2 bMagicAddClass,Class_Boss,30; bonus bMatkRate,18; bonus2 bMagicAddRace,RC_DemiHuman,getrefine()*3/2;bonus2 bMagicAddRace,RC_Player,getrefine()*3/2;bonus2 bSkillAtk,490,20; },{},{}
+//头中
+40451,anye31,红岩之翼,4,,,100,,0,,1,0xFFFFFFFF,7,2,512,,1,0,2007,{ bonus ballstats,5;bonus bLuk,-2;},{},{}
+40452,anye32,冰岩之翼,4,,,100,,0,,1,0xFFFFFFFF,7,2,512,,1,0,2008,{ bonus ballstats,5;bonus bLuk,-2;},{},{}
+40453,anye33,烈焰火环,4,,,100,,0,,1,0xFFFFFFFF,7,2,512,,1,0,2009,{ bonus ballstats,10;bonus bLuk,-7; bonus batk,50;},{},{}
+40454,anye34,寒霜冰环,4,,,100,,0,,1,0xFFFFFFFF,7,2,512,,1,0,2010,{ bonus ballstats,10; bonus bLuk,-7; bonus bmatkrate,5; bonus2 bSkillAtk,490,5; },{},{}
+40455,xt35,堕天使之翼,4,,,100,,0,,1,0xFFFFFFFF,7,2,512,,1,0,2011,{ bonus ballstats,15;bonus bLuk,-12; bonus batk,100;},{},{}
+40456,anye37,炽天使之翼,4,,,100,,0,,1,0xFFFFFFFF,7,2,512,,1,0,2012,{ bonus ballstats,15; bonus bLuk,-12; bonus bmatkrate,8; bonus2 bSkillAtk,490,10; },{},{}
+40457,nnew_6,红莲之火,4,,,200,,0,,1,0xFFFFFFFF,7,2,512,,0,0,2013,{ bonus ballstats,20;bonus bLuk,-17; bonus batk,150;},{},{}
+40458,nnew_4,初云之海,4,,,200,,0,,1,0xFFFFFFFF,7,2,512,,0,0,2014,{ bonus ballstats,20; bonus bLuk,-17; bonus bmatkrate,10; bonus2 bSkillAtk,490,15; },{},{}
+40459,nnew_168,堕天使之羽,4,,,200,,0,,1,0xFFFFFFFF,7,2,512,,0,0,2015,{ bonus ballstats,25;bonus bLuk,-22; bonus batk,200;},{},{}
+40460,nnew_167,炽天使之羽,4,,,200,,0,,1,0xFFFFFFFF,7,2,512,,0,0,2016,{ bonus ballstats,25; bonus bLuk,-22; bonus bmatkrate,12;bonus2 bSkillAtk,490,20; },{},{}
+//头下
+40501,nnew_117,钱袋,4,,,1,,0,,1,0xFFFFFFFF,7,2,1,,0,0,2017,{ bonus baspd,5;  bonus ballstats,3; },{},{}
+40502,nnew_115,胜利之光,4,,,1,,0,,1,0xFFFFFFFF,7,2,1,,0,0,2018,{ bonus baspd,5;  bonus ballstats,3; },{},{}
+40503,nnew_118,粉红色围巾,4,,,1,,0,,1,0xFFFFFFFF,7,2,1,,0,0,2019,{bonus baspd,5;bonus ballstats,6;bonus bluk,-3;},{},{}
+40504,nnew_101,波利小精灵,4,,,1,,0,,1,0xFFFFFFFF,7,2,1,,0,0,2020,{bonus baspd,8;bonus ballstats,9;bonus bluk,-6;bonus batkrate,5;},{},{}
+40505,nvd,女神盾,4,,10,10,,0,,1,0xffffffff,7,2,1,,0,0,2021,{bonus baspd,8;bonus ballstats,9;bonus bluk,-6;bonus bmatkrate,5;},{},{}
+40506,nnew_169,<究极>波利小精灵,4,,,1,,0,,1,0xFFFFFFFF,7,2,1,,0,0,2020,{bonus baspd,10;bonus ballstats,12;bonus bluk,-9;bonus batkrate,8;},{},{}
+40507,jjnvd,<究极>女神盾,4,,10,10,,0,,1,0xffffffff,7,2,1,,0,0,2021,{bonus baspd,10;bonus ballstats,12;bonus bluk,-9;bonus bmatkrate,8;},{},{}
+//铠甲
+40561,ss1,<初级>雅典娜神圣衣,4,,,10,,4,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,10; bonus bLuk,-7;  bonus bMaxHP,10000; bonus bNoWeaponDamage,5;bonus bNoMagicDamage,5; if(getrefine() > 9) { bonus bmaxhp,3000;}},{},{}
+40562,ss2,<中级>雅典娜神圣衣,4,,,10,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,15; bonus bLuk,-12; bonus bMaxHP,15000; bonus bNoWeaponDamage,10; bonus bNoMagicDamage,10; if(getrefine() > 9) { bonus bmaxhp,6000;}},{},{}
+40563,ss3,<高级>雅典娜神圣衣,4,,,10,,8,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,20; bonus bLuk,-17; bonus bMaxHP,20000; bonus bNoWeaponDamage,15; bonus bNoMagicDamage,15; if(getrefine() > 9) { bonus bmaxhp,9000;}},{},{}
+40564,ss4,<究极>雅典娜神圣衣,4,,,10,,10,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,25; bonus bLuk,-22; bonus bMaxHP,25000; bonus bNoWeaponDamage,20; bonus bNoMagicDamage,20; if(getrefine() > 9) { bonus bmaxhp,12000;}},{},{}
+//盾
+40571,UnknownItem_28,<初级>恶魔之盾,4,,,300,,4,,1,0xFFFFFFFF,7,2,32,,0,1,1,{ bonus bmaxhprate,5; bonus2 bSubEle,1,3;bonus2 bSubEle,3,3;bonus2 bSubEle,7,3;if (getrefine() > 9) {bonus bmaxhprate,10;} },{},{}
+40572,UnknownItem_30,<中级>恶魔之盾,4,,,300,,5,,1,0xFFFFFFFF,7,2,32,,0,1,1,{ bonus bmaxhprate,10;bonus2 bSubEle,1,6;bonus2 bSubEle,3,6;bonus2 bSubEle,7,6;if (getrefine() > 9) {bonus bmaxhprate,13;} },{},{}
+40573,UnknownItem_32,<高级>恶魔之盾,4,,,300,,6,,1,0xFFFFFFFF,7,2,32,,0,1,1,{ bonus bmaxhprate,15; bonus2 bSubEle,1,9;bonus2 bSubEle,3,9;bonus2 bSubEle,7,9;if (getrefine() > 9) {bonus bmaxhprate,16;} },{},{}
+40574,UnknownItem_250,<究极>恶魔之盾,4,,,300,,7,,1,0xFFFFFFFF,7,2,32,,0,1,1,{ bonus bmaxhprate,20; bonus2 bSubEle,1,12;bonus2 bSubEle,3,12;bonus2 bSubEle,7,12;if (getrefine() > 9) {bonus bmaxhprate,20;} },{},{}
+//披肩
+40581,UnknownItem_8,<初级>恶魔披肩,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bmdef,10; bonus2 bSubEle,0,5;if (getrefine() > 9) { bonus2 bSubEle,0,3;} },{},{}
+40582,UnknownItem_16,<中级>恶魔披肩,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bmdef,15; bonus2 bSubEle,0,10;if (getrefine() > 9) { bonus2 bSubEle,0,5;} },{},{}
+40583,UnknownItem_24,<高级>恶魔披肩,4,,,100,,6,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bmdef,20; bonus2 bSubEle,0,15; if (getrefine() > 9) { bonus2 bSubEle,0,7; } },{},{}
+40584,UnknownItem_249,<究极>恶魔披肩,4,,,100,,7,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bmdef,25; bonus2 bSubEle,0,20; if (getrefine() > 9) { bonus2 bSubEle,0,9; } },{},{}
+//鞋
+40591,UnknownItem_7,<初级>恶魔长靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15;bonus bflee,50;if (getrefine() > 9) {bonus2 bAddRace,RC_DemiHuman,3;bonus2 bAddRace,RC_Player,3;}},{},{}
+40592,UnknownItem_15,<中级>恶魔长靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20;bonus bflee,100;if (getrefine() > 9) {bonus2 bAddRace,RC_DemiHuman,6;bonus2 bAddRace,RC_Player,6;}},{},{}
+40593,UnknownItem_23,<高级>恶魔长靴,4,,,100,,6,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,25; bonus bMaxSPrate,25; bonus bSpeedAddRate,25;bonus bflee,150;if (getrefine() > 9) {bonus2 bAddRace,RC_DemiHuman,9;bonus2 bAddRace,RC_Player,9;}},{},{}
+40594,UnknownItem_248,<究极>恶魔长靴,4,,,100,,7,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,30; bonus bMaxSPrate,30; bonus bSpeedAddRate,30;bonus bflee,200;if (getrefine() > 9) {bonus2 bAddRace,RC_DemiHuman,12;bonus2 bAddRace,RC_Player,12;}},{},{}
+//饰品
+40601,UnknownItem_89,<初级>卡尔手套,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,10; bonus bAgi,5; bonus bDex,5; bonus bAtkRate,6; },{},{}
+40602,UnknownItem_90,<中级>卡尔手套,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,15; bonus bAgi,10; bonus bDex,10; bonus bAtkRate,8; },{},{}
+40603,UnknownItem_91,<高级>卡尔手套,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,20; bonus bAgi,15; bonus bDex,15; bonus bAtkRate,10; },{},{}
+40604,UnknownItem_251,<究极>卡尔手套,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,25; bonus bAgi,20; bonus bDex,20; bonus bAtkRate,12; },{},{}
+40605,UnknownItem_92,<初级>闪灵戒指,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bInt,10; bonus bDex,5; bonus bLuk,5; bonus bMatkRate,8; bonus2 bSkillAtk,490,5; },{},{}
+40606,UnknownItem_93,<中级>闪灵戒指,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bInt,15; bonus bDex,10; bonus bLuk,10; bonus bMatkRate,10; bonus2 bSkillAtk,490,10; },{},{}
+40607,UnknownItem_94,<高级>闪灵戒指,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bInt,20; bonus bDex,15; bonus bLuk,15; bonus bMatkRate,12; bonus2 bSkillAtk,490,15; },{},{}
+40608,UnknownItem_252,<究极>闪灵戒指,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bInt,25; bonus bDex,20; bonus bLuk,20; bonus bMatkRate,15; bonus2 bSkillAtk,490,20; },{},{}
+40609,UnknownItem_95,<初级>领袖指环,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,10;bonus bVit,5; bonus bInt,10; bonus2 bSubClass,Class_Boss,5;},{},{}
+40610,UnknownItem_96,<中级>领袖指环,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,15;bonus bVit,10; bonus bInt,15; bonus2 bSubClass,Class_Boss,7;},{},{}
+40611,UnknownItem_97,<高级>领袖指环,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,20;bonus bVit,15; bonus bInt,20; bonus2 bSubClass,Class_Boss,9;},{},{}
+40612,UnknownItem_253,<究极>领袖指环,4,0,,200,,0,,1,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,25;bonus bVit,20; bonus bInt,25; bonus2 bSubClass,Class_Boss,11; },{},{}
+//影装
+40651,item_8,黑龙战甲,12,,,100,,2,,,0xFFFFFFFF,7,2,65536,,1,0,0,{ bonus ballstats,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player,1; bonus2 bSubRace,Class_Boss,1; },{},{}
+40652,item_9,黑龙之盾,12,,,100,,2,,,0xFFFFFFFF,7,2,262144,,1,0,0,{ bonus ballstats,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player,1; bonus2 bSubRace,Class_Boss,1; },{},{}
+40653,item_10,黑龙战靴,12,,,100,,2,,,0xFFFFFFFF,7,2,524288,,1,0,0,{ bonus ballstats,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player,1; bonus2 bSubRace,Class_Boss,1; },{},{}
+40654,item_11,黑龙臂环,12,,,100,,0,,,0xFFFFFFFF,7,2,1048576,,1,0,0,{ bonus ballstats,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player,1; bonus2 bSubRace,Class_Boss,1; },{},{}
+40655,item_12,黑龙护腕,12,,,100,,0,,,0xFFFFFFFF,7,2,2097152,,1,0,0,{ bonus ballstats,2; bonus2 bSubRace,RC_DemiHuman,1; bonus2 bSubRace,RC_Player,1; bonus2 bSubRace,Class_Boss,1; },{},{}
+40656,hlzd,黑龙战刀,12,,,100,100,,,,0xFFFFFFFF,7,2,131072,,1,0,0,{ bonus ballstats,2; bonus2 bAddRace,RC_DemiHuman,10; bonus2 bAddRace,RC_Player,10; bonus2 bAddClass,Class_Boss,30; },{},{}
+40657,hlfz,黑龙法杖,12,,,100,100,,,,0xFFFFFFFF,7,2,131072,,1,0,0,{ bonus ballstats,2; bonus2 bmagicAddRace,RC_DemiHuman,10; bonus2 bmagicAddRace,RC_Player,10; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+40658,item_1,不灭之袍,12,,,100,,2,,,0xFFFFFFFF,7,2,65536,,1,0,0,{ bonus ballstats,4; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; bonus2 bSubRace,Class_Boss,2; },{},{}
+40659,item_2,不灭之盾,12,,,100,,2,,,0xFFFFFFFF,7,2,262144,,1,0,0,{ bonus ballstats,4; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; bonus2 bSubRace,Class_Boss,2; },{},{}
+40660,item_3,不灭之靴,12,,,100,,2,,,0xFFFFFFFF,7,2,524288,,1,0,0,{bonus ballstats,4; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; bonus2 bSubRace,Class_Boss,2; },{},{}
+40661,item_4,不灭之羽,12,,,100,,0,,,0xFFFFFFFF,7,2,1048576,,1,0,0,{ bonus ballstats,4; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; bonus2 bSubRace,Class_Boss,2; },{},{}
+40662,item_5,不灭之心,12,,,100,,0,,,0xFFFFFFFF,7,2,2097152,,1,0,0,{bonus ballstats,4; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player,2; bonus2 bSubRace,Class_Boss,2; },{},{}
+40663,bmzd,不灭之刃,12,,,100,150,,,,0xFFFFFFFF,7,2,131072,,1,0,0,{ bonus ballstats,4; bonus2 bAddRace,RC_DemiHuman,15; bonus2 bAddRace,RC_Player,15; bonus2 bAddClass,Class_Boss,50; },{},{}
+40664,bmfz,不灭之杖,12,,,100,150,,,,0xFFFFFFFF,7,2,131072,,1,0,0,{ bonus ballstats,4; bonus2 bmagicAddRace,RC_DemiHuman,15; bonus2 bmagicAddRace,RC_Player,15; bonus2 bMagicAddClass,Class_Boss,50; },{},{}
+//武器
+1231,UnknownItem_44,<初级>恶魔短剑,5,,,1000,200,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,10; bonus bdex,10; bonus bint,10;bonus bAtkRate,getrefine(); bonus bMatkRate,getrefine(); bonus2 bSkillAtk,212,getrefine()+10; bonus2 bSkillAtk,214,getrefine()+10; bonus2 bSkillAtk,379,getrefine()+10; bonus2 bAddClass,Class_Boss,100;},{},{}
+1233,UnknownItem_57,<中级>恶魔短剑,5,,,1000,250,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,15; bonus bdex,15; bonus bint,15;bonus bAtkRate,getrefine()*3/2; bonus bMatkRate,getrefine()*3/2; bonus2 bSkillAtk,212,getrefine()*3/2+10; bonus2 bSkillAtk,214,getrefine()*3/2+10; bonus2 bSkillAtk,379,getrefine()*3/2+10; bonus2 bAddClass,Class_Boss,120;},{},{}
+1234,UnknownItem_70,<高级>恶魔短剑,5,,,1000,300,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,20; bonus bdex,20; bonus bint,20;bonus bAtkRate,getrefine()*2; bonus bMatkRate,getrefine()*2; bonus2 bSkillAtk,212,getrefine()*2+10; bonus2 bSkillAtk,214,getrefine()*2+10; bonus2 bSkillAtk,379,getrefine()*2+10; bonus2 bAddClass,Class_Boss,150;},{},{}
+1235,UnknownItem_265,<究极>恶魔短剑,5,,,1000,350,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,25; bonus bdex,25; bonus bint,25;bonus bAtkRate,getrefine()*5/2; bonus bMatkRate,getrefine()*5/2; bonus2 bSkillAtk,212,getrefine()*5/2+10; bonus2 bSkillAtk,214,getrefine()*5/2+10; bonus2 bSkillAtk,379,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200;},{},{}
+//
+40701,UnknownItem_267,<初级>恶魔双手剑,5,,,1000,200,,1,4,0x00000080,7,2,34,4,1,1,3,{bonus bcritical,10;bonus bstr,10; bonus bdex,10; bonus bvit,10;bonus bAtkRate,getrefine(); bonus2 bSkillAtk,62,getrefine()+10;bonus2 bAddClass,Class_Boss,100; bonus bCritAtkRate,getrefine()+10;bonus2 bSubClass,Class_Boss,20;},{},{}
+40702,UnknownItem_34,<初级>恶魔巨剑,5,,,1000,200,,1,4,0x00004000,7,2,2,4,1,1,2,{ bonus bvit,10; bonus bdex,10; bonus bint,10; bonus bmAtkRate,getrefine()*4; bonus2 bSkillAtk,254,getrefine()+10; bonus2 bSkillAtk,368,getrefine()+10; bonus2 bMagicAddClass,Class_Boss,100; bonus2 bIgnoreMdefClassRate,Class_Boss,20; bonus2 bAddClass,Class_Boss,100; },{},{}
+40703,UnknownItem_35,<初级>恶魔拳刃,5,,,1000,200,,1,4,0x00001000,7,2,34,4,1,1,16,{bonus bstr,10;bonus bdex,10;bonus bluk,10; bonus bcritical,10;bonus bAtkRate,getrefine();bonus2 bSkillAtk,136,getrefine()+10 ;bonus2 bAddClass,Class_Boss,100;bonus bCritAtkRate,getrefine()+10;},{ if(BaseJob == Job_Assassin) sc_start4 SC_SPIRIT,60000000,10,457,0,1; },{ sc_end SC_SPIRIT; }
+40704,UnknownItem_36,<初级>恶魔战斧,5,,,1000,200,,1,4,0x00041400,7,2,2,4,2,1,6,{bonus bSTR,10; bonus bVIT,10;bonus bint,10;bonus bAtkRate,getrefine(); bonus2 bAddClass,Class_Boss,100;bonus2 bSkillAtk,490,getrefine()+10; bonus2 bSkillAtk,485,getrefine()+10;bonus2 bSkillAtk,229,getrefine()+10;bonus2 bSkillAtk,490,10;},{if(BaseJob == Job_Blacksmith) sc_start4 SC_HOVERING,60000000,10,0,0,1;},{ sc_end SC_HOVERING; }
+40705,UnknownItem_37,<初级>恶魔长矛,5,,,10000,200,,1,4,0x00000080,7,2,2,4,1,1,4,{ bonus bstr,10; bonus bdex,10; bonus bvit,10; bonus bAtkRate,getrefine(); bonus2 bSkillAtk,397,getrefine()+10; bonus2 bSkillAtk,57,getrefine()+10; bonus2 bAddClass,Class_Boss,100; bonus3 bAutoSpell,397,2,400; },{},{}
+40706,UnknownItem_38,<初级>恶魔神杖,5,,,1000,200,,1,4,0x00010100,7,2,2,4,1,1,10,{ bonus bint,10; bonus bvit,10; bonus bdex,10; bonus bMatkRate,getrefine()*4; bonus2 bSkillAtk,MG_FIREBOLT,getrefine()+10; bonus2 bSkillAtk,MG_COLDBOLT,getrefine()+10; bonus2 bSkillAtk,156,getrefine()+10; bonus2 bSkillAtk,20,getrefine()+10; bonus2 bIgnoreMdefClassRate,Class_Boss,20; bonus2 bMagicAddClass,Class_Boss,100; if(BaseJob == Job_Priest) { bonus bMaxHP,10000;  bonus bHealPower,500; } },{ if(BaseJob == Job_Priest) sc_start4 SC_SPIRIT,60000000,10,454,0,1; },{ sc_end SC_SPIRIT; }
+40707,UnknownItem_39,<初级>恶魔魔杖,5,,,1000,200,,1,4,0x00000200,7,2,2,4,1,1,10,{bonus bint,10; bonus bdex,10;bonus bvit,10; bonus bMatkRate,getrefine()*4;bonus2 bSkillAtk,84,getrefine()+10;bonus2 bSkillAtk,89,getrefine()+10;bonus2 bSkillAtk,83,getrefine()+10;bonus2 bIgnoreMdefClassRate,Class_Boss,20;bonus2 bMagicAddClass,Class_Boss,100;},{},{}
+40708,UnknownItem_40,<初级>恶魔神弓,5,,,1000,200,,5,4,0x00020800,7,2,34,4,1,1,11,{ bonus bdex,10; bonus bluk,10; bonus bint,10; bonus2 bSubClass,Class_Boss,20; bonus bAtkRate,getrefine(); bonus bmAtkRate,getrefine(); bonus bCritical,10; bonus2 bAddClass,Class_Boss,100; bonus2 bSkillAtk,46,getrefine()+10; bonus2 bSkillAtk,382,getrefine()+10; bonus2 bMagicAddClass,Class_Boss,100; bonus2 bIgnoreMdefClassRate,Class_Boss,20; bonus2 bSkillAtk,2288,getrefine()+10; },{if(BaseJob == Job_Rogue) sc_start4 SC_SPIRIT,60000000,10,456,0,1;},{ sc_end SC_SPIRIT; }
+40709,UnknownItem_41,<初级>恶魔拳套,5,,,1000,200,,1,4,0x00008100,7,2,2,4,1,1,12,{bonus bstr,10; bonus bdex,10;bonus bint,10; bonus bAtkRate,getrefine(); bonus bMaxSP,700; bonus2 bSkillAtk,271,getrefine()+10; bonus2 bAddClass,Class_Boss,70;},{},{}
+40710,UnknownItem_42,<初级>恶魔吉他,5,,,1000,200,,1,4,0x00080000,7,0,2,4,1,1,13,{ bonus bdex,10;bonus bluk,10; bonus bvit,10;bonus bAtkRate,getrefine(); bonus2 bSkillAtk,394,getrefine()+10; bonus2 bAddClass,Class_Boss,100;},{},{}
+40711,UnknownItem_43,<初级>恶魔皮鞭,5,,,1000,200,,1,4,0x00080000,7,1,34,4,1,1,14,{ bonus bdex,10;bonus bluk,10; bonus bvit,10;bonus bAtkRate,getrefine(); bonus2 bSkillAtk,394,getrefine()+10; bonus2 bAddClass,Class_Boss,100;},{},{}
+40712,UnknownItem_45,<初级>恶魔飞镖,5,,,1000,200,,1,4,0x02000000,7,2,2,4,1,1,22,{ bonus bint,10; bonus bvit,10; bonus bdex,10; bonus bMatkRate,getrefine()*4; bonus2 bSkillAtk,534,getrefine()+10; bonus2 bSkillAtk,536,getrefine()+10; bonus2 bSkillAtk,537,getrefine()+10; bonus2 bSkillAtk,539,getrefine()+10; bonus2 bSkillAtk,540,getrefine()+10; bonus2 bSkillAtk,541,getrefine()+10; bonus2 bIgnoreMdefClassRate,Class_Boss,20; bonus2 bmagicAddClass,Class_Boss,100; },{},{}
+40713,UnknownItem_46,<初级>恶魔手枪,5,,,1000,200,,7,4,0x01000000,7,2,34,4,1,1,17,{ bonus bdex,10; bonus bluk,10; bonus bvit,10; bonus bAtkRate,getrefine(); bonus2 bSkillAtk,516,getrefine()+10; bonus2 bSkillAtk,512,getrefine()+10; bonus2 bSkillAtk,515,getrefine()+10; bonus2 bAddClass,Class_Boss,100; bonus2 bSubClass,Class_Boss,20; },{},{}
+//
+40721,UnknownItem_268,<中级>恶魔双手剑,5,,,1000,250,,1,4,0x00000080,7,2,34,4,1,1,3,{bonus bcritical,15;bonus bstr,15; bonus bdex,15; bonus bvit,15;bonus bAtkRate,getrefine()*3/2; bonus2 bSkillAtk,62,getrefine()*3/2+10;bonus2 bAddClass,Class_Boss,120; bonus bCritAtkRate,getrefine()*3/2+10;bonus2 bSubClass,Class_Boss,25;},{},{}
+40722,UnknownItem_47,<中级>恶魔巨剑,5,,,1000,250,,1,4,0x00004000,7,2,2,4,1,1,2,{ bonus bvit,15; bonus bdex,15; bonus bint,15; bonus bmAtkRate,getrefine()*4+5; bonus2 bSkillAtk,254,getrefine()*3/2+10; bonus2 bSkillAtk,368,getrefine()*3/2+10; bonus2 bmagicAddClass,Class_Boss,120; bonus2 bIgnoreMdefClassRate,Class_Boss,30; bonus2 bAddClass,Class_Boss,120; },{},{}
+40723,UnknownItem_48,<中级>恶魔拳刃,5,,,1000,250,,1,4,0x00001000,7,2,34,4,1,1,16,{bonus bstr,15;bonus bdex,15;bonus bluk,15; bonus bcritical,15;bonus bAtkRate,getrefine()*3/2;bonus2 bSkillAtk,136,getrefine()*3/2+10 ;bonus2 bAddClass,Class_Boss,120;bonus bCritAtkRate,getrefine()*3/2+10;},{ if(BaseJob == Job_Assassin) sc_start4 SC_SPIRIT,60000000,10,457,0,1; },{ sc_end SC_SPIRIT; }
+40724,UnknownItem_49,<中级>恶魔战斧,5,,,1000,250,,1,4,0x00041400,7,2,2,4,2,1,6,{bonus bSTR,15; bonus bVIT,15;bonus bint,15;bonus bAtkRate,getrefine()*3/2; bonus2 bAddClass,Class_Boss,120;bonus2 bSkillAtk,490,getrefine()*3/2+10; bonus2 bSkillAtk,485,getrefine()*3/2+10;bonus2 bSkillAtk,229,getrefine()*3/2+10;bonus2 bSkillAtk,490,20;},{if(BaseJob == Job_Blacksmith) sc_start4 SC_HOVERING,60000000,10,0,0,1;},{ sc_end SC_HOVERING; }
+40725,UnknownItem_50,<中级>恶魔长矛,5,,,15000,250,,1,4,0x00000080,7,2,2,4,1,1,4,{ bonus bstr,15; bonus bdex,15; bonus bvit,15; bonus bAtkRate,getrefine()*3/2; bonus2 bSkillAtk,397,getrefine()*3/2+10; bonus2 bSkillAtk,57,getrefine()*3/2+10; bonus2 bAddClass,Class_Boss,120; bonus3 bAutoSpell,397,3,400; },{},{}
+40726,UnknownItem_51,<中级>恶魔神杖,5,,,1000,250,,1,4,0x00010100,7,2,2,4,1,1,10,{ bonus bint,15; bonus bvit,15; bonus bdex,15; bonus bMatkRate,getrefine()*4+5; bonus2 bSkillAtk,MG_FIREBOLT,getrefine()*3/2+10; bonus2 bSkillAtk,MG_COLDBOLT,getrefine()*3/2+10; bonus2 bSkillAtk,156,getrefine()*3/2+10; bonus2 bSkillAtk,20,getrefine()*3/2+10; bonus2 bIgnoreMdefClassRate,Class_Boss,30; bonus2 bmagicAddClass,Class_Boss,120; if(BaseJob == Job_Priest) { bonus bMaxHP,15000;  bonus bHealPower,1000; } },{ if(BaseJob == Job_Priest) sc_start4 SC_SPIRIT,60000000,10,454,0,1; if(BaseJob == Job_Sage) sc_start4 SC_SPIRIT,60000000,10,449,0,1; },{ sc_end SC_SPIRIT; }
+40727,UnknownItem_52,<中级>恶魔魔杖,5,,,1000,250,,1,4,0x00000200,7,2,2,4,1,1,10,{bonus bint,15; bonus bdex,15;bonus bvit,15; bonus bMatkRate,getrefine()*4+5;bonus2 bSkillAtk,84,getrefine()*3/2+10;bonus2 bSkillAtk,89,getrefine()*3/2+10;bonus2 bSkillAtk,83,getrefine()*3/2+10;bonus2 bIgnoreMdefClassRate,Class_Boss,30;bonus2 bmagicAddClass,Class_Boss,120;},{},{}
+40728,UnknownItem_53,<中级>恶魔神弓,5,,,1000,250,,5,4,0x00020800,7,2,34,4,1,1,11,{ bonus bdex,15; bonus bluk,15; bonus bint,15; bonus2 bSubClass,Class_Boss,25; bonus bAtkRate,getrefine()*3/2; bonus bmAtkRate,getrefine()*3/2; bonus bCritical,15; bonus2 bAddClass,Class_Boss,120; bonus2 bSkillAtk,46,getrefine()*3/2+10; bonus2 bSkillAtk,382,getrefine()*3/2+10; bonus2 bmagicAddClass,Class_Boss,120; bonus2 bIgnoreMdefClassRate,Class_Boss,30; bonus2 bSkillAtk,2288,getrefine()*3/2+10; },{if(BaseJob == Job_Rogue) sc_start4 SC_SPIRIT,60000000,10,456,0,1;},{ sc_end SC_SPIRIT; }
+40729,UnknownItem_54,<中级>恶魔拳套,5,,,1000,250,,1,4,0x00008100,7,2,2,4,1,1,12,{bonus bstr,15; bonus bdex,15;bonus bint,15; bonus bAtkRate,getrefine()*3/2; bonus bMaxSP,1000; bonus2 bSkillAtk,271,getrefine()*3/2+10; bonus2 bAddClass,Class_Boss,100;},{},{}
+40730,UnknownItem_55,<中级>恶魔吉他,5,,,1000,250,,1,4,0x00080000,7,0,2,4,1,1,13,{ bonus bdex,15;bonus bluk,15; bonus bvit,15;bonus bAtkRate,getrefine()*3/2; bonus2 bSkillAtk,394,getrefine()*3/2+10; bonus2 bAddClass,Class_Boss,120;},{},{}
+40731,UnknownItem_56,<中级>恶魔皮鞭,5,,,1000,250,,1,4,0x00080000,7,1,2,4,1,1,14,{ bonus bdex,15;bonus bluk,15; bonus bvit,15;bonus bAtkRate,getrefine()*3/2; bonus2 bSkillAtk,394,getrefine()*3/2+10; bonus2 bAddClass,Class_Boss,120;},{},{}
+40732,UnknownItem_58,<中级>恶魔飞镖,5,,,1000,250,,1,4,0x02000000,7,2,2,4,1,1,22,{ bonus bint,15; bonus bvit,15; bonus bdex,15; bonus bMatkRate,getrefine()*4+5; bonus2 bSkillAtk,540,getrefine()*3/2+10; bonus2 bSkillAtk,537,getrefine()*3/2+10; bonus2 bSkillAtk,534,getrefine()*3/2+10; bonus2 bSkillAtk,541,getrefine()*3/2+10; bonus2 bSkillAtk,536,getrefine()*3/2+10; bonus2 bIgnoreMdefClassRate,Class_Boss,30; bonus2 bmagicAddClass,Class_Boss,120; },{},{}
+40733,UnknownItem_59,<中级>恶魔手枪,5,,,1000,250,,7,4,0x01000000,7,2,34,4,1,1,17,{ bonus bdex,15; bonus bluk,15; bonus bvit,15; bonus bAtkRate,getrefine()*3/2; bonus2 bSkillAtk,516,getrefine()*3/2+10; bonus2 bSkillAtk,512,getrefine()*3/2+10; bonus2 bSkillAtk,515,getrefine()*3/2+10; bonus2 bAddClass,Class_Boss,120; bonus2 bSubClass,Class_Boss,25; },{},{}
+//
+40741,UnknownItem_269,<高级>恶魔双手剑,5,,,1000,300,,1,4,0x00000080,7,2,34,4,1,1,3,{bonus bcritical,20;bonus bstr,20; bonus bdex,20; bonus bvit,20;bonus bAtkRate,getrefine()*2; bonus2 bSkillAtk,62,getrefine()*2+10;bonus2 bAddClass,Class_Boss,150; bonus bCritAtkRate,getrefine()*2+10;bonus2 bSubClass,Class_Boss,30;},{},{}
+40742,UnknownItem_60,<高级>恶魔巨剑,5,,,1000,300,,1,4,0x00004000,7,2,2,4,1,1,2,{ bonus bvit,20; bonus bdex,20; bonus bint,20; bonus bmAtkRate,getrefine()*4+10; bonus2 bSkillAtk,254,getrefine()*2+10; bonus2 bSkillAtk,368,getrefine()*2+10; bonus2 bmagicAddClass,Class_Boss,150; bonus2 bIgnoreMdefClassRate,Class_Boss,40; bonus2 bAddClass,Class_Boss,150; },{},{}
+40743,UnknownItem_61,<高级>恶魔拳刃,5,,,1000,300,,1,4,0x00001000,7,2,34,4,1,1,16,{bonus bstr,20;bonus bdex,20;bonus bluk,20; bonus bcritical,20;bonus bAtkRate,getrefine()*2;bonus2 bSkillAtk,136,getrefine()*2+10 ;bonus2 bAddClass,Class_Boss,150;bonus bCritAtkRate,getrefine()*2+10;},{ if(BaseJob == Job_Assassin) sc_start4 SC_SPIRIT,60000000,10,457,0,1; },{ sc_end SC_SPIRIT; }
+40744,UnknownItem_62,<高级>恶魔战斧,5,,,1000,300,,1,4,0x00041400,7,2,2,4,2,1,6,{bonus bSTR,20; bonus bVIT,20;bonus bint,20;bonus bAtkRate,getrefine()*2; bonus2 bAddClass,Class_Boss,150;bonus2 bSkillAtk,490,getrefine()*2+10; bonus2 bSkillAtk,485,getrefine()*2+10;bonus2 bSkillAtk,229,getrefine()*2+10; bonus2 bSkillAtk,490,30;},{if(BaseJob == Job_Blacksmith) sc_start4 SC_HOVERING,60000000,10,0,0,1;},{ sc_end SC_HOVERING; }
+40745,UnknownItem_63,<高级>恶魔长矛,5,,,20000,300,,1,4,0x00000080,7,2,2,4,1,1,4,{ bonus bstr,20; bonus bdex,20; bonus bvit,20; bonus bAtkRate,getrefine()*2; bonus2 bSkillAtk,397,getrefine()*2+10; bonus2 bSkillAtk,57,getrefine()*2+10; bonus2 bAddClass,Class_Boss,150; bonus3 bAutoSpell,397,4,400; },{},{}
+40746,UnknownItem_64,<高级>恶魔神杖,5,,,1000,300,,1,4,0x00010100,7,2,2,4,1,1,10,{ bonus bint,20; bonus bvit,20; bonus bdex,20; bonus bMatkRate,getrefine()*4+10; bonus2 bSkillAtk,MG_FIREBOLT,getrefine()*2+10; bonus2 bSkillAtk,MG_COLDBOLT,getrefine()*2+10; bonus2 bSkillAtk,156,getrefine()*2+10; bonus2 bSkillAtk,20,getrefine()*2+10; bonus2 bIgnoreMdefClassRate,Class_Boss,40; bonus2 bmagicAddClass,Class_Boss,150; if(BaseJob == Job_Priest) { bonus bMaxHP,20000; bonus bHealPower,1500; } },{ if(BaseJob == Job_Priest) sc_start4 SC_SPIRIT,60000000,10,454,0,1; if(BaseJob == Job_Sage) sc_start4 SC_SPIRIT,60000000,10,449,0,1; },{ sc_end SC_SPIRIT; }
+40747,UnknownItem_65,<高级>恶魔魔杖,5,,,1000,300,,1,4,0x00000200,7,2,2,4,1,1,10,{bonus bint,20; bonus bdex,20;bonus bvit,20; bonus bMatkRate,getrefine()*4+10;bonus2 bSkillAtk,84,getrefine()*2+10;bonus2 bSkillAtk,89,getrefine()*2+10;bonus2 bSkillAtk,83,getrefine()*2+10;bonus2 bIgnoreMdefClassRate,Class_Boss,40;bonus2 bmagicAddClass,Class_Boss,150;},{},{}
+40748,UnknownItem_66,<高级>恶魔神弓,5,,,1000,300,,5,4,0x00020800,7,2,34,4,1,1,11,{ bonus bdex,20; bonus bluk,20; bonus bint,20; bonus2 bSubClass,Class_Boss,30; bonus bAtkRate,getrefine()*2; bonus bmAtkRate,getrefine()*2; bonus bCritical,20; bonus2 bAddClass,Class_Boss,150; bonus2 bSkillAtk,46,getrefine()*2+10; bonus2 bSkillAtk,382,getrefine()*2+10; bonus2 bmagicAddClass,Class_Boss,150; bonus2 bIgnoreMdefClassRate,Class_Boss,40; bonus2 bSkillAtk,2288,getrefine()*2+10; },{if(BaseJob == Job_Rogue) sc_start4 SC_SPIRIT,60000000,10,456,0,1;},{ sc_end SC_SPIRIT; }
+40749,UnknownItem_67,<高级>恶魔拳套,5,,,1000,300,,1,4,0x00008100,7,2,2,4,1,1,12,{bonus bstr,20; bonus bdex,20;bonus bint,20; bonus bAtkRate,getrefine()*2; bonus bMaxSP,1200; bonus2 bSkillAtk,271,getrefine()*2+10; bonus2 bAddClass,Class_Boss,130;},{},{}
+40750,UnknownItem_68,<高级>恶魔吉他,5,,,1000,300,,1,4,0x00080000,7,0,2,4,1,1,13,{ bonus bdex,20;bonus bluk,20; bonus bvit,20;bonus bAtkRate,getrefine()*2; bonus2 bSkillAtk,394,getrefine()*2+10; bonus2 bAddClass,Class_Boss,150;},{},{}
+40751,UnknownItem_69,<高级>恶魔皮鞭,5,,,1000,300,,1,4,0x00080000,7,1,2,4,1,1,14,{ bonus bdex,20;bonus bluk,20; bonus bvit,20;bonus bAtkRate,getrefine()*2; bonus2 bSkillAtk,394,getrefine()*2+10; bonus2 bAddClass,Class_Boss,150;},{},{}
+40752,UnknownItem_71,<高级>恶魔飞镖,5,,,1000,300,,1,4,0x02000000,7,2,2,4,1,1,22,{ bonus bint,20; bonus bvit,20; bonus bdex,20; bonus bMatkRate,getrefine()*4+10; bonus2 bSkillAtk,540,getrefine()*2+10; bonus2 bSkillAtk,537,getrefine()*2+10; bonus2 bSkillAtk,534,getrefine()*2+10; bonus2 bSkillAtk,541,getrefine()*2+10; bonus2 bSkillAtk,536,getrefine()*2+10; bonus2 bIgnoreMdefClassRate,Class_Boss,40; bonus2 bmagicAddClass,Class_Boss,150; },{},{}
+40753,UnknownItem_72,<高级>恶魔手枪,5,,,1000,300,,7,4,0x01000000,7,2,34,4,1,1,17,{ bonus bdex,20; bonus bluk,20; bonus bvit,20; bonus bAtkRate,getrefine()*2; bonus2 bSkillAtk,516,getrefine()*2+10; bonus2 bSkillAtk,512,getrefine()*2+10; bonus2 bSkillAtk,515,getrefine()*2+10; bonus2 bAddClass,Class_Boss,150; bonus2 bSubClass,Class_Boss,30; },{},{}
+//
+40761,UnknownItem_270,<究极>恶魔双手剑,5,,,1000,350,,1,4,0x00000080,7,2,34,4,1,1,3,{bonus bcritical,25;bonus bstr,25; bonus bdex,25; bonus bvit,25;bonus bAtkRate,getrefine()*5/2; bonus2 bSkillAtk,62,getrefine()*5/2+10;bonus2 bAddClass,Class_Boss,200; bonus bCritAtkRate,getrefine()*5/2+10;bonus2 bSubClass,Class_Boss,35;},{},{}
+40762,UnknownItem_255,<究极>恶魔巨剑,5,,,1000,350,,1,4,0x00004000,7,2,2,4,1,1,2,{ bonus bvit,25; bonus bdex,25; bonus bint,25; bonus bmAtkRate,getrefine()*5+10; bonus2 bSkillAtk,254,getrefine()*5/2+10; bonus2 bSkillAtk,368,getrefine()*5/2+10; bonus2 bmagicAddClass,Class_Boss,200; bonus2 bIgnoreMdefClassRate,Class_Boss,50; bonus2 bAddClass,Class_Boss,200; },{},{}
+40763,UnknownItem_256,<究极>恶魔拳刃,5,,,1000,350,,1,4,0x00001000,7,2,34,4,1,1,16,{bonus bstr,25;bonus bdex,25;bonus bluk,25; bonus bcritical,25;bonus bAtkRate,getrefine()*5/2;bonus2 bSkillAtk,136,getrefine()*5/2+10 ;bonus2 bAddClass,Class_Boss,200;bonus bCritAtkRate,getrefine()*5/2+10;},{ if(BaseJob == Job_Assassin) sc_start4 SC_SPIRIT,60000000,10,457,0,1; },{ sc_end SC_SPIRIT; }
+40764,UnknownItem_257,<究极>恶魔战斧,5,,,1000,350,,1,4,0x00041400,7,2,2,4,2,1,6,{bonus bSTR,25; bonus bVIT,25;bonus bint,25;bonus bAtkRate,getrefine()*5/2; bonus2 bAddClass,Class_Boss,200;bonus2 bSkillAtk,490,getrefine()*5/2+10; bonus2 bSkillAtk,485,getrefine()*5/2+10;bonus2 bSkillAtk,229,getrefine()*5/2+10;bonus2 bSkillAtk,490,40;},{if(BaseJob == Job_Blacksmith) sc_start4 SC_HOVERING,60000000,10,0,0,1;},{ sc_end SC_HOVERING; }
+40765,UnknownItem_258,<究极>恶魔长矛,5,,,25000,350,,1,4,0x00000080,7,2,2,4,1,1,4,{ bonus bstr,25; bonus bdex,25; bonus bvit,25; bonus bAtkRate,getrefine()*5/2; bonus2 bSkillAtk,397,getrefine()*5/2+10; bonus2 bSkillAtk,57,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200; bonus3 bAutoSpell,397,5,400; },{},{}
+40766,UnknownItem_259,<究极>恶魔神杖,5,,,1000,350,,1,4,0x00010100,7,2,2,4,1,1,10,{ bonus bint,25; bonus bvit,25; bonus bdex,25; bonus bMatkRate,getrefine()*5+10; bonus2 bSkillAtk,MG_FIREBOLT,getrefine()*5/2+10; bonus2 bSkillAtk,MG_COLDBOLT,getrefine()*5/2+10; bonus2 bSkillAtk,156,getrefine()*5/2+10; bonus2 bSkillAtk,20,getrefine()*5/2+10; bonus2 bIgnoreMdefClassRate,Class_Boss,50; bonus2 bmagicAddClass,Class_Boss,200; if(BaseJob == Job_Priest) { bonus bMaxHP,25000;  bonus bHealPower,2000; } },{ if(BaseJob == Job_Priest) sc_start4 SC_SPIRIT,60000000,10,454,0,1; if(BaseJob == Job_Sage) sc_start4 SC_SPIRIT,60000000,10,449,0,1; },{ sc_end SC_SPIRIT; }
+40767,UnknownItem_260,<究极>恶魔魔杖,5,,,1000,350,,1,4,0x00000200,7,2,2,4,1,1,10,{bonus bint,25; bonus bdex,25;bonus bvit,25; bonus bMatkRate,getrefine()*5+10;bonus2 bSkillAtk,84,getrefine()*5/2+10;bonus2 bSkillAtk,89,getrefine()*5/2+10;bonus2 bSkillAtk,83,getrefine()*5/2+10;bonus2 bIgnoreMdefClassRate,Class_Boss,50;bonus2 bmagicAddClass,Class_Boss,200;},{},{}
+40768,UnknownItem_261,<究极>恶魔神弓,5,,,1000,350,,5,4,0x00020800,7,2,34,4,1,1,11,{ bonus bdex,25; bonus bluk,25; bonus bint,25; bonus2 bSubClass,Class_Boss,35; bonus bAtkRate,getrefine()*5/2; bonus bmAtkRate,getrefine()*5/2; bonus bCritical,25; bonus2 bAddClass,Class_Boss,200; bonus2 bSkillAtk,46,getrefine()*5/2+10; bonus2 bSkillAtk,382,getrefine()*5/2+10; bonus2 bmagicAddClass,Class_Boss,200; bonus2 bIgnoreMdefClassRate,Class_Boss,50; bonus2 bSkillAtk,2288,getrefine()*5/2+10; },{if(BaseJob == Job_Rogue) sc_start4 SC_SPIRIT,60000000,10,456,0,1;},{ sc_end SC_SPIRIT; }
+40769,UnknownItem_262,<究极>恶魔拳套,5,,,1000,350,,1,4,0x00008100,7,2,2,4,1,1,12,{bonus bstr,25; bonus bdex,25;bonus bint,25; bonus bAtkRate,getrefine()*5/2; bonus bMaxSP,1500; bonus2 bSkillAtk,271,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,150;},{},{}
+40770,UnknownItem_263,<究极>恶魔吉他,5,,,1000,350,,1,4,0x00080000,7,0,2,4,1,1,13,{ bonus bdex,25;bonus bluk,25; bonus bvit,25;bonus bAtkRate,getrefine()*5/2; bonus2 bSkillAtk,394,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200;},{},{}
+40771,UnknownItem_264,<究极>恶魔皮鞭,5,,,1000,350,,1,4,0x00080000,7,1,2,4,1,1,14,{ bonus bdex,25;bonus bluk,25; bonus bvit,25;bonus bAtkRate,getrefine()*5/2; bonus2 bSkillAtk,394,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200;},{},{}
+40772,UnknownItem_266,<究极>恶魔飞镖,5,,,1000,350,,1,4,0x02000000,7,2,2,4,1,1,22,{ bonus bint,25; bonus bvit,25; bonus bdex,25; bonus bMatkRate,getrefine()*5+10; bonus2 bSkillAtk,540,getrefine()*5/2+10; bonus2 bSkillAtk,537,getrefine()*5/2+10; bonus2 bSkillAtk,534,getrefine()*5/2+10; bonus2 bSkillAtk,541,getrefine()*5/2+10; bonus2 bSkillAtk,536,getrefine()*5/2+10; bonus2 bIgnoreMdefClassRate,Class_Boss,50; bonus2 bmagicAddClass,Class_Boss,200; },{},{}
+40773,UnknownItem_254,<究极>恶魔手枪,5,,,1000,350,,7,4,0x01000000,7,2,34,4,1,1,17,{ bonus bdex,25; bonus bluk,25; bonus bvit,25; bonus bAtkRate,getrefine()*5/2; bonus2 bSkillAtk,516,getrefine()*5/2+10; bonus2 bSkillAtk,512,getrefine()*5/2+10; bonus2 bSkillAtk,515,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200; bonus2 bSubClass,Class_Boss,35; },{},{}
+// ==================================================================================================== //
+//                            日本时装/道具/转蛋（预定范围：50001 - 50999）                             //
+// ==================================================================================================== //
+//头上
+20273,JRO_201701_02,[时装]柔软的绵羊帽,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,738,{},{},{}
+31160,JRO_201701_03,[时装]符文头盔,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1361,{},{},{}
+31161,JRO_201701_04,[时装]虎头假面,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,181,{},{},{}
+31163,JRO_201701_06,[时装]羊毛帽子,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,205,{},{},{}
+31165,JRO_201701_08,[时装]金发福娃(男),4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1574,{},{},{}
+31166,JRO_201701_09,[时装]泰迪熊帽子,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1571,{},{},{}
+31173,JRO_201701_12,[时装]王冠鹦鹉,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,419,{},{},{}
+31175,JRO_201701_13,[时装]草莓的帽子,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,755,{},{},{}
+31193,JRO_201701_15,[时装]金发福娃(女),4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,1590,{},{},{}
+31194,JRO_201701_14,[时装]旋转螺旋桨,4,0,,0,,,,0,0xFFFFFFFF,63,2,1024,,1,0,270,{},{},{}
+50001,JRO_001,[时装]洛奇号帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4001,{},{},{}
+50002,JRO_002,[时装]兽医帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4002,{},{},{}
+50004,JRO_004,[时装]黑猫耳朵贝雷帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4004,{},{},{}
+50011,JRO_011,[时装]狂欢节帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4011,{},{},{}
+50012,JRO_012,[时装]狂欢节发箍,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4012,{},{},{}
+50013,JRO_013,[时装]蓝色睡衣帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4013,{},{},{}
+50014,JRO_014,[时装]粉色睡衣帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4014,{},{},{}
+50015,JRO_015,[时装]华丽时装帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4015,{},{},{}
+50016,JRO_016,[时装]兔耳黑色帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4016,{},{},{}
+50017,JRO_017,[时装]华丽凝胶帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4017,{},{},{}
+50019,JRO_019,[时装]白毫鸟帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4019,{},{},{}
+50032,JRO_032,[时装]大口兔耳帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4032,{},{},{}
+50033,JRO_033,[时装]深山丛林头巾,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4033,{},{},{}
+50035,JRO_035,[时装]三角屋顶帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4035,{},{},{}
+50037,JRO_037,[时装]万圣节帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4037,{},{},{}
+50044,JRO_044,[时装]花梳子头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4044,{},{},{}
+50046,JRO_046,[时装]格哈特气球,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4046,{},{},{}
+50047,JRO_047,[时装]古代粉色大便帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4047,{},{},{}
+50061,JRO_061,[时装]邪恶的南瓜帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4061,{},{},{}
+50068,JRO_068,[时装]魔王头盔,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4068,{},{},{}
+50070,JRO_070,[时装]哥特乐队发箍,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4070,{},{},{}
+50071,JRO_071,[时装]天使迷你礼帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4071,{},{},{}
+50073,JRO_073,[时装]古典丝带,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4073,{},{},{}
+50074,JRO_074,[时装]大地礼帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4074,{},{},{}
+50075,JRO_075,[时装]旋风鸭舌帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4075,{},{},{}
+50076,JRO_076,[时装]水怪针织帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4076,{},{},{}
+50077,JRO_077,[时装]新炎凝胶帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4077,{},{},{}
+50082,JRO_082,[时装]公羊头盔,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4082,{},{},{}
+50083,JRO_083,[时装]RWC2013日本纪念帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4083,{},{},{}
+50084,JRO_084,[时装]RWC火箭头盔,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4084,{},{},{}
+50086,JRO_086,[时装]地球帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4086,{},{},{}
+50087,JRO_087,[时装]老板贝雷帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4087,{},{},{}
+50092,JRO_092,[时装]机械植物帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4092,{},{},{}
+50094,JRO_094,[时装]狐狸耳朵蝴蝶结,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4094,{},{},{}
+50096,JRO_096,[时装]天体闪烁头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4096,{},{},{}
+50097,JRO_097,[时装]狂暴毛毛虫,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4097,{},{},{}
+50098,JRO_098,[时装]圣歌贝雷帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4098,{},{},{}
+50100,JRO_100,[时装]十字晾衣架,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4100,{},{},{}
+50109,JRO_109,[时装]花型月饼头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4109,{},{},{}
+50115,JRO_115,[时装]古代文官帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4115,{},{},{}
+50116,JRO_116,[时装]黑色龙升天,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4116,{},{},{}
+50135,JRO_135,[时装]清新少女头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4135,{},{},{}
+50136,JRO_136,[时装]蓝兔御寒头套,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4136,{},{},{}
+50137,JRO_137,[时装]玉玲御寒耳罩,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4137,{},{},{}
+50140,JRO_140,[时装]双本舵柄帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4140,{},{},{}
+50142,JRO_142,[时装]圣神疾风头盔,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4142,{},{},{}
+50143,JRO_143,[时装]恶魔小角头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4143,{},{},{}
+50144,JRO_144,[时装]北极熊圣诞帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4144,{},{},{}
+50146,JRO_146,[时装]圣诞老人发带,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4146,{},{},{}
+50149,JRO_149,[时装]蝴蝶发箍,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4149,{},{},{}
+50151,JRO_151,[时装]新鲜玫瑰头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4151,{},{},{}
+50154,JRO_154,[时装]长耳兔头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4154,{},{},{}
+50155,JRO_155,[时装]司法官帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4155,{},{},{}
+50156,JRO_156,[时装]轻盈针织头纱,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4156,{},{},{}
+50157,JRO_157,[时装]乌云笼罩头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4157,{},{},{}
+50158,JRO_158,[时装]祈愿樱花头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4158,{},{},{}
+50159,JRO_159,[时装]草原之风头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4159,{},{},{}
+50161,JRO_161,[时装]蓝玫瑰装饰发箍,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4161,{},{},{}
+50162,JRO_162,[时装]飞天恶魔头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4162,{},{},{}
+50164,JRO_164,[时装]美羊羊头套,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4164,{},{},{}
+50166,JRO_166,[时装]青色飞龙帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4166,{},{},{}
+50172,JRO_172,[时装]狗耳平顶帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4172,{},{},{}
+50177,JRO_177,[时装]茶色梅花针,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4177,{},{},{}
+50178,JRO_178,[时装]费斯精灵头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4178,{},{},{}
+50179,JRO_179,[时装]吸血鬼发箍,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4179,{},{},{}
+50180,JRO_180,[时装]卷羽帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4180,{},{},{}
+50181,JRO_181,[时装]可爱天使头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4181,{},{},{}
+50182,JRO_182,[时装]父爱发箍,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4182,{},{},{}
+50184,JRO_184,[时装]天使的光环,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4184,{},{},{}
+50185,JRO_185,[时装]左利者的礼帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4185,{},{},{}
+50186,JRO_186,[时装]绿色花冠,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4186,{},{},{}
+50191,JRO_191,[时装]邪恶天使头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4191,{},{},{}
+50193,JRO_193,[时装]熊猫趴趴头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4193,{},{},{}
+50194,JRO_194,[时装]惊喜摩丝礼帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4194,{},{},{}
+50197,JRO_197,[时装]马头魔王头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4197,{},{},{}
+50203,JRO_203,[时装]新款加仑帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4203,{},{},{}
+50205,JRO_205,[时装]空中女王头盔,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4205,{},{},{}
+50208,JRO_208,[时装]妇女小礼帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4208,{},{},{}
+50210,JRO_210,[时装]可爱海豹帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4210,{},{},{}
+50215,JRO_215,[时装]蛋壳小鸡头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4215,{},{},{}
+50216,JRO_216,[时装]快乐岛头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4216,{},{},{}
+50217,JRO_217,[时装]波利头套,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4217,{},{},{}
+50220,JRO_220,[时装]白幽灵礼帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4220,{},{},{}
+50221,JRO_221,[时装]白色深渊骑士帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4221,{},{},{}
+50223,JRO_223,[时装]冒险家的帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4223,{},{},{}
+50232,JRO_232,[时装]秘银精灵帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4232,{},{},{}
+50233,JRO_233,[时装]金属龙帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4233,{},{},{}
+50234,JRO_234,[时装]趴趴金属龙,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4234,{},{},{}
+50238,JRO_238,[时装]古代守护神头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4238,{},{},{}
+50239,JRO_239,[时装]魔法修行者头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4239,{},{},{}
+50240,JRO_240,[时装]精灵之冠,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4240,{},{},{}
+50245,JRO_245,[时装]贵妇羽毛帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4245,{},{},{}
+50246,JRO_246,[时装]单色帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4246,{},{},{}
+50247,JRO_247,[时装]米袋,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4247,{},{},{}
+50251,JRO_251,[时装]爱丽丝女仆69世,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4251,{},{},{}
+50254,JRO_254,[时装]食人花帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4254,{},{},{}
+50257,JRO_257,[时装]红色松松龙,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4257,{},{},{}
+50258,JRO_258,[时装]红色小恶魔耳机,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4258,{},{},{}
+50259,JRO_259,[时装]南瓜魂灯笼帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4259,{},{},{}
+50260,JRO_260,[时装]巧克力装饰帽子,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4260,{},{},{}
+50261,JRO_261,[时装]魔女万圣帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4261,{},{},{}
+50262,JRO_262,[时装]万圣南瓜丝带,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4262,{},{},{}
+50266,JRO_266,[时装]天使波利毛帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4266,{},{},{}
+50270,JRO_270,[时装]棕色猫耳发圈,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4270,{},{},{}
+50272,JRO_272,[时装]艾咪斯可鲁贝雷帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4272,{},{},{}
+50273,JRO_273,[时装]豹纹帽,4,,,10,,5,,1,0xFFFFFFFE,63,2,1024,,0,1,4273,{},{},{}
+
+//头中
+31167,JRO_201701_10,[时装]幸福耳朵(黑色),4,0,,0,,,,0,0xFFFFFFFF,63,2,2048,,1,0,1575,{},{},{}
+31168,JRO_201701_11,[时装]羊毛护耳(蓝色),4,0,,0,,,,0,0xFFFFFFFF,63,2,2048,,1,0,1573,{},{},{}
+50009,JRO_009,[时装]遮光眼镜,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4009,{},{},{}
+50034,JRO_034,[时装]猫眼,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4034,{},{},{}
+50042,JRO_042,[时装]全色玻璃眼镜,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4042,{},{},{}
+50093,JRO_093,[时装]爱心头饰挂件,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4093,{},{},{}
+50095,JRO_095,[时装]失落的囧影,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4095,{},{},{}
+50114,JRO_114,[时装]蓝色无边太阳镜,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4114,{},{},{}
+50118,JRO_118,[时装]道士稀有挂件,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4118,{},{},{}
+50123,JRO_123,[时装]赤色鱼鳃头盔,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4123,{},{},{}
+50130,JRO_130,[时装]遮光眼罩,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4130,{},{},{}
+50133,JRO_133,[时装]迷你独眼罩,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4133,{},{},{}
+50141,JRO_141,[时装]五彩飞天头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4141,{},{},{}
+50171,JRO_171,[时装]十字时髦眼镜,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4171,{},{},{}
+50198,JRO_198,[时装]女式游泳头饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4198,{},{},{}
+50201,JRO_201,[时装]樱花发毡,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4201,{},{},{}
+50204,JRO_204,[时装]小林眼镜,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4204,{},{},{}
+50212,JRO_212,[时装]精致鱼鳍头盔,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4212,{},{},{}
+50213,JRO_213,[时装]白色守护头盔,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4213,{},{},{}
+50214,JRO_214,[时装]可爱蝴蝶翅膀,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4214,{},{},{}
+50219,JRO_219,[时装]钟塔管理者耳机,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4219,{},{},{}
+50252,JRO_252,[时装]黑耳童话,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4252,{},{},{}
+50268,JRO_268,[时装]蓝色天马耳饰,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4268,{},{},{}
+50274,JRO_274,[时装]猫抓脸,4,,,10,,5,,1,0xFFFFFFFE,63,2,2048,,0,1,4274,{},{},{}
+
+//头下
+31162,JRO_201701_05,[时装]冰泡沫,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,1129,{},{},{}
+31164,JRO_201701_07,[时装]布朗披肩,4,0,,0,,,,0,0xFFFFFFFF,63,2,4096,,1,0,1572,{},{},{}
+50006,JRO_006,[时装]绿狗尾草,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4006,{},{},{}
+50010,JRO_010,[时装]古代算盘,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4010,{},{},{}
+50018,JRO_018,[时装]自由的火焰,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4018,{},{},{}
+50023,JRO_023,[时装]红木烟斗,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4023,{},{},{}
+50024,JRO_024,[时装]迷你酒瓶,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4024,{},{},{}
+50025,JRO_025,[时装]简易防尘面具,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4025,{},{},{}
+50031,JRO_031,[时装]创意花盆笑脸,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4031,{},{},{}
+50039,JRO_039,[时装]奇迹蓝色玫瑰,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4039,{},{},{}
+50041,JRO_041,[时装]加油哨子,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4041,{},{},{}
+50065,JRO_065,[时装]冰水泡沫,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4065,{},{},{}
+50104,JRO_104,[时装]鹰的羽毛,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4104,{},{},{}
+50111,JRO_111,[时装]黄色围巾,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4111,{},{},{}
+50117,JRO_117,[时装]三角白米饭团,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4117,{},{},{}
+50165,JRO_165,[时装]狼幼崽,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4165,{},{},{}
+50173,JRO_173,[时装]邪恶波利光环,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4173,{},{},{}
+50175,JRO_175,[时装]赌徒的信仰,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4175,{},{},{}
+50218,JRO_218,[时装]生物研究所之灵气,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4218,{},{},{}
+50241,JRO_241,[时装]火焰之心,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4241,{},{},{}
+50242,JRO_242,[时装]神秘之冰,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4242,{},{},{}
+50243,JRO_243,[时装]魅力之风,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4243,{},{},{}
+50244,JRO_244,[时装]土壤之力,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4244,{},{},{}
+50248,JRO_248,[时装]秋红纸扇,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4248,{},{},{}
+50271,JRO_271,[时装]猫尾草,4,,,10,,5,,1,0xFFFFFFFE,63,2,4096,,0,1,4271,{},{},{}
+
+
+50224,JRO_224,[道具]木珠,3,20,,10,,,,,0xFFFFFFFE,63,2,,,,,,{},{},{}
+50225,JRO_225,[道具]水珠,3,20,,10,,,,,0xFFFFFFFE,63,2,,,,,,{},{},{}
+50226,JRO_226,[道具]火珠,3,20,,10,,,,,0xFFFFFFFE,63,2,,,,,,{},{},{}
+50227,JRO_227,[道具]光珠,3,20,,10,,,,,0xFFFFFFFE,63,2,,,,,,{},{},{}
+50228,JRO_228,[道具]阇珠,3,20,,10,,,,,0xFFFFFFFE,63,2,,,,,,{},{},{}
+50229,JRO_229,[道具]心珠,3,20,,10,,,,,0xFFFFFFFE,63,2,,,,,,{},{},{}
+50230,JRO_230,[道具]龙葵,3,20,,10,,,,,0xFFFFFFFE,63,2,,,,,,{},{},{}
+50231,JRO_231,[道具]魔法石,3,20,,10,,,,,0xFFFFFFFE,63,2,,,,,,{},{},{}
+
+
+
+
