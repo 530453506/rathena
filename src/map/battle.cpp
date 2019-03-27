@@ -640,7 +640,7 @@ int battle_calc_cardfix(int attack_type, struct block_list *src, struct block_li
 			if( sd && !(nk&NK_NO_CARDFIX_ATK) ) {
 				cardfix = cardfix * (100 + sd->magic_addrace[tstatus->race] + sd->magic_addrace[RC_ALL] + sd->magic_addrace2[t_race2]) / 100;
 				if( !(nk&NK_NO_ELEFIX) ) { // Affected by Element modifier bonuses
-					cardfix = cardfix * (100 + sd->magic_addele[tstatus->def_ele] + sd->magic_addele[ELE_ALL] + 
+					cardfix = cardfix * (100 + sd->magic_addele[tstatus->def_ele] + sd->magic_addele[ELE_ALL] +
 						sd->magic_addele_script[tstatus->def_ele] + sd->magic_addele_script[ELE_ALL]) / 100;
 					cardfix = cardfix * (100 + sd->magic_atk_ele[rh_ele] + sd->magic_atk_ele[ELE_ALL]) / 100;
 				}
@@ -2785,6 +2785,40 @@ static int battle_get_weapon_element(struct Damage* wd, struct block_list *src, 
 	struct status_change *sc = status_get_sc(src);
 	struct status_data *sstatus = status_get_status_data(src);
 	int element = skill_get_ele(skill_id, skill_lv);
+    struct mob_data *md;
+
+    if (target->type == BL_MOB && sd->bonus.transfer_attr) {
+        md = (TBL_MOB *) target;
+        switch (md->db->status.def_ele) {
+            case ELE_DARK:
+                element = ELE_HOLY;
+                break;
+            case ELE_EARTH:
+                element = ELE_FIRE;
+                break;
+            case ELE_HOLY:
+                element = ELE_DARK;
+                break;
+            case ELE_FIRE:
+                element = ELE_WATER;
+                break;
+            case ELE_GHOST:
+                element = ELE_GHOST;
+                break;
+            case ELE_WATER:
+                element = ELE_WIND;
+                break;
+            case ELE_UNDEAD:
+                element = ELE_HOLY;
+                break;
+            case ELE_POISON:
+                element = ELE_HOLY;
+                break;
+            default:
+                element = ELE_NEUTRAL;
+        }
+        return element;
+    }
 
 	//Take weapon's element
 	if( !skill_id || element == -1 ) {
@@ -5738,6 +5772,40 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 			break;
 	}
 
+    struct mob_data *md;
+
+    if (sd->bonus.transfer_attr && target->type == BL_MOB ) {
+        md = (TBL_MOB *) target;
+        switch (md->db->status.def_ele) {
+            case ELE_DARK:
+                s_ele = ELE_HOLY;
+                break;
+            case ELE_EARTH:
+                s_ele = ELE_FIRE;
+                break;
+            case ELE_HOLY:
+                s_ele = ELE_DARK;
+                break;
+            case ELE_FIRE:
+                s_ele = ELE_WATER;
+                break;
+            case ELE_GHOST:
+                s_ele = ELE_GHOST;
+                break;
+            case ELE_WATER:
+                s_ele = ELE_WIND;
+                break;
+            case ELE_UNDEAD:
+                s_ele = ELE_HOLY;
+                break;
+            case ELE_POISON:
+                s_ele = ELE_HOLY;
+                break;
+            default:
+                s_ele = ELE_NEUTRAL;
+        }
+    }
+
 	//Set miscellaneous data that needs be filled
 	if(sd) {
 		sd->state.arrow_atk = 0;
@@ -6583,7 +6651,7 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 				struct Damage atk = battle_calc_weapon_attack(src, target, skill_id, skill_lv, 0);
 				struct Damage matk = battle_calc_magic_attack(src, target, skill_id, skill_lv, 0);
 				md.damage = 7 * ((atk.damage/skill_lv + matk.damage/skill_lv) * tstatus->vit / 100 );
-	
+
 				// AD benefits from endow/element but damage is forced back to neutral
 				md.damage = battle_attr_fix(src, target, md.damage, ELE_NEUTRAL, tstatus->def_ele, tstatus->ele_lv);
 			}
@@ -6837,6 +6905,7 @@ void battle_vanish_damage(struct map_session_data *sd, struct block_list *target
  */
 struct Damage battle_calc_attack(int attack_type,struct block_list *bl,struct block_list *target,uint16 skill_id,uint16 skill_lv,int flag)
 {
+	struct map_session_data *sd;
 	struct Damage d;
 
 	switch(attack_type) {
@@ -6858,10 +6927,17 @@ struct Damage battle_calc_attack(int attack_type,struct block_list *bl,struct bl
 	else // Some skills like Weaponry Research will cause damage even if attack is dodged
 		d.dmg_lv = ATK_DEF;
 
-	struct map_session_data *sd = BL_CAST(BL_PC, bl);
+	sd = BL_CAST(BL_PC, bl);
 
 	if (sd && d.damage + d.damage2 > 1)
 		battle_vanish_damage(sd, target, d.flag);
+
+	if( sd && target->type == BL_MOB){
+		d.damage += sd->bonus.add_damage * d.div_;
+		if(d.damage2){
+			d.damage2 += sd->bonus.add_damage * d.div_;
+		}
+	}
 
 	return d;
 }

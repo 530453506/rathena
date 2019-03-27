@@ -491,6 +491,8 @@ struct map_session_data {
 		uint8 absorb_dmg_maxhp; // [Cydh]
 		short critical_rangeatk;
 		short weapon_atk_rate, weapon_matk_rate;
+		int add_damage;
+		int transfer_attr;
 	} bonus;
 	// zeroed vars end here.
 
