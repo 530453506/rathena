@@ -195,7 +195,8 @@ int channel_delete(struct Channel *channel, bool force) {
 int channel_join(struct Channel *channel, struct map_session_data *sd) {
 	if(!channel || !sd)
 		return -1;
-	if(sd->state.autotrade)
+	//todo need to check
+	if(sd->state.autotrade || sd->state.offline)
 		return 0; // fake success
 	if(channel_haspc(channel,sd)==1)
 		return -2;
@@ -306,7 +307,8 @@ int channel_gjoin(struct map_session_data *sd, int flag){
 	struct Channel *channel;
 	struct guild *g;
 
-	if(!sd || sd->state.autotrade) return -1;
+	//todo need to check
+	if(!sd || sd->state.autotrade || sd->state.offline) return -1;
 	g = sd->guild;
 	if(!g) return -2;
 
@@ -1290,7 +1292,8 @@ int channel_pcautojoin_sub(DBKey key, DBData *data, va_list ap) {
  */
 void channel_autojoin(struct map_session_data *sd) {
 	nullpo_retv(sd);
-	if (sd->state.autotrade || !sd->fd)
+	//todo need to check
+	if (sd->state.autotrade || sd->state.offline || !sd->fd)
 		return;
 	channel_db->foreach(channel_db, channel_pcautojoin_sub, sd);
 }

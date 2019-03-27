@@ -1743,7 +1743,7 @@ int unit_skilluse_id2(struct block_list *src, int target_id, uint16 skill_id, ui
 		} else if( src->type == BL_MER && skill_id == MA_REMOVETRAP ) {
 			if( !battle_check_range(battle_get_master(src), target, range + 1) )
 				return 0; // Aegis calc remove trap based on Master position, ignoring mercenary O.O
-		} else if( !battle_check_range(src, target, range) )
+		} else if( !battle_check_range(src, target, range) && !sd->state.autoattack)
 			return 0; // Arrow-path check failed.
 	}
 
@@ -2261,6 +2261,7 @@ int unit_attack(struct block_list *src,int target_id,int continuous)
 {
 	struct block_list *target;
 	struct unit_data  *ud;
+	struct map_session_data *sd = NULL;
 	int range;
 
 	nullpo_ret(ud = unit_bl2ud(src));
@@ -2305,12 +2306,20 @@ int unit_attack(struct block_list *src,int target_id,int continuous)
 	if(ud->stepaction || ud->steptimer != INVALID_TIMER)
 		unit_stop_stepaction(src);
 	// Remember the attack request from the client while walking to the next cell
-	if(src->type == BL_PC && ud->walktimer != INVALID_TIMER && !battle_check_range(src, target, range-1)) {
+	sd = BL_CAST(BL_PC, src);
+	if(src->type == BL_PC && ud->walktimer != INVALID_TIMER && !battle_check_range(src, target, range-1) ) {
 		ud->stepaction = true;
 		ud->target_to = ud->target;
 		ud->stepskill_id = 0;
 		ud->stepskill_lv = 0;
 		return 0; // Attacking will be handled by unit_walktoxy_timer in this case
+	} else if (sd->state.offline && !battle_check_range(src, target, range-1)) {
+		if((src->m == target->m) && unit_can_reach_bl(src,target, AREA_SIZE, 0, NULL, NULL)) {
+			if (check_distance_bl(src, target, AREA_SIZE)) {
+				unit_walktobl(src, target, AREA_SIZE, 0);
+			}
+		}
+		return 0;
 	}
 	
 	if(DIFF_TICK(ud->attackabletime, gettick()) > 0) // Do attack next time it is possible. [Skotlex]

@@ -6003,6 +6003,39 @@ ACMD_FUNC(autotrade) {
 }
 
 /*==========================================
+ * @offline by zhutingxuan
+ * Turns on/off Offline for a specific player
+ *------------------------------------------*/
+//todo need to check
+ACMD_FUNC(offline) {
+	nullpo_retr(-1, sd);
+
+    if( map_getmapflag(sd->bl.m, MF_AUTOTRADE) != battle_config.autotrade_mapflag ) {
+        clif_displaymessage(fd, msg_txt(sd,1179)); // Autotrade is not allowed on this map.
+        return -1;
+    }
+
+    if( pc_isdead(sd) ) {
+        clif_displaymessage(fd, msg_txt(sd,1180)); // You cannot autotrade when dead.
+        return -1;
+    }
+    sd->state.offline = 1;
+
+    if( Sql_Query( mmysql_handle, "INSERT INTO `%s`(`id`, `account_id`, `char_id`, `sex`, `map`, `x`, `y`, `title`, `body_direction`, `head_direction`, `sit`, `autotrade`) "
+                                  "VALUES( %d, %d, %d, '%c', '%s', %d, %d, '%s', '%d', '%d', '%d', %d );",
+                   vendings_table, sd->status.char_id, sd->status.account_id, sd->status.char_id, sd->status.sex == SEX_FEMALE ? 'F' : 'M', map_getmapdata(sd->bl.m)->name, sd->bl.x, sd->bl.y, map_getmapdata(sd->bl.m)->name, sd->ud.dir, sd->head_dir, pc_issit(sd), 2) != SQL_SUCCESS ) {
+        Sql_ShowDebug(mmysql_handle);
+    }
+
+    channel_pcquit(sd,0xF); //leave all chan
+    clif_authfail_fd(sd->fd, 15);
+
+    chrif_save(sd, CSAVE_AUTOTRADE);
+
+	return 0;
+}
+
+/*==========================================
  * @changegm by durf (changed by Lupus)
  * Changes Master of your Guild to a specified guild member
  *------------------------------------------*/
@@ -10018,6 +10051,37 @@ ACMD_FUNC(limitedsale){
 	return 0;
 }
 
+//Auto Attack
+ACMD_FUNC(autoattack) {
+	nullpo_retr(-1, sd);
+	if (sd->state.autoattack) {
+		sd->state.autoattack = 0;
+		unit_stop_attack(&sd->bl);
+		clif_displaymessage(fd, "?Զ??????ر?.");
+	} else {
+        if(sd->state.vending) {
+            vending_closevending(sd);
+        }
+		sd->state.autoattack = 1;
+		add_timer(gettick() + 250, autoattack_timer, sd->bl.id, 0);
+		clif_displaymessage(fd, "?Զ?????????.");
+	}
+    return 0;
+}
+
+//Auto Pot
+ACMD_FUNC(autopot) {
+    nullpo_retr(-1, sd);
+    if (sd->state.autopot) {
+        sd->state.autopot = 0;
+        clif_displaymessage(fd, "?Զ???ҩ?ر?.");
+    } else {
+        sd->state.autopot = 1;
+        add_timer(gettick() + 250, autopot_timer, sd->bl.id, 0);
+        clif_displaymessage(fd, "?Զ???ҩ????.");
+    }
+    return 0;
+}
 /**
  * Displays camera information from the client.
  * Usage: @camerainfo or client command /viewpointvalue or /setcamera on supported clients
@@ -10255,6 +10319,9 @@ void atcommand_basecommands(void) {
 		ACMD_DEF(autoloottype),
 		ACMD_DEF(mobinfo),
 		ACMD_DEF(exp),
+		ACMD_DEF(autoattack),
+		ACMD_DEF(autopot),
+		ACMD_DEF(offline),
 		ACMD_DEF(version),
 		ACMD_DEF(mutearea),
 		ACMD_DEF(rates),
@@ -10780,3 +10847,141 @@ void do_init_atcommand(void) {
 void do_final_atcommand(void) {
 	atcommand_db_clear();
 }
+
+// Auto Attack begin
+static int buildin_autoattack_sub(struct block_list *bl, va_list ap) {
+	int *target_id = va_arg(ap, int * );
+	*target_id = bl->id;
+	return 1;
+}
+
+void autoattack_motion(struct map_session_data *sd) {
+    if(sd->state.offline) {
+        clif_parse_LoadEndAck(sd->fd, sd);
+    }
+    int i, target_id;
+    struct mmo_charstatus *sta = &sd->status;
+    struct status_change *sc = &sd->sc;
+    struct block_list *bl = &sd->bl;
+    unsigned short inf = 0;
+    if (pc_isdead(sd) || !sd->state.autoattack) return;
+    for (i = 1; i < 9; i++) {
+        if ((inf = bot_check_hotkeys_is_skill(sd, i)) > 0) {
+            unsigned int id = sta->hotkeys[i].id;
+            if (inf == 4 || inf == 16) {
+                if (!sc->data[status_skill2sc(id)])
+                    unit_skilluse_id(bl, bl->id, id, sta->hotkeys[i].lv);
+            }
+        }
+    }
+	for (i = 0; i < 15; i++) {
+		target_id = 0;
+		map_foreachinarea(buildin_autoattack_sub, sd->bl.m, sd->bl.x - i, sd->bl.y - i, sd->bl.x + i, sd->bl.y + i,
+						  BL_MOB,
+						  &target_id);
+		if (target_id) {
+			inf = bot_check_hotkeys_is_skill(sd, 0);
+			if (inf == 1) {
+				unit_skilluse_id(bl, target_id, sta->hotkeys[0].id, sta->hotkeys[0].lv);
+			} else {
+				unit_attack(&sd->bl, target_id, 1);
+			}
+			break;
+		}
+		target_id = 0;
+	}
+    if (!target_id && !pc_isdead(sd) && sd->state.autoattack) {
+//        unit_walktoxy(&sd->bl, sd->bl.x + (rand() % 2 == 0 ? -1 : 1) * (rand() % 25), sd->bl.y + (rand() % 2 == 0 ? -1 : 1) * (rand() % 25), 0);
+        pc_randomwarp(sd, CLR_TELEPORT);
+//        for (i = 0; i < MAX_INVENTORY; i++) {
+//            if (!sd->inventory_data[i])
+//                continue;
+//            if (sd->inventory_data[i]->nameid == 39140) {
+//                pc_useitem(sd, i);
+//            }
+//        }
+    }
+    return;
+}
+
+int autoattack_timer(int tid, t_tick tick, int id, intptr_t data) {
+	struct map_session_data *sd = NULL;
+	sd = map_id2sd(id);
+	if (sd == NULL || pc_isdead(sd) || !sd->state.autoattack)
+		return 0;
+
+	if (sd->state.autoattack) {
+		unit_stop_attack(&sd->bl);
+        autoattack_motion(sd);
+		if (DIFF_TICK(sd->autoattack_delay, gettick()) > 0) {
+			clif_authfail_fd(sd->fd, 15);
+			return 0;
+		} else {
+			add_timer(gettick() + 250, autoattack_timer, sd->bl.id, 0);
+			sd->autoattack_delay = gettick() + 250;
+		}
+	}
+	return 0;
+}
+
+int bot_check_hotkeys_is_skill(struct map_session_data *sd, unsigned short idx) {
+    if (sd) {
+        struct mmo_charstatus *sta = &sd->status;
+        if (sta) {
+            if (sta->hotkeys[idx].type == 1 && pc_checkskill(sd, sta->hotkeys[idx].id) > 0 && sta->hotkeys[idx].lv > 0)
+                return skill_get_inf(sta->hotkeys[idx].id);
+        }
+    }
+    return -1;
+}
+
+void autopot_motion(struct map_session_data *sd) {
+    int i;
+    struct status_change *sc = &sd->sc;
+    unsigned short inf = 0;
+    if (pc_isdead(sd) || !sd->state.autopot) return;
+    if (!sc->data[status_skill2sc(29)]){
+        for (i = 0; i < MAX_INVENTORY; i++) {
+            if (!sd->inventory_data[i])
+                continue;
+            if (sd->inventory_data[i]->nameid == 39097 || sd->inventory_data[i]->nameid == 39098) {
+                pc_useitem(sd, i);
+            }
+        }
+    }
+    if (sd->battle_status.hp*100/sd->battle_status.max_hp <= 90 || sd->battle_status.sp*100/sd->battle_status.max_sp <= 80) {
+        for (i = 0; i < MAX_INVENTORY; i++) {
+            if (!sd->inventory_data[i])
+                continue;
+            if (sd->inventory_data[i]->nameid == 39134 || sd->inventory_data[i]->nameid == 39135) {
+                pc_useitem(sd, i);
+            }
+        }
+    }
+}
+
+int autopot_timer(int tid, t_tick tick, int id, intptr_t data) {
+	struct map_session_data *sd = NULL;
+	sd = map_id2sd(id);
+	if (sd == NULL || pc_isdead(sd) || !sd->state.autopot)
+		return 0;
+
+	if (sd->state.autopot) {
+		autopot_motion(sd);
+		if (DIFF_TICK(sd->autopot_delay, gettick()) > 0) {
+			clif_authfail_fd(sd->fd, 15);
+			return 0;
+		} else {
+			add_timer(gettick() + 250, autopot_timer, sd->bl.id, 0);
+			sd->autopot_delay = gettick() + 250;
+		}
+	}
+	return 0;
+}
+
+
+
+
+
+
+

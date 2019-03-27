@@ -8843,7 +8843,8 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 			for (i = 0; i < g->max_member && (!calls || (calls && called < calls)); i++, j++) {
 				if (j > 8)
 					j = 0;
-				if ((dstsd = g->member[i].sd) != NULL && sd != dstsd && !dstsd->state.autotrade && !pc_isdead(dstsd)) {
+				//todo need to check
+				if ((dstsd = g->member[i].sd) != NULL && sd != dstsd && !dstsd->state.autotrade && !dstsd->state.offline && !pc_isdead(dstsd)) {
 					if (map_getmapflag(dstsd->bl.m, MF_NOWARP) && !map_flag_gvg2(dstsd->bl.m))
 						continue;
 					if (!pc_job_can_entermap((enum e_job)dstsd->status.class_, src->m, dstsd->group_level))
@@ -11306,7 +11307,8 @@ TIMER_FUNC(skill_castend_id){
 				if (sd) {
 					struct map_session_data *f_sd = pc_get_father(sd);
 					struct map_session_data *m_sd = pc_get_mother(sd);
-					if ((f_sd && f_sd->state.autotrade) || (m_sd && m_sd->state.autotrade)) {
+					//todo need to check
+					if ((f_sd && (f_sd->state.autotrade || f_sd->state.offline)) || (m_sd && (m_sd->state.autotrade || m_sd->state.offline))) {
 						fail = true;
 						break;
 					}
@@ -11314,7 +11316,8 @@ TIMER_FUNC(skill_castend_id){
 			case WE_CALLBABY:
 				if (sd) {
 					struct map_session_data *c_sd = pc_get_child(sd);
-					if (c_sd && c_sd->state.autotrade) {
+					//todo need to check
+					if (c_sd && (c_sd->state.autotrade || c_sd->state.offline)) {
 						fail = true;
 						break;
 					}

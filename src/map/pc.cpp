@@ -852,6 +852,9 @@ void pc_setnewpc(struct map_session_data *sd, uint32 account_id, uint32 char_id,
 		sd->canlog_tick = gettick();
 	//Required to prevent homunculus copuing a base speed of 0.
 	sd->battle_status.speed = sd->base_status.speed = DEFAULT_WALK_SPEED;
+    sd->state.autoattack = 0;
+    sd->state.autopot= 0;
+    sd->state.offline= 0;
 }
 
 /**
@@ -1397,6 +1400,7 @@ bool pc_authok(struct map_session_data *sd, uint32 login_id2, time_t expiration_
 	sd->canskill_tick = tick;
 	sd->cansendmail_tick = tick;
 	sd->idletime = last_tick;
+	sd->botwarp_tick = tick;
 
 	for(i = 0; i < MAX_SPIRITBALL; i++)
 		sd->spirit_timer[i] = INVALID_TIMER;
@@ -5854,6 +5858,11 @@ enum e_setpos pc_setpos(struct map_session_data* sd, unsigned short mapindex, in
  *------------------------------------------*/
 char pc_randomwarp(struct map_session_data *sd, clr_type type)
 {
+    // Delay to use
+    if (sd->state.autoattack && DIFF_TICK(sd->botwarp_tick, gettick()) > 0) {
+        return 3;
+    }
+
 	int x,y,i=0;
 
 	nullpo_ret(sd);
@@ -5868,8 +5877,12 @@ char pc_randomwarp(struct map_session_data *sd, clr_type type)
 		y = rnd()%(mapdata->ys-2)+1;
 	} while((map_getcell(sd->bl.m,x,y,CELL_CHKNOPASS) || (!battle_config.teleport_on_portal && npc_check_areanpc(1,sd->bl.m,x,y,1))) && (i++) < 1000);
 
-	if (i < 1000)
-		return pc_setpos(sd,mapdata->index,x,y,type);
+	if (i < 1000) {
+		if(sd->state.autoattack) {
+			sd->botwarp_tick = gettick() + 1200;
+		}
+		return pc_setpos(sd, mapdata->index, x, y, type);
+	}
 
 	return 3;
 }
@@ -12034,15 +12047,17 @@ uint8 pc_itemcd_add(struct map_session_data *sd, struct item_data *id, t_tick ti
 	if( i < MAX_ITEMDELAYS ) {
 		if( sd->item_delay[i].nameid ) {// found
 			if( DIFF_TICK(sd->item_delay[i].tick, tick) > 0 ) {
-				t_tick e_tick = DIFF_TICK(sd->item_delay[i].tick, tick)/1000;
-				char e_msg[CHAT_SIZE_MAX];
-				if( e_tick > 99 )
-					sprintf(e_msg,msg_txt(sd,379), // Item Failed. [%s] is cooling down. Wait %.1f minutes.
-									itemdb_jname(sd->item_delay[i].nameid), (double)e_tick / 60);
-				else
-					sprintf(e_msg,msg_txt(sd,380), // Item Failed. [%s] is cooling down. Wait %d seconds.
-									itemdb_jname(sd->item_delay[i].nameid), e_tick+1);
-				clif_messagecolor(&sd->bl,color_table[COLOR_YELLOW],e_msg,false,SELF);
+				if(!sd->state.autoattack) {
+					t_tick e_tick = DIFF_TICK(sd->item_delay[i].tick, tick) / 1000;
+					char e_msg[CHAT_SIZE_MAX];
+					if (e_tick > 99)
+						sprintf(e_msg, msg_txt(sd, 379), // Item Failed. [%s] is cooling down. Wait %.1f minutes.
+								itemdb_jname(sd->item_delay[i].nameid), (double) e_tick / 60);
+					else
+						sprintf(e_msg, msg_txt(sd, 380), // Item Failed. [%s] is cooling down. Wait %d seconds.
+								itemdb_jname(sd->item_delay[i].nameid), e_tick + 1);
+					clif_messagecolor(&sd->bl, color_table[COLOR_YELLOW], e_msg, false, SELF);
+				}
 				return 1; // Delay has not expired yet
 			}
 		} else {// not yet used item (all slots are initially empty)

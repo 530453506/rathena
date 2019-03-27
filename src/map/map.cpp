@@ -2032,7 +2032,9 @@ int map_quit(struct map_session_data *sd) {
 	int i;
 
 	if (sd->state.keepshop == false) { // Close vending/buyingstore
-		if (sd->state.vending)
+		if(sd->state.offline)
+			bot_close(sd);
+		else if (sd->state.vending)
 			vending_closevending(sd);
 		else if (sd->state.buyingstore)
 			buyingstore_close(sd);

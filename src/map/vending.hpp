@@ -24,6 +24,8 @@ void do_init_vending_autotrade( void );
  
 void vending_reopen( struct map_session_data* sd );
 void vending_closevending(struct map_session_data* sd);
+void bot_close(struct map_session_data* sd);
+void bot_open( struct map_session_data* sd );
 int8 vending_openvending(struct map_session_data* sd, const char* message, const uint8* data, int count, struct s_autotrader *at);
 void vending_vendinglistreq(struct map_session_data* sd, int id);
 void vending_purchasereq(struct map_session_data* sd, int aid, int uid, const uint8* data, int count);

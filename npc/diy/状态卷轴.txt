@@ -1,0 +1,43 @@
+function	script	s_vip_status	{
+		sc_start SC_ENDURE,600000,10; //���� 21
+		sc_start SC_CONCENTRATE,600000,10; //���� 23
+		sc_start SC_BLESSING,600000,10; //��ʹ֮�͸� 30
+		sc_start SC_INCREASEAGI,600000,10; //���� 32
+		sc_start SC_IMPOSITIO,600000,10; //���� 35
+		sc_start SC_SUFFRAGIUM,600000,10; //�������� 36
+		sc_start SC_MAGNIFICAT,600000,10; //ʥĸ֮�̸� 40
+		sc_start SC_GLORIA,600000,10; //����֮�� 41
+		sc_start SC_WEAPONPERFECTION,600000,10; //�������͹��� 44
+		sc_start SC_MAXIMIZEPOWER,600000,10; //����ֵ������ 46
+		sc_start SC_LOUD,600000,10; //�����ź� 48
+		sc_start SC_ASPDPOTION2,600000,10; //��ɫ��ҩˮ 57
+		sc_start SC_ATKPOTION,600000,10; //����ATK 61
+		sc_start SC_MATKPOTION,600000,10; //����MATK 62
+		sc_start SC_CP_WEAPON,600000,10; //��ѧ�������� 72
+		sc_start SC_CP_SHIELD,600000,10; //��ѧ���Ʊ��� 73
+		sc_start SC_CP_ARMOR,600000,10; //��ѧ���ױ��� 74
+		sc_start SC_CP_HELM,600000,10; //��ѧͷ������ 75
+		sc_start SC_ASSUMPTIO,600000,10; //ʥĸ֮���� 115
+		sc_start SC_ADRENALINE2,600000,10; //�����ٶȼ��� 145
+		sc_start SC_RICHMANKIM,600000,10; //���鱶�� 166
+		sc_start SC_STRFOOD,600000,10; //STR+10
+		sc_start SC_INTFOOD,600000,10; //INT+10
+		sc_start SC_VITFOOD,600000,10; //VIT+10
+		sc_start SC_AGIFOOD,600000,10; //AGI+10
+		sc_start SC_DEXFOOD,600000,10; //DEX+10
+		sc_start SC_LUKFOOD,600000,10; //LUK+10
+}
+
+
+
+function	script	vip_status	{
+		sc_start SC_BLESSING,600000,10; //��ʹ֮�͸� 30
+		sc_start SC_INCREASEAGI,600000,10; //���� 32
+		sc_start SC_IMPOSITIO,600000,10; //���� 35
+		sc_start SC_SUFFRAGIUM,600000,10; //�������� 36
+		sc_start SC_MAGNIFICAT,600000,10; //ʥĸ֮�̸� 40
+		sc_start SC_GLORIA,600000,10; //����֮�� 41
+close;
+
+
+}

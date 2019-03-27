@@ -289,6 +289,9 @@ struct map_session_data {
 		bool mail_writing; // Whether the player is currently writing a mail in RODEX or not
 		bool cashshop_open;
 		bool sale_open;
+        unsigned autoattack : 1;
+        unsigned autopot: 1;
+        unsigned offline: 1;
 	} state;
 	struct {
 		unsigned char no_weapon_damage, no_magic_damage, no_misc_damage;
@@ -362,6 +365,8 @@ struct map_session_data {
 	int menuskill_id, menuskill_val, menuskill_val2;
 
 	int invincible_timer;
+	t_tick autoattack_delay;
+	t_tick autopot_delay;
 	t_tick canlog_tick;
 	t_tick canuseitem_tick;	// [Skotlex]
 	t_tick canusecashfood_tick;
@@ -371,6 +376,7 @@ struct map_session_data {
 	t_tick cansendmail_tick; // [Mail System Flood Protection]
 	t_tick ks_floodprotect_tick; // [Kill Steal Protection]
 	t_tick equipswitch_tick; // Equip switch
+	t_tick botwarp_tick;
 
 	struct s_item_delay {
 		unsigned short nameid;

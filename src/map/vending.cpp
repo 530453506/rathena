@@ -72,6 +72,19 @@ void vending_closevending(struct map_session_data* sd)
 	}
 }
 
+// todo need to check
+void bot_close(struct map_session_data* sd)
+{
+	nullpo_retv(sd);
+
+	if( sd->state.offline ) {
+		if( Sql_Query( mmysql_handle, "DELETE FROM `%s` WHERE id = %d;", vendings_table, sd->status.char_id ) != SQL_SUCCESS ) {
+			Sql_ShowDebug(mmysql_handle);
+		}
+		sd->state.offline = 0;
+	}
+}
+
 /**
  * Player request a shop's item list (a player shop)
  * @param sd : player requestion the list
@@ -549,6 +562,37 @@ void vending_reopen( struct map_session_data* sd )
 	}
 }
 
+
+void bot_open( struct map_session_data* sd )
+{
+    struct s_autotrader *at = NULL;
+    nullpo_retv(sd);
+    if ((at = (struct s_autotrader *)uidb_get(vending_autotrader_db, sd->status.char_id))) {
+        pc_setdir(sd, at->dir, at->head_dir);
+        clif_changed_dir(&sd->bl, AREA_WOS);
+        if( at->sit ) {
+            pc_setsit(sd);
+            skill_sit(sd, 1);
+            clif_sitting(&sd->bl);
+        }
+        chrif_save(sd, CSAVE_AUTOTRADE);
+        if (Sql_Query(mmysql_handle,
+                      "INSERT INTO `%s`(`id`, `account_id`, `char_id`, `sex`, `map`, `x`, `y`, `title`, `body_direction`, `head_direction`, `sit`, `autotrade`) "
+                      "VALUES( %d, %d, %d, '%c', '%s', %d, %d, '%s', '%d', '%d', '%d', %d );",
+                      vendings_table, sd->status.char_id, sd->status.account_id, sd->status.char_id,
+                      sd->status.sex == SEX_FEMALE ? 'F' : 'M', map_getmapdata(sd->bl.m)->name, sd->bl.x, sd->bl.y,
+                      map_getmapdata(sd->bl.m)->name, sd->ud.dir, sd->head_dir, pc_issit(sd), 2) != SQL_SUCCESS) {
+            Sql_ShowDebug(mmysql_handle);
+        }
+    }
+    if (at) {
+        vending_autotrader_remove(at, true);
+        if (db_size(vending_autotrader_db) == 0)
+            vending_autotrader_db->clear(vending_autotrader_db, vending_autotrader_free);
+    }
+}
+
+
 /**
 * Initializing autotraders from table
 */
@@ -646,6 +690,48 @@ void do_init_vending_autotrade(void)
 			dbi_destroy(iter);
 
 			ShowStatus("Done loading '" CL_WHITE "%d" CL_RESET "' vending autotraders with '" CL_WHITE "%d" CL_RESET "' items.\n", db_size(vending_autotrader_db), items);
+		}
+
+		if (Sql_Query(mmysql_handle,
+					  "SELECT `id`, `account_id`, `char_id`, `sex`, `title`, `body_direction`, `head_direction`, `sit` "
+					  "FROM `%s` "
+	                  "WHERE `autotrade` = 2 "
+					  "ORDER BY `id`;",
+					  vendings_table ) != SQL_SUCCESS )
+		{
+			Sql_ShowDebug(mmysql_handle);
+			return;
+		}
+
+		if( Sql_NumRows(mmysql_handle) > 0 ) {
+			uint16 items = 0;
+			DBIterator *iter = NULL;
+			struct s_autotrader *at = NULL;
+
+			// Init each autotrader data
+			while (SQL_SUCCESS == Sql_NextRow(mmysql_handle)) {
+				size_t len;
+				char *data;
+
+				at = NULL;
+				CREATE(at, struct s_autotrader, 1);
+				Sql_GetData(mmysql_handle, 0, &data, NULL); at->id = atoi(data);
+				Sql_GetData(mmysql_handle, 1, &data, NULL); at->account_id = atoi(data);
+				Sql_GetData(mmysql_handle, 2, &data, NULL); at->char_id = atoi(data);
+				Sql_GetData(mmysql_handle, 3, &data, NULL); at->sex = (data[0] == 'F') ? SEX_FEMALE : SEX_MALE;
+                Sql_GetData(mmysql_handle, 4, &data, &len); safestrncpy(at->title, data, zmin(len + 1, MESSAGE_SIZE));
+                Sql_GetData(mmysql_handle, 5, &data, NULL); at->dir = atoi(data);
+				Sql_GetData(mmysql_handle, 6, &data, NULL); at->head_dir = atoi(data);
+				Sql_GetData(mmysql_handle, 7, &data, NULL); at->sit = atoi(data);
+
+                // initialize player
+				CREATE(at->sd, struct map_session_data, 1);
+                pc_setnewpc(at->sd, at->account_id, at->char_id, 0, gettick(), at->sex, 0);
+				at->sd->state.offline = 1;
+                chrif_authreq(at->sd, true);
+                uidb_put(vending_autotrader_db, at->char_id, at);
+            }
+			Sql_FreeResult(mmysql_handle);
 		}
 	}
 

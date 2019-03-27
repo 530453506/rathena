@@ -44,5 +44,7 @@ struct atcmd_binding_data {
 };
 extern struct atcmd_binding_data** atcmd_binding;
 struct atcmd_binding_data* get_atcommandbind_byname(const char* name);
-
+int autoattack_timer(int tid, t_tick tick, int id, intptr_t data);
+int autopot_timer(int tid, t_tick tick, int id, intptr_t data);
+int bot_check_hotkeys_is_skill(struct map_session_data *sd, unsigned short idx);
 #endif /* ATCOMMAND_HPP */

@@ -1187,7 +1187,8 @@ int chrif_disconnectplayer(int fd) {
 	}
 
 	if (!sd->fd) {
-		if (sd->state.autotrade)
+		//todo need to check
+		if (sd->state.autotrade || sd->state.offline)
 			map_quit(sd);
 		//Else we don't remove it because the char should have a timer to remove the player because it force-quit before,
 		//and we don't want them kicking their previous instance before the 10 secs penalty time passes. [Skotlex]

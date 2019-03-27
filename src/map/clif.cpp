@@ -9032,7 +9032,8 @@ void clif_callpartner(struct map_session_data *sd)
 	if( sd->status.partner_id ) {
 		const char *p = map_charid2nick(sd->status.partner_id);
 		struct map_session_data *p_sd = pc_get_partner(sd);
-		if( p != NULL && p_sd != NULL && !p_sd->state.autotrade )
+		//todo need to check
+		if( p != NULL && p_sd != NULL && !p_sd->state.autotrade && !p_sd->state.offline)
 			safestrncpy(WBUFCP(buf,2), p, NAME_LENGTH);
 		else
 			WBUFB(buf,2) = 0;
@@ -10291,7 +10292,7 @@ void clif_parse_LoadEndAck(int fd,struct map_session_data *sd)
 		return;
 
 	// Autotraders should ignore this entirely, clif_parse_LoadEndAck is always invoked manually for them
-	if (!sd->state.active || (!sd->state.autotrade && !sd->state.pc_loaded)) { //Character loading is not complete yet!
+	if (!sd->state.active || (!sd->state.autotrade && !sd->state.offline && !sd->state.pc_loaded)) { //Character loading is not complete yet!
 		//Let pc_reg_received or pc_scdata_received reinvoke this when ready.
 		sd->state.connect_new = 0;
 		return;
@@ -10491,6 +10492,7 @@ void clif_parse_LoadEndAck(int fd,struct map_session_data *sd)
 		// Notify everyone that this char logged in [Skotlex].
 		map_foreachpc(clif_friendslist_toggle_sub, sd->status.account_id, sd->status.char_id, 1);
 
+		//todo need to check
 		if (!sd->state.autotrade) { // Don't trigger NPC event or opening vending/buyingstore will be failed
 			//Login Event
 			npc_script_event(sd, NPCE_LOGIN);
@@ -10596,6 +10598,7 @@ void clif_parse_LoadEndAck(int fd,struct map_session_data *sd)
 
 		status_change_clear_onChangeMap(&sd->bl, &sd->sc);
 		map_iwall_get(sd); // Updates Walls Info on this Map to Client
+		//todo need to check
 		status_calc_pc(sd, sd->state.autotrade ? SCO_FIRST : SCO_NONE); // Some conditions are map-dependent so we must recalculate
 
 #ifdef VIP_ENABLE
@@ -10637,6 +10640,7 @@ void clif_parse_LoadEndAck(int fd,struct map_session_data *sd)
 	}
 
 	// Don't trigger NPC event or opening vending/buyingstore will be failed
+	//todo need to check
 	if(!sd->state.autotrade && mapdata->flag[MF_LOADEVENT]) // Lance
 		npc_script_event(sd, NPCE_LOADMAP);
 
@@ -20895,8 +20899,12 @@ static int clif_parse(int fd)
 				session[fd]->session_data = NULL;
 				sd->fd = 0;
 				ShowInfo("Character '" CL_WHITE "%s" CL_RESET "' logged off (using @autotrade).\n", sd->status.name);
-			} else
-			if (sd->state.active) {
+			} else if (sd->state.offline){
+                //Disassociate character from the socket connection.
+                session[fd]->session_data = NULL;
+                sd->fd = 0;
+                ShowInfo("Character '" CL_WHITE "%s" CL_RESET "' logged off (using @offline).\n", sd->status.name);
+			} else if (sd->state.active) {
 				// Player logout display [Valaris]
 				ShowInfo("Character '" CL_WHITE "%s" CL_RESET "' logged off.\n", sd->status.name);
 				clif_quitsave(fd, sd);
