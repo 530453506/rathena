@@ -3688,6 +3688,17 @@ int status_calc_pc_sub(struct map_session_data* sd, enum e_status_calc_opt opt)
 		}
 	}
 
+
+    for(i =0; i< MAX_INVENTORY; i++) {
+        if (!sd->inventory_data[i])
+            continue;
+        if (sd->inventory_data[i]->type == IT_AMULET){
+            if(sd->inventory_data[i]->script) {
+                run_script(sd->inventory_data[i]->script, 0, sd->bl.id, 0);
+            }
+        }
+    }
+
 	// We've got combos to process and check
 	if( sd->combos.count ) {
 		for (i = 0; i < sd->combos.count; i++) {

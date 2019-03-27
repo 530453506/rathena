@@ -3745,6 +3745,7 @@
 	export_constant(IT_DELAYCONSUME);
 	export_constant(IT_SHADOWGEAR);
 	export_constant(IT_CASH);
+	export_constant(IT_AMULET);
 
 	/* weapon types */
 	export_constant(W_FIST);

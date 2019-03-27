@@ -87,6 +87,9 @@ enum mail_type {
 static inline int itemtype(unsigned short nameid) {
 	struct item_data* id = itemdb_search(nameid); //Use itemdb_search, so non-existance item will use dummy data and won't crash the server. bugreport:8468
 	int type = id->type;
+	if( type == IT_AMULET){
+	    return IT_ETC;
+	}
 	if( type == IT_SHADOWGEAR ) {
 		if( id->equip&EQP_SHADOW_WEAPON )
 			return IT_WEAPON;

@@ -323,6 +323,7 @@ const char* itemdb_typename(enum item_types type)
 		case IT_DELAYCONSUME:   return "Delay-Consume Usable";
 		case IT_SHADOWGEAR:     return "Shadow Equipment";
 		case IT_CASH:           return "Cash Usable";
+		case IT_AMULET:			return "Amulet";
 	}
 	return "Unknown Type";
 }
@@ -483,6 +484,7 @@ bool itemdb_isstackable2(struct item_data *id)
 		case IT_PETEGG:
 		case IT_PETARMOR:
 		case IT_SHADOWGEAR:
+		case IT_AMULET:
 			return false;
 		default:
 			return true;
