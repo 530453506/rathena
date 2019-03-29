@@ -10882,7 +10882,12 @@ void autoattack_motion(struct map_session_data *sd) {
 		if (target_id) {
 			inf = bot_check_hotkeys_is_skill(sd, 0);
 			if (inf == 1) {
-				unit_skilluse_id(bl, target_id, sta->hotkeys[0].id, sta->hotkeys[0].lv);
+				if(DIFF_TICK(sd->botskill_tick, gettick()) > 0) {
+					break;
+				} else {
+					sd->botskill_tick = gettick() + 250;
+					unit_skilluse_id(bl, target_id, sta->hotkeys[0].id, sta->hotkeys[0].lv);
+				}
 			} else {
 				unit_attack(&sd->bl, target_id, 1);
 			}

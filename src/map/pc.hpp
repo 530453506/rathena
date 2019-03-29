@@ -377,8 +377,9 @@ struct map_session_data {
 	t_tick ks_floodprotect_tick; // [Kill Steal Protection]
 	t_tick equipswitch_tick; // Equip switch
 	t_tick botwarp_tick;
+	t_tick botskill_tick;
 
-	struct s_item_delay {
+    struct s_item_delay {
 		unsigned short nameid;
 		t_tick tick;
 	} item_delay[MAX_ITEMDELAYS]; // [Paradox924X]
