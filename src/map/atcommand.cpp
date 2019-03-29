@@ -10922,8 +10922,8 @@ int autoattack_timer(int tid, t_tick tick, int id, intptr_t data) {
 			clif_authfail_fd(sd->fd, 15);
 			return 0;
 		} else {
-			add_timer(gettick() + 250, autoattack_timer, sd->bl.id, 0);
-			sd->autoattack_delay = gettick() + 250;
+			add_timer(gettick() + 50, autoattack_timer, sd->bl.id, 0);
+			sd->autoattack_delay = gettick() + 50;
 		}
 	}
 	return 0;

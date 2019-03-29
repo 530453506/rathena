@@ -199,6 +199,19 @@
 39137,zjfm,中级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
 39138,gjfm,高级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
 39139,jjfm,究极附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
+39140,lvzy,绿光之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39141,ldzy,蓝蝶之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39142,sfzy,四方之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39143,nxzy,暖心之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39144,ywzy,樱舞之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39145,xhhy,鲜红花翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39146,dtszy,大天使之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39147,demzy,大恶魔之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39148,wtszy,伪天使之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39149,zsmhzy,紫色梦幻之翼,3,10,,,,,,,,,,,,,,,{},{},{}
+39150,gjdcjfsp,高级道场积分碎片,3,100,,10,,,,,,,,,,,,,{},{},{}
+
+
 
 //
 39201,Strength1_1,HP+500,6,20,,10,,,,,,,,,,,,,{ bonus bmaxhp,500;},{},{}
@@ -364,6 +377,8 @@
 39542,Frog_Card_I,基因改造突变蛙卡片,6,,,10,,,,,,,,32,,,,,{ bonus2 bSubRace,RC_DemiHuman,30; bonus2 bSubRace,RC_Player,30; bonus bmaxhprate,10; },{},{}
 39543,MoWang_Card,魔王梦罗克卡片,6,,,10,,,,,,,,2,,,,,{ bonus bmAtkRate,120; bonus2 bMagicAddClass,Class_Boss,200; bonus2 bIgnoreMdefClassRate,Class_Boss,50; bonus2 bSkillAtk,490,250; bonus bInt,40; },{},{}
 39544,King_Card,国王波利卡片,6,,,10,,,,,,,,64,,,,,{ skill 2328,4; bonus bSpeedAddRate,25; bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bAbsorbDMGMaxHp,10; },{},{}
+//39545,Osiris_Card,刹那卡片,6,20,,10,,,,,,,,769,,,,,{ bonus2 bResEff,Eff_Sleep,10000;bonus bSplashRange,2;bonus ballstats,10;bonus bLuk,-7;},{itembonus 900000000,580;},{}
+
 //
 //39544,Atroce_Card_II,[融合]阿特罗斯卡片,6,,,10,,,,,,,,2,,,,,{ bonus2 bAddClass,Class_Boss,90; bonus bAtkRate,15; bonus bCritAtkRate,20; bonus2 bAddDamageGroup,Group_Ninja,70; if( isequipped(9492)) { bonus2 bIgnoreDefRate,4,50; bonus2 bAddDamageGroup,Group_Ninja,70; } },{},{}
 //39545,Bacsojin_Card_II,[融合]白素贞卡片,6,,,10,,,,,,,,2,,,,,{ bonus bmAtkRate,30; bonus bInt,30; bonus2 bSkillAtk,490,30; if( isequipped(9491) ) { bonus2 bIgnoreMdefRate,4,35; bonus2 bMagicAddGroup,Group_Ninja,50; } },{},{}
