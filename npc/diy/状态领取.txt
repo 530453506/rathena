@@ -1,6 +1,0 @@
-prontera.gat,146,95,6	script	状态领取	80,{	
-		sc_start SC_BLESSING,600000,10; //天使之赐福 30
-		sc_start SC_INCREASEAGI,600000,10; //加速 32
-	close;
-	end;
-}

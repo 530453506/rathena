@@ -1,0 +1,53 @@
+
+function	script	xinshouka	{
+		if (BaseLevel>=99) {
+		    mes "[服务人员]";
+		    mes"等级太高，无法使用新人卡";
+		    close;
+		}
+		if ( Weight > 10000 ) {
+		    mes "[服务人员]";
+        	mes "你的负重为"+Weight/10+".";
+        	mes "请不要超过^FF00001000^000000负重.";
+        	close;
+        }
+        mes "[服务人员]";
+        mes "请选择你要成为的职业。";
+        next;
+        switch(select("骑士领主","超魔导士","神射手","神官","神工匠","十字刺客","圣殿十字军","智者","小丑/舞姬","武术宗师","创造者","神行太保","忍者","枪手","拳圣","灵媒")) {
+        	case 1: set .@jobchange,4008; break;
+        	case 2: set .@jobchange,4010; break;
+        	case 3: set .@jobchange,4012; break;
+        	case 4: set .@jobchange,4009; break;
+        	case 5: set .@jobchange,4011; break;
+        	case 6: set .@jobchange,4013; break;
+        	case 7: set .@jobchange,4015; break;
+        	case 8: set .@jobchange,4017; break;
+        	case 9: if (Sex) set .@jobchange,4020;
+        	        else set .@jobchange,4021;
+        	        break;
+        	case 10: set .@jobchange,4016; break;
+        	case 11: set .@jobchange,4019; break;
+        	case 12: set .@jobchange,4018; break;
+        	case 13: set .@jobchange,25; break;
+        	case 14: set .@jobchange,24; break;
+        	case 15: set .@jobchange,4047; break;
+        	case 16: set .@jobchange,4049; break;
+        }
+        if(checkcart()) setcart 0;
+        if(checkfalcon()) setfalcon 0;
+        if(checkriding()) setriding 0;
+        nude;
+        jobchange .@jobchange;
+        resetskill;
+		resetstatus;
+		set SkillPoint,0;
+		set StatusPoint,0;
+		set BaseLevel,99;
+		set JobLevel,70;
+		set BaseExp,0;
+		set JobExp,0;
+		set StatusPoint,2525;
+	    delitem 39096,1;
+	    close;
+}

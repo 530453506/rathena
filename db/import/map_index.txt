@@ -16,3 +16,9 @@
 //
 //mymap	1250
 //mymap-2
+
+boss_cj
+boss_zj
+boss_gj
+boss_jj
+boss_xy

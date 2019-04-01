@@ -1,0 +1,61 @@
+//
+// 3BOSS by 2007-01-16
+//
+//- 
+prontera.gat,200,113,5	script	稀有BOSS区传送	796,{
+    if (Zeny<1500000) goto Not;
+	mes"[稀有BOSS区传送]";
+	mes"稀有BOSS区，入场费150W。";
+	next;
+	menu "我要传送，费用150W",-,"我不去了",L_exit;
+	mes"[稀有BOSS区传送]";
+	mes"我现在就送你过去";
+	next;
+    set zeny,zeny-1500000;
+	warp "boss_xy.gat",159,368;
+	close;
+L_exit:
+	next;
+	mes"[稀有BOSS区传送]";
+	mes"欢迎你下次在来";
+	close;
+end;
+
+Not:
+    mes "[稀有BOSS区传送]";
+    mes "你的钱不够";
+    mes "请带好150W再来！";
+    close;
+
+OnInit:
+	waitingroom "[☆稀有BOSS区☆]",0;
+	end;
+}
+
+// 怪物设定
+//[B]
+boss_xy.gat,0,0,0,0	monster	闇●骑士领主 赛依连	3701,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	闇●十字刺客 艾勒梅斯	3702,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	闇●神工匠 哈沃得	3703,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	闇●神官 玛嘉雷特	3704,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	闇●神射手 迪文	3705,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	闇●超魔导师 凯特莉娜	3706,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	寒冰龙	3707,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	影魔	3708,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	伊夫利特	3709,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	基尔 D-01	3710,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	魔剑士 达纳托斯的记忆	3711,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	贝雷杰	3712,2,0,0,0
+boss_xy.gat,0,0,0,0	monster	魔王 梦罗克	3713,2,0,0,0
+boss_xy.gat,0,0,0,0	boss_monster	青冠龙	1885,1,7200000,300000,1
+boss_xy.gat,0,0,0,0	boss_monster	月光女神	3565,1,7200000,300000,1
+boss_xy.gat,0,0,0,0	boss_monster	至高战神	3568,1,7200000,300000,1
+
+// 地图属性设置
+boss_xy.gat	mapflag	nomemo	dummy
+boss_xy.gat	mapflag	nopenalty	dummy
+boss_xy.gat	mapflag	nobranch	dummy
+boss_xy.gat	mapflag	nowarp
+boss_xy.gat	mapflag	nowarpto
+boss_xy.gat	mapflag	nogo
+boss_xy.gat	mapflag	nosave

@@ -54,12 +54,13 @@
 4425,Atroce_Card,阿特罗斯卡片,6,,,10,,,,,,,,2,,,,,{ bonus2 bAddClass,Class_Boss,50; },{},{}
 4430,Ifrit_Card,伊夫利特卡片,6,,,10,,,,,,,,136,,,,,{ bonus bAtkRate,10; bonus bNoWeaponDamage,5; bonus bNoMagicDamage,5; },{},{}
 4433,Imp_Card,熔岩魔卡片,6,,,10,,,,,,,,2,,,,,{ bonus bint,3;bonus2 bSkillAtk,14,5;bonus2 bSkillAtk,19,5; bonus2 bSkillAtk,20,5; },{},{}
+
 12622,Boarding_Halter,坐骑用缰绳,11,0,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_ALL_RIDING,-1,1; },{},{}
 // ==================================================================================================== //
 //                              自定义特色物品（预定范围：39001 - 39999）                               //
 // ==================================================================================================== //
 // 自定义消耗品
-39001,Fountain_Of_Life,生命之泉,0,20,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,0; },{},{}
+39001,Fountain_Of_Life,生命之泉,0,800,,80,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,20; },{},{}
 39002,Fountain_Of_Magic,魔法之泉,0,20,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 0,20; },{},{}
 39003,Magic_Spectacles_Weapon,魔力放大镜(武器),11,40,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc("recording",39003); },{},{}
 39004,Magic_Spectacles_Armor,魔力放大镜(防具),11,40,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "Ldentify"; },{},{}
@@ -155,10 +156,11 @@
 39093,newitem_47,防爆券,3,,,10,,,,,,,,,,,,,{},{},{}
 39094,newitem_25,卡片进阶券,3,,,10,,,,,,,,,,,,,{},{},{}
 39095,newitem_58,公会经验石,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ atcommand "@guildlvlup 50" ; },{},{}
-39096,newitem_64,新人卡,2,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "xinshouka"; },{},{}
+39096,newitem_64,新人卡,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "xinshou?ka"; },{},{}
 39097,newitem_69,高级会员状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "vip_status"; },{},{}
 39098,newitem_70,赞助会员状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "s_vip_status"; },{},{}
 39099,newitem_72,关闭光环,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "gh321"; },{},{}
+
 39100,Infiltrator_Box_1,紫色梦幻天翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 39101,Infiltrator_Box_2,超级赛亚人之光（神）箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 39102,Infiltrator_Box_3,暗天使之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -171,10 +173,11 @@
 39109,Infiltrator_Box_10,天仙之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 39110,Infiltrator_Box_11,耀天使之翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
 39111,Infiltrator_Box_12,自爆活动箱子,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{  callfunc "自爆箱"; },{},{}
-39112,newitem_75,会员补给箱,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "ghbox",7; },{},{}
-39113,newitem_76,公会补给箱,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "F_tzqihei",7; },{},{}
+
+39112,newitem_75,会员补给箱,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "vip_box",7; },{},{}
+39113,newitem_76,公会补给箱,0,50,,70,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "gh_box",7; },{},{}
 39114,yzzs,影之钻石,3,1,,10,,,,,,,,,,,,,{},{},{}
-39115,rwsc,任务手册,11,100,,0,,,,,0xffffffff,15,2,,,,,,{ callfunc "renwushouce"; },{},{}
+39115,rwsc,随身菜单,11,100,,0,,,,,0xffffffff,15,2,,,,,,{ callfunc "renwushouce"; },{},{}
 39116,zdgg,自动公告系统控制台,11,50,,70,,,,,0xFFFFFFFF,15,2,,,,,,{ set #vip,1; callfunc "自动公告系统"; },{},{}
 39117,newitem_10,I阶进化石,3,,,,,,,,,,,,,,,,{},{},{}
 39118,newitem_11,II阶进化石,3,,,,,,,,,,,,,,,,{},{},{}
@@ -193,7 +196,7 @@
 39131,My_Cion2,任务积分10点,2,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ set #rwjf,#rwjf+10; dispbottom "[积分提示] - 增长10点任务积分,您目前有:["+#rwjf+"]点任务积分"; },{},{}
 39132,My_Cion3,保卫战积分100点,2,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ set jifen,jifen+100; dispbottom "[积分提示] - 增长100点保卫战积分,您目前有:["+jifen+"]点保卫战积分"; },{},{}
 39133,newitem_45,在线积分500点,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ set paodian,paodian+500; dispbottom "[积分提示] - 增长500点在线积分,您目前有:["+paodian+"]点在线积分"; },{},{}
-39134,miniys,迷你天使波利药水,11,,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 10,10;},{},{}
+39134,miniys,迷你天使波利药水,11,,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 15,15;},{},{}
 39135,item_6,天使波利药水,11,,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 25,25;},{},{}
 39136,cjfm,初级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
 39137,zjfm,中级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
@@ -210,6 +213,8 @@
 39148,wtszy,伪天使之翼,3,10,,,,,,,,,,,,,,,{},{},{}
 39149,zsmhzy,紫色梦幻之翼,3,10,,,,,,,,,,,,,,,{},{},{}
 39150,gjdcjfsp,高级道场积分碎片,3,100,,10,,,,,,,,,,,,,{},{},{}
+39151,vip_apply,VIP申请书,11,1000,,10,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "vip_apply"; },{},{}
+
 
 
 

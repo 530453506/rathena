@@ -1,0 +1,76 @@
+//
+// 3BOSS by 2007-01-16
+//
+//- 
+prontera.gat,176,113,5	script	中级BOSS区传送	796,{
+    if (Zeny<500000) goto Not;
+	mes"[中级BOSS区传送]";
+	mes"中级BOSS区，入场费50W。";
+	next;
+	menu "我要传送，费用50W",-,"不去了",L_exit;
+	mes"[中级BOSS区传送]";
+	mes"我现在就送你过去";
+	next;
+    set zeny,zeny-500000;
+	warp "boss_zj.gat",159,368;
+	close;
+L_exit:	
+	close;
+Not:
+    mes "[中级BOSS区传送]";
+    mes "你的钱不够";
+    mes "请带好50W再来！";
+    close;
+
+OnInit:
+	waitingroom "[☆中级BOSS区☆]",0;
+	end;
+}
+
+// 怪物设定
+//[B]
+boss_zj.gat,0,0,0,0	monster	俄赛里斯★	3590,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	巴风特★	3591,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	死灵★	3592,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	蜂后★	3593,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	黄金虫★	3594,1,0,0,0
+boss_zj.gat,0,0,0,0	monster	海盗之王★	3595,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	虎王★	3596,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	幽灵波利★	3597,1,0,0,0
+boss_zj.gat,0,0,0,0	monster	蚁后★	3598,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	月夜猫★	3599,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	法老王★	3600,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	皮里恩★	3601,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	兽人酋长★	3602,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	冰暴骑士★	3603,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	卡仑★	3604,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	黑暗之王★	3605,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	乌龟将军★	3606,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	死灵骑士★	3607,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	天使波利★	3608,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	德古拉男爵★	3609,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	墨蛇君★	3610,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	怨灵武士★	3611,1,0,0,0
+boss_zj.gat,0,0,0,0	monster	古埃及王★	3612,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	塔奥群卡★	3613,1,0,0,0
+boss_zj.gat,0,0,0,0	monster	RSX-0806★	3614,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	嗒妮小姐★	3615,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	迪塔勒泰晤勒斯★	3616,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	堕落的大神官希巴姆★	3617,1,0,0,0
+boss_zj.gat,0,0,0,0	monster	巴基力 兰特克力斯★	3618,1,0,0,0
+boss_zj.gat,0,0,0,0	monster	恶魔波利★	3619,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	兽人英雄★	3620,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	贝思波★	3621,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	圣天使波利★	3622,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	白素贞★	3623,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	阿特罗斯★	3624,2,0,0,0
+boss_zj.gat,0,0,0,0	monster	闇●剑士 赛尼亚★	3625,2,0,0,0
+
+// 地图属性设置
+boss_zj.gat	mapflag	nomemo	dummy
+boss_zj.gat	mapflag	nopenalty	dummy
+boss_zj.gat	mapflag	nobranch	dummy
+boss_zj.gat	mapflag	nowarp
+boss_zj.gat	mapflag	nowarpto
+boss_zj.gat	mapflag	nogo
+boss_zj.gat	mapflag	nosave

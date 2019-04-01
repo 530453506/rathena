@@ -1,6 +1,3 @@
-// Card removal NPC by TyrNemesis^
-// DANGEROUS! TODO: Think.. think 8) [Lupus]
-// Transelated By Memory.
 
 prontera,146,101,5	script	拆卡老婆婆	78,{	
 	mes "拆卡分为普通拆卡和时装拆卡";
