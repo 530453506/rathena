@@ -1,0 +1,923 @@
+function	script	中级头饰	{
+	mes"[中级时装召唤师]";
+	mes"请选择需要召唤的时装";
+	switch(select("头上时装","头中时装","头下时装"))
+{
+	case 1:
+	switch(select("黄金战盔","凤凰之冠","黑龙头盔","洁白发带","青翠发带","黑蝶发带","青花发带","嫣红发带"))
+{
+	case 1:
+	delitem 29996,1;
+	getitem 26145,1;
+	close;
+	case 2:
+	delitem 29996,1;
+	getitem 26148,1;
+	close;
+	case 3:
+	delitem 29996,1;
+	getitem 26151,1;
+	close;
+	case 4:
+	delitem 29996,1;
+	getitem 26161,1;
+	close;
+	case 5:
+	delitem 29996,1;
+	getitem 26162,1;
+	close;
+	case 6:
+	delitem 29996,1;
+	getitem 26163,1;
+	close;
+	case 7:
+	delitem 29996,1;
+	getitem 26164,1;
+	close;
+	case 8:
+	delitem 29996,1;
+	getitem 26165,1;
+	close;
+}
+	case 2:
+	switch(select("黄金战翼","凤凰之翼","黑龙之翼","洁白之翼","青翠之翼","黑蝶之翼","青花之翼","嫣红之翼"))
+{
+	case 1:
+	delitem 29996,1;
+	getitem 26146,1;
+	close;
+	case 2:
+	delitem 29996,1;
+	getitem 26149,1;
+	close;
+	case 3:
+	delitem 29996,1;
+	getitem 26152,1;
+	close;
+	case 4:
+	delitem 29996,1;
+	getitem 26156,1;
+	close;	
+	case 5:
+	delitem 29996,1;
+	getitem 26157,1;
+	close;
+	case 6:
+	delitem 29996,1;
+	getitem 26158,1;
+	close;
+	case 7:
+	delitem 29996,1;
+	getitem 26159,1;
+	close;
+	case 8:
+	delitem 29996,1;
+	getitem 26160,1;
+	close;
+}
+	case 3:
+	switch(select("黄金战魂","凤凰之炎","黑龙神祭","疯兔气球","水母气球","天使波利气球","玩具熊气球","小恶魔气球","小野猪气球","幽灵波利气球","恶魔波利气球"))
+{
+	case 1:
+	delitem 29996,1;
+	getitem 26147,1;
+	close;
+	case 2:
+	delitem 29996,1;
+	getitem 26150,1;
+	close;
+	case 3:
+	delitem 29996,1;
+	getitem 26153,1;
+	close;
+	case 4:
+	delitem 29996,1;
+	getitem 26174,1;
+	close;
+	case 5:
+	delitem 29996,1;
+	getitem 26175,1;
+	close;
+	case 6:
+	delitem 29996,1;
+	getitem 26176,1;
+	close;
+	case 7:
+	delitem 29996,1;
+	getitem 26177,1;
+	close;
+	case 8:
+	delitem 29996,1;
+	getitem 26178,1;
+	close;
+	case 9:
+	delitem 29996,1;
+	getitem 26179,1;
+	close;
+	case 10:
+	delitem 29996,1;
+	getitem 26180,1;
+	close;
+	case 11:
+	delitem 29996,1;
+	getitem 26181,1;
+	close;
+}
+}
+}
+
+function	script	高级头饰	{
+	mes"[高级时装召唤师]";
+	mes"请选择需要召唤的时装";
+	switch(select("头上时装","头中时装","头下时装"))
+{
+	case 1:
+	switch(select("RO花发圈","盲目的斗篷","狼王头盔","趴趴嗒尼小姐","魔法兔耳帽子","趴趴狄波萝太","深渊龙盔","超级赛亚人"))
+{
+	case 1:
+	delitem 29998,1;
+	getitem 26166,1;
+	close;
+	case 2:
+	delitem 29998,1;
+	getitem 26167,1;
+	close;
+	case 3:
+	delitem 29998,1;
+	getitem 26168,1;
+	close;
+	case 4:
+	delitem 29998,1;
+	getitem 26169,1;
+	close;
+	case 5:
+	delitem 29998,1;
+	getitem 26170,1;
+	close;
+	case 6:
+	delitem 29998,1;
+	getitem 26171,1;
+	close;
+	case 7:
+	delitem 29998,1;
+	getitem 26154,1;
+	close;
+	case 8:
+	delitem 29998,1;
+	getitem 26173,1;
+	close;
+}
+	case 2:
+	switch(select("暗黑之翼","光辉之翼","妖狐之尾","风云剑","东宫苍龙","南宫朱雀","西宫白虎","北宫玄武","圣兽麒麟","深渊龙影","帝释天之翼","阿修罗之翼","夜叉王之翼","吉祥天之翼","伽楼罗之翼","乾达婆之翼"))
+{
+	case 1:
+	delitem 29998,1;
+	getitem 26124,1;
+	close;
+	case 2:
+	delitem 29998,1;
+	getitem 26125,1;
+	close;
+	case 3:
+	delitem 29998,1;
+	getitem 26126,1;
+	close;
+	case 4:
+	delitem 29998,1;
+	getitem 26127,1;
+	close;	
+	case 5:
+	delitem 29998,1;
+	getitem 26128,1;
+	close;
+	case 6:
+	delitem 29998,1;
+	getitem 26129,1;
+	close;
+	case 7:
+	delitem 29998,1;
+	getitem 26130,1;
+	close;
+	case 8:
+	delitem 29998,1;
+	getitem 26131,1;
+	close;
+	case 9:
+	delitem 29998,1;
+	getitem 26132,1;
+	close;
+	case 10:
+	delitem 29998,1;
+	getitem 26155,1;
+	close;
+	case 11:
+	delitem 29998,1;
+	getitem 26182,1;
+	close;
+	case 12:
+	delitem 29998,1;
+	getitem 26183,1;
+	close;
+	case 13:
+	delitem 29998,1;
+	getitem 26184,1;
+	close;
+	case 14:
+	delitem 29998,1;
+	getitem 26185,1;
+	close;
+	case 15:
+	delitem 29998,1;
+	getitem 26186,1;
+	close;
+	case 16:
+	delitem 29998,1;
+	getitem 26187,1;
+	close;
+}
+	case 3:
+	switch(select("炼狱妖火<红>","炼狱妖火<黄>","炼狱妖火<蓝>","炼狱妖火<紫>","黑海王披风","黄海王披风","粉海王披风","紫海王披风","白海王披风","橘海王披风","绿海王披风","蓝海王披风"))
+{
+	case 1:
+	delitem 29998,1;
+	getitem 26133,1;
+	close;
+	case 2:
+	delitem 29998,1;
+	getitem 26134,1;
+	close;
+	case 3:
+	delitem 29998,1;
+	getitem 26135,1;
+	close;
+	case 4:
+	delitem 29998,1;
+	getitem 26136,1;
+	close;
+	case 5:
+	delitem 29998,1;
+	getitem 26137,1;
+	close;
+	case 6:
+	delitem 29998,1;
+	getitem 26138,1;
+	close;
+	case 7:
+	delitem 29998,1;
+	getitem 26139,1;
+	close;
+	case 8:
+	delitem 29998,1;
+	getitem 26140,1;
+	close;
+	case 9:
+	delitem 29998,1;
+	getitem 26141,1;
+	close;
+	case 10:
+	delitem 29998,1;
+	getitem 26142,1;
+	close;
+	case 11:
+	delitem 29998,1;
+	getitem 26143,1;
+	close;
+	case 12:
+	delitem 29998,1;
+	getitem 26144,1;
+	close;
+}
+}
+}
+
+function	script	帝释天之翼	{
+	mes"[帝释天之翼]";
+	mes"出现吧";
+	mes"强大的帝释天之翼";
+	next;
+	delitem 26182,1;
+	getitem2 11209,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	阿修罗之翼	{
+	mes"[阿修罗之翼]";
+	mes"出现吧";
+	mes"强大的阿修罗之翼";
+	next;
+	delitem 26183,1;
+	getitem2 11210,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	夜叉王之翼	{
+	mes"[夜叉王之翼]";
+	mes"出现吧";
+	mes"强大的夜叉王之翼";
+	next;
+	delitem 26184,1;
+	getitem2 11211,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	吉祥天之翼	{
+	mes"[吉祥天之翼]";
+	mes"出现吧";
+	mes"强大的吉祥天之翼";
+	next;
+	delitem 26185,1;
+	getitem2 11212,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	伽楼罗之翼	{
+	mes"[伽楼罗之翼]";
+	mes"出现吧";
+	mes"强大的伽楼罗之翼";
+	next;
+	delitem 26186,1;
+	getitem2 11213,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	乾达婆之翼	{
+	mes"[乾达婆之翼]";
+	mes"出现吧";
+	mes"强大的乾达婆之翼";
+	next;
+	delitem 26187,1;
+	getitem2 11214,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	刑天战刀	{
+	mes"[刑天战刀]";
+	mes"出现吧";
+	mes"强大的刑天战刀";
+	next;
+	delitem 26172,1;
+	getitem2 11148,1,1,0,0,20001,0,0,4758;
+	close;
+}
+
+
+function	script	RO花发圈	{
+	mes"[RO花发圈]";
+	mes"出现吧";
+	mes"强大的RO花发圈";
+	next;
+	delitem 26166,1;
+	getitem2 5303,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	盲目的斗篷	{
+	mes"[盲目的斗篷]";
+	mes"出现吧";
+	mes"强大的盲目的斗篷";
+	next;
+	delitem 26167,1;
+	getitem2 5304,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	狼王头盔	{
+	mes"[狼王头盔]";
+	mes"出现吧";
+	mes"强大的狼王头盔";
+	next;
+	delitem 26168,1;
+	getitem2 5498,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	趴趴嗒尼小姐	{
+	mes"[趴趴嗒尼小姐]";
+	mes"出现吧";
+	mes"强大的趴趴嗒尼小姐";
+	next;
+	delitem 26169,1;
+	getitem2 5526,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	魔法兔耳帽子	{
+	mes"[魔法兔耳帽子]";
+	mes"出现吧";
+	mes"强大的魔法兔耳帽子";
+	next;
+	delitem 26170,1;
+	getitem2 5378,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	趴趴狄波萝太	{
+	mes"[趴趴狄波萝太]";
+	mes"出现吧";
+	mes"强大的趴趴狄波萝太";
+	next;
+	delitem 26171,1;
+	getitem2 5340,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	深渊龙盔	{
+	mes"[深渊龙盔]";
+	mes"出现吧";
+	mes"强大的深渊龙盔";
+	next;
+	delitem 26154,1;
+	getitem2 11162,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	深渊龙影	{
+	mes"[深渊龙影]";
+	mes"出现吧";
+	mes"强大的深渊龙影";
+	next;
+	delitem 26155,1;
+	getitem2 11163,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	暗黑之翼	{
+	mes"[暗黑之翼]";
+	mes"出现吧";
+	mes"强大的暗黑之翼";
+	next;
+	delitem 26124,1;
+	getitem2 11113,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	光辉之翼	{
+	mes"[光辉之翼]";
+	mes"出现吧";
+	mes"强大的光辉之翼";
+	next;
+	delitem 26125,1;
+	getitem2 11115,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+
+function	script	妖狐之尾	{
+	mes"[妖狐之尾]";
+	mes"出现吧";
+	mes"强大的妖狐之尾";
+	next;
+	delitem 26126,1;
+	getitem2 11088,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	风云剑	{
+	mes"[风云剑]";
+	mes"出现吧";
+	mes"强大的风云剑";
+	next;
+	delitem 26127,1;
+	getitem2 11089,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	东宫苍龙	{
+	mes"[东宫苍龙]";
+	mes"出现吧";
+	mes"强大的东宫苍龙";
+	next;
+	delitem 26128,1;
+	getitem2 11136,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	南宫朱雀	{
+	mes"[南宫朱雀]";
+	mes"出现吧";
+	mes"强大的南宫朱雀";
+	next;
+	delitem 26129,1;
+	getitem2 11137,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	西宫白虎	{
+	mes"[西宫白虎]";
+	mes"出现吧";
+	mes"强大的西宫白虎";
+	next;
+	delitem 26130,1;
+	getitem2 11138,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	北宫玄武	{
+	mes"[北宫玄武]";
+	mes"出现吧";
+	mes"强大的北宫玄武";
+	next;
+	delitem 26131,1;
+	getitem2 11139,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	圣兽麒麟	{
+	mes"[圣兽麒麟]";
+	mes"出现吧";
+	mes"强大的圣兽麒麟";
+	next;
+	delitem 26132,1;
+	getitem2 11140,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	炼狱妖火<红>	{
+	mes"[炼狱妖火<红>]";
+	mes"出现吧";
+	mes"强大的炼狱妖火<红>";
+	next;
+	delitem 26133,1;
+	getitem2 11099,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	炼狱妖火<黄>	{
+	mes"[炼狱妖火<黄>]";
+	mes"出现吧";
+	mes"强大的炼狱妖火<黄>";
+	next;
+	delitem 26134,1;
+	getitem2 11100,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	炼狱妖火<蓝>	{
+	mes"[炼狱妖火<蓝>]";
+	mes"出现吧";
+	mes"强大的炼狱妖火<蓝>";
+	next;
+	delitem 26135,1;
+	getitem2 11101,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	炼狱妖火<紫>	{
+	mes"[炼狱妖火<紫>]";
+	mes"出现吧";
+	mes"强大的炼狱妖火<紫>";
+	next;
+	delitem 26136,1;
+	getitem2 11102,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	黑海王披风	{
+	mes"[黑海王披风]";
+	mes"出现吧";
+	mes"强大的黑海王披风";
+	next;
+	delitem 26137,1;
+	getitem2 11080,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	黄海王披风	{
+	mes"[黄海王披风]";
+	mes"出现吧";
+	mes"强大的黄海王披风";
+	next;
+	delitem 26138,1;
+	getitem2 11081,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	粉海王披风	{
+	mes"[粉海王披风]";
+	mes"出现吧";
+	mes"强大的粉海王披风";
+	next;
+	delitem 26139,1;
+	getitem2 11082,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	紫海王披风	{
+	mes"[紫海王披风]";
+	mes"出现吧";
+	mes"强大的紫海王披风";
+	next;
+	delitem 26140,1;
+	getitem2 11083,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	白海王披风	{
+	mes"[白海王披风]";
+	mes"出现吧";
+	mes"强大的白海王披风";
+	next;
+	delitem 26141,1;
+	getitem2 11084,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	橘海王披风	{
+	mes"[橘海王披风]";
+	mes"出现吧";
+	mes"强大的橘海王披风";
+	next;
+	delitem 26142,1;
+	getitem2 11085,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	绿海王披风	{
+	mes"[绿海王披风]";
+	mes"出现吧";
+	mes"强大的绿海王披风";
+	next;
+	delitem 26143,1;
+	getitem2 11086,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	蓝海王披风	{
+	mes"[蓝海王披风]";
+	mes"出现吧";
+	mes"强大的蓝海王披风";
+	next;
+	delitem 26144,1;
+	getitem2 11087,1,1,0,0,20000,0,0,4758;
+	close;
+}
+
+function	script	黄金战盔	{
+	mes"[黄金战盔]";
+	mes"出现吧";
+	mes"强大的黄金战盔";
+	next;
+	delitem 26145,1;
+	getitem2 11153,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	黄金战翼	{
+	mes"[黄金战翼]";
+	mes"出现吧";
+	mes"强大的黄金战翼";
+	next;
+	delitem 26146,1;
+	getitem2 11154,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	黄金战魂	{
+	mes"[黄金战魂]";
+	mes"出现吧";
+	mes"强大的黄金战魂";
+	next;
+	delitem 26147,1;
+	getitem2 11155,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	凤凰之冠	{
+	mes"[凤凰之冠]";
+	mes"出现吧";
+	mes"强大的凤凰之冠";
+	next;
+	delitem 26148,1;
+	getitem2 11156,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	凤凰之翼	{
+	mes"[凤凰之翼]";
+	mes"出现吧";
+	mes"强大的凤凰之翼";
+	next;
+	delitem 26149,1;
+	getitem2 11157,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	凤凰之炎	{
+	mes"[凤凰之炎]";
+	mes"出现吧";
+	mes"强大的凤凰之炎";
+	next;
+	delitem 26150,1;
+	getitem2 11158,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	黑龙头盔	{
+	mes"[黑龙头盔]";
+	mes"出现吧";
+	mes"强大的黑龙头盔";
+	next;
+	delitem 26151,1;
+	getitem2 11159,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	黑龙之翼	{
+	mes"[黑龙之翼]";
+	mes"出现吧";
+	mes"强大的黑龙之翼";
+	next;
+	delitem 26152,1;
+	getitem2 11160,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	黑龙神祭	{
+	mes"[黑龙神祭]";
+	mes"出现吧";
+	mes"强大的黑龙神祭";
+	next;
+	delitem 26153,1;
+	getitem2 11161,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	洁白之翼	{
+	mes"[洁白之翼]";
+	mes"出现吧";
+	mes"强大的洁白之翼";
+	next;
+	delitem 26156,1;
+	getitem2 11183,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	青翠之翼	{
+	mes"[青翠之翼]";
+	mes"出现吧";
+	mes"强大的青翠之翼";
+	next;
+	delitem 26157,1;
+	getitem2 11184,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	黑蝶之翼	{
+	mes"[黑蝶之翼]";
+	mes"出现吧";
+	mes"强大的黑蝶之翼";
+	next;
+	delitem 26158,1;
+	getitem2 11185,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	青花之翼	{
+	mes"[青花之翼]";
+	mes"出现吧";
+	mes"强大的青花之翼";
+	next;
+	delitem 26159,1;
+	getitem2 11186,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	嫣红之翼	{
+	mes"[嫣红之翼]";
+	mes"出现吧";
+	mes"强大的嫣红之翼";
+	next;
+	delitem 26160,1;
+	getitem2 11187,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	洁白发带	{
+	mes"[洁白发带]";
+	mes"出现吧";
+	mes"强大的洁白发带";
+	next;
+	delitem 26161,1;
+	getitem2 11188,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	青翠发带	{
+	mes"[青翠发带]";
+	mes"出现吧";
+	mes"强大的青翠发带";
+	next;
+	delitem 26162,1;
+	getitem2 11189,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	黑蝶发带	{
+	mes"[黑蝶发带]";
+	mes"出现吧";
+	mes"强大的黑蝶发带";
+	next;
+	delitem 26163,1;
+	getitem2 11190,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	青花发带	{
+	mes"[青花发带]";
+	mes"出现吧";
+	mes"强大的青花发带";
+	next;
+	delitem 26164,1;
+	getitem2 11191,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	嫣红发带	{
+	mes"[嫣红发带]";
+	mes"出现吧";
+	mes"强大的嫣红发带";
+	next;
+	delitem 26165,1;
+	getitem2 11192,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	疯兔气球	{
+	mes"[疯兔气球]";
+	mes"出现吧";
+	mes"强大的疯兔气球";
+	next;
+	delitem 26174,1;
+	getitem2 11091,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	水母气球	{
+	mes"[水母气球]";
+	mes"出现吧";
+	mes"强大的水母气球";
+	next;
+	delitem 26175,1;
+	getitem2 11092,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	天使波利气球	{
+	mes"[天使波利气球]";
+	mes"出现吧";
+	mes"强大的天使波利气球";
+	next;
+	delitem 26176,1;
+	getitem2 11093,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	玩具熊气球	{
+	mes"[玩具熊气球]";
+	mes"出现吧";
+	mes"强大的玩具熊气球";
+	next;
+	delitem 26177,1;
+	getitem2 11094,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	小恶魔气球	{
+	mes"[小恶魔气球]";
+	mes"出现吧";
+	mes"强大的小恶魔气球";
+	next;
+	delitem 26178,1;
+	getitem2 11095,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	小野猪气球	{
+	mes"[小野猪气球]";
+	mes"出现吧";
+	mes"强大的小野猪气球";
+	next;
+	delitem 26179,1;
+	getitem2 11096,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	幽灵波利气球	{
+	mes"[幽灵波利气球]";
+	mes"出现吧";
+	mes"强大的幽灵波利气球";
+	next;
+	delitem 26180,1;
+	getitem2 11097,1,1,0,0,20000,0,0,4748;
+	close;
+}
+
+function	script	恶魔波利气球	{
+	mes"[恶魔波利气球]";
+	mes"出现吧";
+	mes"强大的恶魔波利气球";
+	next;
+	delitem 26181,1;
+	getitem2 11098,1,1,0,0,20000,0,0,4748;
+	close;
+}

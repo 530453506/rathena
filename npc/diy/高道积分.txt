@@ -1,0 +1,22 @@
+prontera,194,125,3,	script	高道积分兑换	76,{
+    mes "[高道积分兑换]";
+    mes "50高道积分碎片兑换1点高级道场积分";
+    next;
+    menu"兑换高级道场积分",G1;
+nn:
+	mes"[高道积分兑换]";
+	mes"你的高道积分碎片不足";
+	close;
+
+G1:
+	if(countitem(18113)<50) goto nn;
+	delitem 18113,50;
+	set gaoji,gaoji+1;
+	dispbottom "增加1点高级道场积分，你现在积分为"+gaoji+"分!";	
+   	close;
+
+OnInit:
+     waitingroom "[☆高道积分兑换☆]",0;
+     end;
+}
+

@@ -1,0 +1,147 @@
+function	script	gh123	{
+	if(#rwjf<10){
+	close;
+}
+	if(#rwjf>=10 && #rwjf<20){
+	atcommand "@aura 620";
+	sc_start4 SC_INCAGI,60000000,2,0,0,1;
+	sc_start4 SC_INCSTR,60000000,2,0,0,1;
+	sc_start4 SC_INCVIT,60000000,2,0,0,1;
+	sc_start4 SC_INCINT,60000000,2,0,0,1;
+	sc_start4 SC_INCDEX,60000000,2,0,0,1;
+	sc_start4 SC_INCLUK,60000000,2,0,0,1;
+	close;
+}
+	if(#rwjf>=20 && #rwjf<30){
+	atcommand "@aura 239";
+	sc_start4 SC_INCAGI,60000000,4,0,0,1;
+	sc_start4 SC_INCSTR,60000000,4,0,0,1;
+	sc_start4 SC_INCVIT,60000000,4,0,0,1;
+	sc_start4 SC_INCINT,60000000,4,0,0,1;
+	sc_start4 SC_INCDEX,60000000,4,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=30 && #rwjf<50){
+	atcommand "@aura 241";
+	sc_start4 SC_INCAGI,60000000,6,0,0,1;
+	sc_start4 SC_INCSTR,60000000,6,0,0,1;
+	sc_start4 SC_INCVIT,60000000,6,0,0,1;
+	sc_start4 SC_INCINT,60000000,6,0,0,1;
+	sc_start4 SC_INCDEX,60000000,6,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=50 && #rwjf<70){
+	atcommand "@aura 693";
+	sc_start4 SC_INCAGI,60000000,8,0,0,1;
+	sc_start4 SC_INCSTR,60000000,8,0,0,1;
+	sc_start4 SC_INCVIT,60000000,8,0,0,1;
+	sc_start4 SC_INCINT,60000000,8,0,0,1;
+	sc_start4 SC_INCDEX,60000000,8,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=70 && #rwjf<100){
+	atcommand "@aura 694";
+	sc_start4 SC_INCAGI,60000000,10,0,0,1;
+	sc_start4 SC_INCSTR,60000000,10,0,0,1;
+	sc_start4 SC_INCVIT,60000000,10,0,0,1;
+	sc_start4 SC_INCINT,60000000,10,0,0,1;
+	sc_start4 SC_INCDEX,60000000,10,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=100 && #rwjf<130){
+	atcommand "@aura 701";
+	sc_start4 SC_INCAGI,60000000,12,0,0,1;
+	sc_start4 SC_INCSTR,60000000,12,0,0,1;
+	sc_start4 SC_INCVIT,60000000,12,0,0,1;
+	sc_start4 SC_INCINT,60000000,12,0,0,1;
+	sc_start4 SC_INCDEX,60000000,12,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=130 && #rwjf<170){
+	atcommand "@aura 689";
+	sc_start4 SC_INCAGI,60000000,14,0,0,1;
+	sc_start4 SC_INCSTR,60000000,14,0,0,1;
+	sc_start4 SC_INCVIT,60000000,14,0,0,1;
+	sc_start4 SC_INCINT,60000000,14,0,0,1;
+	sc_start4 SC_INCDEX,60000000,14,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=170 && #rwjf<300){
+	atcommand "@aura 691";
+	sc_start4 SC_INCAGI,60000000,16,0,0,1;
+	sc_start4 SC_INCSTR,60000000,16,0,0,1;
+	sc_start4 SC_INCVIT,60000000,16,0,0,1;
+	sc_start4 SC_INCINT,60000000,16,0,0,1;
+	sc_start4 SC_INCDEX,60000000,16,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=300 && #rwjf<400){
+	atcommand "@aura 695";
+	sc_start4 SC_INCAGI,60000000,18,0,0,1;
+	sc_start4 SC_INCSTR,60000000,18,0,0,1;
+	sc_start4 SC_INCVIT,60000000,18,0,0,1;
+	sc_start4 SC_INCINT,60000000,18,0,0,1;
+	sc_start4 SC_INCDEX,60000000,18,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=400 && #rwjf<700){
+	atcommand "@aura 688";
+	sc_start4 SC_INCAGI,60000000,20,0,0,1;
+	sc_start4 SC_INCSTR,60000000,20,0,0,1;
+	sc_start4 SC_INCVIT,60000000,20,0,0,1;
+	sc_start4 SC_INCINT,60000000,20,0,0,1;
+	sc_start4 SC_INCDEX,60000000,20,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=700 && #rwjf<1000){
+	atcommand "@aura 687";
+	sc_start4 SC_INCAGI,60000000,20,0,0,1;
+	sc_start4 SC_INCSTR,60000000,20,0,0,1;
+	sc_start4 SC_INCVIT,60000000,20,0,0,1;
+	sc_start4 SC_INCINT,60000000,20,0,0,1;
+	sc_start4 SC_INCDEX,60000000,20,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	sc_start4 SC_INCATKRATE,60000000,3,0,0,1;
+	sc_start4 SC_INCMATKRATE,60000000,3,0,0,1;
+	close;
+}
+	if(#rwjf>=1000 && #rwjf<1500){
+	atcommand "@aura 650";
+	sc_start4 SC_INCAGI,60000000,20,0,0,1;
+	sc_start4 SC_INCSTR,60000000,20,0,0,1;
+	sc_start4 SC_INCVIT,60000000,20,0,0,1;
+	sc_start4 SC_INCINT,60000000,20,0,0,1;
+	sc_start4 SC_INCDEX,60000000,20,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	sc_start4 SC_INCATKRATE,60000000,6,0,0,1;
+	sc_start4 SC_INCMATKRATE,60000000,6,0,0,1;
+	close;
+}
+	if(#rwjf>=1500){
+	atcommand "@aura 651";
+	sc_start4 SC_INCAGI,60000000,20,0,0,1;
+	sc_start4 SC_INCSTR,60000000,20,0,0,1;
+	sc_start4 SC_INCVIT,60000000,20,0,0,1;
+	sc_start4 SC_INCINT,60000000,20,0,0,1;
+	sc_start4 SC_INCDEX,60000000,20,0,0,1;
+	sc_start4 SC_INCLUK,60000000,3,0,0,1;
+	sc_start4 SC_INCATKRATE,60000000,10,0,0,1;
+	sc_start4 SC_INCMATKRATE,60000000,10,0,0,1;
+	close;
+}
+
+}
+
+function	script	gh321	{
+	atcommand "@aura 0";
+	close;
+}

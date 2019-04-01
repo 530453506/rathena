@@ -1,0 +1,221 @@
+/***************************************************************\
+函数名称: cheack_code
+函数作用: 检查验证码输入是否正确
+函数格式: callfunc("cheack_code")
+函数备注: 返回=1 输入正确，返回=0 输入错误
+\***************************************************************/
+
+vip3_fild06,159,368,4	script	大地雷	1090,5,5,{
+OnTouch:
+	if(@yyzz==1){end;}
+	atcommand "@option 2 0 "+(64|(checkoption(8)*8)|(checkoption(16)*16)|(checkoption(32)*32)|(checkoption(128)*128)|(checkoption(256)*256)|(checkoption(512)*512)|(checkoption(1024)*1024));
+	query_sql "select count(*) from `pic`",.@count;
+	query_sql "select * from `pic` limit "+rand(.@count)+", 1",.@id,.@red$,.@blue$,.@yellow$,.@green$,.@name$;
+	setarray .@color$[0],"^ff0000■^000000","^0000ff■^000000","^b8860b■^000000","^008000■^000000";
+	setarray .@result$[0],.@red$,.@blue$,.@yellow$,.@green$;
+	set .@id,rand(4);
+	mes "请输入 [ "+.@color$[.@id]+" ] 验证码 ^ff0000(均为大写字母)^000000";
+	mes "^006600验证码位于游戏窗口的右下方^000000";
+	cutin .@name$,2;
+	next;
+	input .@yz$;
+	cutin .@name$,255;
+	if (.@yz$ == .@result$[.@id]){
+	mes "验证通过";
+	atcommand "@option 0 0 "+(64|(checkoption(8)*8)|(checkoption(16)*16)|(checkoption(32)*32)|(checkoption(128)*128)|(checkoption(256)*256)|(checkoption(512)*512)|(checkoption(1024)*1024));
+	atcommand "@hide";
+	set @yyzz,1;
+	close;
+}
+	mes "验证失败";
+	sleep2(1000);
+	atcommand "@kick "+strcharinfo(0);
+	end;
+OnInit:
+	waitingroom "[☆王炸☆]",0;
+end;
+}
+
+vip3_fild06,215,48,4	script	小地雷	1090,3,3,{
+OnTouch:
+	if(@guaji==1){end;}
+	atcommand "@option 2 0 "+(64|(checkoption(8)*8)|(checkoption(16)*16)|(checkoption(32)*32)|(checkoption(128)*128)|(checkoption(256)*256)|(checkoption(512)*512)|(checkoption(1024)*1024));
+	set @Login,rand(1000,9999);
+        mes "                                                ";
+        mes "                                                ";
+        mes "　　 ^FF0000验证码请输入"+@Login+"^000000       ";
+        mes "                                                ";
+        mes "                                                ";
+
+        next;
+        input @Login2;
+        if(@Login2!=@Login){	
+	mes "验证失败";
+	sleep2(1000);
+	atcommand "@kick "+strcharinfo(0);
+	end;
+}
+
+        if(@Login2==@Login){	
+	mes "验证通过";
+	atcommand "@option 0 0 "+(64|(checkoption(8)*8)|(checkoption(16)*16)|(checkoption(32)*32)|(checkoption(128)*128)|(checkoption(256)*256)|(checkoption(512)*512)|(checkoption(1024)*1024));
+	atcommand "@hide";
+		sc_start SC_STRFOOD,60000,10; //STR+10
+		sc_start SC_INTFOOD,60000,10; //INT+10
+		sc_start SC_VITFOOD,60000,10; //VIT+10
+		sc_start SC_AGIFOOD,60000,10; //AGI+10
+		sc_start SC_DEXFOOD,60000,10; //DEX+10
+		sc_start SC_LUKFOOD,60000,10; //LUK+10
+		sc_start SC_WEAPONPERFECTION,60000,10; //无视体型攻击 44
+	close;
+}
+OnInit:
+	waitingroom "[☆王炸☆]",0;
+end;
+}
+
+vip5_fild06,215,48,4	script	小小地雷	1090,5,5,{
+OnTouch:
+	if(@guaji==10){end;}
+	atcommand "@option 2 0 "+(64|(checkoption(8)*8)|(checkoption(16)*16)|(checkoption(32)*32)|(checkoption(128)*128)|(checkoption(256)*256)|(checkoption(512)*512)|(checkoption(1024)*1024));
+	set @Login,rand(1000,9999);
+        mes "                                                ";
+        mes "                                                ";
+        mes "　　 ^FF0000验证码请输入"+@Login+"^000000       ";
+        mes "                                                ";
+        mes "                                                ";
+
+        next;
+        input @Login2;
+        if(@Login2!=@Login){	
+	mes "验证失败";
+	sleep2(1000);
+	atcommand "@kick "+strcharinfo(0);
+	end;
+}
+
+        if(@Login2==@Login){	
+	mes "验证通过";
+	atcommand "@option 0 0 "+(64|(checkoption(8)*8)|(checkoption(16)*16)|(checkoption(32)*32)|(checkoption(128)*128)|(checkoption(256)*256)|(checkoption(512)*512)|(checkoption(1024)*1024));
+	atcommand "@hide";
+		sc_start SC_STRFOOD,60000,10; //STR+10
+		sc_start SC_INTFOOD,60000,10; //INT+10
+		sc_start SC_VITFOOD,60000,10; //VIT+10
+		sc_start SC_AGIFOOD,60000,10; //AGI+10
+		sc_start SC_DEXFOOD,60000,10; //DEX+10
+		sc_start SC_LUKFOOD,60000,10; //LUK+10
+		sc_start SC_WEAPONPERFECTION,60000,10; //无视体型攻击 44
+	close;
+}
+OnInit:
+	waitingroom "[☆王炸☆]",0;
+end;
+}
+
+
+vip3_fild06,184,263,4	duplicate(小地雷)	小地雷#1	1090,3,3
+
+vip3_fild06,345,163,4	duplicate(小地雷)	小地雷#2	1090,3,3
+
+vip3_fild06,85,39,4	duplicate(小地雷)	小地雷#3	1090,3,3
+
+vip3_fild06,78,247,4	duplicate(小地雷)	小地雷#4	1090,3,3
+
+vip3_fild06,78,137,4	duplicate(小地雷)	小地雷#5	1090,3,3
+
+vip3_fild06,308,53,4	duplicate(小地雷)	小地雷#6	1090,3,3
+
+vip3_fild06,349,302,4	duplicate(小地雷)	小地雷#7	1090,3,3
+
+vip1_fild06,159,368,4	duplicate(大地雷)	大地雷#1	1090,5,5
+
+vip2_fild06,159,368,4	duplicate(大地雷)	大地雷#2	1090,5,5
+
+vip4_fild06,159,368,4	duplicate(大地雷)	大地雷#3	1090,5,5
+
+vip5_fild06,159,368,4	duplicate(大地雷)	大地雷#4	1090,5,5
+
+vip7_fild06,159,368,4	duplicate(大地雷)	大地雷#5	1090,5,5
+
+vip8_fild06,159,368,4	duplicate(大地雷)	大地雷#6	1090,5,5
+
+vip5_fild06,184,263,4	duplicate(小小地雷)	小小地雷#1	1090,5,5
+
+vip5_fild06,345,163,4	duplicate(小小地雷)	小小地雷#2	1090,5,5
+
+vip5_fild06,85,39,4	duplicate(小小地雷)	小小地雷#3	1090,5,5
+
+vip5_fild06,78,247,4	duplicate(小小地雷)	小小地雷#4	1090,5,5
+
+vip5_fild06,78,137,4	duplicate(小小地雷)	小小地雷#5	1090,5,5
+
+vip5_fild06,308,53,4	duplicate(小小地雷)	小小地雷#6	1090,5,5
+
+vip7_fild06,184,263,4	duplicate(小小地雷)	小小地雷#7	1090,5,5
+
+vip7_fild06,345,163,4	duplicate(小小地雷)	小小地雷#8	1090,5,5
+
+vip7_fild06,85,39,4	duplicate(小小地雷)	小小地雷#9	1090,5,5
+
+vip7_fild06,78,247,4	duplicate(小小地雷)	小小地雷#10	1090,5,5
+
+vip7_fild06,78,137,4	duplicate(小小地雷)	小小地雷#11	1090,5,5
+
+vip7_fild06,308,53,4	duplicate(小小地雷)	小小地雷#12	1090,5,5
+
+vip1_fild06,184,263,4	duplicate(小地雷)	小地雷#8	1090,4,4
+
+vip1_fild06,345,163,4	duplicate(小地雷)	小地雷#9	1090,4,4
+
+vip1_fild06,85,39,4	duplicate(小地雷)	小地雷#10	1090,4,4
+
+vip1_fild06,78,247,4	duplicate(小地雷)	小地雷#11	1090,4,4
+
+vip1_fild06,78,137,4	duplicate(小地雷)	小地雷#12	1090,4,4
+
+vip1_fild06,308,53,4	duplicate(小地雷)	小地雷#13	1090,4,4
+
+vip1_fild06,349,302,4	duplicate(小地雷)	小地雷#14	1090,4,4
+
+vip2_fild06,184,263,4	duplicate(小地雷)	小地雷#15	1090,4,4
+
+vip2_fild06,345,163,4	duplicate(小地雷)	小地雷#16	1090,4,4
+
+vip2_fild06,85,39,4	duplicate(小地雷)	小地雷#17	1090,4,4
+
+vip2_fild06,78,247,4	duplicate(小地雷)	小地雷#18	1090,4,4
+
+vip2_fild06,78,137,4	duplicate(小地雷)	小地雷#19	1090,4,4
+
+vip2_fild06,308,53,4	duplicate(小地雷)	小地雷#20	1090,4,4
+
+vip2_fild06,349,302,4	duplicate(小地雷)	小地雷#21	1090,4,4
+
+vip4_fild06,184,263,4	duplicate(小地雷)	小地雷#22	1090,4,4
+
+vip4_fild06,345,163,4	duplicate(小地雷)	小地雷#23	1090,4,4
+
+vip4_fild06,85,39,4	duplicate(小地雷)	小地雷#24	1090,4,4
+
+vip4_fild06,78,247,4	duplicate(小地雷)	小地雷#25	1090,4,4
+
+vip4_fild06,78,137,4	duplicate(小地雷)	小地雷#26	1090,4,4
+
+vip4_fild06,308,53,4	duplicate(小地雷)	小地雷#27	1090,4,4
+
+vip4_fild06,349,302,4	duplicate(小地雷)	小地雷#28	1090,4,4
+
+vip8_fild06,184,263,4	duplicate(小地雷)	小地雷#29	1090,4,4
+
+vip8_fild06,345,163,4	duplicate(小地雷)	小地雷#30	1090,4,4
+
+vip8_fild06,85,39,4	duplicate(小地雷)	小地雷#31	1090,4,4
+
+vip8_fild06,78,247,4	duplicate(小地雷)	小地雷#32	1090,4,4
+
+vip8_fild06,78,137,4	duplicate(小地雷)	小地雷#33	1090,4,4
+
+vip8_fild06,308,53,4	duplicate(小地雷)	小地雷#34	1090,4,4
+
+vip8_fild06,349,302,4	duplicate(小地雷)	小地雷#35	1090,4,4
+

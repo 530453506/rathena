@@ -1,0 +1,268 @@
+prontera.gat,146,104,3	script	防爆精练	63,{ callfunc "refitem","防爆精练"; 
+end; }
+
+function	script	refitem	{
+	//NPC显示名字
+	set @npcname$,getarg(0);
+	//安全等级
+	set @safe,4;
+	//---------------防爆精练系统---------------
+	//防爆物品；
+	set @ritem,27034;
+	set @safeitemid,27034;
+	//---------------最大精炼值---------------
+	//---防具---
+	set @aref_max,10;
+	//---1级武器---
+	set @wref_max_lv1,10;
+	//---2级武器---
+	set @wref_max_lv2,10;
+	//---3级武器---
+	set @wref_max_lv3,10;
+	//---4级武器---
+	set @wref_max_lv4,10;
+	//---------------精炼机率---------------
+	//※需跟最大精炼值数目相符
+	//※设置100为安定值
+	//-------一般精练机率-------
+	//---防具---
+	setarray @apref[0],100,100,100,100,45,35,25,15,10,5;
+	//---1级武器---
+	setarray @1wpref[0],100,100,100,100,100,100,100,65,45,10;
+	//---2级武器---
+	setarray @2wpref[0],100,100,100,100,100,100,65,45,25,10;
+	//---3级武器---
+	setarray @3wpref[0],100,100,100,100,100,65,55,25,15,10;
+	//---4级武器---
+	setarray @4wpref[0],100,100,100,100,55,45,35,15,10,5;
+	//-------浓缩精练机率-------
+	//---防具---
+	setarray @apref_p[0],100,100,100,100,90,70,50,30,20,7;
+	//---1级武器---
+	setarray @1wpref_p[0],100,100,100,100,100,100,100,100,90,35;
+	//---2级武器---
+	setarray @2wpref_p[0],100,100,100,100,100,100,100,90,55,25;
+	//---3级武器---
+	setarray @3wpref_p[0],100,100,100,100,100,100,90,50,35,20;
+	//---4级武器---
+	setarray @4wpref_p[0],100,100,100,100,100,90,70,30,20,7;
+	//-------安全精练机率-------
+	//---防具---
+	setarray @apref_p1[0],100,100,100,100,100,100,100,100,100,100;
+	//---1级武器---
+	setarray @1wpref_p1[0],100,100,100,100,100,100,100,100,100,100;
+	//---2级武器---
+	setarray @2wpref_p1[0],100,100,100,100,100,100,100,100,100,100;
+	//---3级武器---
+	setarray @3wpref_p1[0],100,100,100,100,100,100,100,100,100,100;
+	//---4级武器---
+	setarray @4wpref_p1[0],100,100,100,100,100,100,100,100,100,100;	
+	//---------------精炼材料---------------
+	//-------一般精练-------
+	//---费用---
+	setarray @zeny[0],500000,500000,500000,500000,500000;
+	//---物品代码---
+	setarray @itemid[0],985,1010,1011,984,984;
+	//---物品消耗量---
+	setarray @cnum[0],1,1,1,1,1;
+	//-------浓缩精炼-------
+	//---费用---
+	setarray @pzeny[0],3000000,3000000,3000000,3000000,3000000;
+	//---物品代码---
+	setarray @pitemid[0],7250,7251,7251,7251,7251;
+	//---物品消耗量---
+	setarray @pcnum[0],1,1,1,1,1;
+	//-------安全精炼-------
+	//---费用---
+	setarray @p1zeny[0],5000000,5000000,5000000,5000000,5000000;
+	//---物品代码---
+	setarray @p1itemid[0],27034,27034,27034,27034,27034;
+	//---物品消耗量---
+	setarray @p1cnum[0],1,1,1,1,1;
+	//是否开启防爆系统(0=否/1=是)
+	set @refa,1;
+	//精练成功是否依然扣除防爆物品(0=否/1=是)
+	set @refb,1;
+	//脚本开始
+	mes "["+@npcname$+"]";
+	mes "-> ^0000AA[铝]或[神之金属]^000000";
+	mes "-> ^0000AA[光荣之心]或[胜利之心]^000000";
+	mes "-> ^FF0000[防暴精炼]^000000^0000EE必须携带^000000^EE00EE["+getitemname(@ritem)+"]^000000";
+	next;
+	if(getequipisequiped(1)+getequipisequiped(2)+getequipisequiped(3)+getequipisequiped(4)+getequipisequiped(5)+getequipisequiped(6)==0)
+	{
+		mes "["+@npcname$+"]";
+		mes "您身上未着任何可精炼装备，无法使用精炼服务。";
+		close;
+	}
+	if(getequipisequiped(1)!=0 && getequiprefinerycnt(1)<10) set .@menu_1$,"-> ^006400["+getequipname(1)+"]^000000"; else set .@menu_1$,"";
+	if(getequipisequiped(2)!=0 && getequiprefinerycnt(2)<10) set .@menu_2$,"-> ^006400["+getequipname(2)+"]^000000"; else set .@menu_2$,"";
+	if(getequipisequiped(3)!=0 && getequiprefinerycnt(3)<10)
+	{
+		if(getequipweaponlv(3)>0) set .@menu_3$,"-> ^0000AA["+getequipname(3)+"]^000000";
+		else set .@menu_3$,"-> ^006400["+getequipname(3)+"]^000000";
+	} else set .@menu_3$,"";
+	if(getequipisequiped(4)!=0 && getequiprefinerycnt(4)<10) set .@menu_4$,"-> ^0000AA["+getequipname(4)+"]^000000"; else set .@menu_4$,"";
+	if(getequipisequiped(5)!=0 && getequiprefinerycnt(5)<10) set .@menu_5$,"-> ^006400["+getequipname(5)+"]^000000"; else set .@menu_5$,"";
+	if(getequipisequiped(6)!=0 && getequiprefinerycnt(6)<10 ) set .@menu_6$,"-> ^006400["+getequipname(6)+"]^000000"; else set .@menu_6$,"";
+	switch(select(.@menu_1$,.@menu_2$,.@menu_3$,.@menu_4$,.@menu_5$,.@menu_6$,"-> ^FF0000[取消精炼]^000000"))
+	{
+		case 1: set @Part,1; break;
+		case 2: set @Part,2; break;
+		case 3: set @Part,3; break;
+		case 4: set @Part,4; break;
+		case 5: set @Part,5; break;
+		case 6: set @Part,6; break;
+		case 7: close;
+	}
+	set @Type,getequipweaponlv(@Part);
+	if(@Type==0) set @ref_max,@aref_max;
+	else if(@Type==1) set @ref_max,@wref_max_lv1;
+	else if(@Type==2) set @ref_max,@wref_max_lv2;
+	else if(@Type==3) set @ref_max,@wref_max_lv3;
+	else if(@Type==4) set @ref_max,@wref_max_lv4;
+	if(getequiprefinerycnt(@Part)>=@ref_max)
+	{
+		mes "["+@npcname$+"]";
+		mes "^0000FF"+getequipname(@Part)+"^000000精炼值已达最高。";
+		next;
+		callfunc "refitem",@npcname$;
+		close;
+	}
+	if(getequipisenableref(@Part)==0)
+	{
+		mes "["+@npcname$+"]";
+		mes "^0000FF"+getequipname(@Part)+"^000000无法精练。";
+		next;
+		callfunc "refitem",@npcname$;
+		close;
+	}
+	if(getequiprefinerycnt(@Part) < @safe)
+	{
+		mes "["+@npcname$+"]";
+		mes "^0000FF"+getequipname(@Part)+"^000000没到安全值";
+		mes "是否直接上到安全值^0000FF"+@safe+"吗^000000";
+		next;
+		if(select("是:否")==1)
+		{
+			while (getequiprefinerycnt(@Part) < @safe) successrefitem @Part;
+			mes "已经帮你精炼到安全值";
+			next;
+			callfunc "refitem",@npcname$;
+			close;
+		}
+		callfunc "refitem",@npcname$;
+		close;
+	}
+do 
+{
+	if(getequippercentrefinery(@Part)>=100)
+	{
+		if(@Type==0) set @Probability,@apref[getequiprefinerycnt(@Part)];
+		else if(@Type==1) set @Probability,@1wpref[getequiprefinerycnt(@Part)];
+		else if(@Type==2) set @Probability,@2wpref[getequiprefinerycnt(@Part)];
+		else if(@Type==3) set @Probability,@3wpref[getequiprefinerycnt(@Part)];
+		else if(@Type==4) set @Probability,@4wpref[getequiprefinerycnt(@Part)];
+		set @ref_zeny,@zeny[@Type];
+		set @ref_item,@itemid[@Type];
+		set @ref_cnum,@cnum[@Type];
+	} else if(getequippercentrefinery(@Part)<100)
+	{
+		if (countitem(@pitemid[@Type])>=1) 
+		{
+				if (@Type)
+					set @menu$,"-> [胜利之心]";
+				else
+					set @menu$,"-> [光荣之心]";
+		} else {
+			set @menu$,"";
+		}
+		switch(select(@menu$,"-> [一般精炼]","-> [退出精炼]"))
+		{
+		case 1:
+			if(@Type==0) set @Probability,@apref_p[getequiprefinerycnt(@Part)];
+			else if(@Type==1) set @Probability,@1wpref_p[getequiprefinerycnt(@Part)];
+			else if(@Type==2) set @Probability,@2wpref_p[getequiprefinerycnt(@Part)];
+			else if(@Type==3) set @Probability,@3wpref_p[getequiprefinerycnt(@Part)];
+			else if(@Type==4) set @Probability,@4wpref_p[getequiprefinerycnt(@Part)];
+			set @ref_zeny,@pzeny[@Type];
+			set @ref_item,@pitemid[@Type];
+			set @ref_cnum,@pcnum[@Type];
+			break;
+		case 2:
+			if(@Type==0) set @Probability,@apref[getequiprefinerycnt(@Part)];
+			else if(@Type==1) set @Probability,@1wpref[getequiprefinerycnt(@Part)];
+			else if(@Type==2) set @Probability,@2wpref[getequiprefinerycnt(@Part)];
+			else if(@Type==3) set @Probability,@3wpref[getequiprefinerycnt(@Part)];
+			else if(@Type==4) set @Probability,@4wpref[getequiprefinerycnt(@Part)];
+			set @ref_zeny,@zeny[@Type];
+			set @ref_item,@itemid[@Type];
+			set @ref_cnum,@cnum[@Type];
+			break;
+		case 3: close;
+		}
+	}
+	if(@Probability>=100) set @color$,"^0000FF"; else if(@Probability<100) set @color$,"^FF0000";
+	mes "["+@npcname$+"]";
+	mes "精炼项目：^339900"+getequipname(@part)+"^000000^2F4F4F+"+getequiprefinerycnt(@part)+"^000000 至 ^A0522D+"+(getequiprefinerycnt(@part)+1)+"^000000";
+	mes "消耗物品：^6CA6CD"+getitemname(@ref_item)+"^000000 ^8968CD"+@ref_cnum+"个^000000";
+	mes "精炼费用：^B8860B"+@ref_zeny+"^000000 Zeny";
+	mes "精炼成功率：^B8860B"+@Probability+"^000000 %";
+	if(countitem(@ref_item)<@ref_cnum || zeny<@ref_zeny)
+	{
+		next;
+		mes "["+@npcname$+"]";
+		mes "您的精炼所需材料或费用不足。";
+		next;
+		callfunc "refitem",@npcname$;
+	}
+	mes "是否继续精炼？";
+	next;
+	if(select("-> [继续精炼]","-> [取消精炼]")==2)
+	{
+		mes "["+@npcname$+"]";
+		mes "如有需要随时欢迎您来。";
+		close;
+	}
+	if(@Probability<100 && @refa==1 && countitem(@ritem)>=1)
+	{
+		mes "["+@npcname$+"]";
+		mes "您身上有^006400"+getitemname(@ritem)+"^000000";
+		mes "可帮助您防护装备避免因为失败而消失";
+		if(@refb==1)
+		{
+			mes "^ff0000(不管成功或失败均会扣除物品)^000000";
+		}
+		mes "请问您要使用吗?";
+		next;
+		if(select("-> [使用]^006400 ["+getitemname(@ritem)+"]^000000","-> [不用]^006400 ["+getitemname(@ritem)+"]^000000")==1)
+		{ set @ref,1; }
+	}
+	set zeny,zeny-@ref_zeny;
+	delitem @ref_item,@ref_cnum;
+	if(@Probability<=rand(100))
+	{
+		mes "["+@npcname$+"]";
+		if(@ref==1)
+		{
+			//failedrefitem2 @part,1;
+			mes "精练失败了，但因为有"+getitemname(@ritem)+"";
+			delitem @ritem,1;
+			set @ref,0;
+			close;
+		}
+		failedrefitem @part;
+		mes "很抱歉，精炼失败了。";
+		close;
+	}
+	mes "["+@npcname$+"]";
+	mes "恭喜您，精炼成功了。";
+	successrefitem @part;
+	if(@ref==1 && @refb==1) { delitem @ritem,1; set @ref,0;}
+	next;
+} while(getequiprefinerycnt(@Part)<@ref_max);
+	mes "["+@npcname$+"]";
+	mes "^0000FF"+getequipname(@Part)+"^000000精炼值已达最高。";
+	mes "无法再继续精炼。";
+	close;
+}

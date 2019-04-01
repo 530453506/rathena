@@ -1,0 +1,36 @@
+
+function	script	xinren4	{	
+		if (BaseLevel>=99) {mes"职业等级太高，无法使用新人卡";close;}
+		set Reclass,Class;
+		setoption 0;
+		jobchange 0,1;
+		resetskill;
+		resetstatus;
+		set SkillPoint,0;
+		set StatusPoint,0;
+		set BaseLevel,99;
+		set JobLevel,1;
+		set BaseExp,0;
+		set JobExp,0;
+		set StatusPoint,2525;
+ 		set metempsychosis,3;
+}
+
+function	script	xinren6	{
+getitem 949,500;	
+getitem 26114,2;
+getitem 26117,2;
+getitem 25101,1;
+getitem 969,1000;
+getitem 11118,1;
+getitem 11119,1;
+getitem 25022,1;
+getitem 27032,5;
+getitem 4696,3;
+getitem 671,20;
+getitem 27533,1;
+getitem 27534,1;
+getitem 586,5;
+getitem 27000,1;
+getitem 27111,1;
+}

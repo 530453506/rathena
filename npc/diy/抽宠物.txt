@@ -1,0 +1,33 @@
+
+prontera,146,153,5	script	积分宠物	909,{
+        mes "[积分宠物]";
+	mes "您需要用500积分抽宠物封印吗？";
+	mes "有概率抽到BOSS宠物哦";
+	mes "^ff0000大部分宠物到非常亲密会加属性^000000";
+	mes "宠物扑捉成功率100%";
+	mes "^ff0000切记必须去野外抓，BOSS区无法捕捉^000000";
+        next;
+	menu "抽奖",-,"我闪",L_e;
+	if (paodian<500) goto B1;
+	set paodian,paodian-500;
+	dispbottom"[积分提示]:扣除500点在线积分,您目前的在线积分为[ "+ paodian +" ]";
+	mes"[积分宠物]";
+	mes"天灵灵,地灵灵";
+	mes"嘛咪嘛咪哄";
+	getitem rand(9101,9219),1;
+	close;
+L_e:
+	next;
+	mes"[积分宠物]";
+	mes"再见";
+	close;
+B1:
+	mes"[积分宠物]";
+	mes"对不起您的在线积分不足";
+	close;
+Oninit:
+	waitingroom "[☆积分宠物☆]",0;	
+	end;
+}
+
+

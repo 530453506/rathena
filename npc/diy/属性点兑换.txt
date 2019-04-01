@@ -1,0 +1,36 @@
+prontera,170,125,3,	script	属性点兑换	76,{
+    mes "[工作人员]";
+    mes "50任务积分兑换50点属性";
+    mes "最多兑换10次";
+    mes "您已经兑换过"+stnum+"次";
+    mes "你真的想要吗？";
+    next;
+    menu"兑换",-,"不要了",L2;
+if(stnum==10) goto L3;
+if(#rwjf<50) goto L1;
+set #rwjf,#rwjf-50;
+set stnum,stnum+1;
+atcommand"@stpoint 50";
+mes "[工作人员]";
+mes "欢迎再次使用本服务。";
+close;
+    L1:
+    mes "[工作人员]";
+    mes "您的任务积分不够。";
+    close;
+
+    L2:
+    mes "[工作人员]";
+    mes "哦，那太可惜了。";
+    close;
+
+    L3:
+    mes "[工作人员]";
+    mes "您已兑换过10次。";
+    close;
+
+OnInit:
+     waitingroom "[☆属性点兑换☆]",0;
+     end;
+}
+

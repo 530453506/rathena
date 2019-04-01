@@ -1,0 +1,115 @@
+prontera,146,98,5,	script	垃圾回收	62,{
+    mes "[工作人员]";
+    mes "垃圾回收？";
+    mes "不要的垃圾换雷锤，神鞋，项链，随机的哦。";
+    mes "你真的想要吗？一次兑换10个。";
+    next;
+    menu"我想要！",M4,"不要了。",L2;
+
+    M4:
+    mes "[工作人员]";
+    mes "请寻找以下物品来换：";
+    next;
+    mes "[工作人员]";
+    mes "^3355FF菲力亚宝石^000000*10";
+    mes "^3355FF拖尔的铁手套^000000*10";
+    mes "^3355FF拷问器具^000000*10";
+    mes "^3355FF未知的锯齿轮子^000000*10";
+    mes "^3355FF银饰品^000000*10";
+    mes "^3355FF巴基力的愤怒^000000*10";
+    mes "^3355FF天使翅膀羽毛^000000*10";
+    mes "^3355FF猫脚步声音^000000*10";
+    mes "^3355FF女人的胡须^000000*10";
+    mes "^3355FF石头的根^000000*10";
+    mes "^3355FF鱼的灵魂^000000*10";
+    mes "^3355FF鸟的口水^000000*10";
+    mes "^3355FF熊的筋^000000*10";
+    mes "^3355FF太阳神的象征^000000*10";
+    mes "^3355FF灵魂的呼吸声音^000000*10";
+    mes "^3355FF雪的结晶^000000*10";
+    mes "^3355FF爆风雨的征兆^000000*10";
+    mes "^3355FF安静的水波^000000*10";
+    mes "^3355FF海浪雕像^000000*10";
+    mes "^3355FF空气雕像^000000*10";
+    mes "^3355FF齿轮^000000*10";
+    next;
+    mes "[工作人员]";
+    mes "随机的哦。";
+    mes "注意背包空间。";
+    next;
+    menu"都准备好了！",G1,"这实在是太难了！",L2;
+
+    G1:
+    if(countitem(7073)<10) goto G2;
+    if(countitem(7074)<10) goto G2;
+    if(countitem(7075)<10) goto G2;
+    if(countitem(7076)<10) goto G2;
+    if(countitem(7077)<10) goto G2;
+    if(countitem(7078)<10) goto G2;
+    if(countitem(7079)<10) goto G2;
+    if(countitem(7080)<10) goto G2;
+    if(countitem(7081)<10) goto G2;
+    if(countitem(7082)<10) goto G2;
+    if(countitem(7083)<10) goto G2;
+    if(countitem(7084)<10) goto G2;
+    if(countitem(7085)<10) goto G2;
+    if(countitem(7086)<10) goto G2;
+    if(countitem(7087)<10) goto G2;
+    if(countitem(7088)<10) goto G2;
+    if(countitem(7089)<10) goto G2;
+    if(countitem(7090)<10) goto G2;
+    if(countitem(7091)<10) goto G2;
+    if(countitem(7092)<10) goto G2;
+    if(countitem(7093)<10) goto G2;
+    delitem 7073,10;
+    delitem 7074,10;
+    delitem 7075,10;
+    delitem 7076,10;
+    delitem 7077,10;
+    delitem 7078,10;
+    delitem 7079,10;
+    delitem 7080,10;
+    delitem 7081,10;
+    delitem 7082,10;
+    delitem 7083,10;
+    delitem 7084,10;
+    delitem 7085,10;
+    delitem 7086,10;
+    delitem 7087,10;
+    delitem 7088,10;
+    delitem 7089,10;
+    delitem 7090,10;
+    delitem 7091,10;
+    delitem 7092,10;
+    delitem 7093,10;
+    mes "[工作人员]";
+    mes "都齐了！";
+    mes "现在就给你换！！";
+    next;
+
+    set @Pro_card,rand(3);
+    if (@Pro_card ==0)getitem 1530,10;
+    if (@Pro_card ==1)getitem 2410,10;
+    if (@Pro_card ==2)getitem 2630,10;      
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    A2:
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    G2:
+    mes "[工作人员]";
+    mes "你的东西还未找齐哦。";
+    mes "继续努力吧！！";
+    close;
+
+    L2:
+    mes "[工作人员]";
+    mes "哦，那太可惜了。";
+    close;
+     end;
+}
+

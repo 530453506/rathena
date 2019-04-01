@@ -1,0 +1,158 @@
+prontera,141,92,5	script	美容师	985,{ 
+callfunc "xjcsxxgw"; 
+end;
+OnInit:
+	waitingroom "[☆美容师☆]",0;
+	end;
+}
+
+/******************** 脚本 ******************
+*		#define MAX_HAIR_COLOR 255	//扩展染色的上限
+*		#define MAX_CLOTH_COLOR 255	//扩展染色的上限;
+****************************************************/
+function	script	xjcsxxgw	{ 
+	switch(select(
+			"- 1.> ^D81ADB设计衣服颜色^000000 ",
+			"- 2.> ^000EFF设计头发颜色^000000 ",
+			"- 3.> ^D81ADB设计头发造型^000000 ",
+			"- 4.> ^000EFF结束对话^000000 "))
+		{
+			case 1:
+				//mes "- ^0077ff衣服总共有553种颜色^000000";
+				set .@Zx,1;
+				break;
+			case 2:
+				//mes "- ^0077ff头发总共有251种颜色^000000";
+				set .@Zx,2;
+				break;
+			case 3:
+				//mes "- ^0077ff发型总共有84种类型^000000";
+				set .@Zx,3;
+				break;
+			case 4:
+				//mes "- 你不愿意把你自己变的漂亮点吗？";
+				close;
+				break;
+		}
+	if (zeny < 10000)
+		{
+			mes "- 对不起，您没有足够的费用。";
+			close;
+		}
+	set zeny,zeny - 10000;
+	//mes "- ^ff0000请选择您合适的颜色，选择完毕之后，请按第5个选项！";
+do{
+	setarray .@pa[0],.@pal+1,.@pal-1,.@pal;
+	if (.@pa[0] < 0) set .@pa[0],0;
+	if (.@pa[1] < 0) set .@pa[1],0;
+	if (.@pa[2] < 0) set .@pa[2],0;
+	switch(select(
+			"- 1.> ^0077ff下一个^000000 [^777777 "+.@pa[0]+"号 ^000000]",
+			"- 2.> ^FF0000上一个^000000 [^777777 "+(.@pa[0])+"号 ^000000]",
+			"- 3.> ^0077ff使用代码^000000 [^777777 "+.@pa[0]+"号 ^000000]",
+			"- 4.> ^FF0000还原默认颜色^000000",
+			"- 5.> ^0077FF确定颜色^000000"
+	))
+	{
+		case 1:
+			if (.@Zx == 1)
+				{
+				if (.@pal>553) set .@pal,0;
+				set .@pal,.@pal+1;
+				setlook 7,.@pal;
+				set @pp,1;
+				}
+			if (.@Zx == 2)
+				{
+				if (.@pal>251) set .@pal,0;
+				set .@pal,.@pal+1;
+				setlook 6,.@pal;
+				set @pp,1;
+				}
+			if (.@Zx == 3)
+				{
+				if (.@pal >= 84) { set .@pal,1; set .@pa[1],1;}
+				set .@pal,.@pal+1;
+				setlook 1,.@pal;
+				set @pp,1;
+				}
+			break;
+		case 2:
+			if (.@Zx == 1)
+				{
+				if (.@pal < 1) set .@pal,553;
+				set .@pal,.@pal-1;
+				setlook 7,.@pal;
+				set @pp,1;
+				}
+			if (.@Zx == 2)
+				{
+				if (.@pal < 1) set .@pal,251;
+				set .@pal,.@pal-1;
+				setlook 6,.@pal;
+				set @pp,1;
+				}
+			if (.@Zx == 3)
+				{
+				if (.@pal < 2) set .@pal,84;
+				set .@pal,.@pal-1;
+				setlook 1,.@pal;
+				set @pp,1;
+				}
+			break;
+		case 3:
+			if (.@Zx == 1)
+				{
+			input .@pal;
+				if (.@pal > 553) set .@pal,553;
+				if (.@pal<0) set .@pal,0;
+				setlook 7,.@pal;
+				set @pp,1;
+				}
+			if (.@Zx == 2)
+				{
+			input .@pal;
+				if (.@pal > 251) set .@pal,251;
+				if (.@pal<0) set .@pal,0;
+				setlook 6,.@pal;
+				set @pp,1;
+				}
+			if (.@Zx == 3)
+				{
+			input .@pal;
+				if (.@pal >= 84) set .@pal,84;
+				if (.@pal<1) set .@pal,1;
+				setlook 1,.@pal;
+				set @pp,1;
+				}
+			break;
+		case 4:
+			if (.@Zx == 1)
+				{
+				set .@pal,0;
+				setlook 7,.@pal;
+				set @pp,0;
+				}
+			if (.@Zx == 2)
+				{
+				set .@pal,0;
+				setlook 6,.@pal;
+				set @pp,0;
+				}
+			if (.@Zx == 3)
+				{
+				set .@pal,1;
+				setlook 1,.@pal;
+				set @pp,0;
+				}
+			break;
+		case 5:
+			if (.@Zx == 1) mes "- 这件衣服的款式颜色很适合您。";
+			if (.@Zx == 2) mes "- 这个的颜色发型很适合您。";
+			if (.@Zx == 3) mes "- 这个的发型很适合您。";
+			set @pp,0;
+			break;
+		}
+	}while(@pp);
+close;
+}

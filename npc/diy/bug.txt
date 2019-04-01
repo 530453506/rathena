@@ -1,0 +1,6 @@
+	-	script	bug1	-1,{
+	OnPCStatCalcEvent:
+		if(isequipped(39543,39543,39543))
+			bonus bInt,-700;
+		end;
+	}

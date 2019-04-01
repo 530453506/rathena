@@ -1,0 +1,269 @@
+/************************************************************\
+                        Eahtena Script
+**************************************************************
+【名    称】自动公告系统(Automatism Affiche System)
+【类    型】服务组件
+【版    本】1.0.1
+【版权所有】相识工作组
+【授权费用】免费
+【服 务 端】Eahtena 12019 及以上
+【制作人员】
+    策划：♂似曾相识♀
+    编程：♂似曾相识♀
+    文饰：♂似曾相识♀
+    制作：♂似曾相识♀
+    测试：♂似曾相识♀
+【简要说明】
+        本脚本为 Eahtena 服务端专用服务组件脚本，由于Eathen是
+    没有自动公告这个功能的，所以就是实现了定时的自动公告。
+【更新日志】
+    2007-11-14    1.0.0    脚本完成
+    2008-04-11    1.0.1    修正SQL文件定义列过大的问题
+\************************************************************/
+
+function	script	自动公告系统	{
+if (getgmlevel()<90) {
+	delitem 401,countitem(401);
+	end;
+	}
+mes "【自动公告系统GM控制台】";
+mes "请问管理员您有什么需要吗？";
+next;
+switch(select("查看公告内容","查看公告间隔时间","")){
+	case 1:
+		deletearray @ann_num[0],120;
+		deletearray @ann_mes$[0],120;
+		deletearray @ann_sta[0],120;
+		mes "【自动公告系统GM控制台】";
+		mes "请选择要查看的公告";
+		next;
+		query_sql "select * from `announce`",@ann_num,@ann_mes$,@ann_sta;
+		set @n,0;
+ 		set @o,(getarraysize(@ann_num)%5)+5;
+  	set @m,getarraysize(@ann_num)/5;
+		if(@o>5) { set @m,@m+1;	set @o,@o-5; }
+		do{
+			set @z,@n*5;
+			set @n,@n+1;
+			set @tmp,select(
+							((@n==1 || getarraysize(@ann_num)<6)?"":"↑上一页↑"),
+							(@ann_num[0+@z]?"第"+(1+@z)+"条游戏公告":""),
+							(@ann_num[1+@z]?"第"+(2+@z)+"条游戏公告":""),
+							(@ann_num[2+@z]?"第"+(3+@z)+"条游戏公告":""),
+							(@ann_num[3+@z]?"第"+(4+@z)+"条游戏公告":""),
+							(@ann_num[4+@z]?"第"+(5+@z)+"条游戏公告":""),
+							((@n<@m)?"↓下一页↓":""));
+			set @y,(@tmp-2)+@z;
+			if(((@n<@m&&@tmp!=7)||(@n==@m&&@tmp!=(@o+2))) && @tmp !=1) break;
+			if(@tmp==1) set @n,@n-2;
+			}while(@n<@m);
+		mes "【自动公告系统GM控制台】";
+		mes "第^0000FF"+(@y+1)+"^000000条游戏公告内容如下：";
+		mes "^EC4D00"+@ann_mes$[@y]+"^000000";
+		mes "此条公告当前状态: "+((@ann_sta[@y])?"^ff0000遮蔽^000000":"^02DB02开启")+"^000000";
+		next;
+		switch(select(((@ann_sta[@y])?"开启":"遮蔽")+"此条公告","编辑此条公告","添加新公告")){
+			case 1:
+				query_sql "select count(*) from `announce` where `status` = '0'",@ann_count;
+				mes "【自动公告系统GM控制台】";
+				if (@ann_count<=1&&@ann_sta[@y]!=1) {
+					mes "无法遮蔽此条公告，需要至少保留一条！";
+					break;
+					}
+				query_sql "update `announce` set `status` = '"+((@ann_sta[@y])?0:1)+"' where `num` = '"+@ann_num[@y]+"'";
+				mes "该公告状态修改成功！";
+				mes "此条公告已被"+((@ann_sta[@y])?"^02DB02开启":"^ff0000遮蔽")+"^000000.";
+				break;
+			case 2:
+				do {
+					mes "【自动公告系统GM控制台】";
+					mes "请输入公告的内容";
+					mes "^ff0000输入的内容不要过长，请控制在100个字以内，输入过长会造成未知的错误！^000000";
+					mes "^0000ff输入“退出”放弃修改此条公告！^000000";
+					next;
+					input @sr$;
+					mes "【自动公告系统GM控制台】";
+					if (getstrlen(@sr$)>100||getstrlen(@sr$)<1) {
+						mes "输入的字符超过了允许的范围！";
+						next;
+						}
+					}while(getstrlen(@sr$)>100||getstrlen(@sr$)<1);
+				if (@sr$=="退出") break;
+				query_sql "update `announce` set `message` ='"+@sr$+"' where `num` = '"+@ann_num[@y]+"'";
+				mes "该公告修改成功！";
+				mes "修改内容如下：";
+				mes "^0000ff"+@sr$+"^000000";
+				break;
+			case 3:
+				query_sql "select count(*) from `announce`",@ann_count;
+				mes "【自动公告系统GM控制台】";
+				if (@ann_count>=100) {
+					mes "无法再继续添加新的公告，公告数目已超过上限，如还想添加的话，请修改现有公告！";
+					break;
+					}
+				do {
+					mes "请输入公告的内容";
+					mes "^ff0000输入的内容不要过长，请控制在100个字以内，输入过长会造成未知的错误！^000000";
+					mes "^0000ff输入“退出”放弃修改此条公告！^000000";
+					next;
+					input @sr$;
+					mes "【自动公告系统GM控制台】";
+					if (getstrlen(@sr$)>100||getstrlen(@sr$)<1) {
+						mes "输入的字符超过了允许的范围！";
+						next;
+						mes "【自动公告系统GM控制台】";
+						}
+					}while(getstrlen(@sr$)>100||getstrlen(@sr$)<1);
+				if (@sr$=="退出") break;
+				query_sql "insert `announce` values ('"+(@ann_count+1)+"','"+@sr$+"','0')";
+				mes "新公告添加成功！";
+				mes "新增内容如下：";
+				mes "^0000ff"+@sr$+"^000000";
+				break;
+			}
+		break;
+	case 2:
+		mes "【自动公告系统GM控制台】";
+		mes "当前公告间隔时间为: ^ff0000 "+$ann_space+" ^000000分钟";
+		next;
+		menu "修改",-;
+		do {
+			mes "【自动公告系统GM控制台】";
+			mes "请输入你要修改的时间，单位：分钟";
+			next;
+			input @sr;
+			mes "【自动公告系统GM控制台】";
+			if (@sr<1||@sr>60) {
+				mes "公告间隔时间必须^ff0000 大于 0 小于 60 ^000000";
+				next;
+				}
+			}while(@sr<1||@sr>60);
+		set $ann_space,@sr;
+		mes "公告间隔时间修改成功！";
+		mes "当前公告间隔时间为: ^ff0000 "+$ann_space+" ^000000分钟";
+		break;
+	case 3:
+		mes "【自动公告系统GM控制台】";
+		mes "此功能暂未开放！";
+		break;
+	}
+close;
+}
+
+-	script	message	-1,{
+function getrgb;
+end;
+OnMinute00:
+OnMinute01:
+OnMinute02:
+OnMinute03:
+OnMinute04:
+OnMinute05:
+OnMinute06:
+OnMinute07:
+OnMinute08:
+OnMinute09:
+OnMinute10:
+OnMinute11:
+OnMinute12:
+OnMinute13:
+OnMinute14:
+OnMinute15:
+OnMinute16:
+OnMinute17:
+OnMinute18:
+OnMinute19:
+OnMinute20:
+OnMinute21:
+OnMinute22:
+OnMinute23:
+OnMinute24:
+OnMinute25:
+OnMinute26:
+OnMinute27:
+OnMinute28:
+OnMinute29:
+OnMinute30:
+OnMinute31:
+OnMinute32:
+OnMinute33:
+OnMinute34:
+OnMinute35:
+OnMinute36:
+OnMinute37:
+OnMinute38:
+OnMinute39:
+OnMinute40:
+OnMinute41:
+OnMinute42:
+OnMinute43:
+OnMinute44:
+OnMinute45:
+OnMinute46:
+OnMinute47:
+OnMinute48:
+OnMinute49:
+OnMinute50:
+OnMinute51:
+OnMinute52:
+OnMinute53:
+OnMinute54:
+OnMinute55:
+OnMinute56:
+OnMinute57:
+OnMinute58:
+OnMinute59:
+	set $@ann_time,$@ann_time+1;
+	if ($@ann_time>=$ann_space) {
+		set $@ann_time,1;
+		query_sql "select count(*) from `announce`",$@ann_count;
+	res:
+		set $@ann_line,($@ann_line>=$@ann_count)?1:$@ann_line+1;
+		query_sql "select * from `announce` where `num` = '" + $@ann_line + "' and `status` = '0'",$@num,$@message$,$@status;
+		if ($@num>0) {
+			announce "【服务器公告】"+$@message$+" ",15,"0x"+getrgb(255,215,0);
+			}
+		else goto res;
+		}
+	end;
+
+function	getrgb	{
+	function ten_sixteen;
+	for (set $@arg,0;$@arg<3;set $@arg,$@arg+1) {
+		if (getarg($@arg)>15) {
+			set $@arg_1,getarg($@arg)/16;
+			set $@arg_2,getarg($@arg)%16;
+			}
+		else if (getarg($@arg)>=256){
+			return -1;
+			break;
+			}
+		else {
+			set $@arg_1,0;
+			set $@arg_2,getarg($@arg);
+			}
+		switch($@arg) {
+			case 0:
+				set $@rgb_0$,ten_sixteen($@arg_1)+ten_sixteen($@arg_2);
+				break;
+			case 1:
+				set $@rgb_1$,ten_sixteen($@arg_1)+ten_sixteen($@arg_2);
+				break;
+			case 2:
+				set $@rgb_2$,ten_sixteen($@arg_1)+ten_sixteen($@arg_2);
+				break;
+			}
+		}
+	return $@rgb_0$+$@rgb_1$+$@rgb_2$;
+	function	ten_sixteen	{
+		if (getarg(0)==10) return "A";
+		else if (getarg(0)==11) return "B";
+		else if (getarg(0)==12) return "C";
+		else if (getarg(0)==13) return "D";
+		else if (getarg(0)==14) return "E";
+		else if (getarg(0)==15) return "F";
+		else return ""+getarg(0);
+		}
+	}
+}
+

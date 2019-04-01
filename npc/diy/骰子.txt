@@ -1,0 +1,41 @@
+prontera,146,171,4	script	赌王	102,{
+mes "[赌王]";
+mes "小赌养家，大赌伤身";
+mes "每次赌注都是一个金币袋子";
+mes "^FF0000会有概率获得基因进化突变蛙卡片一张^000000";
+next;
+    menu"赌了！",G1,"这实在是太难了！",L2;
+	G1:
+	if ( countitem(670)<1 ){
+	mes "[赌王]";
+	mes "您的金钱袋子不足";
+	close;
+}
+	mes "[赌王]";
+	mes "看你运气了！";
+	delitem 670,1;
+	next;
+	set $@Successrate123,rand(1000);
+	if ($@Successrate123<750) {
+	mes "[赌王]";
+	mes "你输了";
+	close;
+}
+	if ($@Successrate123==750){
+	getitem 9506,1;
+	announce "[赌王]:恭喜"+Strcharinfo(0)+"获得基因改造突变蛙卡片1张",bc_all;
+	close;
+	}
+	if ($@Successrate123>750) {
+	mes "[赌王]";
+	mes "你赢了";
+	getitem 670,2;
+	close;
+}
+	L2:
+	close;
+
+OnInit:
+	waitingroom "[☆赌场人员☆]",0;
+	end;
+}

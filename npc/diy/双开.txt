@@ -1,0 +1,376 @@
+-	script	檢測IP1	-1,{
+	end;
+Oninit:
+set $@MaxWimdows1,6;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"3@xg_vs2") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows1)
+                          {           
+                             mes "^FF0000指定地图大于5开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+
+-	script	檢測IP2	-1,{
+	end;
+Oninit:
+set $@MaxWimdows2,6;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"quiz_00") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows2)
+                          {           
+                             mes "^FF0000指定地图大于5开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	檢測IP3	-1,{
+	end;
+Oninit:
+set $@MaxWimdows3,4;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"baowei") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows3)
+                          {           
+                             mes "^FF0000指定地图大于双开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	檢測IP4	-1,{
+	end;
+Oninit:
+set $@MaxWimdows4,6;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"3@paybl") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows4)
+                          {           
+                             mes "^FF0000指定地图大于5开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	檢測IP5	-1,{
+	end;
+Oninit:
+set $@MaxWimdows5,5;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"4@paybl") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows5)
+                          {           
+                             mes "^FF0000指定地图大于4开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	檢測IP6	-1,{
+	end;
+Oninit:
+set $@MaxWimdows6,4;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"1@xg_vs2") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows6)
+                          {           
+                             mes "^FF0000指定地图大于3开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	檢測IP7	-1,{
+	end;
+Oninit:
+set $@MaxWimdows7,3;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"1@tower") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows7)
+                          {           
+                             mes "^FF0000指定地图大于双开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	檢測IP8	-1,{
+	end;
+Oninit:
+set $@MaxWimdows8,3;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"guild_1") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows8)
+                          {           
+                             mes "^FF0000指定地图大于双开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	檢測IP9	-1,{
+	end;
+Oninit:
+set $@MaxWimdows9,3;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"1@ldl") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows9)
+                          {           
+                             mes "^FF0000指定地图大于双开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	IP1	-1,{
+	end;
+Oninit:
+set $@MaxWimdow1,3;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"1@yszh") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdow1)
+                          {           
+                             mes "^FF0000指定地图大于双开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	IP2	-1,{
+	end;
+Oninit:
+set $@MaxWimdow2,3;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"guild_3") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdow2)
+                          {           
+                             mes "^FF0000指定地图大于双开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+-	script	IP3	-1,{
+	end;
+Oninit:
+set $@MaxWimdows6,4;
+end;
+OnPCLoadMapEvent:
+{
+           query_sql("SELECT last_ip FROM `login` WHERE account_id = "+getcharid(3)+"", .@LastIp$);
+              //檢查同IP帳號
+              query_sql("SELECT account_id FROM `login` WHERE last_ip = '"+.@LastIp$+"'", .@AccountId);
+                 set .@aidtemp,getcharid(3,strcharinfo(0));
+               //檢查同IP在線人數
+                  for(set .@i ,0;.@i<getarraysize(.@AccountId);set .@i,.@i+1)
+                         {
+                             if(attachrid(.@AccountId[.@i]))
+                                  {
+                                        if (compare(strcharinfo(3),"4@xg_vs2") && !checkvending()) set .@j,.@j+1;//設定限制地圖
+                                      }
+                                 detachrid;
+                         }
+                        attachrid .@aidtemp;
+                        if(.@j >= $@MaxWimdows6)
+                          {           
+                             mes "^FF0000指定地图大于3开，传送回城";
+            sleep2(2000);
+            warp "prontera.gat",156,119;
+}
+}
+}
+
+
+guild_1	mapflag	loadevent
+1@tower	mapflag	loadevent
+baowei	mapflag	loadevent
+quiz_00	mapflag	loadevent
+1@xg_vs2	mapflag	loadevent
+2@xg_vs2	mapflag	loadevent
+3@xg_vs2	mapflag	loadevent
+4@xg_vs2	mapflag	loadevent
+5@xg_vs2	mapflag	loadevent
+3@paybl	mapflag	loadevent
+4@paybl	mapflag	loadevent
+1@ldl	mapflag	loadevent
+1@yszh	mapflag	loadevent
+guild_3	mapflag	loadevent

@@ -1,0 +1,209 @@
+//
+// 3BOSS by 2007-01-16
+//
+//- 
+prontera.gat,200,113,5	script	稀有BOSS区传送	796,{
+        if (Zeny<1500000) goto Not;
+	mes"[稀有BOSS区传送]";
+	mes"稀有BOSS区，入场费150W。";
+	next;
+	menu "我要传送，费用150W",-,"头饰兑换C点",L_exit;
+	if(@guaji==1){
+	mes"[稀有BOSS区传送]";
+	mes"检测到挂机状态，无法传送";
+close;
+}
+	mes"[稀有BOSS区传送]";
+	mes"我现在就送你过去";
+	next;
+        set zeny,zeny-1500000;
+	warp "vip5_fild06.gat",159,368;
+	close;
+L_exit:
+	next;
+	mes"[头饰兑换C点]";
+	mes"^FF0000请把自己需要的头饰存仓^000000";
+	mes"^FF0000任意属性兑换的C点相同^000000";
+	next;
+switch(select("兔兔一家-120C","波利烟斗-120C","波利一家-120C","毛绒耳朵-120C","RWC冠冕-120C","猫耳蝴蝶-120C","侠盗围巾-120C","黄色丝带-120C","精灵耳朵-120C","古典发饰-120C","粉红咬花-120C","侠盗围巾(红)-120C","小羊背包-150C"))
+{
+case 1:
+    if(countitem(19100)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19100,1;
+	atcommand "@cash 120";	
+	close;
+case 2:
+    if(countitem(19101)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19101,1;
+	atcommand "@cash 120";	
+	close;
+case 3:
+    if(countitem(19102)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19102,1;
+	atcommand "@cash 120";	
+	close;
+case 4:
+    if(countitem(19104)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19104,1;
+	atcommand "@cash 120";	
+	close;
+case 5:
+    if(countitem(19105)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19105,1;
+	atcommand "@cash 120";	
+	close;
+case 6:
+    if(countitem(19106)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19106,1;
+	atcommand "@cash 120";	
+	close;
+case 7:
+    if(countitem(19107)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19107,1;
+	atcommand "@cash 120";	
+	close;
+case 8:
+    if(countitem(19108)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19108,1;
+	atcommand "@cash 120";	
+	close;
+case 9:
+    if(countitem(19109)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19109,1;
+	atcommand "@cash 120";	
+	close;
+case 10:
+    if(countitem(19110)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19110,1;
+	atcommand "@cash 120";	
+	close;
+case 11:
+    if(countitem(19111)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19111,1;
+	atcommand "@cash 120";	
+	close;
+case 12:
+    if(countitem(19113)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 19113,1;
+	atcommand "@cash 120";	
+	close;
+case 13:
+    if(countitem(11125)<1){
+	mes"[头饰兑换C点]";
+	mes"无法兑换";
+	close;
+}
+	delitem 11125,1;
+	atcommand "@cash 150";	
+	close;
+}
+
+Not:
+    mes "[团长]";
+    mes "你的钱不够";
+    mes "请带好150W再来！";
+    close;
+
+OnInit:
+	waitingroom "[☆稀有BOSS区☆]",0;
+	end;
+}
+
+// 怪物设定
+//[B]
+vip5_fild06.gat,0,0,0,0	monster	闇●骑士领主 赛依连	2523,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	闇●十字刺客 艾勒梅斯	2524,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	闇●神工匠 哈沃得	2525,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	闇●神官 玛嘉雷特	2526,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	闇●神射手 迪文	2527,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	闇●超魔导师 凯特莉娜	2528,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	寒冰龙	2529,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	影魔	2530,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	伊夫利特	2531,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	基尔 D-01	2532,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	魔剑士 达纳托斯的记忆	3549,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	贝雷杰	2534,2,0,0,0
+vip5_fild06.gat,0,0,0,0	monster	魔王 梦罗克	2536,2,0,0,0
+vip5_fild06.gat,0,0,0,0	boss_monster	青冠龙	1885,1,7200000,300000,1
+vip5_fild06.gat,0,0,0,0	boss_monster	月光女神	3555,1,7200000,300000,1
+vip5_fild06.gat,0,0,0,0	boss_monster	至高战神	3568,1,7200000,300000,1
+
+
+// 地图属性设置
+vip5_fild06.gat	mapflag	nomemo	dummy
+vip5_fild06.gat	mapflag	nopenalty	dummy
+vip5_fild06.gat	mapflag	nobranch	dummy
+vip5_fild06.gat	mapflag	nowarp
+vip5_fild06.gat	mapflag	nowarpto
+vip5_fild06.gat	mapflag	nogo
+vip5_fild06.gat	mapflag	nosave
+vip5_fild06.gat	mapflag	restricted	6
+
+-	script	xiyouboss	-1,{
+OnNpcKillEvent:
+	If(killedrid == 2523)||(killedrid == 2524)||(killedrid == 2525)||(killedrid == 2526)||(killedrid == 2527)||(killedrid == 2528)||(killedrid == 2529)||(killedrid == 2530)||(killedrid == 2531)||(killedrid == 2532)||(killedrid == 2534)||(killedrid == 3549)||(killedrid == 2536){
+	set paodian,paodian+5;
+	dispbottom "[积分提示] 增长5点积分,您目前的积分为["+paodian+"]!";
+	end;
+}
+}
+
+-	script	xiaojingling	-1,{
+OnNpcKillEvent:
+	If(killedrid == 2537)||(killedrid == 2538)||(killedrid == 2539)||(killedrid == 2540)||(killedrid == 2541)||(killedrid == 2542)||(killedrid == 2543)||(killedrid == 2544)||(killedrid == 2545)||(killedrid == 2546)||(killedrid == 2547)||(killedrid == 2548)||(killedrid == 2549)||(killedrid == 2550)||(killedrid == 2551)||(killedrid == 2552)||(killedrid == 2553)||(killedrid == 2554)||(killedrid == 2555)||(killedrid == 2556)||(killedrid == 2557)||(killedrid == 2558)||(killedrid == 2559)||(killedrid == 2560)||(killedrid == 2561)||(killedrid == 2562)||(killedrid == 2563){
+	set paodian,paodian+1;
+	dispbottom "[积分提示] 增长1点积分,您目前的积分为["+paodian+"]!";
+	end;
+}
+}
+
+
+

@@ -1,0 +1,262 @@
+/*----------------------------------------------------------*\
+                     Ragnarok Scripts
+-------------------------------------------------------------
+
+ 名称：普隆德拉保卫战
+ 类型：游戏娱乐
+ 版本：v1.0
+ 原创：小鬼头宝宝
+ 设计：小鬼头宝宝
+ 编制：小鬼头宝宝
+ 版权：小鬼头宝宝
+ 测试：测试组♂尛魚
+ 环境：99maxro v8.3.0
+ OQ：1217152
+ E-mail：1217152@qq.com
+
+-----------------------更新及简要说明------------------------
+
+可更改地方已用注释说明，如有需要请自行修改，但请勿修改版权信息，谢谢
+
+\*----------------------------------------------------------*/
+
+-	script	战场开启时间	-1,{
+OnClock0100:
+OnClock0400:
+OnClock0700:
+OnClock1000:
+OnClock1300:
+OnClock1600:
+OnClock1900:
+OnClock2200:
+set $@zhanchang,1;
+disablenpc "普隆德拉卫兵";
+killmonsterall "baowei.gat";
+announce "【紧急通告】：卢恩 米德加兹王国紧急召集抵抗叛军的勇士，请到普隆德拉保卫战处报名,5分钟后报名结束!",15;
+sleep2 300000;
+set $@zhanchang,0;
+announce "【紧急通告】：保卫普隆德拉的征兵已结束，1分钟后开始战斗!",15;
+}
+
+
+prontera,164,171,4	script	普隆德拉保卫战	105,{
+if ($@zhanchang != 1) goto n2;
+mes "[战场报名官]";
+mes "^ff0000每人最多3开^000000";
+mes "叛军军队已经驻扎在绝望平原";
+mes "准备攻打首都-普隆德拉";
+mes "作为卢恩米德加兹王国的公民";
+mes "拿起你的武器，保卫首都吧";
+next;
+mes "[战场报名官]";
+mes "根据杀怪数来获得保卫战铜币";
+mes "杀怪数超过400，必得保卫战铜币2个";
+mes "杀怪数超过200，必得保卫战铜币1个";
+mes "杀怪数超过100，大概率获得保卫战铜币1个";
+mes "杀怪数超过50，中概率保卫战铜币1个";
+mes "杀怪数超过10，小概率保卫战铜币1个";
+mes "杀怪数低于10，极小概率保卫战铜币1个";
+next;
+menu "我要参加保卫战",l1,"啊，我还是跑路吧",n1;
+l1:
+mes "[战场报名官]";
+mes "请进入休息室等待激烈的战斗吧";
+set @bwkill,0;
+set @bwjc,1;
+set $@zcboss,0;
+warp "baowei.gat",365,216;
+close;
+n1:
+mes "[战场报名官]";
+mes "既然怕就不要参加了";
+close;
+n2:
+mes "[战场报名官]";
+mes "每天1,4,7,10,13,16,19,22点共8场";
+mes "^000fff奖励200W，保卫战那积分50点，任务积分2点，保卫战铜币^000000";
+mes "^ff0000每人最多3开^000000";
+mes "^ff0000请开启noshift功能^000000";
+mes "^ff0000方法：输入/noshift，然后回车^000000";
+next;
+mes "[战场报名官]";
+mes "根据杀怪数来获得保卫战铜币";
+mes "杀怪数超过400，必得保卫战铜币2个";
+mes "杀怪数超过200，必得保卫战铜币1个";
+mes "杀怪数超过100，大概率获得保卫战铜币1个";
+mes "杀怪数超过50，中概率保卫战铜币1个";
+mes "杀怪数超过10，小概率保卫战铜币1个";
+mes "杀怪数低于10，极小概率保卫战铜币1个";
+menu "100保卫战积分券兑换",-;
+if (jifen<100) goto B1;
+set jifen,jifen-100;
+dispbottom "减少100点保卫战积分，你现在积分为"+jifen+"分!";
+getitem 19023,1;
+close;
+
+B1:
+	mes"[战场报名官]";
+	mes"对不起,您的保卫战积分不足";
+	close;
+}
+baowei.gat,0,0,0	script	a1	-1,{
+OnClock0106:
+OnClock0406:
+OnClock0706:
+OnClock1006:
+OnClock1306:
+OnClock1606:
+OnClock1906:
+OnClock2206:
+monster "baowei.gat",0,0,"--ja--",3569,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3570,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3571,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3572,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3573,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3570,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3575,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3576,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3577,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3578,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3579,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3579,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3577,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3578,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3575,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3576,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3577,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3578,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3575,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3576,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3577,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3578,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3579,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3577,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3577,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3576,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3575,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3581,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3582,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3583,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3584,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3585,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3586,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3586,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3585,30,"b3::OnKillMob";			//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3584,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3583,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3582,30,"b3::OnKillMob";	//这里改怪物名字和ID
+monster "baowei.gat",0,0,"--ja--",3581,30,"b3::OnKillMob";	//这里改怪物名字和ID
+}
+
+
+baowei.gat,0,0,0	script	b3	-1,{ 
+OnKillMob:
+if (getmapmobs("baowei") > 15){
+set jifen,jifen+1;	
+set paodian,paodian+5;	
+set @bwkill,@bwkill+1;
+dispbottom "增加1点保卫战积分，你现在积分为"+jifen+"分!";
+dispbottom "增加1点保卫战杀人数，你现在杀人数为"+@bwkill+"分!";
+dispbottom "[积分提示] 增长5点积分,您目前的积分为["+paodian+"]!";
+OnSecond55:
+mapannounce "baowei.gat","现在地图下还剩下"+(getmapmobs("baowei")-1)+" 只怪物",15;
+}
+else{
+if ($@zcboss==1){close;}
+mapannounce "baowei.gat","怪物消灭完毕，反叛军首领出现，速去击杀",16;
+monster "baowei.gat",260,301,"--ja--",3587,1,"c3::OnKillMob";
+set $@zcboss,1; 	//BOSS
+}
+end;
+}
+
+
+baowei.gat,0,0,0	script	c3	-1,{ 
+OnKillMob:
+getitem 19021,1;
+set jifen,jifen+40;
+set paodian,paodian+1000;
+set @bwkill,@bwkill+100;	
+dispbottom "增加40点保卫战积分，你现在积分为"+jifen+"分!";
+dispbottom "增加100点保卫战杀人数，你现在杀人数为"+@bwkill+"分!";
+dispbottom "[积分提示] 增长1000点积分,您目前的积分为["+paodian+"]!";
+mapannounce "baowei.gat","啊，我竟然会失败，你们给我等着，我还会再来的",15;
+mapannounce "baowei.gat","恭喜"+strcharinfo(0)+"玩家杀死了反叛军首领,获得保卫战铜币一枚",15;
+mapannounce "baowei.gat","卢恩米德加兹王国的公民们，谢谢你们成功抵御住了怪物们的袭击",15;
+mapannounce "baowei.gat","请找入口处的卫兵领取奖励",16;
+enablenpc "普隆德拉卫兵";
+}
+
+
+baowei.gat,365,216,4	script	普隆德拉卫兵	708,{ 
+if (@bwjc==0){warp "prontera.gat",151,171;close;}
+mes "[卫兵]";
+mes "谢谢你们成功抵御了怪物的进攻";
+mes "奖励金币两个,保卫战积分50点,任务积分2点";
+close2;
+getitem 671,2;
+warp "prontera.gat",151,171;
+set #rwjf,#rwjf+2;
+dispbottom "[积分提示] - 增加2点任务积分,您目前的任务积分为:["+#rwjf+"].";
+set jifen,jifen+50;
+set @bwjc,0;
+dispbottom "增加50点保卫战积分，你现在积分为"+jifen+"分!";
+set $@zhanchang,0;
+if (@bwkill>=400){
+getitem 19021,2;
+set @bwkill,0;
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中超越神一般存在，获得保卫战铜币两枚",15;close;}
+if (@bwkill>=200) && (@bwkill<400){
+getitem 19021,1;
+set @bwkill,0;
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中表现极其英勇，获得保卫战铜币一枚",15;close;}
+if (@bwkill>=100) && (@bwkill<200){
+set $@raatt1,rand(100);
+if ($@raatt1<80){
+getitem 19021,1;
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中表现良好，获得保卫战铜币一枚",15;}
+if ($@raatt1>=80) && ($@raatt1<100){
+announce "玩家"+strcharinfo(0)+"虽然在普隆德拉保卫战中表现良好，但是没有贿赂卫兵，含恨而归",15;}
+set @bwkill,0;
+close;
+}
+if (@bwkill>=50) && (@bwkill<100){
+set $@raatt2,rand(100);
+if ($@raatt2<50){
+getitem 19021,1;
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中表现中规中矩，获得保卫战铜币一枚",15;}
+if ($@raatt2>=50){
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中表现中规中矩，但是阵亡太多，饮恨归来",15;}
+set @bwkill,0;
+close;
+}
+if (@bwkill>=10) && (@bwkill<50){
+set $@raatt3,rand(100);
+if ($@raatt3<20){
+getitem 19021,1;
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中表现差强人意，获得保卫战铜币一枚",15;}
+if ($@raatt3>=20){
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中表现差强人意，遣送回家种地",15;}
+set @bwkill,0;
+close;
+}
+if (@bwkill<10){
+set $@raatt4,rand(100);
+if ($@raatt4<10){
+getitem 19021,1;
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中虽然混吃等死，但仍然幸运获得保卫战铜币一枚，只能说狗屎运十足",15;}
+if ($@raatt4>=10){
+announce "玩家"+strcharinfo(0)+"在普隆德拉保卫战中混吃等死，卷铺盖跑路了",15;}
+set @bwkill,0;
+close;
+}
+}
+
+baowei	mapflag	nobranch
+baowei	mapflag	nomemo
+baowei	mapflag	noteleport
+baowei	mapflag	nowarp
+baowei	mapflag	nowarpto
+baowei	mapflag	nogo
+baowei	mapflag	nosave
+baowei	mapflag	restricted	7

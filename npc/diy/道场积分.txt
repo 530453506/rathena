@@ -1,0 +1,29 @@
+prontera,188,125,3,	script	屌丝券兑换	76,{
+    mes "[屌丝券兑换]";
+    mes "100屌丝券兑换1点中级道场积分";
+    mes "100屌丝券兑换1张中级道场入场券";
+    next;
+    menu"兑换中级道场积分",G1,"兑换中级道场入场券",G2;
+nn:
+	mes"[屌丝券兑换]";
+	mes"你的屌丝券不足";
+	close;
+
+G1:
+	if(countitem(27018)<100) goto nn;
+	delitem 27018,100;
+	set zhongji,zhongji+1;
+	dispbottom "增加1点中级道场积分，你现在积分为"+zhongji+"分!";	
+   	close;
+
+G2:
+	if(countitem(27018)<100) goto nn;
+	delitem 27018,100;
+	getitem 27019,1;
+   	close;
+
+OnInit:
+     waitingroom "[☆屌丝券回收☆]",0;
+     end;
+}
+

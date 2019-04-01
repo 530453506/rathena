@@ -1,0 +1,294 @@
+//╭═════════════════════╮
+//║脚本名称：波利对对碰                      ║
+//║编写日期：10-05-04                        ║
+//║脚本编辑：痴痴颠颠                        ║
+//║QQ号联系：751112725                       ║
+//║脚本版权：痴痴颠颠                        ║
+//║适用版本：EA                              ║
+//║业务范围：脚本，DB(包括客户端)            ║
+//╰═════════════════════╯
+
+prontera.gat,146,165,5	script	波利对对碰报名员	650,{
+	if (getmapusers("ddp.gat")==0) set $@fangzhu$,"";
+	mes "[波利对对碰报名员]";
+	mes "这游戏可以1-4个人玩，首先点击下其中1个怪物，然后再点另1个相同的怪物，就算找对了，一共有5关，最先完成就有奖励哦！";
+	next;
+	if ($@fangzhu$=="") menu "报名参加游戏",Levent1;
+	if ($@fangzhu$!="") menu "加入游戏("+$@fangzhu$+")",Levent2;
+Levent1:
+	if (getmapusers("ddp.gat")!=0) goto Levent3;
+	mes "[波利对对碰报名员]";
+	mes "请问你以什么压注呢？";
+	next;
+	set @ddpyz1,0;
+	set @ddpyz2,0;
+	getinventorylist;
+	set @ddpyz1,@inventorylist_count;
+	do { set @ddpyz1,@ddpyz1-1;
+	if (getiteminfo(@inventorylist_id[@ddpyz1],2)==3) {
+	set @ddpyz2,@ddpyz2+1;
+	setarray @ddpyz3[@ddpyz2],@inventorylist_id[@ddpyz1]; }
+	} while(@ddpyz1>0);
+	set @ddpyz4,0;
+	set @ddpyz6$,"^0000FFRO币 ["+(zeny/10000)+"万]^000000";
+	while(@ddpyz4<@ddpyz2) {
+	set @ddpyz4,@ddpyz4+1;
+	set @ddpyz6$,@ddpyz6$+":^FF0000"+getitemname(@ddpyz3[@ddpyz4])+" ["+countitem(@ddpyz3[@ddpyz4])+"]^000000"; }
+	set @ddpyz5,select(@ddpyz6$)-1;
+	if (@ddpyz5==0 && zeny<10000) goto Levent11;
+	set @ddpyz7,1;
+	set @youmei,0;
+	if (@ddpyz5!=0) { if (countitem(@ddpyz3[@ddpyz5])>1) set @youmei,1; }
+	if (@youmei!=0 || @ddpyz5==0) {
+	if (@ddpyz5==0) {
+	mes "[波利对对碰报名员]";
+	mes "请问你要压注多少^FF0000万^000000RO币？";
+	mes "范围：^0000FF1-"+(zeny/10000)+"^000000"; }
+	if (@ddpyz5!=0) {
+	mes "[波利对对碰报名员]";
+	mes "请问你要压注多少^FF0000"+getitemname(@ddpyz3[@ddpyz5])+"^000000？";
+	mes "范围：^0000FF1-"+countitem(@ddpyz3[@ddpyz5])+"^000000"; }
+	next;
+	input @ddpyz7; }
+	if (@ddpyz7<1) goto Levent6;
+	if (@ddpyz7>zeny/10000 && @ddpyz5==0) goto Levent9;
+	if (@ddpyz5!=0) { if (@ddpyz7>countitem(@ddpyz3[@ddpyz5])) goto Levent8; }
+	mes "[波利对对碰报名员]";
+	mes "确定以下面这些为压祝吗？";
+	if (@ddpyz5==0) mes "压注金额：^0000FF"+@ddpyz7+"万RO币^000000";
+	if (@ddpyz5!=0) mes "压注物品：^0000FF"+getitemname(@ddpyz3[@ddpyz5])+"*"+@ddpyz7+"^000000";
+	next;
+	menu "确定",-;
+	if (getmapusers("ddp.gat")!=0) goto Levent3;
+	set $@fangzhu$,strcharinfo(0);
+	set $@fangshu,1;
+	set $@fangkai1,0;
+	set $@fangkai2,0;
+	set $@fangkai3,0;
+	set $@fangkai4,0;
+	set @fangge,1;
+	set @jigedui,0;
+	set @guanshu,0;
+	set $@duileyi$,"";
+	set $@zuikuai$,"";
+	set $@pengming1$,strcharinfo(0);
+	set $@pengming2$,"";
+	set $@pengming3$,"";
+	set $@pengming4$,"";
+	if (@ddpyz5!=0) {
+	set $@fangwu1,@ddpyz3[@ddpyz5];
+	set $@fangwu2,@ddpyz7;
+	delitem $@fangwu1,$@fangwu2; }
+	if (@ddpyz5==0) {
+	set $@fangwu1,@ddpyz7;
+	set $@fangwu2,0;
+	set zeny,zeny-(@ddpyz7*10000); }
+	initnpctimer;
+	set @duile,0;
+	do { set @duile,@duile+1; 
+	disablenpc "#duiduile"+(100+@duile);
+	disablenpc "#duiduile"+(200+@duile);
+	disablenpc "#duiduile"+(300+@duile);
+	disablenpc "#duiduile"+(400+@duile);
+	} while(@duile!=36);
+	if ($@fangwu2==0) announce "【波利对对碰】：玩家["+strcharinfo(0)+"]以"+$@fangwu1+"万RO币向全服玩家发出波利对对碰挑战",15; 
+	if ($@fangwu2!=0) announce "【波利对对碰】：玩家["+strcharinfo(0)+"]以"+$@fangwu2+"个「"+getitemname($@fangwu1)+"」向全服玩家发出波利对对碰挑战",15; 
+	set @bunengdian,0;
+	warp "ddp.gat",78,64;
+	close;
+Levent2:
+	if ($@fangkai1!=0) goto Levent10;
+	if ($@pengming1$==strcharinfo(0)) goto Levent12;
+	if ($@pengming2$==strcharinfo(0)) goto Levent12;
+	if ($@pengming3$==strcharinfo(0)) goto Levent12;
+	if ($@pengming4$==strcharinfo(0)) goto Levent12;
+	mes "[波利对对碰报名员]";
+	if ($@fangwu2!=0) mes "需要^FF0000"+getitemname($@fangwu1)+"^000000*"+$@fangwu2+"作为参加费用，赢了游戏讲加倍还给你！";
+	if ($@fangwu2==0) mes "需要^FF0000"+$@fangwu1+"万RO币^000000作为参加费用，赢了游戏讲加倍还给你！";
+	next;
+	menu "加入游戏",-;
+	if ($@fangkai1!=0) goto Levent10;
+	if ($@fangwu2!=0) { if (countitem($@fangwu1)<$@fangwu2) goto Levent9; }
+	if ($@fangwu2==0 && zeny<$@fangwu1*10000) goto Levent11;
+	if ($@fangshu==4) goto Levent4;
+	if ($@fangkai1!=0) goto Levent10;
+	set $@fangshu,$@fangshu+1;
+	set @fangge,$@fangshu;
+	set @guanshu,0;
+	set @jigedui,0;
+	set @bunengdian,0;
+	deltimer "duiduipeng2::OnEnabc1";
+	deltimer "duiduipeng3::OnEnabc1";
+	deltimer "duiduipeng4::OnEnabc1";
+	addtimer 20000,"duiduipeng"+@fangge+"::OnEnabc1";
+	if ($@fangwu2!=0) delitem $@fangwu1,$@fangwu2;
+	if ($@fangwu2==0) set zeny,zeny-($@fangwu1*10000);
+	if (@fangge==2) { set $@pengming2$,strcharinfo(0); warp "ddp.gat",81,64; }
+	if (@fangge==3) { set $@pengming3$,strcharinfo(0); warp "ddp.gat",78,59; }
+	if (@fangge==4) { set $@pengming4$,strcharinfo(0); warp "ddp.gat",81,59; }
+	close;
+Levent3:
+	mes "[波利对对碰报名员]";
+	mes "已经有人在游戏，请稍后再来！";
+	close;
+Levent4:
+	mes "[波利对对碰报名员]";
+	mes "游戏人数满了，请稍后再来！";
+	close;
+Levent6:
+	mes "[波利对对碰报名员]";
+	mes "输入的数字不能小于^FF00001^000000，请正确输入！";
+	close;
+Levent7:
+	mes "[波利对对碰报名员]";
+	mes "请输入有效果范围内的数字！";
+	close;
+Levent8:
+	mes "[波利对对碰报名员]";
+	mes "你身上没有这么多^FF0000"+getitemname(@ddpyz3[@ddpyz5])+"^000000。";
+	close;
+Levent9:
+	mes "[波利对对碰报名员]";
+	mes "你身上没有这么多RO币！";
+	close;
+Levent10:
+	mes "[波利对对碰报名员]";
+	mes "游戏已经开始了，请稍后再来！";
+	close;
+Levent11:
+	mes "[波利对对碰报名员]";
+	mes "身上必须要超过^FF00001万RO币^000000才能压注。";
+	close;
+Levent12:
+	mes "[波利对对碰报名员]";
+	mes "你已经报名了，是否再进入游戏场！";
+	next;
+	menu "加入游戏",-;
+	if ($@fangkai1!=0) goto Levent10;
+	if ($@pengming1$==strcharinfo(0)) { set @fangge,1; warp "ddp.gat",78,64; }
+	if ($@pengming2$==strcharinfo(0)) { set @fangge,2; warp "ddp.gat",81,64; }
+	if ($@pengming3$==strcharinfo(0)) { set @fangge,3; warp "ddp.gat",78,59; }
+	if ($@pengming4$==strcharinfo(0)) { set @fangge,4; warp "ddp.gat",81,59; }
+	close;
+OnTimer60000:
+	if ($@fangkai1!=0) end;
+	mapannounce "ddp.gat","【波利对对碰】：请房主在2分钟内开始游戏",16;
+	end;
+OnTimer120000:
+	if ($@fangkai1!=0) end;
+	mapannounce "ddp.gat","【波利对对碰】：请房主在1分钟内开始游戏",16;
+	end;
+OnTimer150000:
+	if ($@fangkai1!=0) end;
+	mapannounce "ddp.gat","【波利对对碰】：请房主在30秒内开始游戏",16;
+	end;
+OnTimer180000:
+	if ($@fangkai1!=0) end;
+	set $@fangkai1,1;
+	initnpctimer "位置1号";
+	mapannounce "ddp.gat","【波利对对碰】：房主超过时间没有开始游戏，系统自动开始游戏，时间为5分钟",16;
+	end;
+OnInit:
+	initnpctimer "duiduipeng1";
+	initnpctimer "duiduipeng2";
+	initnpctimer "duiduipeng3";
+	initnpctimer "duiduipeng4";
+	waitingroom "怪物对对碰",0;
+	end;
+}
+
+ddp.gat,79,62,3	script	对对碰游戏机#1	111,{ 
+	if (@bunengdian!=0) end;
+	callfunc "chidian"+@fangge;
+	end;
+OnTimer5000:
+	areawarp "ddp.gat",0,0,500,500,"prontera.gat",155,92;
+	end;
+}
+
+ddp.gat,80,62,3	script	对对碰游戏机#2	111,{
+	if (@bunengdian!=0) end;
+	callfunc "chidian"+@fangge;
+	end;
+OnTimer120000:
+	if ($@duileyi$!="") end;
+	mapannounce "ddp.gat","【波利对对碰】：游戏时间还剩下3分钟",16;
+	end;
+OnTimer180000:
+	if ($@duileyi$!="") end;
+	mapannounce "ddp.gat","【波利对对碰】：游戏时间还剩下2分钟",16;
+	end;
+OnTimer240000:
+	if ($@duileyi$!="") end;
+	mapannounce "ddp.gat","【波利对对碰】：游戏时间还剩下1分钟",16;
+	end;
+OnTimer300000:
+	if ($@duileyi$!="") end;
+	initnpctimer "对对碰游戏机#1";
+	if ($@zuikuai$=="") end;
+	set $@duileyi$,$@zuikuai$;
+	set $@duile,0;
+	do { set $@duile,$@duile+1; 
+	disablenpc "#duiduile"+(100+$@duile);
+	disablenpc "#duiduile"+(200+$@duile);
+	disablenpc "#duiduile"+(300+$@duile);
+	disablenpc "#duiduile"+(400+$@duile);
+	} while($@duile!=36);
+	if (getmapxy($@ddpxy$,$@ddpx,$@ddpy,0,$@duileyi$)!=0) end;
+	if ($@ddpxy$!="ddp") end;
+	attachrid getcharid(3,$@duileyi$);
+	if ($@fangwu2!=0) getitem $@fangwu1,$@fangwu2*$@fangshu;
+	if ($@fangwu2==0) set zeny,zeny+($@fangwu1*10000*$@fangshu);
+	if ($@fangwu2!=0) announce "【波利对对碰】：第一名是玩家["+$@duileyi$+"]，得到"+($@fangwu2*$@fangshu)+"个"+getitemname($@fangwu1),15;
+	if ($@fangwu2==0) announce "【波利对对碰】：第一名是玩家["+$@duileyi$+"]，得到"+($@fangwu1*$@fangshu)+"万RO币",15;
+	if ($dijizhou==0) set $dijizhou,1;
+	if (youximiao!=$dijizhou) { set youxiwang2,0; set youximiao,$dijizhou; }
+	set youxiwang2,youxiwang2+1;
+	if (youxiwang2>$youwang2) {
+	set $youwang2,youxiwang2;
+	set $youming2$,strcharinfo(0); }
+	end;
+}
+
+function	script	duiduipeng	{
+set @dianguo,0;
+disablenpc @guanbi01$; 
+disablenpc @guanbi02$; 
+set @duigeshu,@duigeshu+1;
+set @jigedui,jigedui+1;
+if (@jigedui>$@duijige) { set $@duijige,@jigedui; set $@zuikuai$,strcharinfo(0); }
+if (@duigeshu==18) {
+set @guanshu,@guanshu+1;
+if (@guanshu!=5 && @fangge==1) doevent "duiduipeng1::OnEnabc";
+if (@guanshu!=5 && @fangge==2) doevent "duiduipeng2::OnEnabc";
+if (@guanshu!=5 && @fangge==3) doevent "duiduipeng3::OnEnabc";
+if (@guanshu!=5 && @fangge==4) doevent "duiduipeng4::OnEnabc";
+if (@guanshu==5 && $@duileyi$=="") {
+initnpctimer "对对碰游戏机#1";
+set $@duileyi$,strcharinfo(0);
+set @duile,0;
+do { set @duile,@duile+1; 
+disablenpc "#duiduile"+(100+@duile);
+disablenpc "#duiduile"+(200+@duile);
+disablenpc "#duiduile"+(300+@duile);
+disablenpc "#duiduile"+(400+@duile);
+} while(@duile!=36);
+if ($@fangwu2!=0) getitem $@fangwu1,$@fangwu2*$@fangshu;
+if ($@fangwu2==0) set zeny,zeny+($@fangwu1*10000*$@fangshu);
+if ($@fangwu2!=0) announce "【波利对对碰】：第一名是玩家["+$@duileyi$+"]，得到"+($@fangwu2*$@fangshu)+"个"+getitemname($@fangwu1),15;
+if ($@fangwu2==0) announce "【波利对对碰】：第一名是玩家["+$@duileyi$+"]，得到"+($@fangwu1*$@fangshu)+"万RO币",15;
+if ($dijizhou==0) set $dijizhou,1;
+if (youximiao!=$dijizhou) { set youxiwang2,0; set youximiao,$dijizhou; }
+set youxiwang2,youxiwang2+1;
+if (youxiwang2>$youwang2) {
+set $youwang2,youxiwang2;
+set $youming2$,strcharinfo(0); } } }
+end;
+}
+
+ddp	mapflag	nomemo
+ddp	mapflag	noteleport
+ddp	mapflag	nosave	SavePoint
+ddp	mapflag	nopenalty
+ddp	mapflag	nobranch
+ddp	mapflag	noskill

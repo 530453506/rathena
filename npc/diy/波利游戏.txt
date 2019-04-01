@@ -1,0 +1,226 @@
+//╭═══════════════╮
+//║脚本名称：波利游戏            ║
+//║编写日期：09-11-8             ║
+//║脚本版权：痴痴颠颠            ║
+//║业务联系：QQ751112725         ║
+//║适用版本：JA，EA均可          ║
+//║业务范围：脚本，DB(包括客户端)║
+//╰═══════════════╯
+
+prontera,146,153,5	script	波利游戏人员	909,{
+	setarray @shibie1$[1],"坡利","土坡利","坡玻利","冰坡利","圣挺波利","金蜀波利","右头波利","溶岩波利";
+	setarray @shibie2$[1],"坡莉","土坡莉","坡玻莉","水坡莉","圣铤波利","金屬波利","右头坡利","蓉岩波利";
+	setarray @shibie3$[1],"玻利","士玻利","玻玻利","氺玻利","圣梃波利","全属波利","石头坡利","榕岩波利";
+	setarray @shibie4$[1],"玻莉","士波利","玻披利","冰玻利","圣娗波利","金蜀玻利","石头玻利","傛岩波利";
+	setarray @shibie5$[1],"披利","土披利","披披利","水披利","圣诞玻利","全属坡利","右头皮利","溶岩坡利";
+	setarray @shibie6$[1],"披莉","土披莉","披皮莉","冰披莉","圣诞坡利","金属玻利","石头玻莉","熔岩坡利";
+	setarray @shibie7$[1],"皮利","士皮利","波皮利","冰皮利","圣挺玻利","金属坡利","右头玻莉","熔岩玻利";
+	setarray @shibie8$[1],"皮莉","土皮利","坡皮莉","冰皮莉","圣榳波利","金蜀皮利","石头披利","榕岩波利";
+	setarray @shibie9$[1],"波利","土波利","波波利","冰波利","圣诞波利","金属波利","石头波利","熔岩波利";
+	setarray @mueboli[1],1002,1113,1031,1242,1062,1613,1784,1836;
+        mes "[波利游戏人员]";
+	mes "进入需要苹果1个，ROZ2000W";
+	mes "^FF0000奖品为随机魔物封印石一个，有厉害的BOSS宠物哦！^000000";
+	mes "请问你想玩哪种波利游戏？";
+        next;
+	set @blyouxi,select("识别波利游戏","波利计算游戏");
+        mes "[波利游戏人员]";
+	if (@blyouxi==1) mes "识别波利游戏分为5关，每1关只要杀死正确名字的5只波利就算过关，万一不小心杀错1个波利那就要被自动传送回城，请问你现在是要参加游戏吗！";
+	if (@blyouxi==2) mes "波利算数游戏分为10关，每1关出一道算数题，计算出答案，并消灭掉正确答案名字的怪物，万一不小心杀错1个波利那就要被自动传送回城，请问你现在是要参加游戏吗！";
+	next;
+	menu "马上开始",Levent1;
+        next;
+Levent1:
+//---------临时设置需要物品为苹果(512)，数量为1，金钱(10000)，可以自行修改-------
+	if (zeny<100000) goto Levent3;
+	if (countitem(512)<1) goto Levent4;
+	if (getmapusers("poring_w01.gat")!=0) goto Levent2;
+	set @shaboli,0;
+	set @boliguan,0;
+	set zeny,zeny-100000;
+	delitem 512,1;
+	killmonsterall "poring_w01.gat";
+	addtimer 3000,"bolisai::OnEnabyi";
+	disablenpc "波利游戏领奖人员";
+	warp "poring_w01.gat",102,107;
+	close;
+Levent2:
+        mes "[波利游戏人员]";
+	mes "游戏场上有人正在游戏，请稍等一下！";
+	close;
+Levent3:
+        mes "[波利游戏人员]";
+	mes "你身上没有足够的报名费，带多点钱再来吧！";
+	close;
+Levent4:
+        mes "[波利游戏人员]";
+	mes "你身上的^ff0000苹果^000000不够，等你准备好再来吧！";
+	close;
+OnInit:
+	waitingroom "[☆波利游戏☆]",0;
+	end;
+}
+
+poring_w01.gat,0,0,0	script	bolisai	-1,{
+OnEnabyi:
+	set @bolilei,rand(1,8);
+	deltimer "bolisai::OnEnabwu";
+	deltimer "bolisai::OnEnabliu";
+	deltimer "bolisai::OnEnabqi";
+	deltimer "bolisai::OnEnabba";
+	deltimer "bolisai::OnEnabjiu";
+	addtimer 60000,"bolisai::OnEnabwu";
+	addtimer 120000,"bolisai::OnEnabliu";
+	addtimer 150000,"bolisai::OnEnabqi";
+	addtimer 170000,"bolisai::OnEnabba";
+	addtimer 180000,"bolisai::OnEnabjiu";
+if (@blyouxi==1) {
+	announce "波利游戏公告：第["+(@boliguan+1)+"]关识别波利游戏开始，怪物放出，时间为3分钟！",3;
+	areamonster "poring_w01.gat",81,90,125,118,@shibie1$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,@shibie2$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,@shibie3$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,@shibie4$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,@shibie5$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,@shibie6$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,@shibie7$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,@shibie8$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,@shibie9$[@bolilei],@mueboli[@bolilei],5,"bolisai::OnEnabsan";
+	end; }
+if (@blyouxi==2) {
+	set @suanshu,rand(1,4);
+	if (@suanshu==1) {
+	set @suanshu1,rand(100,900);
+	set @suanshu2,rand(100,900);
+	set @suanshu3,@suanshu1+@suanshu2;
+	announce "波利算数游戏公告：第["+(@boliguan+1)+"]题目【"+@suanshu1+"+"+@suanshu2+"=？】，请消灭正确答案的怪物，时间为1分钟",3;
+	areamonster "poring_w01.gat",81,90,125,118,@suanshu3,@mueboli[@bolilei],1,"bolisai::OnEnabsan";
+	set @shuabili,20;
+	do {
+	areamonster "poring_w01.gat",81,90,125,118,rand(100,@suanshu3-1),@mueboli[@bolilei],1,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,rand(@suanshu3+1,1800),@mueboli[@bolilei],1,"bolisai::OnEnaber";
+	set @shuabili,@shuabili-1;
+	} while(@shuabili); }
+	if (@suanshu==2) {
+	set @suanshu1,rand(100,900);
+	set @suanshu2,rand(100,900);
+	set @suanshu3,@suanshu1-@suanshu2;
+	announce "波利算数游戏公告：第["+(@boliguan+1)+"]题目【"+@suanshu1+"-"+@suanshu2+"=？】，请消灭正确答案的怪物，时间为1分钟",3;
+	areamonster "poring_w01.gat",81,90,125,118,@suanshu3,@mueboli[@bolilei],1,"bolisai::OnEnabsan";
+	set @shuabili,20;
+	do {
+	areamonster "poring_w01.gat",81,90,125,118,rand(-800,@suanshu3-1),@mueboli[@bolilei],1,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,rand(@suanshu3+1,800),@mueboli[@bolilei],1,"bolisai::OnEnaber";
+	set @shuabili,@shuabili-1;
+	} while(@shuabili); }
+	if (@suanshu==3) {
+	set @suanshu1,rand(10,99);
+	set @suanshu2,rand(10,99);
+	set @suanshu3,@suanshu1*@suanshu2;
+	announce "波利算数游戏公告：第["+(@boliguan+1)+"]题目【"+@suanshu1+"*"+@suanshu2+"=？】，请消灭正确答案的怪物，时间为1分钟",3;
+	areamonster "poring_w01.gat",81,90,125,118,@suanshu3,@mueboli[@bolilei],1,"bolisai::OnEnabsan";
+	set @shuabili,20;
+	do {
+	areamonster "poring_w01.gat",81,90,125,118,rand(100,@suanshu3-1),@mueboli[@bolilei],1,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,rand(@suanshu3+1,9801),@mueboli[@bolilei],1,"bolisai::OnEnaber";
+	set @shuabili,@shuabili-1;
+	} while(@shuabili); }
+	if (@suanshu==4) {
+	set @suanshu1,rand(10,99);
+	set @suanshu2,rand(10,99);
+	set @suanshu3,@suanshu1*@suanshu2;
+	announce "波利算数游戏公告：第["+(@boliguan+1)+"]题目【"+@suanshu3+"/"+@suanshu2+"=？】，请消灭正确答案的怪物，时间为1分钟",3;
+	areamonster "poring_w01.gat",81,90,125,118,@suanshu1,@mueboli[@bolilei],1,"bolisai::OnEnabsan";
+	set @shuabili,20;
+	do {
+	areamonster "poring_w01.gat",81,90,125,118,rand(1,@suanshu1-1),@mueboli[@bolilei],1,"bolisai::OnEnaber";
+	areamonster "poring_w01.gat",81,90,125,118,rand(@suanshu1+1,99),@mueboli[@bolilei],1,"bolisai::OnEnaber";
+	set @shuabili,@shuabili-1;
+	} while(@shuabili); }
+	end; }
+OnEnaber:
+	deltimer "bolisai::OnEnabwu";
+	deltimer "bolisai::OnEnabliu";
+	deltimer "bolisai::OnEnabqi";
+	deltimer "bolisai::OnEnabba";
+	deltimer "bolisai::OnEnabjiu";
+	addtimer 3000,"bolisai::OnEnabshi";
+	killmonsterall "poring_w01.gat";
+	if (@blyouxi==1) announce "波利游戏公告：消灭错误名字波利，3秒后自动传送回城！",3;
+	if (@blyouxi==2) announce "波利游戏公告：消灭错误答案波利，3秒后自动传送回城！",3;
+	end;
+OnEnabsan:
+if (@blyouxi==1) {
+	set @shaboli,@shaboli+1;
+	announce "波利游戏公告：现在有["+(5-@shaboli)+"]只波利需要消灭！",3;
+	if (@shaboli==5) {
+	set @shaboli,0; 
+	set @boliguan,@boliguan+1; 
+	deltimer "bolisai::OnEnabwu";
+	deltimer "bolisai::OnEnabliu";
+	deltimer "bolisai::OnEnabqi";
+	deltimer "bolisai::OnEnabba";
+	deltimer "bolisai::OnEnabjiu";
+	killmonsterall "poring_w01.gat";
+	if (@boliguan!=5) addtimer 3000,"bolisai::OnEnabyi"; }
+	if (@boliguan==5) { addtimer 3000,"bolisai::OnEnabsi"; killmonsterall "poring_w01.gat"; }
+	end; }
+if (@blyouxi==2) {
+	deltimer "bolisai::OnEnabwu";
+	deltimer "bolisai::OnEnabliu";
+	deltimer "bolisai::OnEnabqi";
+	deltimer "bolisai::OnEnabba";
+	deltimer "bolisai::OnEnabjiu";
+	set @boliguan,@boliguan+1;
+	killmonsterall "poring_w01.gat";
+	announce "波利算数游戏公告：恭喜["+strcharinfo(0)+"]答案计算正确，顺利通过第"+@boliguan+"题！",3;
+	if (@boliguan!=10) addtimer 3000,"bolisai::OnEnabyi";
+	if (@boliguan==10) { addtimer 3000,"bolisai::OnEnabsi"; killmonsterall "poring_w01.gat"; }
+	end; }
+OnEnabsi:
+	enablenpc "波利游戏领奖人员";
+	announce "波利游戏公告：成功通过重重难关，现在去中间的[波利游戏领奖人员]领取奖品吧！",3;
+	end;
+OnEnabwu:
+	announce "波利游戏公告：本关还剩下2分钟！",3;
+	end;
+OnEnabliu:
+	announce "波利游戏公告：本关还剩下1分钟！",3;
+	end;
+OnEnabqi:
+	announce "波利游戏公告：本关还剩下30秒！",3;
+	end;
+OnEnabba:
+	announce "波利游戏公告：本关还剩下10秒！",3;
+	end;
+OnEnabjiu:
+	if (@blyouxi==1) announce "波利游戏公告：本关时间到了，3秒后自动传送回城！",3;
+	if (@blyouxi==2) announce "波利游戏公告：本题作答时间到了，3秒后自动传送回城！",3;
+	addtimer 3000,"bolisai::OnEnabshi";
+	end;
+OnEnabshi:
+	warp "prontera",116,73;
+	end;
+}
+
+
+poring_w01.gat,102,107,6	script	波利游戏领奖人员	123,{
+        mes "[波利游戏领奖人员]";
+	mes "恭喜你完成了游戏，现在可以在我这里领取奖品了！";
+        next;
+	menu "领取奖品",Levent1;
+        next;
+Levent1:
+	getitem rand(9101,9219),1;
+	announce "[波利游戏]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得随机魔物封印卡一张。",3;
+	warp "prontera",116,73;
+	close;
+}
+
+
+//地图设置
+poring_w01.gat	mapflag	nomemo	dummy
+poring_w01.gat	mapflag	noteleport	dummy
+poring_w01.gat	mapflag	nosave	SavePoint
+poring_w01.gat	mapflag	nopenalty	dummy
+poring_w01.gat	mapflag	nobranch	dummy
+poring_w01.gat	mapflag	nodrop	dummy

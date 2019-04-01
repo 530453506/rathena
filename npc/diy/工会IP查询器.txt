@@ -1,0 +1,45 @@
+function	script	check_ip	{
+	mes "[GM专用道具]";
+	mes "输入玩家姓名";
+	next;
+	input .@charname$;
+	mes "[GM专用道具]";
+	if( !isloggedin( getcharid(3,.@charname$) ) )
+	{
+		mes "线上找不到该名字的玩家";	
+		close;
+	}
+	getguildmember getcharid(2,.@charname$),2;
+	//getguildmember getcharid(2),0;
+	set .@guildmembercount,$@guildmembercount;
+	copyarray .@guildmemberaid[0],$@guildmemberaid[0],.@guildmembercount;
+	mes "公会当前人数 ^FF0000"+.@guildmembercount+"^000000 人。";
+	set .@aid,getcharid(3);
+	for (set .@i,0; .@i<.@guildmembercount; set .@i,.@i+1)
+	{
+		if( isloggedin( .@guildmemberaid[.@i] ) )
+		{
+			attachrid .@guildmemberaid[.@i];
+			setarray .@ip$[getarraysize(.@ip$)],strcharinfo(4);
+		}
+		sleep 1;
+	}
+	attachrid .@aid;
+	mes "公会当前在线人数 ^FF0000"+getarraysize(.@ip$)+"^000000 人。";
+	for (set .@i,0; .@i<getarraysize(.@ip$); set .@i,.@i+1)
+	{
+		for(set .@k,0; .@k<.@i; set .@k,.@k+1)
+		{
+			if( .@ip$[.@k]==.@ip$[.@i] ) {
+				deletearray .@ip$[.@i],1;
+				set .@i, .@i-1;
+				break;
+			}			
+		}
+		sleep 1;
+	}
+	attachrid .@aid;
+	mes "公会当前在线IP数 ^FF0000"+getarraysize(.@ip$)+"^000000 人。";
+	mes strcharinfo(4);
+	close;
+}

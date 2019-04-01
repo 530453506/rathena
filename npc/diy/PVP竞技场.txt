@@ -1,0 +1,46 @@
+//--------------------------------//
+//----------多功能PVP入场人员---------//
+//--------------------------------//
+prontera.gat,141,98,6	script	PVP竞技场::pvpjj	981,{
+	mes "[PVP竞技场]";
+	mes "- 杀完人或被人杀后会有提示！";
+	next;
+	menu"无限制 房间 [" + getmapusers("pvp_y_1-2.gat") +"/100]",Lsand,
+	"1V1 房间 [" + getmapusers("pvp_n_1-5.gat") +"/2]",Lunder,
+	"取消",Lcancel;
+Lsand:
+	if(getmapusers("pvp_y_1-2.gat") >=100) goto LError;
+	warp "pvp_y_1-2.gat",0,0;
+	end;
+Lunder:
+	if(getmapusers("pvp_n_1-5.gat") >=2) goto LError;
+	warp "pvp_n_1-5.gat",0,0;
+	end;
+Lcancel:
+	close;
+LError:
+	mes "[PVP竞技场]";
+	mes "对不起，满员了。";
+	close;
+OnInit:
+
+	waitingroom "[☆PVP竞技☆]",0;
+	end;
+}
+
+geffen.gat,115,74,6	duplicate(pvpjj)	PVP竞技场#1	402
+izlude.gat,121,105,6	duplicate(pvpjj)	PVP竞技场#2	402
+morocc.gat,153,103,6	duplicate(pvpjj)	PVP竞技场#3	402
+payon.gat,178,97,6	duplicate(pvpjj)	PVP竞技场#4	402
+alberta.gat,23,244,6	duplicate(pvpjj)	PVP竞技场#5	402
+aldebaran.gat,135,122,6	duplicate(pvpjj)	PVP竞技场#6	402
+comodo.gat,184,159,6	duplicate(pvpjj)	PVP竞技场#7	402
+gonryun.gat,153,69,6	duplicate(pvpjj)	PVP竞技场#8	402
+louyang.gat,208,104,6	duplicate(pvpjj)	PVP竞技场#9	402
+amatsu.gat,109,85,6	duplicate(pvpjj)	PVP竞技场#10	402
+yuno.gat,147,183,6	duplicate(pvpjj)	PVP竞技场#11	402
+xmas.gat,143,133,6	duplicate(pvpjj)	PVP竞技场#12	402
+jawaii.gat,224,197,85,6	duplicate(pvpjj)	PVP竞技场#13	402
+gonryun.gat,168,126,85,6	duplicate(pvpjj)	PVP竞技场#14	402
+umbala.gat,119,133,6	duplicate(pvpjj)	PVP竞技场#15	402
+

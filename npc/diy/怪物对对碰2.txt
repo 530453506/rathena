@@ -1,0 +1,447 @@
+//╭═════════════════════╮
+//║脚本名称：波利对对碰                      ║
+//║编写日期：10-05-04                        ║
+//║脚本编辑：痴痴颠颠                        ║
+//║QQ号联系：751112725                       ║
+//║脚本版权：痴痴颠颠                        ║
+//║适用版本：EA                              ║
+//║业务范围：脚本，DB(包括客户端)            ║
+//╰═════════════════════╯
+
+function	script	chidian2	{
+	if ($@fangkai1==1) goto Levent1;
+	if ($@fangkai2==0) {
+	mes "[对对碰游戏机]";
+	mes "请问你准备好开始游戏了吗？";
+	next;
+	menu "准备好了",-;
+	set $@fangkai2,1;
+	deltimer "duiduipeng2::OnEnabc1";
+	announce "【波利对对碰】：2号位置["+strcharinfo(0)+"]准备完毕",1; 
+	close; }
+	mes "[对对碰游戏机]";
+	mes "正等待房主开始游戏！";
+	close;
+Levent1:
+	set @bunengdian,1;
+	set @dianguo,0;
+	set @duiguaiwu,0;
+	set @duigeshu,0;
+	set @guanbi01$,"";
+	set @guanbi02$,"";
+	set $@paihao2,0;
+	set @duipeng,0;
+	do { set @duipeng,@duipeng+1; 
+	enablenpc "#duiduile"+(200+@duipeng);
+	setnpcdisplay("#duiduile"+(200+@duipeng),$@duikan2[@duipeng]);
+	setarray @duile[@duipeng],$@duikan2[@duipeng];
+	} while(@duipeng!=36);
+	initnpctimer "duiduipeng2";
+	announce "【波利对对碰】：第[1]关开始，怪物放出",3; 
+	close;
+}
+
+ddp.gat,0,0,0	script	duiduipeng2	-1,{
+OnTimer10:
+	setarray $@duikan2[1],rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657),rand(650,657);
+	set $@tongji2,0;
+	set $@shuzi2,36;
+	do {
+	if ($@duikan2[$@shuzi2]==650) set $@tongji2,$@tongji2+1;
+	set $@shuzi2,$@shuzi2-1;
+	} while($@shuzi2);
+	if ((($@tongji2/2)*2)+1==$@tongji2) { initnpctimer; end; }
+	set $@tongji2,0;
+	set $@shuzi2,36;
+	do {
+	if ($@duikan2[$@shuzi2]==651) set $@tongji2,$@tongji2+1;
+	set $@shuzi2,$@shuzi2-1;
+	} while($@shuzi2);
+	if ((($@tongji2/2)*2)+1==$@tongji2) { initnpctimer; end; }
+	set $@tongji2,0;
+	set $@shuzi2,36;
+	do {
+	if ($@duikan2[$@shuzi2]==652) set $@tongji2,$@tongji2+1;
+	set $@shuzi2,$@shuzi2-1;
+	} while($@shuzi2);
+	if ((($@tongji2/2)*2)+1==$@tongji2) { initnpctimer; end; }
+	set $@tongji2,0;
+	set $@shuzi2,36;
+	do {
+	if ($@duikan2[$@shuzi2]==653) set $@tongji2,$@tongji2+1;
+	set $@shuzi2,$@shuzi2-1;
+	} while($@shuzi2);
+	if ((($@tongji2/2)*2)+1==$@tongji2) { initnpctimer; end; }
+	set $@tongji2,0;
+	set $@shuzi2,36;
+	do {
+	if ($@duikan2[$@shuzi2]==654) set $@tongji2,$@tongji2+1;
+	set $@shuzi2,$@shuzi2-1;
+	} while($@shuzi2);
+	if ((($@tongji2/2)*2)+1==$@tongji2) { initnpctimer; end; }
+	set $@tongji2,0;
+	set $@shuzi2,36;
+	do {
+	if ($@duikan2[$@shuzi2]==655) set $@tongji2,$@tongji2+1;
+	set $@shuzi2,$@shuzi2-1;
+	} while($@shuzi2);
+	if ((($@tongji2/2)*2)+1==$@tongji2) { initnpctimer; end; }
+	set $@tongji2,0;
+	set $@shuzi2,36;
+	do {
+	if ($@duikan2[$@shuzi2]==656) set $@tongji2,$@tongji2+1;
+	set $@shuzi2,$@shuzi2-1;
+	} while($@shuzi2);
+	if ((($@tongji2/2)*2)+1==$@tongji2) { initnpctimer; end; }
+	set $@paihao2,1;
+	end;
+OnEnabc:
+	if ($@paihao2==0) { addtimer 10,"duiduipeng2::OnEnabc"; end; }
+	set @dianguo,0;
+	set @duiguaiwu,0;
+	set @duigeshu,0;
+	set @guanbi01$,"";
+	set @guanbi02$,"";
+	set $@paihao2,0;
+	set @duipeng,0;
+	do { set @duipeng,@duipeng+1; 
+	enablenpc "#duiduile"+(200+@duipeng);
+	setnpcdisplay("#duiduile"+(200+@duipeng),$@duikan2[@duipeng]);
+	setarray @duile[@duipeng],$@duikan2[@duipeng];
+	} while(@duipeng!=36);
+	initnpctimer;
+	announce "【波利对对碰】：第["+(@guanshu+1)+"]关开始，怪物放出",3; 
+	end;
+OnEnabc1:
+	if (getmapxy(@xyabc$,@abcx,@abcy,0,strcharinfo(0))!=0) end;
+	if (@xyabc$!="ddp") end;
+	if ($@fangkai1!=0 || $@fangkai2!=0) end;
+	set $@fangkai2,1;
+	announce "【波利对对碰】：2号位置["+strcharinfo(0)+"]准备完毕",1; 
+	end;
+}
+
+//----------------------------------------------------------------
+ddp.gat,82,74,3	script	#duiduile201	650,{
+if (@fangge!=2 || @dianguo==1) end;
+set @dianguo,1;
+if (@duiguaiwu==@duile[1]) { set @guanbi02$,"#duiduile201"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile201"; set @duiguaiwu,@duile[1]; end; }
+if (@duiguaiwu!=@duile[1] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,84,74,3	script	#duiduile202	650,{
+if (@fangge!=2 || @dianguo==2) end;
+set @dianguo,2;
+if (@duiguaiwu==@duile[2]) { set @guanbi02$,"#duiduile202"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile202"; set @duiguaiwu,@duile[2]; end; }
+if (@duiguaiwu!=@duile[2] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,86,74,3	script	#duiduile203	650,{
+if (@fangge!=2 || @dianguo==3) end;
+set @dianguo,3;
+if (@duiguaiwu==@duile[3]) { set @guanbi02$,"#duiduile203"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile203"; set @duiguaiwu,@duile[3]; end; }
+if (@duiguaiwu!=@duile[3] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,88,74,3	script	#duiduile204	650,{
+if (@fangge!=2 || @dianguo==4) end;
+set @dianguo,4;
+if (@duiguaiwu==@duile[4]) { set @guanbi02$,"#duiduile204"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile204"; set @duiguaiwu,@duile[4]; end; }
+if (@duiguaiwu!=@duile[4] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,90,74,3	script	#duiduile205	650,{
+if (@fangge!=2 || @dianguo==5) end;
+set @dianguo,5;
+if (@duiguaiwu==@duile[5]) { set @guanbi02$,"#duiduile205"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile205"; set @duiguaiwu,@duile[5]; end; }
+if (@duiguaiwu!=@duile[5] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,92,74,3	script	#duiduile206	650,{
+if (@fangge!=2 || @dianguo==6) end;
+set @dianguo,6;
+if (@duiguaiwu==@duile[6]) { set @guanbi02$,"#duiduile206"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile206"; set @duiguaiwu,@duile[6]; end; }
+if (@duiguaiwu!=@duile[6] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,82,72,3	script	#duiduile207	650,{
+if (@fangge!=2 || @dianguo==7) end;
+set @dianguo,7;
+if (@duiguaiwu==@duile[7]) { set @guanbi02$,"#duiduile207"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile207"; set @duiguaiwu,@duile[7]; end; }
+if (@duiguaiwu!=@duile[7] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,84,72,3	script	#duiduile208	650,{
+if (@fangge!=2 || @dianguo==8) end;
+set @dianguo,8;
+if (@duiguaiwu==@duile[8]) { set @guanbi02$,"#duiduile208"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile208"; set @duiguaiwu,@duile[8]; end; }
+if (@duiguaiwu!=@duile[8] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,86,72,3	script	#duiduile209	650,{
+if (@fangge!=2 || @dianguo==9) end;
+set @dianguo,9;
+if (@duiguaiwu==@duile[9]) { set @guanbi02$,"#duiduile209"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile209"; set @duiguaiwu,@duile[9]; end; }
+if (@duiguaiwu!=@duile[9] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,88,72,3	script	#duiduile210	650,{
+if (@fangge!=2 || @dianguo==10) end;
+set @dianguo,10;
+if (@duiguaiwu==@duile[10]) { set @guanbi02$,"#duiduile210"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile210"; set @duiguaiwu,@duile[10]; end; }
+if (@duiguaiwu!=@duile[10] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,90,72,3	script	#duiduile211	650,{
+if (@fangge!=2 || @dianguo==11) end;
+set @dianguo,11;
+if (@duiguaiwu==@duile[11]) { set @guanbi02$,"#duiduile211"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile211"; set @duiguaiwu,@duile[11]; end; }
+if (@duiguaiwu!=@duile[11] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,92,72,3	script	#duiduile212	650,{
+if (@fangge!=2 || @dianguo==12) end;
+set @dianguo,12;
+if (@duiguaiwu==@duile[12]) { set @guanbi02$,"#duiduile212"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile212"; set @duiguaiwu,@duile[12]; end; }
+if (@duiguaiwu!=@duile[12] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,82,70,3	script	#duiduile213	650,{
+if (@fangge!=2 || @dianguo==13) end;
+set @dianguo,13;
+if (@duiguaiwu==@duile[13]) { set @guanbi02$,"#duiduile213"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile213"; set @duiguaiwu,@duile[13]; end; }
+if (@duiguaiwu!=@duile[13] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,84,70,3	script	#duiduile214	650,{
+if (@fangge!=2 || @dianguo==14) end;
+set @dianguo,14;
+if (@duiguaiwu==@duile[14]) { set @guanbi02$,"#duiduile214"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile214"; set @duiguaiwu,@duile[14]; end; }
+if (@duiguaiwu!=@duile[14] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,86,70,3	script	#duiduile215	650,{
+if (@fangge!=2 || @dianguo==15) end;
+set @dianguo,15;
+if (@duiguaiwu==@duile[15]) { set @guanbi02$,"#duiduile215"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile215"; set @duiguaiwu,@duile[15]; end; }
+if (@duiguaiwu!=@duile[15] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,88,70,3	script	#duiduile216	650,{
+if (@fangge!=2 || @dianguo==16) end;
+set @dianguo,16;
+if (@duiguaiwu==@duile[16]) { set @guanbi02$,"#duiduile216"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile216"; set @duiguaiwu,@duile[16]; end; }
+if (@duiguaiwu!=@duile[16] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,90,70,3	script	#duiduile217	650,{
+if (@fangge!=2 || @dianguo==17) end;
+set @dianguo,17;
+if (@duiguaiwu==@duile[17]) { set @guanbi02$,"#duiduile217"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile217"; set @duiguaiwu,@duile[17]; end; }
+if (@duiguaiwu!=@duile[17] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,92,70,3	script	#duiduile218	650,{
+if (@fangge!=2 || @dianguo==18) end;
+set @dianguo,18;
+if (@duiguaiwu==@duile[18]) { set @guanbi02$,"#duiduile218"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile218"; set @duiguaiwu,@duile[18]; end; }
+if (@duiguaiwu!=@duile[18] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,82,68,3	script	#duiduile219	650,{
+if (@fangge!=2 || @dianguo==19) end;
+set @dianguo,19;
+if (@duiguaiwu==@duile[19]) { set @guanbi02$,"#duiduile219"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile219"; set @duiguaiwu,@duile[19]; end; }
+if (@duiguaiwu!=@duile[19] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,84,68,3	script	#duiduile220	650,{
+if (@fangge!=2 || @dianguo==20) end;
+set @dianguo,20;
+if (@duiguaiwu==@duile[20]) { set @guanbi02$,"#duiduile220"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile220"; set @duiguaiwu,@duile[20]; end; }
+if (@duiguaiwu!=@duile[20] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,86,68,3	script	#duiduile221	650,{
+if (@fangge!=2 || @dianguo==21) end;
+set @dianguo,21;
+if (@duiguaiwu==@duile[21]) { set @guanbi02$,"#duiduile221"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile221"; set @duiguaiwu,@duile[21]; end; }
+if (@duiguaiwu!=@duile[21] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,88,68,3	script	#duiduile222	650,{
+if (@fangge!=2 || @dianguo==22) end;
+set @dianguo,22;
+if (@duiguaiwu==@duile[22]) { set @guanbi02$,"#duiduile222"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile222"; set @duiguaiwu,@duile[22]; end; }
+if (@duiguaiwu!=@duile[22] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,90,68,3	script	#duiduile223	650,{
+if (@fangge!=2 || @dianguo==23) end;
+set @dianguo,23;
+if (@duiguaiwu==@duile[23]) { set @guanbi02$,"#duiduile223"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile223"; set @duiguaiwu,@duile[23]; end; }
+if (@duiguaiwu!=@duile[23] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,92,68,3	script	#duiduile224	650,{
+if (@fangge!=2 || @dianguo==24) end;
+set @dianguo,24;
+if (@duiguaiwu==@duile[24]) { set @guanbi02$,"#duiduile224"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile224"; set @duiguaiwu,@duile[24]; end; }
+if (@duiguaiwu!=@duile[24] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,82,66,3	script	#duiduile225	650,{
+if (@fangge!=2 || @dianguo==25) end;
+set @dianguo,25;
+if (@duiguaiwu==@duile[25]) { set @guanbi02$,"#duiduile225"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile225"; set @duiguaiwu,@duile[25]; end; }
+if (@duiguaiwu!=@duile[25] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,84,66,3	script	#duiduile226	650,{
+if (@fangge!=2 || @dianguo==26) end;
+set @dianguo,26;
+if (@duiguaiwu==@duile[26]) { set @guanbi02$,"#duiduile226"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile226"; set @duiguaiwu,@duile[26]; end; }
+if (@duiguaiwu!=@duile[26] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,86,66,3	script	#duiduile227	650,{
+if (@fangge!=2 || @dianguo==27) end;
+set @dianguo,27;
+if (@duiguaiwu==@duile[27]) { set @guanbi02$,"#duiduile227"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile227"; set @duiguaiwu,@duile[27]; end; }
+if (@duiguaiwu!=@duile[27] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,88,66,3	script	#duiduile228	650,{
+if (@fangge!=2 || @dianguo==28) end;
+set @dianguo,28;
+if (@duiguaiwu==@duile[28]) { set @guanbi02$,"#duiduile228"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile228"; set @duiguaiwu,@duile[28]; end; }
+if (@duiguaiwu!=@duile[28] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,90,66,3	script	#duiduile229	650,{
+if (@fangge!=2 || @dianguo==29) end;
+set @dianguo,29;
+if (@duiguaiwu==@duile[29]) { set @guanbi02$,"#duiduile229"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile229"; set @duiguaiwu,@duile[29]; end; }
+if (@duiguaiwu!=@duile[29] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,92,66,3	script	#duiduile230	650,{
+if (@fangge!=2 || @dianguo==30) end;
+set @dianguo,30;
+if (@duiguaiwu==@duile[30]) { set @guanbi02$,"#duiduile230"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile230"; set @duiguaiwu,@duile[30]; end; }
+if (@duiguaiwu!=@duile[30] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,82,64,3	script	#duiduile231	650,{
+if (@fangge!=2 || @dianguo==31) end;
+set @dianguo,31;
+if (@duiguaiwu==@duile[31]) { set @guanbi02$,"#duiduile231"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile231"; set @duiguaiwu,@duile[31]; end; }
+if (@duiguaiwu!=@duile[31] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,84,64,3	script	#duiduile232	650,{
+if (@fangge!=2 || @dianguo==32) end;
+set @dianguo,32;
+if (@duiguaiwu==@duile[32]) { set @guanbi02$,"#duiduile232"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile232"; set @duiguaiwu,@duile[32]; end; }
+if (@duiguaiwu!=@duile[32] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,86,64,3	script	#duiduile233	650,{
+if (@fangge!=2 || @dianguo==33) end;
+set @dianguo,33;
+if (@duiguaiwu==@duile[33]) { set @guanbi02$,"#duiduile233"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile233"; set @duiguaiwu,@duile[33]; end; }
+if (@duiguaiwu!=@duile[33] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,88,64,3	script	#duiduile234	650,{
+if (@fangge!=2 || @dianguo==34) end;
+set @dianguo,34;
+if (@duiguaiwu==@duile[34]) { set @guanbi02$,"#duiduile234"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile234"; set @duiguaiwu,@duile[34]; end; }
+if (@duiguaiwu!=@duile[34] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,90,64,3	script	#duiduile235	650,{
+if (@fangge!=2 || @dianguo==35) end;
+set @dianguo,35;
+if (@duiguaiwu==@duile[35]) { set @guanbi02$,"#duiduile235"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile235"; set @duiguaiwu,@duile[35]; end; }
+if (@duiguaiwu!=@duile[35] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}
+
+ddp.gat,92,64,3	script	#duiduile236	650,{
+if (@fangge!=2 || @dianguo==36) end;
+set @dianguo,36;
+if (@duiguaiwu==@duile[36]) { set @guanbi02$,"#duiduile236"; set @duiguaiwu,0; callfunc "duiduipeng"; end; }
+if (@duiguaiwu==0) { set @guanbi01$,"#duiduile236"; set @duiguaiwu,@duile[36]; end; }
+if (@duiguaiwu!=@duile[36] && @duiguaiwu!=0) { set @duiguaiwu,0; set @dianguo,0; end; }
+end;
+}

@@ -1,0 +1,536 @@
+
+//============== 登记 ==================
+
+-	script	拉多拉回忆副本设置	-1,{
+	end;
+OnInit:
+	$@ldl_level					=1;		// 需要等级
+	$@ldl_Time_All				=14400;	// 挑战时间
+	$@ldl_Time_In				=300;		// 进场时间
+	$@ldl_Time_Cooldown		=43200;	// 冷却时间
+	$@ldl_GM					=60;		// GM最低等级
+	$@fbldl_max				=12;		// 最大人数
+	$@fbldl_min					=1;			// 队伍最小人数
+	$@fbldl_zeny				=5000000;	//进场RMB设置
+	
+	setarray $@fbldl_item_id[0],27044;			// 入场需要的道具ID
+	setarray $@fbldl_item_num[0],1;			// 入场需要的道具数量
+	
+	setarray $@fdldl_Mob_Id_1[0],2537,2546,2555; //[通道一刷怪]
+	setarray $@fdldl_Mob_Num_1[0],50,50,50; //[通道一刷怪数量]
+	
+	setarray $@fdldl_Mob_Id_2[0],2538,2547,2556; //[通道二刷怪]
+	setarray $@fdldl_Mob_Num_2[0],50,50,50; //[通道二刷怪数量]
+	
+	setarray $@fdldl_Mob_Id_3[0],2540,2549,2558; //[通道三刷怪]
+	setarray $@fdldl_Mob_Num_3[0],50,50,50; //[通道三刷怪数量]
+	
+	setarray $@fdldl_Mob_Id_4[0],2542,2551,2560; //[通道四刷怪]
+	setarray $@fdldl_Mob_Num_4[0],50,50,50; //[通道四刷怪数量]
+	
+	$@fdldl_Mob_Boss_1_ID		=2545; 	//通道一BOSSid
+	$@fdldl_Mob_Boss_2_ID		=2554; 	//通道二BOSSid
+	$@fdldl_Mob_Boss_3_ID		=2563; 	//通道三BOSSid
+	$@fdldl_Mob_Boss_4_ID		=2571; 	//通道四BOSSid
+	$@fdldl_Mob_Boss_5_ID		=2570; 	//最终BOSSid
+	
+	//奖励设置
+	setarray $@fbldl_Item_Id_1[0],18127; //[物品设置]
+	setarray $@fbldl_Item_Num_1[0],1;  	//[物品数量]
+	setarray $@fbldl_Item_Id_2[0],29997; //[物品设置]
+	setarray $@fbldl_Item_Num_2[0],1;  	//[物品数量]	
+	setarray $@fbldl_Item_Id_3[0],670; //[物品设置]
+	setarray $@fbldl_Item_Num_3[0],1;  	//[物品数量]
+	end;
+}
+
+function	script	Ldl_Party_On	{
+	set .@party_on,0;
+	getpartymember(getarg(0),2);
+	for (set .@i,0;.@i<$@partymembercount;set .@i,.@i+1)
+	{
+		if ( isloggedin($@partymemberaid[.@i]) )
+			set .@party_on,.@party_on+1;
+	}
+	return .@party_on;
+}
+
+prontera.gat,245,77,3	script	拉鲁	588,{
+	mes "[拉鲁]";
+	if ( instance_id(1) )
+	{
+		mes "你要回到队友的身边吗？";
+		next;
+		switch (select("是的","不要","重开副本"))
+		{
+			default:
+			case 1:
+				break;
+			case 2:
+				close;
+				break;
+			case 3:
+				goto L_Reset;
+				break;
+		}
+		if (LinQuJianChe == 0)
+		{
+			mes "领奖后不能再进入已完成的副本！";
+			close;
+		}
+		close2;
+			warp has_instance("1@ldl"),29,45;
+		end;
+	}
+L_Reset:
+	mes "^0000FF每人最多双开^000000";
+	mes "我亲爱的斯丽小姐，梦魔夺去了";
+	mes "我与她的记忆被梦魔清洗一空.";
+	mes "你们能帮我进入回忆的走廊解放拉多拉的回忆吗？";
+	mes "只有这样她才会想起我，我们才有机会重新一切";
+	next;
+	mes "[拉鲁]";
+	mes "你们真的愿意帮我?";
+	mes "每人需要500W,副本入场券1张（积分商城兑换）";
+	next;
+	if (getcharid(0) != getpartyleader(getcharid(1),2)) 
+	{
+		mes "[拉鲁]";
+		mes "只有的队长才能和我谈话";
+		close;
+	}
+	mes "[拉鲁]";
+	mes "你们愿意替我去找回忆吗?";
+	next;
+	switch (select("01->[ 挑战拉多拉回忆 ]:02->[ 查看任务奖励 ]:03->[ 离开 ]")) 
+	{
+	case 1:
+		mes "进入副本每人都需要：";
+		// 循环显示进入要求
+		for (@a=0;@a<getarraysize($@fbldl_item_id);@a++)
+		{
+			mes ""+getitemname($@fbldl_item_id[@a])+"x"+$@fbldl_item_num[@a];
+		}
+		mes "金钱 "+$@fbldl_zeny;
+		mes "-------------------------";
+		// 判断是否有创建副本的资格
+		if ( !getcharid(1) || getcharid(0) != getpartyleader(getcharid(1),2) )
+		{
+			mes "对不起，你没有队伍，或者 你不是队长。";
+			close;
+		}
+		// 取得队伍成员信息组
+		getpartymember(getcharid(1),2);
+		set .@partymembercount,$@partymembercount;
+		copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;
+		// 循环判断队伍中的成员是否符合要求
+		// 显示出第一个不符合要求的成员
+		for (.@i=0;.@i<.@partymembercount;.@i++)
+		{
+			if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+			{
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+				mes "队伍中有人不在线，无法报名。";
+				close;
+			}
+			if(#ldl_Lasttime + $@ldl_Time_Cooldown > gettimetick(2) && #ldl_Lasttime < gettimetick(2) && getgmlevel() < $@ldl_GM ) 
+			{
+				set .@ldl_lastTime,#ldl_Lasttime + $@ldl_Time_Cooldown - gettimetick(2);
+				set .@ldl_hoursTime,.@ldl_lastTime / 60 / 60;
+				set .@ldl_minutesTime,.@ldl_lastTime / 60 % 60;
+				set .@ldl_secondsTime,.@ldl_lastTime % 60;
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+				mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]副本冷却时间未到";
+				mes "还有, "+.@ldl_hoursTime+"小时 "+.@ldl_minutesTime+"分钟 "+.@ldl_secondsTime+"秒才能进入";
+				close;				
+			}
+			if(BaseLevel < $@ldl_level)
+			{
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+				mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+				mes "等级还没到"+$@ldl_level+".";
+				close;
+			}
+			for (.@j=0;.@j<getarraysize($@fbldl_item_id);.@j++)
+			{
+				if (countitem($@fbldl_item_id[.@j]) < $@fbldl_item_num[.@j] )
+				{
+					if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+						end;
+					mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+					mes "没有携带 "+getitemname($@fbldl_item_id[.@j])+" x "+$@fbldl_item_num[.@j]+"个";
+					close;
+				}
+				if ( Zeny < $@fbldl_zeny )
+				{
+					if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+						end;
+					mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+					mes "金钱不足 "+$@fbldl_zeny+" Zeny。";
+					close;
+				}
+			}
+		}
+		// 脚本关联回到队长身上
+		if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+			end;
+		mes "你想登记进入拉多拉回忆吗?";
+		next;
+		if ( select( "是的","不要" ) == 2 )
+			close;
+		mes "[拉鲁]";
+		// 判断队长身上的道具是否符合要求
+		for (@b=0;@b<getarraysize($@fbldl_item_id);@b++)
+		{
+			set @online_num,callfunc("Ldl_Party_On",getcharid(1));
+			if(#ldl_Lasttime + $@ldl_Time_Cooldown > gettimetick(2) && #ldl_Lasttime < gettimetick(2) && getgmlevel() < $@ldl_GM ) 
+			{
+				set .@ldl_lastTime,#ldl_Lasttime + $@ldl_Time_Cooldown - gettimetick(2);
+				set .@ldl_hoursTime,.@ldl_lastTime / 60 / 60;
+				set .@ldl_minutesTime,.@ldl_lastTime / 60 % 60;
+				set .@ldl_secondsTime,.@ldl_lastTime % 60;
+				mes "对不起！";
+				mes "你现在还有, "+.@ldl_hoursTime+"小时 "+.@ldl_minutesTime+"分钟 "+.@ldl_secondsTime+"秒才能进入";
+				close;
+			}
+			if ( BaseLevel < $@ldl_level )
+			{
+				mes "对不起！";
+				mes "你的等级还没到"+$@ldl_level+".";
+				close;
+			}
+			if ( @online_num < $@fbldl_min )
+			{
+				mes "对不起！";
+				mes "你的队伍成员必须在["+$@fbldl_min+"]人以上，";
+				close;
+			}
+			if ( @online_num > $@fbldl_max )
+			{
+				mes "对不起！";
+				mes "你的队伍成员超过["+$@fbldl_max+"]人，";
+				close;
+			}
+			if ( Zeny < $@fbldl_zeny )
+			{
+				mes "对不起！";
+				mes "你的金钱不足"+$@fbldl_zeny+"Zeny，";
+				close;
+			}
+			if ( countitem($@fbldl_item_id[@b]) < $@fbldl_item_num[@b] )
+			{
+				mes "对不起！";				
+				mes "你的["+getitemname($@fbldl_item_id[@b])+"]不足["+$@fbldl_item_num[@b]+"]个。";
+				close;
+			}
+		}
+		mes "你确定要登记吗?";
+		next;
+		if ( select( "是的","不要" ) == 2 )
+			close;
+		mes "[拉鲁]";
+		mes "你的队伍已经成功登记了.";
+		mes "我将打开一个入口，它会把你们传送到里面.";
+		close2;		
+		if (instance_id(1) )
+		{
+			instance_destroy(instance_id(1));
+		}
+		set .@instance_ldl_id,instance_create("拉多拉回廊的记忆",getcharid(1)); 
+		if (.@instance_ldl_id < 0 )
+		{
+			mes "[拉鲁]";
+			mes "创建副本失败"; 
+			mes "副本系统已经达到系统上限"; 
+			mes "请通知GM或者管理员"; 
+			close;
+		}
+		instance_attachmap("1@ldl",.@instance_ldl_id);
+		instance_set_timeout $@ldl_Time_All,$@ldl_Time_In,.@instance_ldl_id;
+		instance_init .@instance_ldl_id;
+		instance_attach .@instance_ldl_id;
+		instance_attach instance_id(1);
+		announce "[ 拉多拉副本 ]->> ["+getpartyname(getcharid(1))+"]队伍发起对拉多拉副本的挑战了。",15,0xFFFFAA;
+		doevent instance_npcname("ldl_monster",instance_id(1))+"::Onmonster20";
+		doevent instance_npcname("ldl_monster2",instance_id(1))+"::Onmonster21";
+		//==========================//
+		
+		// 判断队员身上的道具是否符合要求
+		getpartymember(getcharid(1),2);
+		set .@partymembercount,$@partymembercount;
+		copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;		
+		for (.@i=0;.@i<.@partymembercount;.@i++)
+		{
+			if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+				continue;
+			// 删除所需道具
+			if (Zeny<$@fbldl_zeny)
+				continue;
+			set Zeny,Zeny-$@fbldl_zeny;
+			set LinQuJianChe,2;
+			set #ldl_Lasttime,gettimetick(2);
+			for (@c=0;@c<getarraysize($@fbldl_item_id);@c++)
+			{
+				delitem $@fbldl_item_id[@c],$@fbldl_item_num[@c];
+			}
+			warp has_instance("1@ldl"),29,45;
+		}
+		break; 
+	case 2:
+		mes "-------固定奖励-------";
+		mes "-任务积分10点";
+		mes "-------10%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fbldl_Item_Id_1);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbldl_Item_Id_1[.@a])+"]^000000 X ["+$@fbldl_Item_Num_1[.@a]+"]";
+		}
+		next;
+		mes "-------30%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fbldl_Item_Id_2);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbldl_Item_Id_2[.@a])+"]^000000 X ["+$@fbldl_Item_Num_2[.@a]+"]";
+		}
+		next;
+		mes "-------70%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fbldl_Item_Id_3);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbldl_Item_Id_3[.@a])+"]^000000 X ["+$@fbldl_Item_Num_3[.@a]+"]";
+		}
+		next;
+		break;
+	case 3:
+		break;
+	}
+	close;
+OnInit:
+	waitingroom "拉多拉回忆",0;
+	end;
+}
+
+//============== 登记/传送 ==================
+1@ldl,370,44,0	script	lSwarp_1	45,1,1,{warp has_instance("1@ldl"),29,100;	end; }
+1@ldl,290,105,0	script	lSwarp_2	45,1,1,{warp has_instance("1@ldl"),29,155;	end; }
+1@ldl,370,172,0	script	lSwarp_3	45,1,1,{warp has_instance("1@ldl"),370,229;	end; }
+1@ldl,165,227,0	script	lSwarp_4	45,1,1,{warp has_instance("1@ldl"),87,212;	end; }
+//=====================================================
+
+//============== 刷怪==================
+1@ldl,0,0,0	script	ldl_monster	-1,{
+
+Onmonster20:
+	killmonsterall "1@ldl";
+	setarray $@ldlfbdt$[0],"1@ldl.gat";
+	disablenpc  instance_npcname("lSwarp_1", instance_id());
+	disablenpc  instance_npcname("lSwarp_2", instance_id());
+	disablenpc  instance_npcname("lSwarp_3", instance_id());
+	disablenpc  instance_npcname("lSwarp_4", instance_id());
+	set .@ia,instance_id(0);
+
+//拉多拉回廊1
+	for (set .@i,0;.@i < getarraysize($@fdldl_Mob_Id_1);set .@i,.@i+1)
+	{
+		set 'LDL_Mobs_1,'LDL_Mobs_1+$@fdldl_Mob_Num_1[.@i];//通道1小怪物总数量
+		areamonster $@ldlfbdt$[0],99,44,314,43,"--ja--",$@fdldl_Mob_Id_1[.@i],$@fdldl_Mob_Num_1[.@i],instance_npcname("ldl_monster")+"::OnKillMsMob";
+	}
+//拉多拉回廊2
+	for (set .@i,0;.@i < getarraysize($@fdldl_Mob_Id_2);set .@i,.@i+1)
+	{
+		set 'LDL_Mobs_2,'LDL_Mobs_2+$@fdldl_Mob_Num_2[.@i];//通道1小怪物总数量
+		areamonster $@ldlfbdt$[0],186,102,277,93,"--ja--",$@fdldl_Mob_Id_2[.@i],$@fdldl_Mob_Num_2[.@i],instance_npcname("ldl_monster")+"::OnKillMsMob2";
+	}
+//拉多拉回廊3
+	for (set .@i,0;.@i < getarraysize($@fdldl_Mob_Id_3);set .@i,.@i+1)
+	{
+		set 'LDL_Mobs_3,'LDL_Mobs_3+$@fdldl_Mob_Num_3[.@i];//通道1小怪物总数量
+		areamonster $@ldlfbdt$[0],99,157,304,174,"--ja--",$@fdldl_Mob_Id_3[.@i],$@fdldl_Mob_Num_3[.@i],instance_npcname("ldl_monster")+"::OnKillMsMob3";
+	}
+//拉多拉回廊4	
+	for (set .@i,0;.@i < getarraysize($@fdldl_Mob_Id_4);set .@i,.@i+1)
+	{
+		set 'LDL_Mobs_4,'LDL_Mobs_4+$@fdldl_Mob_Num_3[.@i];//通道1小怪物总数量
+		areamonster $@ldlfbdt$[0],340,230,227,225,"--ja--",$@fdldl_Mob_Id_4[.@i],$@fdldl_Mob_Num_4[.@i],instance_npcname("ldl_monster")+"::OnKillMsMob4";
+	}
+	end;
+//====第一个BOSS出处
+OnKillMsMob:
+	set 'LDL_Mobs_1,'LDL_Mobs_1-1;
+	if ('LDL_Mobs_1)
+	{
+		instance_announce .@ia,"[ 怪物信息 ]:当前地图目前还有怪物数量"+'LDL_Mobs_1+"只.",bc_map,0x0080FF;
+		end;
+	}
+	instance_announce .@ia,"[ 拉多拉回廊记忆 ]:哈哈,没想到竟然还有人类能闯进记忆中.",bc_map,0x00ff00;
+	instance_announce .@ia,"[ 任务提示 ]:通道一的BOSS已经出现,大家小心了.",bc_map,0xFFFFAA;
+	areamonster $@ldlfbdt$[0],99,44,314,43,"--ja--",$@fdldl_Mob_Boss_1_ID,1,instance_npcname("ldl_monster")+"::OnKillMsMobboss1";
+	end;
+//=======================
+OnKillMsMob2:
+	set 'LDL_Mobs_2,'LDL_Mobs_2-1;
+	if ('LDL_Mobs_2)
+	{
+		instance_announce .@ia,"[ 怪物信息 ]:当前地图目前还有怪物数量"+'LDL_Mobs_2+"只.",bc_map,0x0080FF;
+		end;
+	}
+	instance_announce .@ia,"[ 拉多拉回廊记忆 ]:愚蠢的人类,你们知道自己正在走向死亡吗?.",bc_map,0x00ff00;
+	instance_announce .@ia,"[ 任务提示 ]:通道二的BOSS已经出现,大家小心了.",bc_map,0xFFFFAA;
+	areamonster $@ldlfbdt$[0],186,102,277,93,"--ja--",$@fdldl_Mob_Boss_2_ID,1,instance_npcname("ldl_monster")+"::OnKillMsMobboss2";
+	end;
+//========================================		
+OnKillMsMob3:
+	set 'LDL_Mobs_3,'LDL_Mobs_3-1;
+	if ('LDL_Mobs_3)
+	{
+		instance_announce .@ia,"[ 怪物信息 ]:当前地图目前还有怪物数量"+'LDL_Mobs_3+"只.",bc_map,0x0080FF;
+		end;
+	}
+	instance_announce .@ia,"[ 拉多拉回廊记忆 ]:这里的可怕的记忆迷宫,你们能找到出去路吗?.",bc_map,0x00ff00;
+	instance_announce .@ia,"[ 任务提示 ]:通道三的BOSS已经出现,大家小心了.",bc_map,0xFFFFAA;
+	areamonster $@ldlfbdt$[0],99,157,304,174,"--ja--",$@fdldl_Mob_Boss_3_ID,1,instance_npcname("ldl_monster")+"::OnKillMsMobboss3";
+	end;
+OnKillMsMob4:
+	set 'LDL_Mobs_4,'LDL_Mobs_4-1;
+	if ('LDL_Mobs_4)
+	{
+		instance_announce .@ia,"[ 怪物信息 ]:当前地图目前还有怪物数量"+'LDL_Mobs_4+"只.",bc_map,0x0080FF;
+		end;
+	}
+	instance_announce .@ia,"[ 拉多拉回廊记忆 ]:你们说是来这里找拉多拉的记忆?我不回告诉你们真相的.",bc_map,0x00ff00;
+	instance_announce .@ia,"[ 任务提示 ]:通道四的BOSS已经出现,大家小心了.",bc_map,0xFFFFAA;
+	areamonster $@ldlfbdt$[0],340,230,227,225,"--ja--",$@fdldl_Mob_Boss_4_ID,1,instance_npcname("ldl_monster")+"::OnKillMsMobboss4";
+	end;
+OnKillMsMobboss1:
+	instance_announce .@ia,"[ 任务提示 ]:通往通道二的传送口已经被打开了",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 任务提示 ]:击灭通道上所有小怪,守护通道的BOSS便会出现了",bc_map,0x00ff00;
+	enablenpc  instance_npcname("lSwarp_1", instance_id());
+	end;
+OnKillMsMobboss2:
+	instance_announce .@ia,"[ 任务提示 ]:通往通道三的传送口已经被打开了",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 任务提示 ]:击灭通道上所有小怪,守护通道的BOSS便会出现了",bc_map,0x00ff00;
+	enablenpc  instance_npcname("lSwarp_2", instance_id());
+	end;
+OnKillMsMobboss3:
+	instance_announce .@ia,"[ 任务提示 ]:通往通道四的传送口已经被打开了",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 任务提示 ]:击灭通道上所有小怪,守护通道的BOSS便会出现了",bc_map,0x00ff00;
+	enablenpc  instance_npcname("lSwarp_3", instance_id());
+	end;
+OnKillMsMobboss4:
+	instance_announce .@ia,"[ 任务提示 ]:通往拉多拉回忆之门的传送口已经被打开了",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 任务提示 ]:击灭通道上所有小怪,守护通道的BOSS便会出现了",bc_map,0x00ff00;
+	enablenpc  instance_npcname("lSwarp_4", instance_id());
+	end;
+}
+
+
+
+1@ldl,0,0,0	script	ldl_monster2	-1,{
+Onmonster21:
+	setarray $@ldlfbdt$[0],"1@ldl.gat";
+	areamonster $@ldlfbdt$[0],43,213,49,212,"拉多拉的记忆",$@fdldl_Mob_Boss_5_ID,1,instance_npcname("ldl_monster2")+"::OnKillMsMobboss5";
+	end;
+OnKillMsMobboss5:
+	instance_announce .@ia,"[ 斯丽小姐 ]:回忆之门已经被打开了,谢谢你们让我摆脱了回忆的痛苦.",bc_map,0x0080FF;
+	sleep2 3000;
+	instance_warpall "guild_2",42,285;
+	instance_destroy(instance_id(1));
+	end;
+}
+
+guild_2,30,285,4	script	斯丽小姐	862,{
+	mes "[ 副本提示 ]";
+	mes "你想领取奖励吗?";
+	next;
+	switch(select("^FF0000领取奖励^000000:查看奖励:取消"))
+	{
+	case 1:
+		if (LinQuJianChe==2) {
+			set $@pay,rand(0,10000);
+			if($@pay>9500){
+				set @i,rand(getarraysize($@fbldl_Item_Id_1));
+				getitem $@fbldl_Item_Id_1[@i],$@fbldl_Item_Num_1[@i];
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+	announce"[拉多拉回忆]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得Super进化石1颗。",16;
+				set LinQuJianChe,0;
+				warp "gonryun.gat",159,118;
+				break;
+			} //10%開率
+			if($@pay>7500) && ($@pay<=9500) {
+				set @i,rand(getarraysize($@fbldl_Item_Id_2));
+				getitem $@fbldl_Item_Id_2[@i],$@fbldl_Item_Num_2[@i];
+				set LinQuJianChe,0;
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+	announce"[拉多拉回忆]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得影之钻石1颗。",16;
+				warp "gonryun.gat",159,118;
+				break;
+			} //30%開率
+			if($@pay<=7500){
+				set @i,rand(getarraysize($@fbldl_Item_Id_3));
+				getitem $@fbldl_Item_Id_3[@i],$@fbldl_Item_Num_3[@i];
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+	announce"[拉多拉回忆]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得金币袋子1个。",16;
+				set LinQuJianChe,0;
+				warp "gonryun.gat",159,118;
+				break;
+			} //70%開率
+		}
+		next;
+		mes "[ 副本提示 ]";
+		mes "你已经领取过了哦.不能在领取了";
+		break;
+	case 2:
+		mes "-------固定奖励-------";
+		mes "-任务积分10点";
+		mes "-------10%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fbldl_Item_Id_1);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbldl_Item_Id_1[.@a])+"]^000000 X ["+$@fbldl_Item_Num_1[.@a]+"]";
+		}
+		next;
+		mes "-------30%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fbldl_Item_Id_2);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbldl_Item_Id_2[.@a])+"]^000000 X ["+$@fbldl_Item_Num_2[.@a]+"]";
+		}
+		next;
+		mes "-------70%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fbldl_Item_Id_3);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbldl_Item_Id_3[.@a])+"]^000000 X ["+$@fbldl_Item_Num_3[.@a]+"]";
+		}
+		break;
+	case 3:
+		break;
+	}
+	close;
+}
+
+1@ldl	mapflag	nomemo		
+1@ldl	mapflag	noteleport	
+1@ldl	mapflag	nosave		
+1@ldl	mapflag	nopenalty	
+1@ldl	mapflag	nobranch	
+1@ldl	mapflag	partylock	
+1@ldl	mapflag	monster_noteleport	
+1@ldl	mapflag	nowarp
+1@ldl	mapflag	nowarpto
+1@ldl	mapflag	nogo
+1@ldl	mapflag	restricted	7
+
+guild_2	mapflag	nomemo		
+guild_2	mapflag	noteleport	
+guild_2	mapflag	nosave		
+guild_2	mapflag	nopenalty	
+guild_2	mapflag	nobranch	
+guild_2	mapflag	partylock	
+guild_2	mapflag	monster_noteleport	
+guild_2	mapflag	nowarp
+guild_2	mapflag	nowarpto
+guild_2	mapflag	nogo
+guild_2	mapflag	restricted	7
+
+

@@ -1,0 +1,300 @@
+
+prontera,146,135,5	script	极速快感主持人	868,{
+
+	if($@handfast == 1)
+	{
+		warp "quiz_02",363,345;
+		end;
+	}
+	if ( getgmlevel() != 0 )goto L1;
+
+	else
+
+	{
+
+		mes "[极速快感主持人]";
+		mes "现在不是开放时间喔";
+		mes "每个3小时都有一场";
+		mes "^ff0000可获得金币，积分券，卡片进阶卷和防爆卷哦^000000";
+		close;
+	}
+L1:
+	mes "[极速快感主持人]";
+	mes "欢迎进入GM控制选单";
+	mes "在这里你可以随时启动游戏";	
+	mes "最好不要在游戏原本固定的时间开启";	
+	mes "以免发生错误!";	
+	next;
+        menu "离开",-,"开启游戏.",startgame;
+	close;
+
+startgame:
+	if($@handok != 0) close;
+	mes "[极速快感主持人]";
+	mes "启动游戏!";
+	close2;
+	set $@handfast,1;
+	announce "[极速快感] : 极速快感游戏开始-请开始入场",bc_all;
+	sleep2 2000;
+	announce "[极速快感] : 极速快感游戏开始-在三分钟关闭入口",bc_all;
+	sleep2 120000;
+	announce "[极速快感] : 极速快感游戏开始-在一分钟关闭入口",bc_all;
+	sleep2 60000;
+	set $@handfast,0;
+	announce "[极速快感] : 极速快感游戏已经开始-关闭入场!",bc_all;
+	sleep2 3000;
+	donpcevent "handgame::OnStart";
+	end;
+OnInit:
+	set $fcanpass,2;
+	waitingroom "[☆急速快感☆]",0;
+	end;
+
+}
+
+
+
+
+
+-	script	开启时间	-1,{
+OnClock0130:
+OnClock0430:
+OnClock0730:
+OnClock1030:
+OnClock1330:
+OnClock1630:
+OnClock1930:
+OnClock2230:
+	set $@handfast,1;
+	announce "[极速快感] : 极速快感游戏开始-请开始入场",bc_all;
+	sleep2 2000;
+	announce "[极速快感] : 极速快感游戏开始-在三分钟关闭入口",bc_all;
+	sleep2 120000;
+	announce "[极速快感] : 极速快感游戏开始-在一分钟关闭入口",bc_all;
+	sleep2 60000;
+	set $@handfast,0;
+	announce "[极速快感] : 极速快感游戏已经开始-关闭入场!",bc_all;
+	sleep2 3000;
+	donpcevent "handgame::OnStart";
+	end;
+
+
+
+}
+
+
+
+-	script	handgame	-1,{
+
+OnStart:
+	mapannounce "quiz_02", "[极速快感] : 游戏开始後请点选Npc传送到下个区域",bc_map;	
+	sleep2 3000;
+
+	mapannounce "quiz_02", "[极速快感] : NPC会以高速移动来混淆你",bc_map;	
+	sleep2 3000;
+	
+	mapannounce "quiz_02", "[极速快感] : 如果你一直点不到的话将会被传送出去",bc_map;	
+	sleep2 3000;
+
+	mapannounce "quiz_02", "[极速快感] : 请注意要在NPC身旁点他才会传送",bc_map;	
+	sleep2 3000;
+	
+	mapannounce "quiz_02", "[极速快感] : 每过10秒就会封锁一块区域",bc_map;	
+	sleep2 3000;
+	
+	mapannounce "quiz_02", "[极速快感] : 请注意不要装备武器与骑乘宠物哦!",bc_map;
+
+	donpcevent "mynameissolong::OnStart2";	
+	donpcevent "mynameisso::OnStart2";
+	donpcevent "mynameis::OnStart2";
+	donpcevent "myname::OnStart2";
+	donpcevent "my::OnStart2";
+
+	set $canpass,$fcanpass;
+	set $passguy,0;
+	sleep2 500;
+	
+	set $@handok,1;	
+	sleep2 10000;
+	
+	mapannounce "quiz_02", "[极速快感] : 第一区域-清除",bc_map;
+	areawarp "quiz_02",352,334,375,357,"prontera",166,120;	
+	sleep2 10000;
+	
+	mapannounce "quiz_02", "[极速快感] : 第二区域-清除",bc_map;
+	areawarp "quiz_02",252,334,275,357,"prontera",166,120;
+	sleep2 10000;
+	
+	mapannounce "quiz_02", "[极速快感] : 第三区域-清除",bc_map;
+	areawarp "quiz_02",150,336,173,359,"prontera",166,120;
+	sleep2 10000;
+
+	mapannounce "quiz_02", "[极速快感] : 第四区域-清除",bc_map;
+	areawarp "quiz_02",48,334,71,357,"prontera",166,120;
+	sleep2 10000;
+
+
+	mapannounce "quiz_02", "[极速快感] : 第五区域-清除",bc_map;
+	areawarp "quiz_02",359,59,311,87,"prontera",166,120;
+	set $@handok,0;	
+	donpcevent "mynameissolong::OnStart3";	
+	donpcevent "mynameisso::OnStart3";
+	donpcevent "mynameis::OnStart3";	
+	donpcevent "myname::OnStart3";		
+	donpcevent "my::OnStart3";	
+	sleep2 1000;
+	end;
+
+}
+
+
+
+quiz_02.gat,352,334,5	script	mynameissolong	1002,{
+	if( checkriding() ){ mes"禁止骑乘宠物"; close; }
+	if( getequipid(4) != -1 ){ mes"禁止武器装备"; close; }
+	if( $@handok == 1 ){ warp "quiz_02" ,275,356; end; }
+	end;
+OnStart3:
+	stopnpctimer;
+	end;
+OnStart2:
+	initnpctimer;
+
+OnTimer300:
+	npcwalkto 352+rand(30),334+rand(30);
+	initnpctimer;
+
+
+	end;
+
+OnInit:
+	npcspeed 30;
+	waitingroom "快点我阿哈",0;
+	end;
+}
+
+
+quiz_02.gat,252,334,5	script	mynameisso	1008,{
+	if( checkriding() ){ mes"禁止骑乘宠物"; close; }
+	if( getequipid(4) != -1 ){ mes"禁止武器装备"; close;}
+	if( $@handok == 1 ){ warp "quiz_02" ,173,359;  end; }
+	end;
+OnStart3:
+	stopnpctimer;
+	end;
+OnStart2:
+	initnpctimer;
+
+OnTimer300:
+	npcwalkto 252+rand(30),334+rand(30);
+	initnpctimer;
+
+	end;
+
+OnInit:
+	npcspeed 1;
+	waitingroom "点不到就去睡觉啦",0;
+	end;
+}
+
+quiz_02.gat,150,336,5	script	mynameis	1083,{
+	if( checkriding() ){ mes"禁止骑乘宠物"; close; }
+	if( getequipid(4) != -1 ){ mes"禁止武器装备"; close; }
+	if( $@handok == 1 ){ warp "quiz_02" ,71,357;  end; }
+	end;
+OnStart3:
+	stopnpctimer;
+	end;
+OnStart2:
+	initnpctimer;
+
+OnTimer200:
+	npcwalkto 150+rand(30),336+rand(30);
+	initnpctimer;
+
+	end;
+
+OnInit:
+	npcspeed 1;
+	waitingroom "我才是最终Boss!",0;
+	end;
+}
+
+
+quiz_02.gat,48,334,5	script	myname	1085,{
+	if( checkriding() ){ mes"禁止骑乘宠物"; close; }
+	if( getequipid(4) != -1 ){ mes"禁止武器装备"; close; }
+	if( $@handok == 1 ){ warp "quiz_02" ,335,71;  end; }
+	end;
+
+OnStart3:
+	stopnpctimer;
+	end;
+OnStart2:
+	initnpctimer;
+
+OnTimer100:
+	npcwalkto 48+rand(30),334+rand(30);
+	initnpctimer;
+	end;
+
+OnInit:
+	npcspeed 1;
+
+	end;
+}
+
+quiz_02.gat,324,59,5	script	my	1627,{
+	if( checkriding() ){ mes"禁止骑乘宠物"; close; }
+	if( getequipid(4) != -1 ){ mes"禁止武器装备"; close; }
+	if( $@handok == 1 ){ callfunc "Giveitem"; end; }
+
+	end;
+OnStart3:
+	stopnpctimer;
+	end;
+OnStart2:
+	initnpctimer;
+
+OnTimer50:
+	npcwalkto 324+rand(30),59+rand(20);
+	initnpctimer;
+	end;
+
+OnInit:
+	npcspeed 1;
+	end;
+}
+
+
+
+
+function	script	Giveitem	{
+ 	if($canpass == 0){warp "prontera",166,120;}
+	set $canpass,$canpass -1;
+	set $passguy,$passguy +1;
+	announce "[极速快感] : 玩家 "+strcharinfo(0)+" 以 第 "+$passguy+" 名 通过了游戏!",bc_all;
+	if($canpass == 0) 
+	announce "[极速快感] : 此游戏的获胜名额已满~ 谢谢各位的参予!",bc_all;
+        set @gi,rand(10);
+        if (@gi ==0)getitem 27034,2;
+        if (@gi ==1)getitem 671,5;
+        if (@gi ==2)getitem 27032,2;
+	if (@gi ==3)getitem 671,5;
+	if (@gi ==4)getitem 671,5;
+	if (@gi ==5)getitem 671,5;
+	if (@gi ==6)getitem 27032,2;
+	if (@gi ==7)getitem 27032,2;
+	if (@gi ==8)getitem 27032,2;	
+	if (@gi ==9)getitem 27012,2;
+        warp "prontera",166,120;
+	end;
+
+}
+
+quiz_02.gat	mapflag	nomemo	dummy
+quiz_02.gat	mapflag	noteleport	dummy
+quiz_02.gat	mapflag	nosave
+quiz_02.gat	mapflag	nopenalty	dummy
+quiz_02.gat	mapflag	noskill	dummy
+quiz_02.gat	mapflag	nobranch	dummy

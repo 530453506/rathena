@@ -1,0 +1,177 @@
+function	script	baoxiang1	{	
+	if(countitem(19004)<1){
+	dispbottom "您没有初级宝箱钥匙";}
+	if(countitem(19004)>=1){
+	delitem 19000,1;
+	delitem 19004,1;
+	set $@Su11,rand(1,1000);
+	if ($@Su11<=30) {
+	getitem 29997,1;
+	close;
+}
+	if ($@Su11>30) && ($@Su11<=130){
+	getitem 27034,1;
+	close;
+}
+	if ($@Su11>130) && ($@Su11<=250){
+	getitem 27035,2;
+	close;
+}
+	if ($@Su11>250) && ($@Su11<=550){
+	getitem 4697,1;
+	close;
+}
+	if ($@Su11>550) && ($@Su11<=750) {
+	getitem 19008,1;
+}
+	if ($@Su11>750) && ($@Su11<=800)  {
+	getitem 19009,1;
+}
+	if ($@Su11>800) && ($@Su11<=900)  {
+	getitem 18124,1;
+}
+	if ($@Su11>900) {
+	set #rwjf,#rwjf+1;
+	dispbottom "[积分提示] - 增加1点任务积分,您目前的任务积分为:["+#rwjf+"].";
+}
+end;
+}
+}
+
+function	script	baoxiang2	{	
+	if(countitem(19005)<1){
+	dispbottom "您没有中级宝箱钥匙";}
+	if(countitem(19005)>=1){
+	delitem 19001,1;
+	delitem 19005,1;
+	set $@Su11,rand(1,1000);
+	if ($@Su11<=40) {
+	getitem 29997,1;
+	close;
+}
+	if ($@Su11>40) && ($@Su11<=150){
+	getitem 27034,1;
+	close;
+}
+	if ($@Su11>150) && ($@Su11<=280){
+	getitem 27036,2;
+	close;
+}
+	if ($@Su11>280) && ($@Su11<=380){
+	getitem 18125,1;
+	close;
+}
+	if ($@Su11>380) && ($@Su11<=580){
+	getitem 4698,1;
+	close;
+}
+	if ($@Su11>580) && ($@Su11<=780) {
+	getitem 19009,1;
+}
+	if ($@Su11>780) && ($@Su11<=830) {
+	getitem 19010,1;
+}
+	if ($@Su11>830) && ($@Su11<=880) {
+	getitem 19008,1;
+}
+	if ($@Su11>880) {
+	set #rwjf,#rwjf+2;
+	dispbottom "[积分提示] - 增加2点任务积分,您目前的任务积分为:["+#rwjf+"].";
+}
+end;
+}
+}
+
+function	script	baoxiang3	{	
+	if(countitem(19006)<1){
+	dispbottom "您没有高级宝箱钥匙";}
+	if(countitem(19006)>=1){
+	delitem 19002,1;
+	delitem 19006,1;
+	set $@Su11,rand(1,1000);
+	if ($@Su11<=50) {
+	getitem 29997,1;
+	close;
+}
+	if ($@Su11>50) && ($@Su11<=220){
+	getitem 27034,2;
+	close;
+}
+	if ($@Su11>220) && ($@Su11<=350){
+	getitem 27037,2;
+	close;
+}
+	if ($@Su11>350) && ($@Su11<=550){
+	getitem 4699,1;
+	close;
+}
+	if ($@Su11>550) && ($@Su11<=700) {
+	getitem 19010,1;
+}
+	if ($@Su11>700) && ($@Su11<=750) {
+	getitem 19011,1;
+}
+	if ($@Su11>750) && ($@Su11<=800) {
+	getitem 19008,1;
+}
+	if ($@Su11>800) && ($@Su11<=850) {
+	getitem 19009,1;
+}
+	if ($@Su11>850) && ($@Su11<=950) {
+	getitem 18126,1;
+}
+	if ($@Su11>950) {
+	set #rwjf,#rwjf+3;
+	dispbottom "[积分提示] - 增加3点任务积分,您目前的任务积分为:["+#rwjf+"].";
+}
+end;
+}
+}
+
+function	script	baoxiang4	{	
+	if(countitem(19007)<1){
+	dispbottom "您没有究极宝箱钥匙";}
+	if(countitem(19007)>=1){
+	delitem 19003,1;
+	delitem 19007,1;
+	set $@Su11,rand(1,1000);
+	if ($@Su11<=60) {
+	getitem 29997,1;
+	close;
+}
+	if ($@Su11>60) && ($@Su11<=250){
+	getitem 27034,3;
+	close;
+}
+	if ($@Su11>250) && ($@Su11<=350){
+	getitem 27027,2;
+	close;
+}
+	if ($@Su11>350) && ($@Su11<=550){
+	getitem 4695,1;
+	close;
+}
+	if ($@Su11>550) && ($@Su11<=650) {
+	getitem 19011,1;
+}
+	if ($@Su11>650) && ($@Su11<=700) {
+	getitem 19010,1;
+}
+	if ($@Su11>700) && ($@Su11<=750) {
+	getitem 19008,1;
+}
+	if ($@Su11>750) && ($@Su11<=800) {
+	getitem 19009,1;
+}
+	if ($@Su11>800) && ($@Su11<=900) {
+	getitem 18126,1;
+}
+	if ($@Su11>900) {
+	set #rwjf,#rwjf+3;
+	dispbottom "[积分提示] - 增加3点任务积分,您目前的任务积分为:["+#rwjf+"].";
+}
+end;
+}
+}
+
+

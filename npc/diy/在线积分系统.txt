@@ -1,0 +1,102 @@
+/************************************************************\
+                        EAthena Script
+**************************************************************
+【名    称】在线积分系统
+【类    型】人物在线即可获得积分
+【版    本】1.0
+【版权所有】99max.me
+【授权费用】免费
+【服 务 端】EAthena
+【制作人员】小杰1987
+【错误回报】QQ：1009401
+\************************************************************/
+-	script	PCLoginEvent	-1,{	
+OnInit:
+// 在线积分系统设置
+	set $@BaseLevelpaodian,99; //获得积分的最低等级
+	set $@Checkvending,1;	//挂店状态是否获得积分
+	set $@PDCkcartTimer,3000000; //挂店状态多少时间获得积分（毫秒）
+	set $@PDTimer,600000; //多少时间获得积分（毫秒）
+	set $@paodian,10;		//普通玩家每次获得积分
+	set $@paodian1,10;		//1级VIP玩家每次获得积分
+	set $@paodian2,10;		//2级VIP玩家每次获得积分
+	set $@Max,10000;		//人物最大积分数
+	end;
+OnPCLoginEvent:
+// 上线提示
+	dispbottom "〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓";
+	dispbottom "[登陆时间]『"+gettimestr("%Y年%m月%d日 %H:%M:%S",50)+"』";
+	dispbottom "人物等级达到"+ $@BaseLevelpaodian +"级后自动开始累积在线积分,开店状态下获得在线积分为原来的1/5";
+	dispbottom "您的在线积分:     [ "+ paodian +" ]";
+	dispbottom "您的任务积分:     [ "+ #rwjf +" ]";
+	dispbottom "您的环球积分:     [ "+ hqjf +" ]";
+	dispbottom "您的岛国积分:     [ "+ daoguo +" ]";
+	dispbottom "您的商城积分:     [ "+ #CASHPOINTS +" ]";
+	dispbottom "您的保卫战积分:   [ "+ jifen +" ]";
+	dispbottom "您的中级道场积分: [ "+ zhongji +" ]";
+	dispbottom "您的高级道场积分: [ "+ gaoji +" ]";
+	dispbottom "您的究极道场积分: [ "+ jiuji +" ]";
+	dispbottom "您的天界道场积分: [ "+ tjjf +" ]";
+	dispbottom "〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓〓";
+	addtimer 300000,"在线积分::OnGivejife";
+	end;
+}
+// 在线积分系统
+-	script	在线积分	-1,{
+OnGivejife:
+if (BaseLevel <= (($@BaseLevelpaodian)-1)) { end; }
+if (checkvending()) {
+	if (paodian>=$@Max)
+	{
+		dispbottom "你的积分已满，不能继续挂积分了!!!";
+		end;
+	}
+	if (gbjfts!=1) {
+		dispbottom "[ 积分系统提示 ] 开店状态下获得在线积分为原来的1/5! 您目前的积分为["+paodian+"]!";
+	}
+	deltimer "在线积分::OnGivejife";
+	if (#vip==2) {
+		set paodian,paodian+$@paodian1;
+		addtimer $@PDCkcartTimer,"在线积分::OnGivejife";
+		end;
+		}
+	if (#vip==3) {
+		set paodian,paodian+$@paodian2;
+		addtimer $@PDCkcartTimer,"在线积分::OnGivejife";
+		end;
+		}
+	set paodian,paodian+$@paodian;
+	addtimer $@PDCkcartTimer,"在线积分::OnGivejife";
+	end;			
+}
+if(paodian>=$@Max){
+	dispbottom "你的积分已满，不能继续挂积分了!!!";
+	end;
+}
+deltimer "在线积分::OnGivejife";
+if (#vip==2) {
+	set paodian,paodian+$@paodian1;
+	if (gbjfts!=1) {
+		dispbottom "[积分提示] 增长10点积分,您目前的积分为["+paodian+"]! ["+ gettimestr("%Y年%m月%d日 %H:%M:%S",50) +"] ";
+		}
+	addtimer $@PDTimer,"在线积分::OnGivejife";
+	end;
+}
+if (#vip==3) {
+	set paodian,paodian+$@paodian2;
+	if (gbjfts!=1) {
+		dispbottom "[积分提示] 增长10点积分,您目前的积分为["+paodian+"]! ["+ gettimestr("%Y年%m月%d日 %H:%M:%S",50) +"] ";
+		}
+	addtimer $@PDTimer,"在线积分::OnGivejife";
+	end;
+}
+set paodian,paodian+$@paodian;
+if (gbjfts!=1) {
+	dispbottom "[积分提示] 增长10点积分,您目前的积分为["+paodian+"]! ["+ gettimestr("%Y年%m月%d日 %H:%M:%S",50) +"] ";
+}
+addtimer $@PDTimer,"在线积分::OnGivejife";
+end;
+OnPCLogoutEvent:
+	deltimer "在线积分::OnGivejife";
+	end;
+}

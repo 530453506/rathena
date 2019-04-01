@@ -1,0 +1,287 @@
+-	script	xiulian	-1,{
+OnInit:
+	setarray $@sc1_1[1],30005,30008,30011,30014;
+	setarray $@sc1_2[1],30006,30009,30012,30015;
+	setarray $@sc1_3[1],30007,30010,30013,30016;
+
+	setarray $@sc2_1[1],30014,30017,30020;
+	setarray $@sc2_2[1],30015,30018,30021;
+	setarray $@sc2_3[1],30016,30019,30022;
+
+	setarray $@sc3_1[1],30023,30026,30038;
+	setarray $@sc3_2[1],30024,30027,30039;
+	setarray $@sc3_3[1],30025,30028,30040;
+
+	setarray $@sc4_1[1],30041,30044,30047;
+	setarray $@sc4_2[1],30042,30045,30048;
+	setarray $@sc4_3[1],30043,30046,30049;
+
+	setarray $@sc5_1[1],30050,30053,30056;
+	setarray $@sc5_2[1],30051,30054,30057;
+	setarray $@sc5_3[1],30052,30055,30058;
+
+	setarray $@sc6_1[1],30059,30062,30065;
+	setarray $@sc6_2[1],30060,30063,30066;
+	setarray $@sc6_3[1],30061,30064,30067;
+
+	setarray $@sc7_1[1],30068,30071,30074;
+	setarray $@sc7_2[1],30069,30072,30075;
+	setarray $@sc7_3[1],30070,30073,30076;
+
+	setarray $@sc8_1[1],30077,30080,30083;
+	setarray $@sc8_2[1],30078,30081,30084;
+	setarray $@sc8_3[1],30079,30082,30085;
+
+	setarray $@sc9_1[1],30086,30089,30092;
+	setarray $@sc9_2[1],30087,30090,30093;
+	setarray $@sc9_3[1],30088,30091,30094;
+
+	setarray $@sc10_1[1],30095,30098,30101;
+	setarray $@sc10_2[1],30096,30099,30102;
+	setarray $@sc10_3[1],30097,30100,30103;
+
+	setarray $@sc11_1[1],30104,30107,30110;
+	setarray $@sc11_2[1],30105,30108,30111;
+	setarray $@sc11_3[1],30106,30109,30112;
+
+	setarray $@sc12_1[1],30113,30116,30119,30122;
+	setarray $@sc12_2[1],30114,30117,30120,30123;
+	setarray $@sc12_3[1],30115,30118,30121,30124;
+
+	setarray $@sc13_1[1],30125,30128,30131;
+	setarray $@sc13_2[1],30126,30129,30132;
+	setarray $@sc13_3[1],30127,30130,30133;
+}
+
+function	script	sc1	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,4);
+	if ($@scrate<=850) {
+	getitem $@sc1_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc1_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc1_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc1_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc1_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc1_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc2	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc2_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc2_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc2_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc2_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc2_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc2_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc3	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc3_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc3_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc3_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc3_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc3_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc3_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc4	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc4_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc4_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc4_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc4_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc4_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc4_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc5	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc5_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc5_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc5_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc5_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc5_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc5_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+function	script	sc6	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc6_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc6_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc6_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc6_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc6_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc6_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc7	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc7_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc7_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc7_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc7_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc7_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc7_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc8	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc8_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc8_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc8_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc8_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc8_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc8_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc9	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc9_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc9_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc9_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc9_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc9_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc9_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc10	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc10_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc10_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc10_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc10_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc10_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc10_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc11	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc11_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc11_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc11_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc11_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc11_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc11_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc12	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,4);
+	if ($@scrate<=850) {
+	getitem $@sc12_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc12_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc12_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc12_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc12_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc12_3[$@sc_tmp])+"]",16;
+}
+end;
+}
+
+function	script	sc13	{
+	set $@scrate,rand(1,1000);
+	set $@sc_tmp,rand(1,3);
+	if ($@scrate<=850) {
+	getitem $@sc13_1[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc13_1[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>850)&&($@scrate<=980){
+	getitem $@sc13_2[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc13_2[$@sc_tmp])+"]",16;
+}
+	if ($@scrate>980){
+	getitem $@sc13_3[$@sc_tmp],1;
+	announce"[Îä¹¦ÃØ¼®]£º¹§Ï²Íæ¼Ò [ "+strcharinfo(0)+" ] »¨10¿éÇ®ÂòÁËÎä¹¦ÃØ¼® ["+getitemname($@sc13_3[$@sc_tmp])+"]",16;
+}
+end;
+}

@@ -1,0 +1,141 @@
+function	script	E_Exchange	{
+While(.@i<=3){
+If(GetArg(.@i)==$@chanum1){
+If(.@i==0)Set .@a,.@a+1;
+If(.@i!=0)Set .@b,.@b+1;
+}
+If(GetArg(.@i)==$@chanum2){
+If(.@i==1)Set .@a,.@a+1;
+If(.@i!=1)Set .@b,.@b+1;
+}
+If(GetArg(.@i)==$@chanum3){
+If(.@i==2)Set .@a,.@a+1;
+If(.@i!=2)Set .@b,.@b+1;
+}
+If(GetArg(.@i)==$@chanum4){
+If(.@i==3)Set .@a,.@a+1;
+If(.@i!=3)Set .@b,.@b+1;
+}
+Set .@i,.@i+1;
+//Ed
+}
+Set @a,.@a;
+Set @b,.@b;
+Return;
+}
+
+prontera,146,141,5	script	Cieer小夏	859,{
+Basicmenu:
+Mes "["+Strnpcinfo(0)+"]";
+Mes "^FF0000猜中数字奖励在线积分300点哦^000000";
+Mes "我能为"+(Sex==1 ? "你":"你")+"服务?";
+Menu "猜数字",getnum,"申请新数值",getnum2,"游戏说明",adcf4;
+getnum:
+Next;
+Mes "["+Strnpcinfo(0)+"]";
+If(($@chanum1+$@chanum2+$@chanum3+$@chanum4)<1){
+Mes "目前无法再猜数字罗_等待新局";
+Close;
+}
+Mes "最後猜玩家:"+$@chanplayer$+"";
+Mes "该玩家猜的数字:"+$@chanplayerm+"";
+Mes "该玩家猜的答数:"+$@chaplayera+"A"+$@chaplayerb+"B";
+Menu "猜数字",-,"返回",Basicmenu;
+Next;
+If($@chanplayer$==strcharinfo(0))Close;
+Mes "请输入4个数字";
+Input .@addz;
+If(.@addz<999 || .@addz>9999)Goto Basicmenu;
+Next;
+Set .@ca1,.@addz/1000;
+Set .@ca2,(.@addz/100)-(.@addz/1000)*10;
+Set .@ca3,(.@addz/10)-(.@addz/100)*10;
+Set .@ca4,.@addz-(.@addz/10)*10;
+While(.@z<=3){
+Set .@z,.@z+1;
+If(GetD(".@ca"+.@z+"")==GetD(".@ca"+(.@z-1)+"") || GetD(".@ca"+.@z+"")==GetD(".@ca"+(.@z-2)+"") || GetD(".@ca"+.@z+"")==GetD(".@ca"+(.@z-3)+"") || GetD(".@ca"+.@z+"")==GetD(".@ca"+(.@z-4)+""))Goto Basicmenu;
+}
+Callfunc "E_Exchange",.@ca1,.@ca2,.@ca3,.@ca4;
+Mes "["+Strnpcinfo(0)+"]";
+Mes ""+@a+"A"+@b+"B";
+If(@a>=4){
+Next;
+Mes "["+Strnpcinfo(0)+"]";
+Mes "恭喜你获胜";
+announce "[猜数字]:恭喜"+Strcharinfo(0)+"猜中了数字,获得在线积分300点",bc_all;
+set paodian,paodian+300;
+dispbottom"[积分提示]：增加300点在线积分，您目前的在线积分为["+paodian+"]";
+Set $@chanplayerm,0;
+Set $@chaplayera,0;
+Set $@chanplayer$,"";
+Set $@chaplayerb,0;
+Set $@chanum1,-1;
+Set $@chanum2,-1;
+Set $@chanum3,-1;
+Set $@chanum4,-1;
+Close;
+}
+Set $@chanplayerm,.@ca1*1000+.@ca2*100+.@ca3*10+.@ca4;
+announce "[猜数字]:"+Strcharinfo(0)+"猜了数字"+$@chanplayerm+"["+@a+"A"+@b+"B]",bc_all;
+Set $@chaplayera,@a;
+Set $@chanplayer$,Strcharinfo(0);
+Set $@chaplayerb,@b;
+close;
+getnum2:
+If(Getgmlevel()<40)Close;
+Menu "自己更改",-,"乱数抽取",LooPX;
+Next;
+Mes "["+Strnpcinfo(0)+"]";
+Mes "当前数字:"+$@chanum1+""+$@chanum2+""+$@chanum3+""+$@chanum4+"";
+Set .@abg,prompt(""+$@chanum1+":"+$@chanum2+":"+$@chanum3+":"+$@chanum4+":返回");
+If(.@abg>4 && .@abg<255){
+next;
+Goto Basicmenu;
+}
+If(.@abg==255)close;
+Input .@adc;
+If(.@adc==$@chanum1 || .@adc==$@chanum2 || .@adc==$@chanum3 || .@adc==$@chanum4 || .@adc>9 || .@adc<1)goto getnum2;
+SetD "$@chanum"+.@abg+"",.@adc;
+announce "[猜数字]:GM更新了数字的第"+.@abg+"位",bc_all;
+Set $@chanplayerm,0;
+Set $@chaplayera,0;
+Set $@chanplayer$,"";
+Set $@chaplayerb,0;
+Goto getnum2;
+close;
+adcf4:
+Next;
+Mes "["+Strnpcinfo(0)+"]";
+Mes "总共要输入4次数字(1-9 不包含0)";
+Mes "位置不对,但是数字对会增加1B";
+Mes "位置对,数字也对会增加1A";
+Mes "同样玩家不能同时猜两次,需要等到其他玩家猜完後才能猜";
+close;
+LooPX:
+Set .@addnuma,rand(1,9);
+If(.@addnuma==$@chanum1 || .@addnuma==$@chanum2 || .@addnuma==$@chanum3 || .@addnuma==$@chanum4)Goto LooPX;
+Set .@zxx,.@zxx+1;
+SetD "$@chanum"+.@zxx+"",.@addnuma;
+If(.@zxx<=3)Goto LooPX;
+announce "[猜数字]:数字重读",bc_all;
+close;
+OnInit:
+	waitingroom "[☆猜数字☆]",0;
+Set $@chanum1,-1;
+Set $@chanum2,-1;
+Set $@chanum3,-1;
+Set $@chanum4,-1;
+end;
+OnMinute00:
+OnMinute20:
+OnMinute40:
+Set .zxx,0;
+LoopZx:
+Set .@addnum,rand(1,9);
+If(.@addnum==$@chanum1 || .@addnum==$@chanum2 || .@addnum==$@chanum3 || .@addnum==$@chanum4)Goto LoopZx;
+Set .zxx,.zxx+1;
+SetD "$@chanum"+.zxx+"",.@addnum;
+If(.zxx<=3)Goto LoopZx;
+announce "[猜数字]:数字重读",bc_all;
+end;
+}

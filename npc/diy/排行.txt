@@ -1,0 +1,76 @@
+/*
+售价140积分，未经同意请勿任意公开转载
+名称∶战斗排行榜
+版本:  通用 ea14818测试
+作者∶ 安迪sky 2013/09/14
+说明∶ 排行榜，分为pvp gvg杀人分开排行，PVP,GVG死亡排行榜、总死亡排行榜
+
+清除的部分为了简化脚本，所以设定为需所有玩家离线
+不然在线上的玩家清除後，他离线又会重新存入
+因为是SQL的关系，所以排行须等脚色变数存入SQL後才会变化
+看sever的conf设定，约1-3分钟
+可以去conf里设定缩短存入时间map_athena.conf
+// 资料自动储存时间
+// 所有脚色将会在这个区间完成储存， 单位为秒 (例如:
+// 自动储存时间设定为60秒而线上共有60玩家 -> 每一秒将储存一个 
+// 脚色)
+autosave_time: 300
+*/
+
+prontera,151,125,6	script	战斗排行榜	857,{
+setarray .@chose$[1],"GKill","PGDie","PC_DIE_COUNTER";
+setarray .@choseN$[1],"GVG","GVG死亡","总死亡";
+if(getgmlevel()>98){
+	mes "^5599FF[GM介面]^000000";
+	switch(select("玩家介面:清除排行榜")) {
+		case 1:	next; break;
+		case 2:	
+		mes "^5599FF[请选择要清除的]^000000";
+		mes "^FF0000[注意!请在所有玩家离线的状态下清除]^000000";
+		mes "^FF0000[这是因为SQL资料存入的关系]^000000";
+		set @i,(select("GVG排行榜:GVG死亡排行榜:总死亡排行榜"));
+		next;
+		mes "^FF0000[确定清除吗?]^000000";
+		if(select("取消:确定清除"+.@choseN$[@i]+"")==2)
+		query_sql("Delete from `global_reg_value` where str = '"+.@chose$[@i]+"'");
+		close;
+	}
+}
+mes "^5599FF[战斗排行榜]^000000";
+mes "来看看你够不够牛逼！";
+next;
+set @i,(select("GVG排行榜:GVG死亡排行榜:总死亡排行榜"));
+query_sql("SELECT cast(value as signed) FROM `global_reg_value` where str = '"+.@chose$[@i]+"' and char_id = '"+getcharid(0)+"'", .@svalue);
+query_sql("SELECT COUNT(char_id) FROM `global_reg_value` where str = '"+.@chose$[@i]+"' and cast(value as signed) > '"+.@svalue+"'", .@rank);
+mes "你的名次: ^0000FF"+(.@rank+1)+" ^000000 次数: ^0000FF"+.@svalue+"^000000";
+
+query_sql("select name,class,value from `global_reg_value`,`char` where global_reg_value.char_id = char.char_id AND global_reg_value.str = '"+.@chose$[@i]+"' ORDER BY cast(global_reg_value.value as signed) DESC LIMIT 50", .@name$, .@class, .@value);
+
+mes "^5599FF["+.@choseN$[@i]+"排行榜]^000000";
+for ( set @i,0; @i < 50; set @i,@i+1 ) {
+if( !.@value[@i] )break;
+mes ""+(@i+1)+". [^FF0000"+.@name$[@i]+"^000000] 次数: ^0000FF"+.@value[@i]+"^000000 ^FF7744"+jobname(.@class[@i])+"^000000"; 
+}
+
+mes "^5599FF[排行榜结束]^000000";
+close;
+
+}
+
+-	script	KDCounter	-1,{
+	end;
+	OnPCDieEvent:
+	sleep2 1;
+	set .@beKilled,getcharid(3,strcharinfo(0));
+	getmapxy(@mapname$,.@x,.@y,0,strcharinfo(0));
+	attachrid(.@beKilled);
+	if ( getmapflag(@mapname$,mf_gvg) == 1 && killerrid ) {
+		set PGDie,PGDie+1;
+		dispbottom "GVG死亡数 : "+PGDie+"";
+		attachrid(killerrid);
+		set GKill,GKill+1;
+		dispbottom "GVG杀人数 : "+GKill+"";
+	}
+	end;
+}
+ 

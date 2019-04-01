@@ -1,0 +1,39 @@
+function	script	chuji	{
+	if (gettime(7) > #time7 || gettime(6) > #time6 || gettime(5) > #time5) {
+		set #shuangbei, 0;
+	}
+	if (!#shuangbei) {
+		set #time7,gettime(7);
+		set #time6,gettime(6);
+		set #time5,gettime(5);
+	}
+mes "初级会员每天可以领取一次补助";
+next;
+menu"会员状态",M4,"每日补助",L2,"会员拆卡",L3;
+
+M4:
+		sc_start SC_BLESSING,600000,10; //天使之赐福 30
+		sc_start SC_INCREASEAGI,600000,10; //加速 32
+		sc_start SC_IMPOSITIO,600000,10; //神威 35
+		sc_start SC_SUFFRAGIUM,600000,10; //牺牲祈福 36
+		sc_start SC_MAGNIFICAT,600000,10; //圣母之颂歌 40
+		sc_start SC_GLORIA,600000,10; //幸运之歌 41
+		close;
+L2:
+		if (#shuangbei>=1) {
+			mes "您今天已领取过补助.";
+			close;
+			}
+		mes "要领取每日补助吗?";
+		next;
+		menu "确认领取",-;
+		getitem 7621,5;
+        	set zeny,zeny+500000;
+		set #shuangbei,#shuangbei+1;
+		mes "[服务人员]";
+		mes "祝你好运.";
+		close;
+L3:
+		callfunc "Chaika";
+		end;
+}

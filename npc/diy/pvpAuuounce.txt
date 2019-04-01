@@ -1,0 +1,13 @@
+
+-	script	pvpAuuounce	-1,{
+	end;
+	
+	OnPCDieEvent:
+	sleep2 5;
+	getmapxy(@mapname$,@x,@y,0,strcharinfo(0));
+	if ( getmapflag(@mapname$,mf_pvp) == 1 || getmapflag(@mapname$,mf_gvg) == 1) {	
+		if (killerrid) announce "["+rid2name(killerrid)+"] Í±ËÀÁË ["+strcharinfo(0)+"]£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡£¡",bc_map,"0xFF0000";
+	}
+	end;
+
+}

@@ -1,0 +1,5 @@
+function	script	GM_NPC	{
+	input .@yyz$;
+	atcommand "@item "+.@yyz$;
+	close;
+}

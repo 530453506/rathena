@@ -1,0 +1,93 @@
+//制作:198858lkn
+//测试:198858lkn
+
+
+//函数部分
+
+
+prontera,0,0,0	script	OnPCLogoutEvent	-1,{
+OnPCLogoutEvent:
+		if (Baselevel==150) { 
+    		if(sex==1){
+		announce"◥▇▆▅︻$[暗夜仙境]：恭送男神 [ "+strcharinfo(0)+" ] 暂时离开暗夜仙境的世界︻$▅▆▇◤",16;}
+    		if(sex==0){	
+		announce"◥▇▆▅︻$[暗夜仙境]：恭送女神 [ "+strcharinfo(0)+" ] 暂时离开暗夜仙境的世界︻$▅▆▇◤",16;}	
+		}
+		end;
+		}
+
+-	script	TaskFakeName	-1,{
+
+//称号名称判定
+OnPCLoginEvent:
+		if (Baselevel==150) { 
+    		if(sex==1){
+		announce"◥▇▆▅︻$[暗夜仙境]：恭迎男神 [ "+strcharinfo(0)+" ] 来到暗夜仙境的世界︻$▅▆▇◤",16;}
+    		if(sex==0){	
+		announce"◥▇▆▅︻$[暗夜仙境]：恭迎女神 [ "+strcharinfo(0)+" ] 来到暗夜仙境的世界︻$▅▆▇◤",16;}	
+		}
+		if(#rwjf>=10 && #rwjf<50) {atcommand "@aura 620";}
+		if(#rwjf>=50 && #rwjf<100) {atcommand "@aura 239";}
+		if(#rwjf>=100 && #rwjf<150) {atcommand "@aura 241";}
+		if(#rwjf>=150 && #rwjf<200) {atcommand "@aura 693"; }
+		if(#rwjf>=200 && #rwjf<250) {atcommand "@aura 694";}
+		if(#rwjf>=250 && #rwjf<300) {atcommand "@aura 701";}
+		if(#rwjf>=300 && #rwjf<350) {atcommand "@aura 689";}
+		if(#rwjf>=350 && #rwjf<400) {atcommand "@aura 691";}
+		if(#rwjf>=400 && #rwjf<600) {atcommand "@aura 695";}
+		if(#rwjf>=600 && #rwjf<800) {atcommand "@aura 688";}
+		if(#rwjf>=800 && #rwjf<1000) {atcommand "@aura 687";}
+		if(#rwjf>=1000 && #rwjf<1500) {atcommand "@aura 650";}
+		if(#rwjf>=1500) {atcommand "@aura 651";}
+		end;
+		}
+
+//称号相对应的属性加成
+-	script	TaskBonus	-1,{
+OnPCStatCalcEvent:
+		if(#rwjf<10){end;}
+		if(#rwjf>=10&&#rwjf<50){bonus bAllStats,2;bonus bLuk,-2;}
+		if(#rwjf>=50&&#rwjf<100){bonus bAllStats,4;bonus bLuk,-4;}
+		if(#rwjf>=100&&#rwjf<150){bonus bAllStats,6;bonus bLuk,-6;}
+		if(#rwjf>=150&&#rwjf<200){bonus bAllStats,8;bonus bLuk,-8;}
+		if(#rwjf>=200&&#rwjf<250){bonus bAllStats,10;bonus bLuk,-10;}
+		if(#rwjf>=250&&#rwjf<300){bonus bAllStats,12;bonus bLuk,-12;}
+		if(#rwjf>=300&&#rwjf<350){bonus bAllStats,14;bonus bLuk,-14;}
+		if(#rwjf>=350&&#rwjf<400){bonus bAllStats,16;bonus bLuk,-16;}
+		if(#rwjf>=400&&#rwjf<600){bonus bAllStats,18;bonus bLuk,-18;}
+		if(#rwjf>=600&&#rwjf<800){bonus bAllStats,20;bonus bLuk,-20;}
+		if(#rwjf>=800&&#rwjf<1000){bonus bAllStats,20;bonus batkrate,3;bonus bmatkrate,3;bonus bLuk,-20;}
+		if(#rwjf>=1000&&#rwjf<1500){bonus bAllStats,20;bonus batkrate,6;bonus bmatkrate,6;bonus bLuk,-20;}
+		if(#rwjf>=1500){bonus bAllStats,20;bonus batkrate,10;bonus bmatkrate,10;bonus bLuk,-20;}
+		end;
+		}
+
+
+function	script	gh321	{
+	atcommand "@aura 0";
+	close;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

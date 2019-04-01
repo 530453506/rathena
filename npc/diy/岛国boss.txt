@@ -1,0 +1,95 @@
+//
+// 3BOSS by 2007-01-16
+//
+//- 
+prontera.gat,206,113,5	script	岛国BOSS区传送	796,{
+        if (Zeny<1500000) goto Not;
+	mes"[岛国BOSS区传送]";
+	mes"岛国BOSS区，入场费150W。";
+	next;
+	menu "我要传送，费用150W",-,"兑换1000点岛国积分券",L_exit;
+	if(@guaji==1){
+	mes"[岛国BOSS区传送]";
+	mes"检测到挂机状态，无法传送";
+close;
+}
+	mes"[岛国BOSS区传送]";
+	mes"我现在就送你过去";
+	next;
+        set zeny,zeny-1500000;
+	warp "vip7_fild06.gat",159,368;
+	close;
+L_exit:
+	next;
+	if(daoguo<1000){
+	mes"[岛国积分兑换]";
+	mes "您的积分不够";
+	close;
+}
+	set daoguo,daoguo-1000;
+	getitem 30160,1;
+	dispbottom "[积分提示] 减少1000点岛国积分,您目前的岛国积分为["+daoguo+"]!";	
+	close;
+
+Not:
+    mes "[团长]";
+    mes "你的钱不够";
+    mes "请带好150W再来！";
+    close;
+
+OnInit:
+	waitingroom "[☆岛国BOSS区☆]",0;
+	end;
+}
+
+// 怪物设定
+//[B]
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3554,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3556,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3557,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3558,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3559,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3560,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3561,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3562,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3563,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3564,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3565,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3566,2,0,0,0
+vip7_fild06.gat,0,0,0,0	monster	--ja--	3332,2,0,0,0
+
+// 地图属性设置
+vip7_fild06.gat	mapflag	nomemo	dummy
+vip7_fild06.gat	mapflag	nopenalty	dummy
+vip7_fild06.gat	mapflag	nobranch	dummy
+vip7_fild06.gat	mapflag	nowarp
+vip7_fild06.gat	mapflag	nowarpto
+vip7_fild06.gat	mapflag	nogo
+vip7_fild06.gat	mapflag	nosave
+vip7_fild06.gat	mapflag	restricted	6
+
+-	script	daoguoboss	-1,{
+OnNpcKillEvent:
+	If(killedrid == 3554)||(killedrid == 3556)||(killedrid == 3557)||(killedrid == 3558)||(killedrid == 3559)||(killedrid == 3560)||(killedrid == 3561)||(killedrid == 3562)||(killedrid == 3563)||(killedrid == 3564)||(killedrid == 3565)||(killedrid == 3566)||(killedrid == 3332){
+	set paodian,paodian+5;
+	set daoguo,daoguo+1;
+	dispbottom "[积分提示] 增长5点积分,您目前的积分为["+paodian+"]!";
+	dispbottom "[积分提示] 增长1点岛国积分,您目前的岛国积分为["+daoguo+"]!";
+	set $@1rate,rand(1,1000);
+	if ($@1rate<=15) {
+	getitem 19006,1;
+}
+	if ($@1rate>15)&&($@1rate<30){
+	getitem 19007,1;
+}
+	if ($@1rate>=20){
+	dispbottom "加油加油！！";
+}
+}
+	end;
+}
+
+
+
+
+

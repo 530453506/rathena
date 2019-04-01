@@ -1,0 +1,79 @@
+
+//====================颁奖====================\\
+izlude_in.gat,73,104,4	script	xo	551,{
+	set .@result$,147;
+	input .@yz1$;
+	if (.@yz1$ == .@result$){	
+	mes "【小希】";
+	mes "恭喜你完成了全部的任务....";
+	mes "^FF0000注意负重和物品栏空间^000000";
+	next;
+	menu "150",GO1,"200分",Shi_1,"高级石头",Shi_2;
+Shi_2:
+	getitem 4758,1;
+	announce"[积分头饰]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得换取高级全能之石 [1] 个 。",16;
+	close;
+GO1:
+	mes "【小希】";
+	mes "很好...下面我将把奖品颁发给你";
+	mes "之前我数3声...你可以为你的奖品祈祷吧";
+	mes "1.............";
+	mes "2.............";
+	mes "3.............";
+	next;
+	getitem 670,2;		//自己设置
+	getitem 969,400;
+	set #rwjf,#rwjf+2;
+	dispbottom "[积分提示] - 增加2点任务积分,您目前的任务积分为:["+#rwjf+"].";
+	announce "[环球任务]:恭喜"+Strcharinfo(0)+"获得金币3个,黄金300",bc_all;	
+	next;
+	mes "还有机会获得额外奖励哦";
+	mes "看你运气吧....";
+	next;
+	set $@Successrate,rand(10000);
+	if ($@Successrate<=1000) {
+	getitem 670,2;
+	announce "[环球任务]:恭喜"+Strcharinfo(0)+"踩狗屎运额外获得金币2个",bc_all;
+	close;
+}
+	if ($@Successrate>1000) {
+	mes "【小希】";
+	mes "没踩狗屎运哦";
+	close;
+	end;
+}
+Shi_1:
+	mes "【小希】";
+	mes "很好...下面我将把奖品颁发给你";
+	mes "之前我数3声...你可以为你的奖品祈祷吧";
+	mes "1.............";
+	mes "2.............";
+	mes "3.............";
+	next;
+	getitem 670,3;		//自己设置
+	getitem 969,600;
+	set #rwjf,#rwjf+2;
+	dispbottom "[积分提示] - 增加2点任务积分,您目前的任务积分为:["+#rwjf+"].";
+	announce "[环球任务]:恭喜"+Strcharinfo(0)+"获得金币4个,黄金400",bc_all;
+	next;
+	mes "还有机会获得额外奖励哦";
+	mes "看你运气吧....";
+	next;
+	set $@Successrate,rand(10000);
+	if ($@Successrate<=1000) {
+	getitem 670,2;
+	announce "[环球任务]:恭喜"+Strcharinfo(0)+"踩狗屎运额外获得金币2个",bc_all;
+	close;
+}
+	if ($@Successrate>1000) {
+	mes "【小希】";
+	mes "没踩狗屎运哦";
+	close;
+	end;
+}
+}
+	mes "【XO】";
+	mes "滚";	
+	close;
+}
+

@@ -1,0 +1,639 @@
+/*----------------------------------------------------------*\
+                     Ragnarok Scripts
+-------------------------------------------------------------
+
+ 名称：OX脚本
+ 类型：游戏辅助系统
+ 版本：SQL正式版
+ 设计：缩水
+ 编制：缩水
+ 题库：相识 七七
+ 版权：缩水 相识 七七
+ 测试：缩水 相识
+ OQ：199480984
+ E-mail：haohaolover0129@yahoo.com.cn
+
+
+--------------------------脚本说明----------------------------
+
+ 脚本定制，请QQ联系
+
+\*----------------------------------------------------------*/
+
+/***************
+   [地图属性]
+***************/
+quiz_01	mapflag	nomemo
+quiz_01	mapflag	noteleport
+quiz_01	mapflag	nosave	SavePoint
+quiz_01	mapflag	nopenalty
+quiz_01	mapflag	restricted	512
+quiz_01	mapflag	nobranch
+quiz_01	mapflag	noicewall
+
+quiz_00	mapflag	nomemo
+quiz_00	mapflag	noteleport
+quiz_00	mapflag	nosave	SavePoint
+quiz_00	mapflag	nopenalty
+quiz_00	mapflag	restricted	512
+quiz_00	mapflag	nobranch
+quiz_00	mapflag	noicewall
+
+/***************
+    [OX NPC]
+***************/
+prontera,164,141,4	script	OX问答工作人员#1	775,{
+	query_sql "select count(*) from `OX_Data`",$@OX_count;
+	mes "=======^00CCCCOX游戏基本信息^000000======";
+	mes "^999900游戏状态^000000 : "+($@OX_State==1?"^00CC00报名开启":$@OX_State==2?"^0066FF游戏进行中":"^ff2040报名关闭,等待开启")+"^000000";
+	mes "^990000入场费用 : "+$OX_In_Zeny+" z ^000000";
+	mes "^802080题库数量 : "+$@OX_count+" 题 ^000000";
+	mes "^0000FF每人最多5开^000000";
+	mes "===========================";
+	next;
+	switch(select(	($@OX_State==1)?"^00CC00我要报名^000000":"","^FF6666游戏说明信息^000000",	getgmlevel()?"GM在线设置":""	))
+	{
+	case 1:
+		mes "[OX益智问答工作人员]";
+		mes "请问你要参加机智问答吗";
+		next;
+		menu "是的",-;
+		if ( Zeny<$OX_In_Zeny ){
+			mes "==========OX游戏========";
+			mes "- ^C63131金钱不足^000000,快去银行取钱";
+			mes "=========================";
+			close;
+		}
+		warp "quiz_01",140,285;
+		set Zeny,Zeny-$OX_In_Zeny;
+		end;
+		break;
+	case 2:
+		mes "=========^639485入场费用^000000========";
+		mes "- ^467BB0报名费^000000 : "+$OX_In_Zeny+"z";
+		mes "=========^82985F奖励信息^000000========";
+		mes "- ^676394物品奖^000000 :";
+		for (set @i,1;@i<getarraysize($OX_Itemid);set @i,@i+1)
+			mes "-     ["+getitemname($OX_Itemid[@i])+"] x "+$OX_Item_Nums[@i];
+		mes "=======^999900游戏时间控制^000000======";
+		for (set @OX_temp,0;@OX_temp<24;set @OX_temp,@OX_temp+1)
+			mes "- "+callfunc("OX_strlen",@OX_temp)+" -> "+callfunc("OX_Mes",$OX_Game_Time[@OX_temp]);
+		mes "=========================";
+		close;
+	case 3:
+		mes "=========^639485入场费用^000000========";
+		mes "- ^467BB0报名费^000000 : "+$OX_In_Zeny+"z";
+		mes "=========^82985F奖励信息^000000========";
+		mes "- ^676394物品奖^000000 :";
+		for (set @i,1;@i<getarraysize($OX_Itemid);set @i,@i+1)
+			mes "-     ["+getitemname($OX_Itemid[@i])+"] x "+$OX_Item_Nums[@i];
+		mes "=========================";
+		next;
+		do {
+			switch(select(	"设置物品奖励",
+					"设置入场费用",
+					"设置游戏时间"
+			)){
+			case 1:
+				do {
+					mes "=======设置物品奖励=======";
+					mes "- 请修改以下物品";
+					mes "==========================";
+					next;
+					set @n,0;
+					set @o,(getarraysize($OX_Itemid)%5)+5;
+					set @m,getarraysize($OX_Itemid)/5;
+					if (@o>5) { set @m,@m+1; set @o,@o-5; }
+					do {
+						set @z,@n*5;
+						set @n,@n+1;
+						set @tmp,select((@n==1||getarraysize($OX_Itemid)<6)?"":"↑上一页↑",
+								$OX_Itemid[0+@z]?getitemname($OX_Itemid[0+@z]):"",
+								$OX_Itemid[1+@z]?getitemname($OX_Itemid[1+@z]):"",
+								$OX_Itemid[2+@z]?getitemname($OX_Itemid[2+@z]):"",
+								$OX_Itemid[3+@z]?getitemname($OX_Itemid[3+@z]):"",
+								$OX_Itemid[4+@z]?getitemname($OX_Itemid[4+@z]):"",
+								(@n<@m)?"↓下一页↓":"");
+						set @y,(@tmp-2)+@z;
+						if(((@n<@m&&@tmp!=7)||(@n==@m&&@tmp!=(@o+2))) && @tmp !=1) break;
+						if(@tmp==1) set @n,@n-2;
+					} while(@n<@m);
+					mes "=======设置物品奖励=======";
+					mes "- 您选择的物品";
+					mes "-     ["+getitemname($OX_Itemid[@y])+"] x "+$OX_Item_Nums[@y];
+					mes "- 您要做什么操作?";
+					mes "==========================";
+					next;
+					switch(select("添加新物品","修改此物品","奖品数量修改")){
+					case 1:
+						mes "=======设置物品奖励=======";
+						mes "- 请输入需要添加物品item_id";
+						mes "==========================";
+						next;
+						input @OX_temp;
+						mes "=======设置物品奖励=======";
+						mes "- 您添加的物品为";
+						mes "-     ["+getitemname(@OX_temp)+"]";
+						mes "- 您确定么?";
+						mes "==========================";
+						next;
+						menu "我确定",-;
+						set $OX_Itemid[getarraysize($OX_Itemid)],@OX_temp;
+						set $OX_Item_Nums[getarraysize($OX_Item_Nums)],1;
+						mes "=======设置物品奖励=======";
+						mes "- ^46B046设置成功^000000";
+						mes "==========================";
+						next;
+						break;
+					case 2:
+						mes "=======设置物品奖励=======";
+						mes "- 请输入需要修改物品item_id";
+						mes "==========================";
+						next;
+						input @OX_temp;
+						mes "=======设置物品奖励=======";
+						mes "- 您修改的物品为";
+						mes "-     ["+getitemname(@OX_temp)+"]";
+						mes "- 您确定么?";
+						mes "==========================";
+						next;
+						menu "我确定",-;
+						set $OX_Itemid[@y],@OX_temp;
+						mes "=======设置物品奖励=======";
+						mes "- ^46B046设置成功^000000";
+						mes "==========================";
+						next;
+						break;
+					case 3:
+						mes "=======设置物品奖励=======";
+						mes "- 请输入物品数量 (最少1件)";
+						mes "==========================";
+						next;
+						input @OX_temp;
+						if (@OX_temp<1){
+							mes "=======设置物品奖励=======";
+							mes "- ^C63131设置有误^000000";
+							mes "==========================";
+						}else{
+							set $OX_Item_Nums[@y],@OX_temp;
+							mes "=======设置物品奖励=======";
+							mes "- ^46B046设置成功^000000";
+							mes "==========================";
+						}
+						next;
+						break;
+					}
+				} while(1);
+			case 2:
+				mes "========设置报名费========";
+				mes "- 请输入报名费 (单位:z)";
+				mes "==========================";
+				next;
+				input $OX_In_Zeny;
+				mes "========设置报名费========";
+				mes "- ^46B046设置成功^000000";
+				mes "==========================";
+				next;
+				break;
+			case 3:
+				mes "=======游戏时间控制=======";
+				for (set @OX_temp,0;@OX_temp<24;set @OX_temp,@OX_temp+1)
+					mes "- "+callfunc("OX_strlen",@OX_temp)+" -> "+callfunc("OX_Mes",$OX_Game_Time[@OX_temp]);
+				mes "=======游戏时间设置=======";
+				mes "- 请输入 0-23 之间的数字";
+				mes "- 改变游戏时间";
+				mes "==========================";
+				next;
+				input @OX_temp;
+				if (@OX_temp<0||@OX_temp>23) {
+					mes "=======游戏时间设置=======";
+					mes "- 设置错误";
+					mes "==========================";
+					next;
+					break;
+				}
+				mes "=======游戏时间设置=======";
+				mes "- 设置完成";
+				if ($OX_Game_Time[@OX_temp]==1) {
+					mes "- "+callfunc("OX_strlen",@OX_temp)+" -> ^c04040关闭^000000";
+					set $OX_Game_Time[@OX_temp],-1;
+				} else {
+					mes "- "+callfunc("OX_strlen",@OX_temp)+" -> ^00c060开启^000000";
+					set $OX_Game_Time[@OX_temp],1;
+				}
+				mes "==========================";
+				next;
+				break;
+			}
+		} while(1);
+	}
+
+OnClock0000:
+OnClock0100:
+OnClock0200:
+OnClock0300:
+OnClock0400:
+OnClock0500:
+OnClock0600:
+OnClock0700:
+OnClock0800:
+OnClock0900:
+OnClock1000:
+OnClock1100:
+OnClock1200:
+OnClock1300:
+OnClock1400:
+OnClock1500:
+OnClock1600:
+OnClock1700:
+OnClock1800:
+OnClock1900:
+OnClock2000:
+OnClock2100:
+OnClock2200:
+OnClock2300:
+	if ($OX_Game_Time[gettime(3)]==-1) end;
+    	initnpctimer "OX_Timer";
+OnInit:
+	//机智问答场地座标(请勿修改)
+	//起始座标
+	setarray $@OX_Map$[1],"quiz_01","quiz_01","quiz_01","quiz_01","quiz_01","quiz_01","quiz_01","quiz_01","quiz_01","quiz_01","quiz_01","quiz_01","quiz_00";
+	setarray $@OX_X[1],140,64,230,322,42,42,138,335,56,334,204,236,66;
+	setarray $@OX_Y[1],285,183,368,368,369,285,369,89,90,234,92,283,7;
+
+	//OX
+	setarray $@OX_2O_Xs[1],125,45,217,309,23,23,123;
+	setarray $@OX_2M_Xs[1],138,62,228,320,40,40,136;
+	setarray $@OX_2X_Xs[1],143,67,233,325,45,45,141;
+
+	setarray $@OX_2O_Ys[1],279,175,363,363,361,277,363;
+	setarray $@OX_2M_Ys[1],283,181,366,366,367,283,367;
+	setarray $@OX_2X_Ys[1],280,175,363,363,361,277,363;
+
+	setarray $@OX_2O_Xe[1],137,61,227,319,38,39,135;
+	setarray $@OX_2M_Xe[1],142,66,232,324,45,44,140;
+	setarray $@OX_2X_Xe[1],155,83,243,335,61,61,153;
+
+	setarray $@OX_2O_Ye[1],291,191,373,373,377,293,375;
+	setarray $@OX_2M_Ye[1],287,185,370,370,371,287,371;
+	setarray $@OX_2X_Ye[1],291,191,373,373,377,293,375;
+
+	//1234
+	setarray $@OX_41_xs[8],313,33,313,183,221;
+	setarray $@OX_42_xs[8],325,45,325,195,240;
+	setarray $@OX_43_xs[8],337,57,337,207,221;
+	setarray $@OX_44_xs[8],345,69,349,219,240;
+
+	setarray $@OX_41_ys[8],59,59,207,59,280;
+	setarray $@OX_42_ys[8],59,59,207,59,280;
+	setarray $@OX_43_ys[8],59,59,207,59,261;
+	setarray $@OX_44_ys[8],59,59,207,59,261;
+
+	setarray $@OX_41_xe[8],321,41,321,191,233;
+	setarray $@OX_42_xe[8],333,53,333,203,252;
+	setarray $@OX_43_xe[8],345,65,345,215,233;
+	setarray $@OX_44_xe[8],357,77,357,227,252;
+
+	setarray $@OX_41_ye[8],81,81,223,81,292;
+	setarray $@OX_42_ye[8],81,81,223,81,292;
+	setarray $@OX_43_ye[8],81,81,223,81,273;
+	setarray $@OX_44_ye[8],81,81,223,81,273;
+
+	setarray $@OX_4M1_xs[8],309,33,313,182,234;
+	setarray $@OX_4M2_xs[8],316,36,316,185,242;
+	setarray $@OX_4M3_xs[8],328,48,328,197,234;
+	setarray $@OX_4M4_xs[8],340,60,340,209,229;
+	setarray $@OX_4M5_xs[8],352,72,352,221,1;
+
+	setarray $@OX_4M1_ys[8],86,86,230,88,282;
+	setarray $@OX_4M2_ys[8],82,82,224,82,274;
+	setarray $@OX_4M3_ys[8],82,82,224,82,269;
+	setarray $@OX_4M4_ys[8],82,82,224,82,274;
+	setarray $@OX_4M5_ys[8],82,82,224,82,1;
+
+	setarray $@OX_4M1_xe[8],361,77,357,228,239;
+	setarray $@OX_4M2_xe[8],318,38,318,188,244;
+	setarray $@OX_4M3_xe[8],330,50,330,200,239;
+	setarray $@OX_4M4_xe[8],342,62,342,212,231;
+	setarray $@OX_4M5_xe[8],354,74,354,224,1;
+
+	setarray $@OX_4M1_ye[8],92,94,236,94,284;
+	setarray $@OX_4M2_ye[8],85,85,229,87,279;
+	setarray $@OX_4M3_ye[8],85,85,229,87,271;
+	setarray $@OX_4M4_ye[8],85,85,229,87,279;
+	setarray $@OX_4M5_ye[8],85,85,229,87,1;
+
+	//设置入场金钱
+	if (getarraysize($OX_In_Zeny)==0) set $OX_In_Zeny,5000;
+	//设置物品奖励
+	//[物品 ID ]
+	if (getarraysize($OX_Itemid)==0) setarray $OX_Itemid[1],19029,19705,19094,19093,19095,12020,19018,19015,19012,19720,19721,19722;
+	//[物品数量]
+	if (getarraysize($OX_Item_Nums)==0) setarray $OX_Item_Nums[1],5,5,5,5,5,5,1,1,1,1,1,1;
+	//设置游戏时间 ( 1->开启 -1->关闭 )
+	if (getarraysize($OX_Game_Time)==0) setarray $OX_Game_Time[0],1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1;
+	end;
+}
+
+// $@OX_State -> 0 (关闭报名)
+// (游戏状态) -> 1 (游戏报名中)
+//            -> 2 (游戏进行中)
+
+/***************
+   [游戏报名]
+***************/
+quiz_01,240,285,1	script	OX_Timer	-1,{
+OnTimer1000:
+	set $@OX_State,1;
+	announce "[OX] OX机智问答开始倒数15分钟,请於这段时间去报名",15;
+	end;
+OnTimer300000:
+	announce "[OX] OX机智问答开始倒数10分钟,请於这段时间去报名",15;
+	end;
+OnTimer600000:
+	announce "[OX] OX机智问答开始倒数 5分钟,请於这段时间去报名",15;
+	end;
+OnTimer900000:
+	if (getmapusers("quiz_01") == 0) {
+		announce "[OX] 无人参加机智问答,活动取消",15;
+		set $@OX_State,0;
+		stopnpctimer;
+		end;
+	}
+	announce "[OX] OX机智问答活动参加人数"+getmapusers("quiz_01")+"人，现在开始",15;
+	end;
+OnTimer901000:
+	announce "[OX] 这段时间之内请不要使用公共频道发言,以避免影响游戏进行。",15;
+	callfunc "OX_Initialization";
+	set $@OX_State,2;
+	stopnpctimer;
+	initnpctimer "OX_2";
+	end;
+}
+/***************
+   [ 判断题 ]
+***************/
+quiz_01,240,285,1	script	OX_2	-1,{
+OnTimer1000:
+	MapAnnounce "quiz_01","[OX] 20秒後将进行第"+$@OX_Amounts+"题,准备好了吗？",17;
+	end;
+OnTimer11000:
+	MapAnnounce "quiz_01","[OX] 还有10秒,请做好准备.",17;
+	end;
+OnTimer21000:
+	callfunc "OX_Data",2;
+	MapAnnounce "quiz_01","[OX] 第"+$@OX_Amounts+"题 : "+$@OX_question$[0] ,15;
+	end;
+OnTimer27000:
+	MapAnnounce "quiz_01","[OX] 你有10秒的思考时间.",17;
+	MapAnnounce "quiz_01","[OX] 题库ID : "+$@OX_id[0]+"若出现问题请向GM报告此ID.",17;
+	end;
+OnTimer32000:
+	MapAnnounce "quiz_01","[OX] 还有5秒的思考时间,决定好你的答案了吗？",17;
+	end;
+OnTimer37000:
+	MapAnnounce "quiz_01","[OX] 现在公布答案.",15;
+	end;
+OnTimer38000:
+	MapAnnounce "quiz_01","[OX] 答案是......",15;
+	end;
+OnTimer38700:
+	MapAnnounce "quiz_01","[OX] 答案是 : "+callfunc("OX_IsTure",2),15;
+	end;
+OnTimer39000:
+	//站在原处传送
+	areawarp "quiz_01",$@OX_2M_Xs[$@OX_Amounts],$@OX_2M_Ys[$@OX_Amounts],$@OX_2M_Xe[$@OX_Amounts],$@OX_2M_Ye[$@OX_Amounts],"prontera",149,92;
+	//选"X"传送
+	if (callfunc("OX_IsTure",2)=="×"){
+		areawarp "quiz_01",$@OX_2O_Xs[$@OX_Amounts],$@OX_2O_Ys[$@OX_Amounts],$@OX_2O_Xe[$@OX_Amounts],$@OX_2O_Ye[$@OX_Amounts],"prontera",149,92;
+		areawarp "quiz_01",$@OX_2X_Xs[$@OX_Amounts],$@OX_2X_Ys[$@OX_Amounts],$@OX_2X_Xe[$@OX_Amounts],$@OX_2X_Ye[$@OX_Amounts],$@OX_Map$[($@OX_Amounts+1)],$@OX_X[($@OX_Amounts+1)],$@OX_Y[($@OX_Amounts+1)];
+	}
+	//选"O"传送
+	if (callfunc("OX_IsTure",2)=="○"){
+		areawarp "quiz_01",$@OX_2O_Xs[$@OX_Amounts],$@OX_2O_Ys[$@OX_Amounts],$@OX_2O_Xe[$@OX_Amounts],$@OX_2O_Ye[$@OX_Amounts],$@OX_Map$[($@OX_Amounts+1)],$@OX_X[($@OX_Amounts+1)],$@OX_Y[($@OX_Amounts+1)];
+		areawarp "quiz_01",$@OX_2X_Xs[$@OX_Amounts],$@OX_2X_Ys[$@OX_Amounts],$@OX_2X_Xe[$@OX_Amounts],$@OX_2X_Ye[$@OX_Amounts],"prontera",149,92;
+	}
+	end;
+OnTimer42000:
+	if (getmapusers("quiz_01") == 0) {
+		announce "[OX] 这次的OX机智问答最後的参加者在第"+$@OX_Amounts+"题出局,无人获胜.",15;
+		set $@OX_State,0;
+		stopnpctimer;
+		end;
+	}
+	MapAnnounce "quiz_01","[OX] OX机智问答进行至第"+$@OX_Amounts+"题,目前场内剩下"+getmapusers("quiz_01")+"人.",15;
+	end;
+OnTimer46000:
+	set $@OX_Amounts,$@OX_Amounts+1;
+	if ($@OX_Amounts == 8) end;
+	stopnpctimer;
+	initnpctimer;
+	end;
+OnTimer50000:
+	MapAnnounce "quiz_01","[OX] 能进行到这里,真是不简单！",17;
+	end;
+OnTimer53000:
+	MapAnnounce "quiz_01","[OX] 接下来的题目都是选择题,大家要加油喔！",17;
+	stopnpctimer;
+	initnpctimer "OX_4";
+	end;
+}
+/***************
+   [ 选择题 ]
+***************/
+quiz_01,241,285,1	script	OX_4	-1,{
+OnTimer1000:
+	MapAnnounce "quiz_01","[OX] 20秒後将进行第"+$@OX_Amounts+"题,准备好了吗？",17;
+	end;
+OnTimer11000:
+	MapAnnounce "quiz_01","[OX] 还有10秒,请做好准备.",17;
+	end;
+OnTimer21000:
+	callfunc "OX_Data",4;
+	MapAnnounce "quiz_01","[OX] 第"+$@OX_Amounts+"题 : "+$@OX_question$[0],15;
+	end;
+OnTimer22000:
+	MapAnnounce "quiz_01","[OX] 选项一 : "+$@OX_answer1$[0],15;
+	end;
+OnTimer23000:
+	MapAnnounce "quiz_01","[OX] 选项二 : "+$@OX_answer2$[0],15;
+	end;
+OnTimer24000:
+	MapAnnounce "quiz_01","[OX] 选项三 : "+$@OX_answer3$[0],15;
+	end;
+OnTimer25000:
+	MapAnnounce "quiz_01","[OX] 选项四 : "+$@OX_answer4$[0],15;
+	end;
+OnTimer29000:
+	MapAnnounce "quiz_01","[OX] 思考时间25秒,请仔细的思考你的答案.",17;
+	MapAnnounce "quiz_01","[OX] 题库ID : "+$@OX_id[0]+"若出现问题请向GM报告此ID.",17;
+	end;
+OnTimer34000:
+	MapAnnounce "quiz_01","[OX] 还有20秒,尽快做决定.",17;
+	end;
+OnTimer44000:
+	MapAnnounce "quiz_01","[OX] 10秒後公布答案.",17;
+	end;
+OnTimer54000:
+	MapAnnounce "quiz_01","[OX] 现在公布答案.",15;
+	end;
+OnTimer55000:
+	MapAnnounce "quiz_01","[OX] 答案是......",15;
+	end;
+OnTimer56700:
+	MapAnnounce "quiz_01","[OX] 选项"+callfunc("OX_Capitalization",$@OX_true[0])+" : "+getd("$@OX_answer"+$@OX_true[0]+"$[0]"),15;
+	end;
+OnTimer57000:
+	areawarp "quiz_01",$@OX_4M1_xs[$@OX_Amounts],$@OX_4M1_ys[$@OX_Amounts],$@OX_4M1_xe[$@OX_Amounts],$@OX_4M1_ye[$@OX_Amounts],"prontera",149,92;
+	areawarp "quiz_01",$@OX_4M2_xs[$@OX_Amounts],$@OX_4M2_ys[$@OX_Amounts],$@OX_4M2_xe[$@OX_Amounts],$@OX_4M2_ye[$@OX_Amounts],"prontera",149,92;
+	areawarp "quiz_01",$@OX_4M3_xs[$@OX_Amounts],$@OX_4M3_ys[$@OX_Amounts],$@OX_4M3_xe[$@OX_Amounts],$@OX_4M3_ye[$@OX_Amounts],"prontera",149,92;
+	areawarp "quiz_01",$@OX_4M4_xs[$@OX_Amounts],$@OX_4M4_ys[$@OX_Amounts],$@OX_4M4_xe[$@OX_Amounts],$@OX_4M4_ye[$@OX_Amounts],"prontera",149,92;
+	areawarp "quiz_01",$@OX_4M5_xs[$@OX_Amounts],$@OX_4M5_ys[$@OX_Amounts],$@OX_4M5_xe[$@OX_Amounts],$@OX_4M5_ye[$@OX_Amounts],"prontera",149,92;
+	switch(callfunc("OX_IsTure",4)){
+	case 1:
+		areawarp "quiz_01",$@OX_41_xs[$@OX_Amounts],$@OX_41_ys[$@OX_Amounts],$@OX_41_xe[$@OX_Amounts],$@OX_41_ye[$@OX_Amounts],$@OX_Map$[($@OX_Amounts+1)],$@OX_X[($@OX_Amounts+1)],$@OX_Y[($@OX_Amounts+1)];
+		areawarp "quiz_01",$@OX_42_xs[$@OX_Amounts],$@OX_42_ys[$@OX_Amounts],$@OX_42_xe[$@OX_Amounts],$@OX_42_ye[$@OX_Amounts],"prontera",149,92;
+		areawarp "quiz_01",$@OX_43_xs[$@OX_Amounts],$@OX_43_ys[$@OX_Amounts],$@OX_43_xe[$@OX_Amounts],$@OX_43_ye[$@OX_Amounts],"prontera",149,92;
+		areawarp "quiz_01",$@OX_44_xs[$@OX_Amounts],$@OX_44_ys[$@OX_Amounts],$@OX_44_xe[$@OX_Amounts],$@OX_44_ye[$@OX_Amounts],"prontera",149,92;
+		break;
+	case 2:
+		areawarp "quiz_01",$@OX_41_xs[$@OX_Amounts],$@OX_41_ys[$@OX_Amounts],$@OX_41_xe[$@OX_Amounts],$@OX_41_ye[$@OX_Amounts],"prontera",149,92;
+    		areawarp "quiz_01",$@OX_42_xs[$@OX_Amounts],$@OX_42_ys[$@OX_Amounts],$@OX_42_xe[$@OX_Amounts],$@OX_42_ye[$@OX_Amounts],$@OX_Map$[($@OX_Amounts+1)],$@OX_X[($@OX_Amounts+1)],$@OX_Y[($@OX_Amounts+1)];
+		areawarp "quiz_01",$@OX_43_xs[$@OX_Amounts],$@OX_43_ys[$@OX_Amounts],$@OX_43_xe[$@OX_Amounts],$@OX_43_ye[$@OX_Amounts],"prontera",149,92;
+    		areawarp "quiz_01",$@OX_44_xs[$@OX_Amounts],$@OX_44_ys[$@OX_Amounts],$@OX_44_xe[$@OX_Amounts],$@OX_44_ye[$@OX_Amounts],"prontera",149,92;
+		break;
+	case 3:
+		areawarp "quiz_01",$@OX_41_xs[$@OX_Amounts],$@OX_41_ys[$@OX_Amounts],$@OX_41_xe[$@OX_Amounts],$@OX_41_ye[$@OX_Amounts],"prontera",149,92;
+		areawarp "quiz_01",$@OX_42_xs[$@OX_Amounts],$@OX_42_ys[$@OX_Amounts],$@OX_42_xe[$@OX_Amounts],$@OX_42_ye[$@OX_Amounts],"prontera",149,92;
+		areawarp "quiz_01",$@OX_43_xs[$@OX_Amounts],$@OX_43_ys[$@OX_Amounts],$@OX_43_xe[$@OX_Amounts],$@OX_43_ye[$@OX_Amounts],$@OX_Map$[($@OX_Amounts+1)],$@OX_X[($@OX_Amounts+1)],$@OX_Y[($@OX_Amounts+1)];
+		areawarp "quiz_01",$@OX_44_xs[$@OX_Amounts],$@OX_44_ys[$@OX_Amounts],$@OX_44_xe[$@OX_Amounts],$@OX_44_ye[$@OX_Amounts],"prontera",149,92;
+		break;
+	case 4:
+		areawarp "quiz_01",$@OX_41_xs[$@OX_Amounts],$@OX_41_ys[$@OX_Amounts],$@OX_41_xe[$@OX_Amounts],$@OX_41_ye[$@OX_Amounts],"prontera",149,92;
+		areawarp "quiz_01",$@OX_42_xs[$@OX_Amounts],$@OX_42_ys[$@OX_Amounts],$@OX_42_xe[$@OX_Amounts],$@OX_42_ye[$@OX_Amounts],"prontera",149,92;
+		areawarp "quiz_01",$@OX_43_xs[$@OX_Amounts],$@OX_43_ys[$@OX_Amounts],$@OX_43_xe[$@OX_Amounts],$@OX_43_ye[$@OX_Amounts],"prontera",149,92;
+		areawarp "quiz_01",$@OX_44_xs[$@OX_Amounts],$@OX_44_ys[$@OX_Amounts],$@OX_44_xe[$@OX_Amounts],$@OX_44_ye[$@OX_Amounts],$@OX_Map$[($@OX_Amounts+1)],$@OX_X[($@OX_Amounts+1)],$@OX_Y[($@OX_Amounts+1)];
+		break;
+	}
+	end;
+OnTimer60000:
+	set $@OX_Amounts,$@OX_Amounts+1;
+    	if ($@OX_Amounts == 13) {
+		announce "[OX] 这次的机制问答已进结束，成功闯关人数有"+getmapusers("quiz_00") + "人",15;
+		stopnpctimer;
+		end;
+	}
+    	if (getmapusers("quiz_01") == 0) {
+		set $@OX_State,0;
+		announce "[OX] 这次的机制问答最後的参加者在第"+$@OX_Amounts+"题出局，无人获胜。",15;
+		stopnpctimer;
+		end;
+	}
+	MapAnnounce "quiz_01","[OX] OX机智问答进行至第"+$@OX_Amounts+"题,目前场内剩下"+getmapusers("quiz_01")+"人",15;
+	end;
+OnTimer64000:
+	stopnpctimer;
+	initnpctimer;
+	end;
+}
+
+
+quiz_00,67,31,4	script	OX益智问答工作人员#2	769,{
+	mes "[OX益智问答工作人员]";
+	mes "^c06080恭喜你成功闯关^000000";
+	mes "你可以从以下东西中选择你要什麽奖品";
+	next;
+	set @n,0;
+	set @o,(getarraysize($OX_Itemid)%5)+5;
+	set @m,getarraysize($OX_Itemid)/5;
+	if (@o>5) { set @m,@m+1; set @o,@o-5; }
+	do {
+		set @z,@n*5;
+		set @n,@n+1;
+		set @tmp,select((@n==1||getarraysize($OX_Itemid)<6)?"":"↑上一页↑",
+				$OX_Itemid[0+@z]?getitemname($OX_Itemid[0+@z]):"",
+				$OX_Itemid[1+@z]?getitemname($OX_Itemid[1+@z]):"",
+				$OX_Itemid[2+@z]?getitemname($OX_Itemid[2+@z]):"",
+				$OX_Itemid[3+@z]?getitemname($OX_Itemid[3+@z]):"",
+				$OX_Itemid[4+@z]?getitemname($OX_Itemid[4+@z]):"",
+				(@n<@m)?"↓下一页↓":""
+		);
+		set @y,(@tmp-2)+@z;
+		if(((@n<@m&&@tmp!=7)||(@n==@m&&@tmp!=(@o+2))) && @tmp !=1) break;
+		if(@tmp==1) set @n,@n-2;
+	} while(@n<@m);
+	mes "[OX益智问答工作人员]";
+	mes "你将要获得的是";
+	mes "    ["+getitemname($OX_Itemid[@y])+" * "+$OX_Item_Nums[@y]+"]";
+	mes "你确定么?";
+	menu "是的",-;
+	getitem $OX_Itemid[@y],$OX_Item_Nums[@y];
+	set #rwjf,#rwjf+2;
+	dispbottom "[积分提示] - 增加2点任务积分,您目前的任务积分为:["+#rwjf+"].";	
+	warp "prontera",149,92;
+	end;
+}
+
+/***************
+   [OX 题库]
+***************/
+// callfunc "OX_Data",2; ->判断题
+// callfunc "OX_Data",4; ->选择题
+function	script	OX_Data	{
+	query_sql "select count(*) from `OX_Data` where `type` = '"+getarg(0)+"' and `existence` = '0'",$@OX_count;
+	set $@OX_count,rand(1,$@OX_count[0]);
+	query_sql "select * from `OX_Data`  where `type` = '"+getarg(0)+"' and `existence` = '0' limit "+$@OX_count+",1",$@OX_id,$@OX_question$,$@OX_answer1$,$@OX_answer2$,$@OX_answer3$,$@OX_answer4$,$@OX_true,$@OX_type,$@OX_existence;
+	query_sql "update `OX_Data` set `existence`=1 where `id`="+$@OX_id[0];
+	return;
+}
+
+/***************
+   [OX 答案]
+***************/
+// callfunc "OX_IsTure",2; ->判断题
+// callfunc "OX_IsTure",4; ->选择题
+function	script	OX_IsTure	{
+	return getarg(0)==4?$@OX_true[0]:getarg(0)==2?$@OX_true[0]==0?"×":"○":"";
+}
+
+/***************
+  [字符大写化]
+***************/
+function	script	OX_Capitalization	{
+	switch(getarg(0)){
+	case 1: return "一";
+	case 2: return "二";
+	case 3: return "三";
+	case 4: return "四";
+	}
+}
+
+/***************
+  [数据初始化]
+***************/
+function	script	OX_Initialization	{
+	set $@OX_Amounts,1;
+	set $@OX_id[0],0;
+	set $@OX_true[0],0;
+	set $@OX_type[0],0;
+	set $@OX_question$[0],"";
+	set $@OX_answer1$[0],"";
+	set $@OX_answer2$[0],"";
+	set $@OX_answer3$[0],"";
+	set $@OX_answer4$[0],"";
+	query_sql "update `OX_Data` set `existence`=0 where `existence`=1";
+	return;
+}
+
+/***************
+  [改变字符串]
+***************/
+function	script	OX_strlen	{
+	if ( getstrlen(getarg(0))==1 ) return "0"+getarg(0)+":00";
+	else return getarg(0)+":00";
+}
+
+function	script	OX_Mes	{
+	if ( getarg(0)==-1 ) return "^c04040关闭^000000";
+	else return "^99CC00开启^000000";
+}

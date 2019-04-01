@@ -1,0 +1,16 @@
+prontera,200,125,3	script	副本传送人员	76,{
+warp "prontera",237,82;	close;
+end;
+OnInit:
+	waitingroom "[☆副本传送☆]",0;
+end;
+}
+
+prontera,206,125,3	script	变身传送人员	76,{
+warp "prontera",155,225;	close;
+end;
+OnInit:
+	waitingroom "[☆变身传送☆]",0;
+end;
+}
+		

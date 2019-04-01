@@ -1,0 +1,108 @@
+prontera.gat,161,184,4	script	平转人员	980,{
+		mes "[平转人员]";		
+		mes "您想转换职业呢吗？";
+		mes "需要ROB 2000W";
+		mes "银矿1个，初级BOSS区掉落";
+		set @menu,select("是的","不是");
+		switch(@menu) {
+			case 1:
+        	if (Zeny<20000000){
+		next;
+		mes "[平转人员]";		
+		mes "您的材料不足，无法转职";	
+		close;
+		}	
+   		if (countitem(22002)<1){
+		next;
+		mes "[平转人员]";		
+		mes "您的材料不足，无法转职";	
+		close;
+		}
+	if ( Weight > 10000 ) {
+		mes "[职业辅助人员]";
+		mes "你的负重为"+Weight/10+".";
+		mes "请不要超过^FF00001000^000000负重.";
+		close;
+	}
+	mes "[纯白乌贼]";
+	mes "请选择你要成为的职业。";
+	next;
+	switch(select("骑士领主","超魔导士","神射手","神官","神工匠","十字刺客","圣殿十字军","智者","小丑/舞姬","武术宗师","创造者","神行太保","忍者","枪手","拳圣","灵媒")) {
+		case 1: set .@jobchange,4008; break;
+		case 2: set .@jobchange,4010; break;	
+		case 3: set .@jobchange,4012; break;	
+		case 4: set .@jobchange,4009; break;
+		case 5: set .@jobchange,4011; break;
+		case 6: set .@jobchange,4013; break;
+		case 7: set .@jobchange,4015; break;
+		case 8: set .@jobchange,4017; break;	
+		case 9: if (Sex) set .@jobchange,4020; 
+			else set .@jobchange,4021;
+			break;	
+		case 10: set .@jobchange,4016; break;
+		case 11: set .@jobchange,4019; break;
+		case 12: set .@jobchange,4018; break;
+		case 13: set .@jobchange,25; break;
+		case 14: set .@jobchange,24; break;
+		case 15: set .@jobchange,4047; break;
+		case 16: set .@jobchange,4049; break;
+	}
+        			set zeny,zeny-20000000;
+				delitem 22002,1;
+	if(checkcart()) setcart 0;
+	if(checkfalcon()) setfalcon 0;
+	if(checkriding()) setriding 0;
+	nude;
+	jobchange .@jobchange;
+	resetskill;	
+	resetstatus;
+				mes "职业转换成功";
+	announce"[职业平转]：恭喜玩家 [ "+strcharinfo(0)+" ] 职业平转成功。",16;
+				close;
+			case 2:
+				mes "请不要玩我，谢谢！";
+				close;
+}
+}
+
+prontera.gat,149,184,4	script	无限药制作	980,{
+		mes "[无限药制作]";		
+		mes "您想制作无限药吗，双补10%？";
+		mes "^ff0000GVG时无法使用^000000";
+		mes "需要黄金1000个";
+		mes "神秘紫箱1000个";
+		mes "金矿1个，初级BOSS区掉落";
+		set @menu,select("是的","不是");
+		switch(@menu) {
+			case 1:
+    if(countitem(969)<1000)||(countitem(617)<1000)||(countitem(22003)<1){
+		next;
+		mes "[无限药制作]";		
+		mes "对不起，您的材料不足";	
+		close;
+		}
+		delitem 969,1000;
+		delitem 617,1000;
+		delitem 22003,1;
+		getitem 22005,1;
+		mes "制作成功";
+	announce"[无限药]：恭喜玩家 [ "+strcharinfo(0)+" ] 制作了一个无限双补药水。",16;		
+		close;
+			case 2:
+				mes "请不要玩我，谢谢！";
+				close;
+}
+}		
+		
+
+
+
+
+
+
+
+
+
+
+
+

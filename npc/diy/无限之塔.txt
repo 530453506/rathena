@@ -1,0 +1,1644 @@
+//= Endless Tower
+// = Tower Protection Stone - Register for the memorial dungeon =
+// 
+
+
+-	script	无限之塔设置	-1,{
+OnInit:
+	//s 无限之塔
+	$@ET_Cooldown				=43200;		// 冷却时间
+	$@ET_Timelimit					=14400;		// 挑战时间
+	$@ET_Time_In					=300;			// 进场时间
+	$@ET_AshID					=6000;			// 跳层的道具ID
+	$@ET_Minlevel					=1;			// 最小等级
+	$@ET_Minparty					=1;				// 最低人数
+	$@ET_Maxparty					=12;			// 最大人数
+	$@ET_GM						=60;			// GM管理最低等级
+	$@ET_Zeny						=5000000;		// 入场需要的Z
+	
+	setarray $@ET_Item_id[0],27044;					// 入场需要的道具ID
+	setarray $@ET_Item_num[0],1;					// 入场需要的道具数量
+	//奖励设置
+	setarray $@fB_wxt_item_1[0],19012;
+	setarray $@fB_wxt_item_1_num[0],1;
+	setarray $@fB_wxt_item_2[0],29997;
+	setarray $@fB_wxt_item_2_num[0],1;
+	setarray $@fB_wxt_item_3[0],670;
+	setarray $@fB_wxt_item_3_num[0],5;
+	end;
+}
+
+function	script	Tower_party_on	{
+	set .@party_on,0;
+	getpartymember(getarg(0),2);
+	for (set .@i,0;.@i<$@partymembercount;set .@i,.@i+1)
+	{
+		if ( isloggedin($@partymemberaid[.@i]) )
+			set .@party_on,.@party_on+1;
+	}
+	return .@party_on;
+}
+
+
+prontera,245,81,3	script	杰森船长::ET_init_npc	709,{
+	mes "[杰森船长]";
+	if ( instance_id(1) )
+	{
+		mes "你要回到队友的身边吗？";
+		next;
+		switch (select("是的","不要","重开副本"))
+		{
+			default:
+			case 1:
+				break;
+			case 2:
+				close;
+				break;
+			case 3:
+				goto L_Reset;
+				break;
+		}
+		if (LinQuJianChe == 0)
+		{
+			mes "领奖后不能再进入已完成的副本！";
+			close;
+		}
+		close2;
+			warp has_instance("1@tower"),53,355;
+		end;
+	}
+L_Reset:
+	mes "无限之塔无限之轮回.";
+	next;
+	mes "[杰森船长]";
+	mes "忠诚的守护着的侍从们啊....找我有什么事?";
+	mes "每人需要500W,副本入场券1张（积分商城兑换）";
+	mes "^0000FF每人最多双开^000000";
+	next;
+	switch (select("01->[ 挑战无限塔 ]:02->[ 查看任务奖励 ]:03->[ 离开 ]")) 
+	{
+	case 1:
+		mes "进入副本每人都需要：";
+		// 循环显示进入要求
+		for (@a=0;@a<getarraysize($@ET_Item_id);@a++)
+		{
+			mes ""+getitemname($@ET_Item_id[@a])+"x"+$@ET_Item_num[@a];
+		}
+		mes "金钱 "+$@ET_Zeny;
+		mes "-------------------------";
+		// 判断是否有创建副本的资格
+		if ( !getcharid(1) || getcharid(0) != getpartyleader(getcharid(1),2) )
+		{
+			mes "对不起，你没有队伍，或者 你不是队长。";
+			close;
+		}
+		// 取得队伍成员信息组
+		getpartymember(getcharid(1),2);
+		// 循环判断队伍中的成员是否符合要求
+		// 显示出第一个不符合要求的成员
+		set .@partymembercount,$@partymembercount;
+		copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;
+		for (.@i=0;.@i<.@partymembercount;.@i++)
+		{
+			if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+			{
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+				mes "队伍中有人不在线，无法报名。";
+				close;
+			}
+			if(#ET_Lasttime + $@ET_Cooldown > gettimetick(2) && #ET_Lasttime < gettimetick(2) && getgmlevel() < $@Mr_GM ) 
+			{
+				set .@ldl_lastTime,#ET_Lasttime + $@ET_Cooldown - gettimetick(2);
+				set .@ldl_hoursTime,.@ldl_lastTime / 60 / 60;
+				set .@ldl_minutesTime,.@ldl_lastTime / 60 % 60;
+				set .@ldl_secondsTime,.@ldl_lastTime % 60;
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;				
+				mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]副本冷却时间未到";
+				mes "还有, "+.@ldl_hoursTime+"小时 "+.@ldl_minutesTime+"分钟 "+.@ldl_secondsTime+"秒才能进入";
+				close;				
+			}
+			if(BaseLevel < $@ET_Minlevel)
+			{
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+				mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+				mes "等级还没到"+$@ET_Minlevel+".";
+				close;
+			}
+			for (@j=0;@j<getarraysize($@ET_Item_id);@j++)
+			{
+				if (countitem($@ET_Item_id[@j]) < $@ET_Item_num[@j] )
+				{
+					if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+						end;
+					mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+					mes "没有携带 "+getitemname($@ET_Item_id[@j])+" x "+$@ET_Item_num[@j]+"个";
+					close;
+				}
+				if ( Zeny < $@ET_Zeny )
+				{
+					if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+						end;
+					mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+					mes "金钱不足 "+$@ET_Zeny+" Zeny。";
+					close;
+				}
+			}
+		}
+		// 脚本关联回到队长身上
+		if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+			end;
+		mes "你想登记进入无限之塔吗?";
+		next;
+		if ( select( "是的","不要" ) == 2 )
+			close;
+		mes "[杰森船长]";
+		// 判断队长身上的道具是否符合要求
+		for (@b=0;@b<getarraysize($@ET_Item_id);@b++)
+		{
+			set @online_num,callfunc("Tower_party_on",getcharid(1));
+			if(#ET_Lasttime + $@ET_Cooldown > gettimetick(2) && #ET_Lasttime < gettimetick(2) && getgmlevel() < $@ET_GM ) 
+			{
+				set .@ldl_lastTime,#ET_Lasttime + $@ET_Cooldown - gettimetick(2);
+				set .@ldl_hoursTime,.@ldl_lastTime / 60 / 60;
+				set .@ldl_minutesTime,.@ldl_lastTime / 60 % 60;
+				set .@ldl_secondsTime,.@ldl_lastTime % 60;
+				mes "对不起！";
+				mes "你现在还有, "+.@ldl_hoursTime+"小时 "+.@ldl_minutesTime+"分钟 "+.@ldl_secondsTime+"秒才能进入";
+				close;
+			}
+			if ( BaseLevel < $@ET_Minlevel )
+			{
+				mes "对不起！";
+				mes "你的等级还没到"+$@ET_Minlevel+".";
+				close;
+			}
+			if ( @online_num < $@ET_Minparty )
+			{
+				mes "对不起！";
+				mes "你的队伍成员必须在["+$@ET_Minparty+"]人以上，";
+				close;
+			}
+			if ( @online_num > $@ET_Maxparty )
+			{
+				mes "对不起！";
+				mes "你的队伍成员超过["+$@ET_Maxparty+"]人，";
+				close;
+			}
+			if ( Zeny < $@ET_Zeny )
+			{
+				mes "对不起！";
+				mes "你的金钱不足"+$@ET_Zeny+"Zeny，";
+				close;
+			}
+			if ( countitem($@ET_Item_id[$@b]) < $@ET_Item_num[$@b] )
+			{
+				mes "对不起！";				
+				mes "你的["+getitemname($@ET_Item_id[$@b])+"]不足["+$@ET_Item_num[$@b]+"]个。";
+				close;
+			}
+		}
+		mes "你确定要登记吗?";
+		next;
+		if ( select( "是的","不要" ) == 2 )
+			close;
+		mes "[杰森船长]";
+		mes "你的队伍已经成功登记了.";
+		mes "我将打开一个入口，它会把你们传送到里面.";
+		close2;		
+		if (instance_id(1) )
+		{
+			instance_destroy(instance_id(1));
+		}
+		set .@instance_id,instance_create("无限之塔",getcharid(1)); 
+		if(.@instance_id < 0){
+			mes "创建副本失败"; 
+			mes "副本系统已经达到系统上限"; 
+			mes "请通知GM或者管理员"; 
+			close;
+		}
+		// > Rev 14006
+		instance_attachmap("1@tower",.@instance_id);
+		instance_attachmap("2@tower",.@instance_id);
+		instance_attachmap("3@tower",.@instance_id);
+		instance_attachmap("4@tower",.@instance_id);
+		instance_attachmap("5@tower",.@instance_id);
+		instance_attachmap("6@tower",.@instance_id);
+		instance_set_timeout $@ET_Timelimit,$@ET_Time_In,.@instance_id;
+		instance_init .@instance_id;
+		instance_attach .@instance_id;
+		set 'ET_Floor,1;
+		set 'ET_Leadertalk,ET_Talk;
+		donpcevent instance_npcname("ET_Manager")+"::OnInstanceInit";
+		disablenpc instance_npcname("发光的水晶",instance_id(1));
+		mapannounce "e_tower",getpartyname(getcharid(1))+"队伍的"+strcharinfo(0)+" 进入了无限之塔。",bc_map | bc_blue;		
+		//==================================================//
+		getpartymember(getcharid(1),2);
+		set .@partymembercount,$@partymembercount;
+		copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;
+		// 判断队员身上的道具是否符合要求		
+		for (.@i=0;.@i<.@partymembercount;.@i++)
+		{
+			if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+				continue;
+			// 删除所需道具
+			if (Zeny<$@ET_Zeny)
+				continue;
+			set Zeny,Zeny-$@ET_Zeny;
+			set LinQuJianChe,1;
+			set #ET_Lasttime,gettimetick(2);
+			for (@c=0;@c<getarraysize($@ET_Item_id);@c++)
+			{
+				delitem $@ET_Item_id[@c],$@ET_Item_num[@c];
+			}
+			warp has_instance("1@tower"),53,355;
+		}
+		close; 		
+	case 2:
+		mes "-------固定奖励-------";
+		mes "-10点任务积分";
+		mes "-------15%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fB_wxt_item_1);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fB_wxt_item_1[.@a])+"]^000000 X ["+$@fB_wxt_item_1_num[.@a]+"]";
+		}
+		next;
+		mes "-------25%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fB_wxt_item_2);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fB_wxt_item_2[.@a])+"]^000000 X ["+$@fB_wxt_item_2_num[.@a]+"]";
+		}
+		next;
+		mes "-------60%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fB_wxt_item_3);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fB_wxt_item_3[.@a])+"]^000000 X ["+$@fB_wxt_item_3_num[.@a]+"]";
+		}
+		next;
+		close;
+	case 3:
+		close;
+	}
+OnInit:
+	waitingroom "[无限塔]",0;
+	end;
+}
+
+// = ET_Manager - Many general functions regarding the Endless Tower - Controls the instance =
+// 
+6@tower,1,1,1	script	ET_Manager	-1,{
+	end;
+OnInit: //doesn't work at the moment :S
+	if(strnpcinfo(3) == "ET_Manager")
+		end;
+OnInstanceInit:
+	set .@k,'ET_Floor;
+	while(.@k < 100){
+		disablenpc instance_npcname("ETwarp_"+.@k);
+		set .@k,.@k+1;
+	}
+	if('ET_Floor <= 100){
+		getmapxy(.@map$,.@x,.@y,1,('ET_Floor == 100 ? "Lucid Crystal" : "ETwarp_"+'ET_Floor));
+		callfunc "ET_Spawns",'ET_Floor,.@map$;
+	} else
+		donpcevent instance_npcname("ET_Manager")+"::OnNaght0";
+	end;
+	
+OnMobDead:
+	set .@i,instance_id(0);
+	set 'ET_Mobs,'ET_Mobs-1;
+	if('ET_Mobs){
+		instance_announce .@i,"第"+'ET_Floor+"层魔物还剩下: "+'ET_Mobs,bc_map,0x00FF00;
+		end;
+	}
+	if('ET_Floor < 100)
+		enablenpc instance_npcname("ETwarp_"+'ET_Floor);
+	if('ET_Floor == 25) 
+		donpcevent instance_npcname("ETwarp_25")+"::OnEnableAshtimer";
+	if('ET_Floor == 50) 
+		donpcevent instance_npcname("ETwarp_50")+"::OnEnableAshtimer";
+	if('ET_Floor == 75) 
+		donpcevent instance_npcname("ETwarp_75")+"::OnEnableAshtimer";
+	instance_announce .@i,"第 "+'ET_Floor+"层的怪物已经全部被打败了",bc_map;
+	set 'ET_Floor,'ET_Floor+1;
+	if('ET_Floor == 100)
+		callfunc "ET_Spawns",'ET_Floor,"5@tower";
+	else if('ET_Floor < 100)
+		callfunc "ET_Spawns",'ET_Floor,(('ET_Floor-1) / 25 + 1)+"@tower";
+	else {
+		mes "[无限之塔错误]";
+		mes "OnMobDead标签报错";
+		mes "'ET_Floor = "+'ET_Floor;
+		mes "请报告GM.";
+		close;
+	}
+	end;
+	
+OnEntDead:
+	set .@i,instance_id(0);
+	//getmapxy(.@map$,.@x,.@y,1,instance_npcname("Lucid Crystal"));
+	killmonsterall "5@tower";
+	// TODO: get more info, which things decide if you can fight NS or not...
+	enablenpc instance_npcname("发光的水晶",instance_id());
+	instance_announce .@i,"神秘的声音: 恭喜你们..................",bc_map,0xFF0000;
+	sleep 3000;
+	instance_announce .@i,"神秘的声音: 死亡藤蔓并不是结束",bc_map,0xFF0000;
+	sleep 3000;
+	instance_announce .@i,"神秘的声音: 如果你们如此急切的想体验死亡的话，我将给你门这个荣幸亲自挑战我",bc_map,0xFF0000;
+	set 'ET_Floor,'ET_Floor+1;
+OnNaght0:
+	//getmapxy(.@map$,.@x,.@y,1);
+	areamonster "6@tower",150,70,160,85,"--ja--",1627,10,instance_npcname("ET_Manager")+"::OnNaght1";
+	set 'ET_Mobs,10;
+	end;
+	
+OnNaght1:
+	set .@i,instance_id(0);
+	set 'ET_Mobs,'ET_Mobs-1;
+	instance_announce .@i,"还有怪物 "+'ET_Mobs+"个",bc_map,0x00FF00;
+	if('ET_Mobs)
+		end;
+	instance_announce .@i,"贵宾们，我希望你们知道你们会被带到这里，如果你们不知道的话，那就太晚了 !",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"这就是那些先来的去见死神的原因.",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"我很佩服你们的勇气，让我们先来玩一下吧",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"你们知道么，我最喜欢看人类在恐惧中跑来跑去的样子.",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"让我们来看看谁跑的最快吧，你们准备好了么",bc_map,0x00FF00;
+	//getmapxy(.@map$,.@x,.@y,1);
+	areamonster "6@tower",152,69,152,106,"--ja--",1152,50,instance_npcname("ET_Manager")+"::OnNaght2";
+	areamonster "6@tower",159,69,159,106,"--ja--",1152,50,instance_npcname("ET_Manager")+"::OnNaght2";
+	set 'ET_Mobs,100;
+	end;
+OnNaght2:
+	set .@i,instance_id(0);
+	set 'ET_Mobs,'ET_Mobs-1;
+	instance_announce .@i,"剩余怪物 "+'ET_Mobs+"个",bc_map,0x00FF00;
+	if('ET_Mobs)
+		end;
+	instance_announce .@i,"呵呵，看来他们对你并不是太大的挑战",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"那我稍微提高点难度吧",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"我需要点刺激!",bc_map,0x00FF00;
+	//getmapxy(.@map$,.@x,.@y,1);
+	areamonster"6@tower",152,69,152,106,"Wind Ghost",1263,30,instance_npcname("ET_Manager")+"::OnNaght3";
+	areamonster "6@tower",159,69,159,106,"--ja--",1263,30,instance_npcname("ET_Manager")+"::OnNaght3";
+	set 'ET_Mobs,60;
+	end;
+
+OnNaght3:
+	set .@i,instance_id(0);
+	set 'ET_Mobs,'ET_Mobs-1;
+	instance_announce .@i,"剩余怪物 "+'ET_Mobs+"个",bc_map,0x00FF00;
+	if('ET_Mobs)
+		end;
+	instance_announce .@i,"呵呵越来越刺激了啊!",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"你们是少数能让我这么这么高兴的闯入者了。",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"再来一回合吧",bc_map,0x00FF00;
+	//getmapxy(.@map$,.@x,.@y,1);
+	areamonster "6@tower",152,69,152,106,"--ja--",1132,20,instance_npcname("ET_Manager")+"::OnNaght4";
+	areamonster "6@tower",159,69,159,106,"--ja--",1132,20,instance_npcname("ET_Manager")+"::OnNaght4";
+	set 'ET_Mobs,40;
+	end;
+	
+OnNaght4:
+	set .@i,instance_id(0);
+	set 'ET_Mobs,'ET_Mobs-1;
+	instance_announce .@i,"剩余怪物 "+'ET_Mobs+"个",bc_map,0x00FF00;
+	if('ET_Mobs)
+		end;
+	instance_announce .@i,"呵呵，看来是我亲自登场的时候了！",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"你知道我是谁么",bc_map,0x00FF00;
+	sleep 5000;
+	instance_announce .@i,"你们很快就会知道了，我是死神的代言人",bc_map,0x00FF00;
+	//getmapxy(.@map$,.@x,.@y,1);
+	monster	"6@tower",155,147,"纳户特基格",1956,1,instance_npcname("ET_Manager")+"::OnNaghtDead";
+	end;
+	
+OnNaghtDead:
+	set .@i,instance_id(0);
+	instance_announce .@i,"这..... 这不可能! 我是无敌的",bc_map,0xFFD700;
+	sleep 5000;
+	instance_announce .@i,"不! 我的灵魂....... !我的躯体 ..! 不啊--!",bc_map,0xFFD700;
+	sleep 5000;
+	instance_announce .@i,"纳户特基格的躯体融入的黑暗阴影，消散在了风中.",bc_map,0x00FF00;	
+	sleep 5000;
+	instance_warpall "guild_1",42,285;
+	instance_destroy(.@i);
+	end;
+}
+
+// = 永燃火炬 - Allows you to skip 3 floors at the max for the price of X Dark Ashes =
+// ====================================================================================================
+1@tower,50,360,5	script	永燃火炬	111,{
+	if(getgmlevel() >= $@ET_GM)
+	{
+		mes "你好GM老大!";
+		next;
+		switch(select("跳过GM模式:设置当前楼层:传送到楼层:副本信息:删除副本:Cancel")){
+		case 1:
+			break;
+		case 2:
+			mes "需要设置到第几层呢";
+			next;
+			input .@level,0,101;
+			if(.@level == 0) close;
+			set 'ET_Floor,.@level;
+			killmonsterall "1@tower";
+			killmonsterall "2@tower";
+			killmonsterall "3@tower";
+			killmonsterall "4@tower";
+			killmonsterall "5@tower";
+			killmonsterall "6@tower";
+			for(set .@k,1; .@k < 'ET_Floor && .@k < 100; set .@k,.@k + 1)
+				enablenpc instance_npcname("ETwarp_"+.@k);
+			donpcevent instance_npcname("ET_Manager")+"::OnInstanceInit";
+			mes "需要直接传送么";
+			next;
+			if(select("Yes:No") == 2) close;
+		case 3:
+			if(!.@level){
+				mes "请输入你想去的楼层";
+				next;
+				input .@level,0,101;
+				if(.@level == 0) close; 
+			}
+			if(.@level == 101)
+				warp has_instance("6@tower"),31,12;
+			else if(.@level == 100)
+				warp has_instance("5@tower"),100,73;
+			else {
+				setarray .@warpx[0],50,134,222,308,392;
+				setarray .@warpy[0],355,271,183,99,13;
+				set .@x,.@warpx[((.@level-1) % 25) % 5];
+				set .@y,.@warpy[((.@level-1) % 25) / 5];
+				warp has_instance(((.@level-1) / 25 + 1)+"@tower"),.@x,.@y;
+			}
+			close;
+		case 4:
+			mes "Floor: "+'ET_Floor;
+			mes "Lasttime varibale: "+'ET_Lasttime;
+			if('ET_Leadertalk == 5)
+				mes "可以挑战纳户特基格";
+			else
+				mes "不能挑战";
+			if('ET_Floor == 100)
+				set .@map$,has_instance("5@tower");
+			else if('ET_Floor == 101)
+				set .@map$,has_instance("6@tower");
+			else if('ET_Floor < 100)
+				set .@map$,has_instance((('ET_Floor-1) / 25 + 1)+"@tower");
+			mes "需要猎杀的魔物(不包括小怪): "+'ET_Mobs;
+			mes "实际魔物(包括小怪): "+getmapmobs(.@map$);
+			close;
+		case 5:
+			mes "确定?";
+			next;
+			if(select("Yes:No") == 2) close;
+			instance_destroy instance_id(0);
+			close;
+		default:
+			close;
+		}
+	}
+	mes "- 火炬上有一段话 -";
+	mes "驱散周围黑暗的人将会更近一步的靠近纳户特基格，巨大的黑暗之王";
+	next;
+	if(select("26层:51层:76层:Cancel") == 4) close;
+	if(countitem($@ET_AshID) < @menu){
+		mes "-提示-";
+		mes "传送到 "+(@menu == 1 ? "26" : (@menu == 2 ? "51" : "76"))+"层，你需要 "+@menu+" 个 王之证";
+		close;
+	}
+	if('ET_Floor >= @menu * 25 + 1) {
+		delitem $@ET_AshID,@menu;
+		if(@menu == 1) warp has_instance("2@tower"),50,355; 
+		if(@menu == 2) warp has_instance("3@tower"),50,355; 
+		if(@menu == 3) warp has_instance("4@tower"),50,355; 
+		end;
+	}
+	if(getpartyleader(getcharid(1),2) != getcharid(0)){
+		mes "-Warning-";
+		mes "只有队长可以带领队伍跳层";
+		close;
+	}
+	set 'ET_Floor,@menu * 25 + 1;
+	killmonsterall has_instance("1@tower");
+	killmonsterall has_instance("2@tower");
+	killmonsterall has_instance("3@tower");
+	callfunc "ET_Spawns",'ET_Floor,(('ET_Floor-1) / 25 + 1)+"@tower";
+	for(set .@k,1; .@k < 'ET_Floor && .@k < 100; set .@k,.@k + 1)
+		enablenpc instance_npcname("ETwarp_"+.@k);
+	delitem $@ET_AshID,@menu;
+	if(@menu == 1) warp has_instance("2@tower"),50,355; 
+	if(@menu == 2) warp has_instance("3@tower"),50,355; 
+	if(@menu == 3) warp has_instance("4@tower"),50,355; 
+	end;
+}
+
+// = ET_Mobs - Spawns the given mobs for the corresponding floor =
+// ====================================================================================================
+function	script	ET_Spawns	{ // callfunc "ET_Spawns",level,"map";
+	switch(getarg(0)){
+	case 1: 
+		set 'ET_Mobs,36;
+		areamonster getarg(1),7,349,37,393,"--ja--",1002,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1090,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1113,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1031,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1242,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1613,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 2:
+		set 'ET_Mobs,31;
+		areamonster getarg(1),91,349,121,393,"--ja--",1107,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1106,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1092,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 3:
+		set 'ET_Mobs,30;
+		areamonster getarg(1),179,349,209,393,"--ja--",1076,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1071,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1028,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1169,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1016,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1152,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 4:
+		set 'ET_Mobs,36;
+		areamonster getarg(1),265,349,295,393,"--ja--",1004,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1052,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1088,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1100,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1099,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1139,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 5:
+		set 'ET_Mobs,51;
+		areamonster getarg(1),349,349,379,393,"--ja--",1048,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1051,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1053,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1054,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1086,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 6:
+		set 'ET_Mobs,20;
+		areamonster getarg(1),7,265,37,309,"--ja--",1008,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1047,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1048,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1721,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 7:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),91,265,121,309,"--ja--",1005,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1111,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1383,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1627,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 8:
+		set 'ET_Mobs,30;
+		areamonster getarg(1),179,265,209,309,"--ja--",1248,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1403,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 9:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),265,265,295,309,"--ja--",1784,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1540,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1615,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 10:
+		set 'ET_Mobs,46;
+		areamonster getarg(1),349,265,379,309,"--ja--",1004,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1303,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1059,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 11:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),7,177,37,221,"--ja--",1162,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1413,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1500,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1493,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 12:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),91,177,121,221,"--ja--",1199,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,177,121,221,"--ja--",1378,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 13:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),179,177,209,221,"--ja--",1026,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1188,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1512,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 14:
+		set 'ET_Mobs,45;
+		areamonster getarg(1),265,177,295,221,"--ja--",1023,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1189,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1213,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1273,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1686,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 15:
+		set 'ET_Mobs,52;
+		areamonster getarg(1),349,177,379,221,"--ja--",1097,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1095,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1160,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1105,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1159,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1147,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 16:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),7,94,37,137,"--ja--",1189,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,94,37,137,"--ja--",1453,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,94,37,137,"--ja--",1253,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,94,37,137,"--ja--",1016,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 17:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),91,94,121,137,"--ja--",1629,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1065,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1264,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"Baphomet Jr.",1101,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 18:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),179,94,209,137,"--ja--",1175,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1209,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 19:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),265,94,295,137,"--ja--",1108,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1064,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1158,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1069,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 20:
+		set 'ET_Mobs,51;
+		areamonster getarg(1),349,94,379,137,"--ja--",1071,50,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1112,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 21:
+		set 'ET_Mobs,35;
+		areamonster getarg(1),7,7,37,51,"--ja--",1693,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1694,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1695,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1696,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1697,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 22:
+		set 'ET_Mobs,90;
+		areamonster getarg(1),91,7,121,51,"--ja--",1020,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1068,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1118,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1780,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1781,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1162,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 23:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),179,7,209,51,"--ja--",1069,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1044,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1216,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1144,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1068,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 24:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),265,7,295,51,"--ja--",1130,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1267,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1131,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 25:
+		set 'ET_Mobs,31;
+		areamonster getarg(1),349,7,379,51,"--ja--",1180,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1307,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1150,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 26:
+		set 'ET_Mobs,45;
+		areamonster getarg(1),7,349,37,393,"--ja--",1033,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1495,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1497,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1550,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1503,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 27:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),91,349,121,393,"--ja--",1258,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1122,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1124,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1123,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1125,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1126,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 28:
+		set 'ET_Mobs,70;
+		areamonster getarg(1),179,349,209,393,"--ja--",1070,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1256,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1194,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1255,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 29:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),265,349,295,393,"--ja--",1510,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1375,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1260,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1179,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1509,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1508,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 30:
+		set 'ET_Mobs,31;
+		areamonster getarg(1),349,349,379,393,"--ja--",1416,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1630,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 31:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),7,265,37,309,"--ja--",1001,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1212,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1387,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1099,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 32:
+		set 'ET_Mobs,41;
+		areamonster getarg(1),91,265,121,309,"--ja--",1258,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1122,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1124,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1123,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1125,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1126,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1299,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 33:
+		set 'ET_Mobs,46;
+		areamonster getarg(1),179,265,209,309,"--ja--",1282,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1133,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1134,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1135,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1296,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 34:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),265,265,295,309,"--ja--",1179,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1186,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1869,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 35:
+		set 'ET_Mobs,51;
+		areamonster getarg(1),349,265,379,309,"--ja--",1314,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1319,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1318,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1316,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1314,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1312,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 36:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),7,177,37,221,"--ja--",1271,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1687,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1206,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 37:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),91,177,121,221,"--ja--",1193,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,177,121,221,"--ja--",1269,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,177,121,221,"--ja--",1270,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 38:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),179,177,209,221,"--ja--",1195,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1698,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 39:
+		set 'ET_Mobs,45;
+		areamonster getarg(1),265,177,295,221,"--ja--",1514,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1513,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1416,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1517,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1412,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 40:
+		set 'ET_Mobs,41;
+		areamonster getarg(1),349,177,379,221,"--ja--",1492,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1404,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1401,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1405,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1400,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1403,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 41:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),7,94,37,137,"--ja--",1587,50,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 42:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),91,94,121,137,"--ja--",1127,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1165,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1207,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1386,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1516,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 43:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),179,94,209,137,"--ja--",1025,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1030,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1037,40,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1148,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 44:
+		set 'ET_Mobs,61;
+		areamonster getarg(1),265,94,295,137,"--ja--",1167,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1107,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1515,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"Baphomet Jr.",1101,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1686,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 45:
+		set 'ET_Mobs,46;
+		areamonster getarg(1),349,94,379,137,"--ja--",1032,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1029,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1297,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1038,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 46:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),7,7,37,51,"--ja--",1633,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1774,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 47:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),91,7,121,51,"--ja--",1155,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1156,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1384,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1385,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 48:
+		set 'ET_Mobs,30;
+		areamonster getarg(1),179,7,209,51,"--ja--",1297,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1699,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1305,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 49:
+		set 'ET_Mobs,42;
+		areamonster getarg(1),265,7,295,51,"--ja--",1381,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1306,7,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1060,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1243,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1417,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 50:
+		set 'ET_Mobs,32;
+		areamonster getarg(1),349,7,379,51,"--ja--",1146,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1098,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1140,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1511,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1157,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 51:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),7,349,37,393,"--ja--",1109,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1382,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1292,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 52:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),91,349,121,393,"--ja--",1680,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1253,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1376,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1369,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1408,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1629,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 53:
+		set 'ET_Mobs,55;
+		areamonster getarg(1),179,349,209,393,"--ja--",1401,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1315,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 54:
+		set 'ET_Mobs,30;
+		areamonster getarg(1),265,349,295,393,"--ja--",1143,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1250,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1404,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 55:
+		set 'ET_Mobs,56;
+		areamonster getarg(1),349,349,379,393,"--ja--",1418,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1148,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1029,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1037,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 56:
+		set 'ET_Mobs,55;
+		areamonster getarg(1),7,265,37,309,"--ja--",1778,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1777,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1319,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1515,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1775,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 57:
+		set 'ET_Mobs,45;
+		areamonster getarg(1),91,265,121,309,"--ja--",1242,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1090,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1113,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1031,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1120,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1096,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1613,25,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1582,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1388,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 58:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),179,265,209,309,"--ja--",1196,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1201,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1202,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1257,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1197,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 59:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),265,265,295,309,"--ja--",1249,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1191,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1699,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 60:
+		set 'ET_Mobs,62;
+		areamonster getarg(1),349,265,379,309,"--ja--",1652,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1655,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1656,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1657,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1653,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1654,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1046,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,265,379,309,"--ja--",1658,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 61:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),7,177,37,221,"--ja--",1771,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1313,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1772,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1770,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1769,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1154,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 62:
+		set 'ET_Mobs,35;
+		areamonster getarg(1),91,177,121,221,"--ja--",1208,35,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 63:
+		set 'ET_Mobs,45;
+		areamonster getarg(1),179,177,209,221,"--ja--",1015,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1153,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1197,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1865,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1298,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 64:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),265,177,295,221,"--ja--",1303,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1618,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1305,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1300,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1293,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1294,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 65:
+		set 'ET_Mobs,21;
+		areamonster getarg(1),349,177,379,221,"--ja--",1783,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1785,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 66:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),7,94,37,137,"--ja--",1257,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,94,37,137,"--ja--",1374,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,94,37,137,"--ja--",1736,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 67:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),91,94,121,137,"--ja--",1385,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1384,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1716,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1713,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1262,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 68:
+		set 'ET_Mobs,48;
+		areamonster getarg(1),179,94,209,137,"--ja--",1278,18,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1366,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1777,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1540,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1497,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 69:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),265,94,295,137,"--ja--",1371,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1703,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1702,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1701,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1700,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 70:
+		set 'ET_Mobs,22;
+		areamonster getarg(1),349,94,379,137,"--ja--",1087,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1190,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1686,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 71:
+		set 'ET_Mobs,65;
+		areamonster getarg(1),7,7,37,51,"--ja--",1374,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1379,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1370,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1061,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 72:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),91,7,121,51,"--ja--",1410,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1655,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1314,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1637,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 73:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),179,7,209,51,"--ja--",1275,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1505,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1200,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1370,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1737,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1631,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 74:
+		set 'ET_Mobs,54;
+		areamonster getarg(1),265,7,295,51,"--ja--",1676,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1677,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1678,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1679,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1670,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1671,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1672,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1673,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,7,295,51,"--ja--",1668,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 75:
+		set 'ET_Mobs,32;
+		areamonster getarg(1),349,7,379,51,"--ja--",1101,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1302,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1272,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,7,379,51,"--ja--",1039,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 76:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),7,349,37,393,"--ja--",1379,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1061,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,349,37,393,"--ja--",1219,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 77:
+		set 'ET_Mobs,70;
+		areamonster getarg(1),91,349,121,393,"--ja--",1117,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1291,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1867,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1192,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,349,121,393,"--ja--",1263,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 78:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),179,349,209,393,"--ja--",1163,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1219,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1268,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1504,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,349,209,393,"--ja--",1829,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 79:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),265,349,295,393,"--ja--",1720,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1714,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1717,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1385,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,349,295,393,"--ja--",1155,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 80:
+		set 'ET_Mobs,16;
+		areamonster getarg(1),349,349,379,393,"--ja--",1870,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,349,379,393,"--ja--",1871,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 81:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),7,265,37,309,"--ja--",1203,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1204,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,265,37,309,"--ja--",1205,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 82:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),91,265,121,309,"--ja--",1268,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1769,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1507,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1752,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,265,121,309,"--ja--",1257,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 83:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),179,265,209,309,"--ja--",1259,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1283,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1754,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1755,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,265,209,309,"--ja--",1302,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 84:
+		set 'ET_Mobs,70;
+		areamonster getarg(1),265,265,295,309,"--ja--",1302,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1320,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1295,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1370,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1374,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,265,295,309,"--ja--",1374,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 85:
+		set 'ET_Mobs,1;
+		areamonster getarg(1),349,265,379,309,"--ja--",1832,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 86:
+		set 'ET_Mobs,40;
+		areamonster getarg(1),7,177,37,221,"--ja--",1720,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1259,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1283,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,177,37,221,"--ja--",1310,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 87:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),91,177,121,221,"--ja--",1831,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,177,121,221,"--ja--",1833,20,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,177,121,221,"--ja--",1366,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,177,121,221,"--ja--",1309,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 88:
+		set 'ET_Mobs,60;
+		areamonster getarg(1),179,177,209,221,"--ja--",1870,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1098,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1291,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1297,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,177,209,221,"--ja--",1132,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 89:
+		set 'ET_Mobs,24;
+		areamonster getarg(1),265,177,295,221,"--ja--",1704,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1705,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1706,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,177,295,221,"--ja--",1707,6,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 90:
+		set 'ET_Mobs,31;
+		areamonster getarg(1),349,177,379,221,"--ja--",1751,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1702,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1703,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,177,379,221,"--ja--",1371,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 91:
+		set 'ET_Mobs,50;
+		areamonster getarg(1),7,94,37,137,"--ja--",1656,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,94,37,137,"--ja--",1638,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,94,37,137,"--ja--",1830,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 92:
+		set 'ET_Mobs,55;
+		areamonster getarg(1),91,94,121,137,"--ja--",1377,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1263,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1639,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1657,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,94,121,137,"--ja--",1140,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 93:
+		set 'ET_Mobs,45;
+		areamonster getarg(1),179,94,209,137,"--ja--",1634,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1268,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1219,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,94,209,137,"--ja--",1208,10,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 94:
+		set 'ET_Mobs,30;
+		areamonster getarg(1),265,94,295,137,"--ja--",1829,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),265,94,295,137,"--ja--",1830,15,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 95:
+		set 'ET_Mobs,46;
+		areamonster getarg(1),349,94,379,137,"--ja--",1873,1,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1091,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1042,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1011,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),349,94,379,137,"--ja--",1035,30,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 96:
+		set 'ET_Mobs,15;
+		areamonster getarg(1),7,7,37,51,"--ja--",1765,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1754,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),7,7,37,51,"--ja--",1755,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 97:
+		set 'ET_Mobs,20;
+		areamonster getarg(1),91,7,121,51,"--ja--",1920,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1919,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1918,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),91,7,121,51,"--ja--",1921,5,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 98:
+		set 'ET_Mobs,12;
+		areamonster getarg(1),179,7,209,51,"--ja--",1634,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1635,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1636,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1637,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1638,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		areamonster getarg(1),179,7,209,51,"--ja--",1639,2,instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 99:
+		setarray .@mobs[1],1639,1634,1637,1635,1636,1638,1918,1920,1919,1921,1765,1754,1755,1634,1268,1219,1208,1829,1830,1639,1377,1657,1263,1638,1830,1656,1702,1703,1371;
+		setarray .@numb[1],2,2,2,2,2,2,5,5,5,5,5,10,10,15,10,10,10,15,10,15,10,10,10,10,10,30,10,10,10;
+		set 'ET_Mobs,.@numb[set(.@mob,rand(1,29))];
+		areamonster getarg(1),265,7,295,51,getmonsterinfo(.@mobs[.@mob],0),.@mobs[.@mob],.@numb[.@mob],instance_npcname("ET_Manager")+"::OnMobDead";
+		set 'ET_Mobs,'ET_Mobs+.@numb[set(.@mob,rand(1,29))];
+		areamonster getarg(1),265,7,295,51,getmonsterinfo(.@mobs[.@mob],0),.@mobs[.@mob],.@numb[.@mob],instance_npcname("ET_Manager")+"::OnMobDead";
+		set 'ET_Mobs,'ET_Mobs+.@numb[set(.@mob,rand(1,29))];
+		areamonster getarg(1),265,7,295,51,getmonsterinfo(.@mobs[.@mob],0),.@mobs[.@mob],.@numb[.@mob],instance_npcname("ET_Manager")+"::OnMobDead";
+		set 'ET_Mobs,'ET_Mobs+.@numb[set(.@mob,rand(1,29))];
+		areamonster getarg(1),265,7,295,51,getmonsterinfo(.@mobs[.@mob],0),.@mobs[.@mob],.@numb[.@mob],instance_npcname("ET_Manager")+"::OnMobDead";
+		set 'ET_Mobs,'ET_Mobs+.@numb[set(.@mob,rand(1,29))];
+		areamonster getarg(1),265,7,295,51,getmonsterinfo(.@mobs[.@mob],0),.@mobs[.@mob],.@numb[.@mob],instance_npcname("ET_Manager")+"::OnMobDead";
+		set 'ET_Mobs,'ET_Mobs+.@numb[set(.@mob,rand(1,29))];
+		areamonster getarg(1),265,7,295,51,getmonsterinfo(.@mobs[.@mob],0),.@mobs[.@mob],.@numb[.@mob],instance_npcname("ET_Manager")+"::OnMobDead";
+		set 'ET_Mobs,'ET_Mobs+.@numb[set(.@mob,rand(1,29))];
+		areamonster getarg(1),265,7,295,51,getmonsterinfo(.@mobs[.@mob],0),.@mobs[.@mob],.@numb[.@mob],instance_npcname("ET_Manager")+"::OnMobDead";
+		break;
+	case 100:
+		monster getarg(1),81,70,"--ja--",1958,1;
+		monster getarg(1),78,72,"--ja--",1960,1;
+		monster getarg(1),85,72,"--ja--",1960,1;
+		monster getarg(1),91,74,"--ja--",1958,1;
+		monster getarg(1),83,76,"--ja--",1958,1;
+		monster getarg(1),79,77,"--ja--",1961,1;
+		monster getarg(1),82,80,"--ja--",1959,1;
+		monster getarg(1),70,80,"--ja--",1958,1;
+		monster getarg(1),74,81,"--ja--",1960,1;
+		monster getarg(1),90,82,"--ja--",1961,1;
+		monster getarg(1),87,83,"--ja--",1959,1;
+		monster getarg(1),68,83,"--ja--",1961,1;
+		monster getarg(1),78,84,"--ja--",1959,1;
+		monster getarg(1),82,85,"--ja--",rand(1958,1961),1;
+		monster getarg(1),83,85,"--ja--",1957,1,instance_npcname("ET_Manager")+"::OnEntDead";
+		monster getarg(1),84,85,"--ja--",rand(1958,1961),1;
+		monster getarg(1),74,85,"--ja--",1958,1;
+		monster getarg(1),70,87,"--ja--",1960,1;
+		monster getarg(1),91,87,"--ja--",1960,1;
+		monster getarg(1),88,88,"--ja--",1958,1;
+		monster getarg(1),81,89,"--ja--",1958,1;
+		monster getarg(1),86,90,"--ja--",1959,1;
+		monster getarg(1),80,92,"--ja--",1961,1;
+		monster getarg(1),72,93,"--ja--",1958,1;
+		monster getarg(1),84,93,"--ja--",1960,1;
+		monster getarg(1),95,94,"--ja--",1960,1;
+		monster getarg(1),91,96,"--ja--",1958,1;
+		monster getarg(1),96,98,"--ja--",1960,1;
+		break;
+	}
+	return;
+}
+
+// = Warps =
+// ====================================================================================================
+// 1@tower
+1@tower,12,393,0	script	ETwarp_1	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),134,355;	end; }
+1@tower,96,393,0	script	ETwarp_2	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),222,355;	end; }
+1@tower,184,393,0	script	ETwarp_3	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),308,355;	end; }
+1@tower,270,393,0	script	ETwarp_4	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),392,355;	end; }
+1@tower,354,393,0	script	ETwarp_5	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),50,271;	end; }
+
+1@tower,12,309,0	script	ETwarp_6	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),134,271;	end; }
+1@tower,96,309,0	script	ETwarp_7	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),222,271;	end; }
+1@tower,184,309,0	script	ETwarp_8	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),308,271;	end; }
+1@tower,270,309,0	script	ETwarp_9	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),392,271;	end; }
+1@tower,354,309,0	script	ETwarp_10	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),50,183;	end; }
+
+1@tower,12,221,0	script	ETwarp_11	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),134,183;	end; }
+1@tower,96,221,0	script	ETwarp_12	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),222,183;	end; }
+1@tower,184,221,0	script	ETwarp_13	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),308,183;	end; }
+1@tower,270,221,0	script	ETwarp_14	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),392,183;	end; }
+1@tower,354,221,0	script	ETwarp_15	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),50,99;	end; }
+
+1@tower,12,137,0	script	ETwarp_16	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),134,99;	end; }
+1@tower,96,137,0	script	ETwarp_17	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),222,99;	end; }
+1@tower,184,137,0	script	ETwarp_18	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),308,99;	end; }
+1@tower,270,137,0	script	ETwarp_19	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),392,99;	end; }
+1@tower,354,137,0	script	ETwarp_20	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),50,13;	end; }
+
+1@tower,12,51,0 	script	ETwarp_21	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),134,13;	end; }
+1@tower,96,51,0 	script	ETwarp_22	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),222,13;	end; }
+1@tower,184,51,0	script	ETwarp_23	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),308,13;	end; }
+1@tower,270,51,0	script	ETwarp_24	45,1,1,{	end;	OnTouch:	warp has_instance("1@tower"),392,13;	end; }
+1@tower,354,51,0	script	ETwarp_25	45,1,1,{
+	end;
+
+OnTouch:
+	if('give_ash) getitem $ET_AshID,1;
+	warp has_instance("2@tower"),50,355;
+	end;
+
+OnEnableAshtimer:
+	set 'give_ash,1;
+	sleep 60000;
+	set 'give_ash,0;
+	end;
+}
+
+// 2@tower
+2@tower,12,393,0	script	ETwarp_26	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),134,355;	end; }
+2@tower,96,393,0	script	ETwarp_27	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),222,355;	end; }
+2@tower,184,393,0	script	ETwarp_28	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),308,355;	end; }
+2@tower,270,393,0	script	ETwarp_29	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),392,355;	end; }
+2@tower,354,393,0	script	ETwarp_30	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),50,271;	end; }
+
+2@tower,12,309,0	script	ETwarp_31	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),134,271;	end; }
+2@tower,96,309,0	script	ETwarp_32	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),222,271;	end; }
+2@tower,184,309,0	script	ETwarp_33	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),308,271;	end; }
+2@tower,270,309,0	script	ETwarp_34	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),392,271;	end; }
+2@tower,354,309,0	script	ETwarp_35	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),50,183;	end; }
+
+2@tower,12,221,0	script	ETwarp_36	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),134,183;	end; }
+2@tower,96,221,0	script	ETwarp_37	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),222,183;	end; }
+2@tower,184,221,0	script	ETwarp_38	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),308,183;	end; }
+2@tower,270,221,0	script	ETwarp_39	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),392,183;	end; }
+2@tower,354,221,0	script	ETwarp_40	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),50,99;	end; }
+
+2@tower,12,137,0	script	ETwarp_41	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),134,99;	end; }
+2@tower,96,137,0	script	ETwarp_42	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),222,99;	end; }
+2@tower,184,137,0	script	ETwarp_43	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),308,99;	end; }
+2@tower,270,137,0	script	ETwarp_44	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),392,99;	end; }
+2@tower,354,137,0	script	ETwarp_45	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),50,13;	end; }
+
+2@tower,12,51,0 	script	ETwarp_46	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),134,13;	end; }
+2@tower,96,51,0 	script	ETwarp_47	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),222,13;	end; }
+2@tower,184,51,0	script	ETwarp_48	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),308,13;	end; }
+2@tower,270,51,0	script	ETwarp_49	45,1,1,{	end;	OnTouch:	warp has_instance("2@tower"),392,13;	end; }
+2@tower,354,51,0	script	ETwarp_50	45,1,1,{
+	end;
+
+OnTouch:
+	if('give_ash) getitem $ET_AshID,1;
+	warp has_instance("3@tower"),50,355;
+	end;
+
+OnEnableAshtimer:
+	set 'give_ash,1;
+	sleep 60000;
+	set 'give_ash,0;
+	end;
+}
+
+// 3@tower
+3@tower,12,393,0	script	ETwarp_51	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),134,355;	end; }
+3@tower,96,393,0	script	ETwarp_52	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),222,355;	end; }
+3@tower,184,393,0	script	ETwarp_53	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),308,355;	end; }
+3@tower,270,393,0	script	ETwarp_54	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),392,355;	end; }
+3@tower,354,393,0	script	ETwarp_55	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),50,271;	end; }
+
+3@tower,12,309,0	script	ETwarp_56	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),134,271;	end; }
+3@tower,96,309,0	script	ETwarp_57	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),222,271;	end; }
+3@tower,184,309,0	script	ETwarp_58	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),308,271;	end; }
+3@tower,270,309,0	script	ETwarp_59	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),392,271;	end; }
+3@tower,354,309,0	script	ETwarp_60	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),50,183;	end; }
+
+3@tower,12,221,0	script	ETwarp_61	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),134,183;	end; }
+3@tower,96,221,0	script	ETwarp_62	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),222,183;	end; }
+3@tower,184,221,0	script	ETwarp_63	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),308,183;	end; }
+3@tower,270,221,0	script	ETwarp_64	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),392,183;	end; }
+3@tower,354,221,0	script	ETwarp_65	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),50,99;	end; }
+
+3@tower,12,137,0	script	ETwarp_66	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),134,99;	end; }
+3@tower,96,137,0	script	ETwarp_67	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),222,99;	end; }
+3@tower,184,137,0	script	ETwarp_68	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),308,99;	end; }
+3@tower,270,137,0	script	ETwarp_69	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),392,99;	end; }
+3@tower,354,137,0	script	ETwarp_70	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),50,13;	end; }
+
+3@tower,12,51,0 	script	ETwarp_71	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),134,13;	end; }
+3@tower,96,51,0 	script	ETwarp_72	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),222,13;	end; }
+3@tower,184,51,0	script	ETwarp_73	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),308,13;	end; }
+3@tower,270,51,0	script	ETwarp_74	45,1,1,{	end;	OnTouch:	warp has_instance("3@tower"),392,13;	end; }
+3@tower,354,51,0	script	ETwarp_75	45,1,1,{
+	end;
+
+OnTouch:
+	if('give_ash) getitem $ET_AshID,1;
+	warp has_instance("4@tower"),50,355;
+	end;
+
+OnEnableAshtimer:
+	set 'give_ash,1;
+	sleep 60000;
+	set 'give_ash,0;
+	end;
+}
+
+// 4@tower
+4@tower,12,393,0	script	ETwarp_76	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),134,355;	end; }
+4@tower,96,393,0	script	ETwarp_77	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),222,355;	end; }
+4@tower,184,393,0	script	ETwarp_78	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),308,355;	end; }
+4@tower,270,393,0	script	ETwarp_79	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),392,355;	end; }
+4@tower,354,393,0	script	ETwarp_80	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),50,271;	end; }
+
+4@tower,12,309,0	script	ETwarp_81	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),134,271;	end; }
+4@tower,96,309,0	script	ETwarp_82	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),222,271;	end; }
+4@tower,184,309,0	script	ETwarp_83	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),308,271;	end; }
+4@tower,270,309,0	script	ETwarp_84	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),392,271;	end; }
+4@tower,354,309,0	script	ETwarp_85	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),50,183;	end; }
+
+4@tower,12,221,0	script	ETwarp_86	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),134,183;	end; }
+4@tower,96,221,0	script	ETwarp_87	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),222,183;	end; }
+4@tower,184,221,0	script	ETwarp_88	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),308,183;	end; }
+4@tower,270,221,0	script	ETwarp_89	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),392,183;	end; }
+4@tower,354,221,0	script	ETwarp_90	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),50,99;	end; }
+
+4@tower,12,137,0	script	ETwarp_91	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),134,99;	end; }
+4@tower,96,137,0	script	ETwarp_92	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),222,99;	end; }
+4@tower,184,137,0	script	ETwarp_93	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),308,99;	end; }
+4@tower,270,137,0	script	ETwarp_94	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),392,99;	end; }
+4@tower,354,137,0	script	ETwarp_95	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),50,13;	end; }
+
+4@tower,12,51,0 	script	ETwarp_96	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),134,13;	end; }
+4@tower,96,51,0 	script	ETwarp_97	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),222,13;	end; }
+4@tower,184,51,0	script	ETwarp_98	45,1,1,{	end;	OnTouch:	warp has_instance("4@tower"),308,13;	end; }
+4@tower,270,51,0	script	ETwarp_99	45,1,1,{	end;	OnTouch:	warp has_instance("5@tower"),100,73;	end; }
+
+// 5@tower
+// TODO: Has a yellow "tube" effect (permanently)
+5@tower,106,109,0	script	发光的水晶	111,{
+	mes "[神秘的声音]";
+	mes "我可以闻到你的汗味，听到你疲惫的喘息.";
+	mes "啊~ 人类对胜利的渴望总是另我着迷";
+	next;
+	mes "[神秘的声音]";
+	mes "我将给你们一个挑战我的机会，来吧，来挑战我，伟大的黑暗世界的王者，纳户特基格!";
+	close2;
+	warp has_instance("6@tower"),31,12; 
+	end;
+}
+
+// = Life Spring - Heals you =
+// ====================================================================================================
+6@tower,45,90,0	script	生命之泉	111,{
+	mes "^00BFFF你喝了一口生命之泉的泉水，你感觉像重生了一样.";
+	percentheal 100,0;
+	close;
+}
+
+// 6@tower
+6@tower,32,100,0	script	ETwarp_x	45,1,1,{ end; OnTouch: warp has_instance("6@tower"),156,66; end; }
+
+// = Lost Soul on the last floor that makes the Violet Fear Sword =
+// ====================================================================================================
+guild_1,30,285,4	script	迷失的灵魂	796,{
+	mes "[ 副本提示 ]";
+	mes "你想领取奖励吗?";
+	next;
+	switch(select("^FF0000领取奖励^000000:查看奖励:取消"))
+	{
+	case 1:
+		if (LinQuJianChe==1) {
+			set $@pay,rand(0,10000);
+			if($@pay>9000){
+				set @i,rand(getarraysize($@fB_wxt_item_1));
+				getitem $@fB_wxt_item_1[@i],$@fB_wxt_item_1_num[@i];
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+	announce"[无限塔]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得飞仙之石1颗。",16;
+				set LinQuJianChe,0;
+				warp "gonryun.gat",159,118;
+				break;
+			} //10%開率
+			if($@pay>6000) && ($@pay<=9000) {
+				set @i,rand(getarraysize($@fB_wxt_item_2));
+				getitem $@fB_wxt_item_2[@i],$@fB_wxt_item_2_num[@i];
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+	announce"[无限塔]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得影之钻石1颗。",16;
+				set LinQuJianChe,0;
+				warp "gonryun.gat",159,118;
+				break;
+			} //30%開率
+			if($@pay<=6000){
+				set @i,rand(getarraysize($@fB_wxt_item_3));
+				getitem $@fB_wxt_item_3[@i],$@fB_wxt_item_3_num[@i];
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+	announce"[无限塔]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得金币袋子5个。",16;
+				set LinQuJianChe,0;
+				warp "gonryun.gat",159,118;
+				break;
+			} //70%開率
+		}
+		mes "[ 副本提示 ]";
+		mes "你已经领取过了哦.不能在领取了";
+		break;
+	case 2:
+		mes "-------固定奖励-------";
+		mes "-10点任务积分";
+		mes "-------15%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fB_wxt_item_1);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fB_wxt_item_1[.@a])+"]^000000 X ["+$@fB_wxt_item_1_num[.@a]+"]";
+		}
+		next;
+		mes "-------25%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fB_wxt_item_2);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fB_wxt_item_2[.@a])+"]^000000 X ["+$@fB_wxt_item_2_num[.@a]+"]";
+		}
+		next;
+		mes "-------60%随机奖励-------";
+		for (set .@a,0;.@a<getarraysize($@fB_wxt_item_3);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fB_wxt_item_3[.@a])+"]^000000 X ["+$@fB_wxt_item_3_num[.@a]+"]";
+		}
+		break;
+	case 3:
+		break;
+	}
+	close;
+}
+
+e_tower	mapflag	nowarp
+e_tower	mapflag	nowarpto
+e_tower	mapflag	noteleport
+e_tower	mapflag	nosave	
+e_tower	mapflag	nomemo
+e_tower	mapflag	nobranch
+e_tower	mapflag	monster_noteleport
+e_tower	mapflag	partylock	
+
+1@tower	mapflag	nowarp
+1@tower	mapflag	nowarpto
+1@tower	mapflag	noteleport
+1@tower	mapflag	nosave	
+1@tower	mapflag	nomemo
+1@tower	mapflag	nobranch
+1@tower	mapflag	monster_noteleport
+1@tower	mapflag	partylock
+
+2@tower	mapflag	nowarp
+2@tower	mapflag	nowarpto
+2@tower	mapflag	noteleport
+2@tower	mapflag	nosave
+2@tower	mapflag	nomemo
+2@tower	mapflag	nobranch
+2@tower	mapflag	monster_noteleport
+2@tower	mapflag	partylock
+
+3@tower	mapflag	nowarp
+3@tower	mapflag	nowarpto
+3@tower	mapflag	noteleport
+3@tower	mapflag	nosave
+3@tower	mapflag	nomemo
+3@tower	mapflag	nobranch
+3@tower	mapflag	monster_noteleport
+3@tower	mapflag	partylock
+
+4@tower	mapflag	nowarp
+4@tower	mapflag	nowarpto
+4@tower	mapflag	noteleport
+4@tower	mapflag	nosave
+4@tower	mapflag	nomemo
+4@tower	mapflag	nobranch
+4@tower	mapflag	monster_noteleport
+4@tower	mapflag	partylock
+
+5@tower	mapflag	nowarp
+5@tower	mapflag	nowarpto
+5@tower	mapflag	noteleport
+5@tower	mapflag	nosave
+5@tower	mapflag	nomemo
+5@tower	mapflag	nobranch
+5@tower	mapflag	monster_noteleport
+5@tower	mapflag	partylock
+
+6@tower	mapflag	nowarp
+6@tower	mapflag	nowarpto
+6@tower	mapflag	noteleport
+6@tower	mapflag	nosave
+6@tower	mapflag	nomemo
+6@tower	mapflag	nobranch
+6@tower	mapflag	monster_noteleport
+6@tower	mapflag	partylock
+
+guild_1	mapflag	nomemo		
+guild_1	mapflag	noteleport	
+guild_1	mapflag	nosave		
+guild_1	mapflag	nopenalty	
+guild_1	mapflag	nobranch	
+guild_1	mapflag	partylock	
+guild_1	mapflag	monster_noteleport	
+guild_1	mapflag	nowarp
+guild_1	mapflag	nowarpto
+guild_1	mapflag	nogo

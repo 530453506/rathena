@@ -1,0 +1,236 @@
+function	script	高级道馆	{
+	mes "[高级道馆挑战]";
+	mes "欢迎您参加高级道馆";
+	mes "此道馆为副本版,可以提供多个队伍进入";
+	mes "^0000FF每人最多5开^000000";
+	mes "进入副本后有时间限定,请玩家们注意时间";
+	mes "队长消耗^FF0000「ROB」^000000 "+$@Dc_In_Zeny+"Z"; 
+	next; 
+	menu "=道馆报名=",-,"看看奖励",kjl_gj;
+	mes "[道场挑战]";
+	mes "进入副本队长需要：";
+	// 循环显示进入要求
+	for (@a=0;@a<getarraysize($@gjdc_item_id);@a++)
+	{
+		mes ""+getitemname($@gjdc_item_id[@a])+"x"+$@gjdc_item_num[@a];
+	}
+	mes "金钱 ^FF0000"+$@Dc_In_Zeny+"^000000";
+	mes "-------------------------";
+	// 判断是否有创建副本的资格
+	if ( !getcharid(1) || getcharid(0) != getpartyleader(getcharid(1),2) )
+	{
+		mes "对不起，你没有队伍，或者 你不是队长。";
+		close;
+	}
+	// 取得队伍成员信息组
+	getpartymember(getcharid(1),2);
+	set .@partymembercount,$@partymembercount;
+	copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;
+	// 循环判断队伍中的成员是否符合要求
+	// 显示出第一个不符合要求的成员
+	for (.@i=0;.@i<.@partymembercount;.@i++)
+	{
+		if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+		{
+			if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+			mes "队伍中有人不在线，无法报名。";
+			close;
+		}			
+		if(BaseLevel < $@gjdc_level)
+		{
+			if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+				end;
+			mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+			mes "等级还没到"+$@gjdc_level+".";
+			close;
+		}
+		}
+	// 脚本关联回到队长身上
+	if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+		end;
+	mes "你想登记进入道馆吗?";
+	next;
+	if ( select( "是的","不要" ) == 2 )
+		close;
+	mes "[道馆挑战]";
+	// 判断队长身上的道具是否符合要求
+	for (@b=0;@b<getarraysize($@gjdc_item_id);@b++)
+	{
+		set @online_num,callfunc("DC_Party_On",getcharid(1));
+		if ( BaseLevel < $@gjdc_level )
+		{
+			mes "对不起！";
+			mes "你的等级还没到"+$@gjdc_level+".";
+			close;
+		}
+		if ( @online_num < $@gjdc_min )
+		{
+			mes "对不起！";
+			mes "你的队伍成员必须在["+$@gjdc_min+"]人以上，";
+			close;
+		}
+		if ( @online_num > $@gjdc_max )
+		{
+			mes "对不起！";
+			mes "你的队伍成员超过["+$@gjdc_max+"]人，";
+			close;
+		}
+		if ( Zeny < $@Dc_In_Zeny )
+		{
+			mes "对不起！";
+			mes "你的金钱不足"+$@Dc_In_Zeny+"Zeny，";
+			close;
+		}
+		if ( countitem($@gjdc_item_id[@b]) < $@gjdc_item_num[@b] )
+		{
+			mes "对不起！";				
+			mes "你的["+getitemname($@gjdc_item_id[@b])+"]不足["+$@gjdc_item_num[@b]+"]个。";
+			close;
+		}
+	}
+	mes "[道馆挑战]";
+	mes "你确定要登记吗?";
+	next;
+	if ( select( "是的","不要" ) == 2 )
+		close;
+	mes "[道馆挑战]";
+	mes "你的队伍已经成功登记了.";
+	mes "我将打开一个入口，它会把你们传送到里面.";
+	delitem 27017,1;
+	set zeny,zeny-$@Dc_In_Zeny;
+	close2;
+	if(instance_id(1))
+		instance_destroy(instance_id(1));
+	set .@instance_id,instance_create("高级道场",getcharid(1));
+	instance_attachmap("3@xg_vs2",.@instance_id);
+	instance_set_timeout $@Dc_Time_All,$@Dc_Time_In,.@instance_id;
+	instance_init .@instance_id;
+	killmonsterall has_instance("3@xg_vs2");
+	set 'Dc_Truns,0;
+	set 'Dc_Party,0;	
+	set 'Dc_timer,0;
+	set 'Dc_Mob,0;
+	enablenpc instance_npcname("高级裁判",instance_id(1));
+	disablenpc instance_npcname("高级_奖品发放员",instance_id(1));
+	// 判断队员身上的道具是否符合要求
+	getpartymember(getcharid(1),2);
+	set .@partymembercount,$@partymembercount;
+	copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;		
+	for (.@i=0;.@i<.@partymembercount;.@i++)
+	{
+		if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+				continue;
+		set @Dc_Win_GJ,1;
+		warp has_instance("3@xg_vs2"),49,47;
+	}
+	end;
+kjl_gj:
+	mes "----高级道馆奖励----";
+	mes "固定奖励: 150W ROZ";
+	for (set .@a,0;.@a<17;set .@a,.@a+1)
+	mes "^0000FF["+getitemname($@Dc_Item_Id[.@a])+"]^000000 X ^FF0000"+$@Dc_Item_Num[.@a]+"^000000";
+	close;
+}
+
+3@xg_vs2,0,0,0	script	Dc_MainA	-1,{
+	end;
+OnMain:
+	set 'Dc_timer,$@Dc_Delay['Dc_Truns];
+	for (set @num,0;@num<$@Dc_Mob_Num['Dc_Truns];set @num,@num+1)
+		monster "3@xg_vs2",50,49,"--ja--",$@Dc_Mob_Id[rand(getarraysize($@Dc_Mob_Id))],1,instance_npcname("Dc_MainA")+"::OnKillMob";
+	set 'Dc_Mob,$@Dc_Mob_Num['Dc_Truns];
+	instance_announce instance_id(),"[高级道馆挑战] 魔物放出！第 "+'Dc_Truns+" 关挑战开始！",15;
+	end;
+
+OnKillMob:
+	set 'Dc_Mob,'Dc_Mob-1;
+	if('Dc_Mob>0)
+		end;
+	killmonsterall "3@xg_vs2";
+	instance_announce instance_id(),"[高级道馆挑战] "+getpartyname('Dc_Party) +" 队伍, 第 "+'Dc_Truns+" 关挑战成功！",15;
+	if ('Dc_Truns ==5) 
+	{
+	addtimer $@Dc_Time_Space*4000,instance_npcname("Dc_MainA",instance_id(1))+"::OnGoTo";
+	instance_announce instance_id(),"[ 高级道场 ] 您有20秒休息时间！",15;
+	} else if ('Dc_Truns ==9)
+	{
+	addtimer $@Dc_Time_Space*4000,instance_npcname("Dc_MainA",instance_id(1))+"::OnGoTo";
+	instance_announce instance_id(),"[ 高级道场 ] 您有20秒休息时间！",15;
+	} else {	
+	addtimer $@Dc_Time_Space*1000,instance_npcname("Dc_MainA",instance_id(1))+"::OnGoTo";
+	}
+	end;
+
+OnGoTo:
+	deltimer instance_npcname("Dc_MainA",instance_id())+"::OnGoTo";
+	if ('Dc_Truns==$@Dc_Misson)
+	{
+		instance_announce instance_id(),"[高级道馆挑战] "+getpartyname('Dc_Party) +" 队伍, 道场成功！",15;
+		instance_announce instance_id(),"[高级道馆挑战] 请尽快领取奖品, 否则有可能领不到奖品！",15;
+		instance_announce instance_id(),"[ 高级道馆挑战 ] 40秒后将背自动传送回首都",15;
+		enablenpc instance_npcname("高级_奖品发放员",instance_id());
+		instance_warpall "3@xg_vs2",49,47;
+		sleep2 40000;
+		instance_warpall "gonryun",159,118;
+		instance_destroy(instance_id());	
+	}
+	else
+	{
+		set 'Dc_Truns,'Dc_Truns+1;
+		doevent instance_npcname("Dc_MainA",instance_id())+"::OnMain";
+	}
+	end;
+}
+
+3@xg_vs2,50,49,4	script	高级裁判	758,{
+	mes "[高级裁判]";
+	if ('Dc_Truns==0)
+	{
+		set 'Dc_Truns,1;
+		set 'Dc_Party,getcharid(1);	
+	}
+	if (getpartyleader('Dc_Party,2)!=getcharid(0))
+	{
+		mes "只有队长才可以开始挑战";
+		close;
+	}
+	if (getmapusers(has_instance("3@xg_vs2"))>12)
+	{
+		instance_warpall "prontera",156,108;
+		set 'Dc_Party,0;
+		close;
+		end;
+	}
+	mes "您准备要开始挑战了吗？";
+	menu "是的",-;
+	close2;
+	doevent instance_npcname("Dc_MainA",instance_id(1))+"::OnMain";
+	disablenpc instance_npcname("高级裁判",instance_id(1));
+	end;
+}
+
+3@xg_vs2,50,49,4	script	高级_奖品发放员	76,{ callfunc "Dc_Pay_3","奖品_高级"; }
+
+function	script	Dc_Pay_3	{
+	mes "["+getarg(0)+"发放员]";
+	if (@Dc_Win_GJ == 1 && instance_id(1))
+	{
+		mes "我是负责发放"+getarg(0)+"的";
+		next;
+		menu "我要领"+getarg(0)+"",-;
+			set @Pay,rand(getarraysize($@Dc_Item_Id));
+			getitem $@Dc_Item_Id[@Pay],$@Dc_Item_Num[@Pay];
+			set zeny,zeny+$@Dc_Win_Zeny;
+			set @Dc_Win_GJ,0;
+			dispbottom "[ROZ提示] -本次获取< "+$@Dc_Win_Zeny+" > Z. ";
+	set gaoji,gaoji+1;
+	dispbottom "[积分提示] -本次获取高级道场积分1点";
+			mes "请等待被传送出去！！";
+		}
+	mes "请等待被传送出去！！";
+	close;
+}
+
+
+

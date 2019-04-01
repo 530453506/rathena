@@ -1,0 +1,747 @@
+-	script	进击岛国！副本设置	-1,{
+	end;
+OnInit:
+	$@yszh_level				=135;		//需要等级
+	$@yszh_Time_All			=14400;	//挑战时间
+	$@yszh_Time_In				=120;		//进场时间
+	$@yszh_Time_Cooldown		=28800;	//冷却时间
+	$@yszh_GM					=60;		//GM最低等级
+	$@yszh_max					=12;		// 最大人数
+	$@yszh_min					=1;			// 队伍最小人数
+	$@yszh_zeny				=50000000;	//进场RMB设置
+	
+	setarray $@yszh_item_id[0],27044;			// 入场需要的道具ID
+	setarray $@yszh_item_num[0],1;			// 入场需要的道具数量
+	//地图1
+	setarray $@yszh_Mob_Id_1[0],2417;		//[地图一层刷怪]
+	setarray $@yszh_Mob_Num_1[0],10;		//[地图一层刷怪数量]
+
+	//地图2
+	setarray $@yszh_Mob_Id_2[0],2418;		//[地图二层刷怪]
+	setarray $@yszh_Mob_Num_2[0],10;		//[地图二层刷怪数量]
+	
+	//地图3
+	setarray $@yszh_Mob_Id_3[0],2417,2418,2419,2420,2421; //[地图三层刷怪]
+	setarray $@yszh_Mob_Num_3[0],13,13,13,13,13; //[地图三层刷怪数量]
+	
+	$@yszh_Mob_Boss_1_ID		=2422; 	//地图1BOSSid
+	$@yszh_Mob_Boss_2_ID		=2423; 	//地图2BOSSid
+	$@yszh_Mob_Boss_3_ID		=2424; 	//地图3BOSSid
+	$@yszh_Mob_Boss_4_ID		=2587; 	//最终BOSSid
+	
+	$@yszh_jj_boss_1_id			=2422; 	//结界1BOSS
+	$@yszh_jj_boss_2_id			=2423; 	//结界2BOSS
+	$@yszh_jj_boss_3_id			=2424; 	//结界3BOSS
+	$@yszh_jj_boss_4_id			=2425; 	//结界4BOSS
+	
+	setarray $@yszhduihua$[0],"打倒岛国帝国主义","抵制岛国货","支持国货","进击岛国"; //谜语		
+	setarray $@fbyszh_Item_Id_1[0],19021; 	//[物品设置]		
+	setarray $@fbyszh_Item_Num_1[0],1; 	//[物品数量]
+	setarray $@fbyszh_Item_Id_2[0],19021; 	//[物品设置]	
+	setarray $@fbyszh_Item_Num_2[0],1; 	//[物品数量]
+	setarray $@fbyszh_Item_Id_3[0],19021; 	//[物品设置]	
+	setarray $@fbyszh_Item_Num_3[0],1; 	//[物品数量]
+	end;
+}
+
+function	script	Yszh_Party_On	{
+	set .@party_on,0;
+	getpartymember(getarg(0),2);
+	for (set .@i,0;.@i<$@partymembercount;set .@i,.@i+1)
+	{
+		if ( isloggedin($@partymemberaid[.@i]) )
+			set .@party_on,.@party_on+1;
+	}
+	return .@party_on;
+}
+
+prontera.gat,245,73,3	script	国王沃玛斯	965,{
+	mes "[ 国王沃玛斯 ]";
+	if ( instance_id(1) )
+	{
+		mes "你要回到队友的身边吗？";
+		next;
+		switch (select("是的","不要","重开副本"))
+		{
+			default:
+			case 1:
+				break;
+			case 2:
+				close;
+				break;
+			case 3:
+				goto L_Reset;
+				break;
+		}
+		if (LinQuJianChe == 0)
+		{
+			mes "领奖后不能再进入已完成的副本！";
+			close;
+		}
+		close2;
+			warp has_instance("1@yszh"),184,228;
+		end;
+	}
+L_Reset:
+	mes "你们的实力已经很不错";
+	mes "快去解除地水火风守护者封印";
+	mes "就能前往岛国征战了";
+	mes "^0000FF每人最多双开^000000";
+	next;
+	mes "[ 国王沃玛斯 ]";
+	mes "看来你们是有备而来的哦";
+	next;
+	if (getcharid(0) != getpartyleader(getcharid(1),2)) 
+	{
+		mes "[ 国王沃玛斯 ]";
+		mes "只有的队长才能和我谈话";
+		close;
+	}
+	mes "[ 国王沃玛斯 ]";
+	mes "我希望你们可以为国争光";
+	mes "每人需要5000W,副本入场券1张（积分商城兑换）";
+	next;
+	switch (select("01->[ 进击岛国！ ]:02->[ 查看任务奖励 ]:03->[ 我怕死 ]")) 
+	{
+	case 1:
+		mes "进入副本队长需要：";
+		// 循环显示进入要求
+		for (@a=0;@a<getarraysize($@yszh_item_id);@a++)
+		{
+			mes ""+getitemname($@yszh_item_id[@a])+"x"+$@yszh_item_num[@a];
+		}
+		mes "金钱 "+$@yszh_zeny;
+		mes "-------------------------";
+		// 判断是否有创建副本的资格
+		if ( !getcharid(1) || getcharid(0) != getpartyleader(getcharid(1),2) )
+		{
+			mes "对不起，你没有队伍，或者 你不是队长。";
+			close;
+		}
+		// 取得队伍成员信息组
+		getpartymember(getcharid(1),2);
+		// 循环判断队伍中的成员是否符合要求
+		// 显示出第一个不符合要求的成员
+		set .@partymembercount,$@partymembercount;
+		copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;			
+		for (.@i=0;.@i<.@partymembercount;.@i++)
+		{
+			if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+			{
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+				mes "队伍中有人不在线，无法报名。";
+				close;
+			}
+			if(#yszh_Lasttime + $@yszh_Time_Cooldown > gettimetick(2) && #yszh_Lasttime < gettimetick(2) && getgmlevel() < $@yszh_GM )
+			{
+				set .@yszh_lastTime,#yszh_Lasttime + $@yszh_Time_Cooldown - gettimetick(2);
+				set .@yszh_hoursTime,.@yszh_lastTime / 60 / 60;
+				set .@yszh_minutesTime,.@yszh_lastTime / 60 % 60;
+				set .@yszh_secondsTime,.@yszh_lastTime % 60;
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+				mes "[ 国王沃玛斯 ]";
+				mes "你现在申请进击岛国！副本";
+				mes "你现在还有, "+.@yszh_hoursTime+"小时 "+.@yszh_minutesTime+"分钟 "+.@yszh_secondsTime+"秒才能申请";
+				close;
+			}
+			if(BaseLevel < $@yszh_level)
+			{
+				if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+					end;
+				mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+				mes "等级还没到"+$@yszh_level+".";
+				close;
+			}
+			for (@j=0;@j<getarraysize($@yszh_item_id);@j++)
+			{
+				if (countitem($@yszh_item_id[@j]) < $@yszh_item_num[@j] )
+				{
+					if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+						end;
+					mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+					mes "没有携带 "+getitemname($@yszh_item_id[@j])+" x "+$@yszh_item_num[@j]+"个";
+					close;
+				}
+				if ( Zeny < $@yszh_zeny )
+				{
+					if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+						end;
+					mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+					mes "金钱不足 "+$@yszh_zeny+" Zeny。";
+					close;
+				}
+			}
+		}
+		// 脚本关联回到队长身上
+		if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+			end;
+		mes "你想登记进入进击岛国！吗?";
+		next;
+		if ( select( "是的","不要" ) == 2 )
+			close;
+		mes "[ 国王沃玛斯 ]";
+		// 判断队长身上的道具是否符合要求
+		for (@b=0;@b<getarraysize($@yszh_item_id);@b++)
+		{
+			set @online_num,callfunc("Yszh_Party_On",getcharid(1));
+			if(#yszh_Lasttime + $@yszh_Time_Cooldown > gettimetick(2) && #yszh_Lasttime < gettimetick(2) && getgmlevel() < $@yszh_GM )
+			{
+				set .@yszh_lastTime,#yszh_Lasttime + $@yszh_Time_Cooldown - gettimetick(2);
+				set .@yszh_hoursTime,.@yszh_lastTime / 60 / 60;
+				set .@yszh_minutesTime,.@yszh_lastTime / 60 % 60;
+				set .@yszh_secondsTime,.@yszh_lastTime % 60;
+				mes "[ 国王沃玛斯 ]";
+				mes "你现在申请进击岛国！副本";
+				mes "你现在还有, "+.@yszh_hoursTime+"小时 "+.@yszh_minutesTime+"分钟 "+.@yszh_secondsTime+"秒才能申请";
+				close;
+			}
+			if ( BaseLevel < $@yszh_level )
+			{
+				mes "对不起！";
+				mes "你的等级还没到"+$@yszh_level+".";
+				close;
+			}
+			if ( @online_num < $@yszh_min )
+			{
+				mes "对不起！";
+				mes "你的队伍成员必须在["+$@yszh_min+"]人以上，";
+				close;
+			}
+			if ( @online_num > $@yszh_max )
+			{
+				mes "对不起！";
+				mes "你的队伍成员超过["+$@yszh_max+"]人，";
+				close;
+			}
+			if ( Zeny < $@yszh_zeny )
+			{
+				mes "对不起！";
+				mes "你的金钱不足"+$@yszh_zeny+"Zeny，";
+				close;
+			}
+			if ( countitem($@yszh_item_id[@b]) < $@yszh_item_num[@b] )
+			{
+				mes "对不起！";				
+				mes "你的["+getitemname($@yszh_item_id[@b])+"]不足["+$@yszh_item_num[@b]+"]个。";
+				close;
+			}
+		}
+		mes "你确定要登记吗?";
+		next;
+		if ( select( "是的","不要" ) == 2 )
+			close;
+		if(instance_id(1))
+		{
+			instance_destroy(instance_id(1));
+		}
+		mes "[ 国王沃玛斯 ]";
+		mes "^0000FF进击岛国！^000000 - 正在准备中";
+		mes "祝福你们挑战成功！";
+		close2;
+		set .@instance_yszh_id,instance_create("进击岛国！",getcharid(1)); 
+		if(.@instance_yszh_id < 0)
+		{
+			mes "[ 国王沃玛斯 ]";
+			mes "创建副本失败"; 
+			mes "副本系统已经达到系统上限"; 
+			mes "请通知GM或者管理员"; 
+			close;
+		}
+		instance_attachmap("1@yszh",.@instance_yszh_id);
+		instance_attachmap("2@yszh",.@instance_yszh_id);
+		instance_attachmap("3@yszh",.@instance_yszh_id);
+		instance_attachmap("4@yszh",.@instance_yszh_id);
+		instance_set_timeout $@yszh_Time_All,$@yszh_Time_In,.@instance_yszh_id;
+		instance_init .@instance_yszh_id;
+		instance_attach .@instance_yszh_id;
+		instance_attach instance_id(1);
+		announce "[ 进击岛国副本 ]->> ["+getpartyname(getcharid(1))+"]队伍发起对进击岛国副本的挑战了。",15,0xFFFFAA;
+		doevent instance_npcname("yszh_monster",instance_id(1))+"::Onmonster20";
+		// 判断队员身上的道具是否符合要求
+		getpartymember(getcharid(1),2);
+		set .@partymembercount,$@partymembercount;
+		copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;
+		for (.@i=0;.@i<.@partymembercount;.@i++)
+		{
+			if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+				continue;
+			// 删除所需道具
+			if (Zeny < $@yszh_zeny)
+				continue;
+			set Zeny,Zeny - $@yszh_zeny;
+			set LinQuJianChe,3;
+			set #yszh_Lasttime,gettimetick(2);
+			for (@c=0;@c<getarraysize($@yszh_item_id);@c++)
+			{
+				delitem $@yszh_item_id[@c],$@yszh_item_num[@c];
+			}
+			warp has_instance("1@yszh"),184,228;
+		}
+		break;
+	case 2:
+		mes "-------固定奖励-------";
+		mes "-任务积分10点";
+		next;
+		mes "-------随机奖励-------";
+		mes "10%的几率获得:";
+		for (set .@a,0;.@a<getarraysize($@fbyszh_Item_Id_1);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbyszh_Item_Id_1[.@a])+"]^000000 X "+$@fbyszh_Item_Num_1[.@a]+"";
+		}
+		next;
+		mes "-------随机奖励-------";
+		mes "30%的几率获得:";
+		for (set .@a,0;.@a<getarraysize($@fbyszh_Item_Id_2);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbyszh_Item_Id_2[.@a])+"]^000000 X "+$@fbyszh_Item_Num_2[.@a]+"";
+		}
+		next;
+		mes "-------随机奖励-------";
+		mes "70%的几率获得:";
+		for (set .@a,0;.@a<getarraysize($@fbyszh_Item_Id_3);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbyszh_Item_Id_3[.@a])+"]^000000 X "+$@fbyszh_Item_Num_2[.@a]+"";
+		}			
+		break;
+	case 3:
+		break;
+	}
+	close;
+	end;
+OnInit:
+	waitingroom "进击岛国！",0;
+	end;
+}
+
+//============== 登记/传送 ==================
+1@yszh,250,203,0	script	ySwarp_1	45,1,1,{ warp has_instance("1@yszh"),95,19;	end; }
+1@yszh,5,91,0	script	ySwarp_2	45,1,1,{ warp has_instance("2@yszh"),42,34;	end; }
+3@yszh,202,203,0	script	ySwarp_3	45,1,1,{ warp has_instance("4@yszh"),153,70;	end; }
+//==============================刷怪==================================================
+
+1@yszh,0,0,0	script	yszh_monster	-1,{
+Onmonster20:
+	killmonsterall "1@yszh";
+	setarray $@ysfbdt$[0],"1@yszh.gat";
+	disablenpc  instance_npcname("ySwarp_1", instance_id());
+	disablenpc  instance_npcname("ySwarp_2", instance_id());
+	disablenpc  instance_npcname("ySwarp_3", instance_id());
+	disablenpc  instance_npcname("地狱使者", instance_id());
+	disablenpc  instance_npcname("秘密机关地水火风", instance_id());
+	disablenpc  instance_npcname("秘密机关地", instance_id());
+	disablenpc  instance_npcname("秘密机关水", instance_id());
+	disablenpc  instance_npcname("秘密机关火", instance_id());
+	disablenpc  instance_npcname("秘密机关风", instance_id());
+	set .@ia,instance_id(0);
+	set 'shulishuju1,1;
+	set 'shulishuju2,1;
+	//地图1
+	for (set .@i,0;.@i < getarraysize($@yszh_Mob_Id_1);set .@i,.@i+1)
+	{
+		areamonster $@ysfbdt$[0],204,242,218,215,"--ja--",$@yszh_Mob_Id_1[.@i],$@yszh_Mob_Num_1[.@i],instance_npcname("yszh_monster")+"::OnKillMsMob";
+	}
+	//地图3
+	for (set .@i,0;.@i < getarraysize($@yszh_Mob_Id_3);set .@i,.@i+1)
+	{
+		set 'YSZH_Mobs_3,'YSZH_Mobs_3+$@yszh_Mob_Num_3[.@i];//通道1小怪物总数量
+		monster "3@yszh",0,0,"--ja--",$@yszh_Mob_Id_3[.@i],$@yszh_Mob_Num_3[.@i],instance_npcname("yszh_monster")+"::OnKillMsMob3";
+	}
+	end;
+	
+OnKillMsMob:
+	set .@abc,rand(1,100);
+	if (.@abc>=10)
+	{
+		killmonsterall "1@yszh";
+		set 'shulishuju1,'shulishuju1-1;
+		instance_announce .@ia,"[ 任务提示 ]:迷宫一守护野兽已经出现了,大家小心点。",bc_map,0x00ff00;
+		instance_announce .@ia,"[ 进击岛国！迷宫一 ]:快速击败迷宫BOSS,通往迷宫二的通道将会打开。",bc_map,0x00ff00;
+		areamonster $@ysfbdt$[0],204,242,218,215,"--ja--",$@yszh_Mob_Boss_1_ID,1,instance_npcname("yszh_monster")+"::OnKillMsMobboss1";
+		end;
+	}
+	if ('shulishuju1)
+	{
+		for (set .@i,0;.@i < getarraysize($@yszh_Mob_Id_1);set .@i,.@i+1)
+		{
+			areamonster $@ysfbdt$[0],204,242,218,215,"--ja--",$@yszh_Mob_Id_1[.@i],1,instance_npcname("yszh_monster")+"::OnKillMsMob";
+		}
+		end;
+	}
+	end;
+	
+OnKillMsMob2:
+	set .@kfc,rand(1,100);
+	if (.@kfc>=10)
+	{
+		killmonsterall "1@yszh";
+		set 'shulishuju2,'shulishuju2-1;
+		instance_announce .@ia,"[ 任务提示 ]:迷宫二守护野兽已经出现了,大家小心点。",bc_map,0x00ff00;
+		instance_announce .@ia,"[ 进击岛国！迷宫二 ]:快速击败迷宫BOSS,通往地狱一的通道将会打开。",bc_map,0x00ff00;
+		areamonster $@ysfbdt$[0],23,89,79,16,"--ja--",$@yszh_Mob_Boss_2_ID,1,instance_npcname("yszh_monster")+"::OnKillMsMobboss2";
+		end;
+	}
+	if ('shulishuju2)
+	{
+		for (set .@i,0;.@i < getarraysize($@yszh_Mob_Id_2);set .@i,.@i+1)
+		{
+			areamonster $@ysfbdt$[0],23,89,79,16,"--ja--",$@yszh_Mob_Id_2[.@i],1,instance_npcname("yszh_monster")+"::OnKillMsMob2";
+			end;
+		}
+	}
+	end;
+	
+OnKillMsMob3:
+	set 'YSZH_Mobs_3,'YSZH_Mobs_3-1;
+	if ('YSZH_Mobs_3){
+		instance_announce .@ia,"[ 怪物信息 ]:当前地图还有怪物数量"+'YSZH_Mobs_3+"只.",bc_map,0x0080FF;
+		end;
+	}
+	instance_announce .@ia,"[ 地狱使者 ]:哈哈，你们想像四大守护者一样来被封印吗？",bc_map,0xD9006C;
+	sleep2 3000;
+	instance_announce .@ia,"[ 地狱使者 ]:不堪一击的人类",bc_map,0xD9006C;
+	sleep2 3000;
+	instance_announce .@ia,"[ 地狱使者 ]:你们将要为你们的愚蠢付上生命的代价...",bc_map,0xD9006C;
+	sleep2 3000;
+	instance_announce .@ia,"[ 任务提示 ]:地狱一守护野兽已经出现了,大家小心点。",bc_map,0x00ff00;
+	instance_announce .@ia,"[ 进击岛国！地狱一 ]:快速击败地狱守护野兽,通往地狱一的通道将会打开。",bc_map,0x00ff00;
+	monster "3@yszh",0,0,"--ja--",$@yszh_Mob_Boss_3_ID,1,instance_npcname("yszh_monster")+"::OnKillMsMobboss3";
+	end;
+	
+OnKillMsMobboss1:
+	//========================================地图2刷怪========================位置莫移动
+	for (set .@i,0;.@i < getarraysize($@yszh_Mob_Id_2);set .@i,.@i+1)
+	{
+		areamonster $@ysfbdt$[0],23,89,79,16,"--ja--",$@yszh_Mob_Id_2[.@i],$@yszh_Mob_Num_2[.@i],instance_npcname("yszh_monster")+"::OnKillMsMob2";
+	}
+	//=========================================================================================
+	instance_announce .@ia,"[ 任务提示 ]:恭喜你,通往迷宫二的传送口已经被打开了",bc_map,0xFFFFAA;
+	enablenpc  instance_npcname("ySwarp_1", instance_id());
+	end;
+OnKillMsMobboss2:
+	instance_announce .@ia,"[ 任务提示 ]:恭喜你,通往地狱一的传送口已经被打开了",bc_map,0xFFFFAA;
+	enablenpc  instance_npcname("地狱使者", instance_id());
+	enablenpc  instance_npcname("ySwarp_2", instance_id());
+	end;
+OnKillMsMobboss3:
+	instance_announce .@ia,"[ 任务提示 ]:恭喜你,通往地狱二的传送口已经被打开了",bc_map,0xFFFFAA;
+	enablenpc  instance_npcname("ySwarp_3", instance_id());
+	enablenpc  instance_npcname("秘密机关地", instance_id());
+	sleep2 15000;
+	instance_announce .@ia,"[ 进击岛国！地狱二 ]:破解四行属性结节,复活四大守护者。",bc_map,0x00ff00;
+	sleep2 5000;
+	instance_announce .@ia,"[ 破解四行结节顺序 ]:地结节→水结节→火结节→风结节",bc_map,0x00ff00;
+	end;
+}
+
+2@yszh.gat,42,55,4	script	地狱使者	838,{
+	mes "[地狱使者]";
+	mes "哈哈，你们竟然能来到这里...";
+	mes "真的想下去看看？";
+	next;
+	menu "准备好进去了",-;
+	mes "[地狱使者]";
+	close2;
+	warpparty has_instance("3@yszh"),133,121,getcharid(1);
+	end;
+}
+//===========BOSS出现
+4@yszh.gat,152,232,5	script	秘密机关地水火风	111,{
+	if (getcharid(0) != getpartyleader(getcharid(1),2)) {
+		mes "[秘密机关]";
+		mes "只有队长才能和我谈话";
+		close;
+	}
+	mes "[秘密机关]";
+	mes "一股强大的力量把四属性守护者全部解除封印...";
+	close2;
+	instance_announce .@ia,"[ 任务提示 ]:地水火风属性结节已经全部解除。",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 进击岛国！地狱二 ]:四属性结节已经全部解除,准备与终极地狱使者战斗吧。",bc_map,0xFFFFAA;
+	disablenpc  instance_npcname("秘密机关地水火风", instance_id());
+	instance_announce .@ia,"[ 终极地狱使者 ]:想不到精灵王卡瑞斯特还这么有眼光能挑选到你们.",bc_map,0xD9006C;
+	sleep2 3000;
+	instance_announce .@ia,"[ 终极地狱使者 ]:无论你们再怎么努力，只有一个结果...失败.",bc_map,0xD9006C;
+	sleep2 3000;
+	instance_announce .@ia,"[ 终极地狱使者 ]:马上我就让你们知道多管闲事的后果。",bc_map,0xD9006C;
+	sleep2 3000;
+	instance_announce .@ia,"[ 任务提示 ]:终极BOSS已经出现，大家小心了！",bc_map,0x00ff00;
+	monster "4@yszh",152,227,"--ja--",$@yszh_Mob_Boss_4_ID,1,instance_npcname("yszh_monster2")+"::OnKillMsMobboss4";
+	end;
+}
+
+
+//=========================================最终BOSS事件
+
+4@yszh,0,0,0	script	yszh_monster2	-1,{
+OnKillMsMobbossde1:
+	enablenpc  instance_npcname("秘密机关水", instance_id());
+	instance_announce .@ia,"[ 任务提示 ]:地属性结节已经解除。",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 进击岛国！地狱二 ]:地结节解除封印完成,下一步解除水结节封印。",bc_map,0xFFFFAA;
+	end;
+OnKillMsMobbossde2:
+	enablenpc  instance_npcname("秘密机关火", instance_id());
+	instance_announce .@ia,"[ 任务提示 ]:水属性结节已经解除。",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 进击岛国！地狱二 ]:地水结节解除封印完成,下一步解除火结节封印。",bc_map,0xFFFFAA;
+	end;
+OnKillMsMobbossde3:
+	enablenpc  instance_npcname("秘密机关风", instance_id());
+	instance_announce .@ia,"[ 任务提示 ]:火属性结节已经解除。",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 进击岛国！地狱二 ]:地水火结节解除封印完成,下一步解除风结节封印。",bc_map,0xFFFFAA;
+	end;
+OnKillMsMobbossde4:
+	enablenpc  instance_npcname("秘密机关地水火风", instance_id());
+	instance_announce .@ia,"[ 任务提示 ]:风属性结节已经解除。",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 进击岛国！地狱二 ]:地水火风结节解除封印完成,下一步解除总封印。",bc_map,0xFFFFAA;
+	end;
+OnKillMsMobboss4:
+	getitem 19021,2;
+	announce"[进击岛国]：恭喜玩家 [ "+strcharinfo(0)+" ] 杀死了刹那，获得保卫战铜币两枚。",16;
+	instance_announce .@ia,"[ 终极地狱使者 ]:我还会再回来的.",bc_map,0xD9006C;
+	sleep2 2000;
+	instance_announce .@ia,"[ 终极地狱使者 ]:下一次..下一次..你们不可能再成功的...",bc_map,0xD9006C;
+	sleep2 2000;
+	instance_announce .@ia,"[ 终极地狱使者 ]:啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",bc_map,0xD9006C;
+	sleep2 3000;
+	instance_warpall "guild_3",42,285;
+	instance_destroy(instance_id(1));
+	end;
+}
+//================================================================================地
+4@yszh.gat,112,206,5	script	秘密机关地	111,{
+	if (getcharid(0) != getpartyleader(getcharid(1),2)) 
+	{
+		mes "[秘密机关]";
+		mes "只有队长才能和我谈话";
+		close;
+	}
+	mes "[秘密机关]";
+	mes "请你输入破解结节的密语";
+	instance_announce .@ia,"[ 任务提示 ]: 地守护密语是["+$@yszhduihua$[0]+"]",bc_map,0xFFFFAA;
+	input .@yszhduihua$;
+	if ($@yszhduihua$[0]!=.@yszhduihua$)
+	{
+		mes "[秘密机关]";
+		mes "被某中结节限制着......";
+		close;;
+	}
+	disablenpc  instance_npcname("秘密机关地", instance_id());
+	instance_announce .@ia,"[ 守护地结节的野兽 ]:地守护已经掌握在我手中了",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 任务提示 ]:守护地结节的野兽出现了",bc_map,0xFFFFAA;
+	monster "4@yszh",110,204,"--ja--",$@yszh_jj_boss_1_id,1,instance_npcname("yszh_monster2")+"::OnKillMsMobbossde1";
+	mes "[秘密机关]";
+	mes "守护地结节的野兽被惊动了...";
+	close;
+}
+
+//=================================================================================水
+4@yszh.gat,105,134,5	script	秘密机关水	111,{
+	if (getcharid(0) != getpartyleader(getcharid(1),2)) 
+	{
+		mes "[秘密机关]";
+		mes "只有队长才能和我谈话";
+		close;
+	}
+	mes "[秘密机关]";
+	mes "请你输入破解结节的密语";
+	instance_announce .@ia,"[ 任务提示 ]: 水守护密语是["+$@yszhduihua$[1]+"]",bc_map,0xFFFFAA;
+	input .@yszhduihua$;
+	if ($@yszhduihua$[1]!=.@yszhduihua$)
+	{
+		mes "[秘密机关]";
+		mes "被某中结节限制着......";
+		close;
+	}
+	disablenpc  instance_npcname("秘密机关水", instance_id());
+	instance_announce .@ia,"[ 守护水结节的野兽 ]:水守护已经掌握在我手中了",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 任务提示 ]:守护水结节的野兽出现了",bc_map,0xFFFFAA;
+	monster "4@yszh",105,123,"--ja--",$@yszh_jj_boss_2_id,1,instance_npcname("yszh_monster2")+"::OnKillMsMobbossde2";
+	mes "[秘密机关]";
+	mes "守护水结节的野兽被惊动了...";
+	close;
+}
+//=================================================================================火
+4@yszh.gat,220,219,5	script	秘密机关火	111,{
+	if (getcharid(0) != getpartyleader(getcharid(1),2)) 
+	{
+		mes "[秘密机关]";
+		mes "只有队长才能和我谈话";
+		close;
+	}
+	mes "[秘密机关]";
+	mes "请你输入破解结节的密语";
+	instance_announce .@ia,"[ 任务提示 ]: 火守护密语是["+$@yszhduihua$[2]+"]",bc_map,0xFFFFAA;
+	input .@yszhduihua$;
+	if ($@yszhduihua$[2]!=.@yszhduihua$)
+	{
+		mes "[秘密机关]";
+		mes "被某中结节限制着......";
+		close;;
+	}
+	disablenpc  instance_npcname("秘密机关火", instance_id());
+	instance_announce .@ia,"[ 守护火结节的野兽 ]:火守护已经掌握在我手中了",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 任务提示 ]:守护火结节的野兽出现了",bc_map,0xFFFFAA;
+	monster "4@yszh",219,210,"--ja--",$@yszh_jj_boss_3_id,1,instance_npcname("yszh_monster2")+"::OnKillMsMobbossde3";
+	mes "[秘密机关]";
+	mes "守护火结节的野兽被惊动了...";
+	close;
+}
+
+//=================================================================================风
+4@yszh.gat,187,153,5	script	秘密机关风	111,{
+	if (getcharid(0) != getpartyleader(getcharid(1),2)) 
+	{
+		mes "[秘密机关]";
+		mes "只有队长才能和我谈话";
+		close;
+	}
+	mes "[秘密机关]";
+	mes "请你输入破解结节的密语";
+	instance_announce .@ia,"[ 任务提示 ]: 风守护密语是["+$@yszhduihua$[3]+"]",bc_map,0xFFFFAA;
+	input .@yszhduihua$;
+	if ($@yszhduihua$[3]!=.@yszhduihua$)
+	{
+		mes "[秘密机关]";
+		mes "被某中结节限制着......";
+		close;;
+	}
+	disablenpc  instance_npcname("秘密机关风", instance_id());
+	instance_announce .@ia,"[ 守护风结节的野兽 ]:风守护已经掌握在我手中了",bc_map,0xFFFFAA;
+	instance_announce .@ia,"[ 任务提示 ]:守护风结节的野兽出现了",bc_map,0xFFFFAA;
+	monster "4@yszh",187,146,"--ja--",$@yszh_jj_boss_4_id,1,instance_npcname("yszh_monster2")+"::OnKillMsMobbossde4";
+	mes "[秘密机关]";
+	mes "守护风结节的野兽被惊动了...";
+	close;
+}
+
+//============================================================================奖励
+guild_3,30,285,4	script	精灵王卡瑞斯特	811,{
+	mes "[ 副本提示 ]";
+	mes "你想领取奖励吗?";
+	next;
+	switch(select("^FF0000领取奖励^000000:查看奖励:取消"))
+	{
+	case 1:
+		if (LinQuJianChe==3) 
+		{
+			set @pay,rand(0,10000);
+			if(@pay>9000)
+			{
+				set @i,rand(getarraysize($@fbyszh_Item_Id_1));
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+				getitem $@fbyszh_Item_Id_1[@i],$@fbyszh_Item_Num_1[@i];
+	announce"[进击岛国]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得保卫战铜币1枚。",16;
+				set LinQuJianChe,0;
+				warp "gonryun.gat",159,118;
+				break;
+			} //10%開率
+			if(@pay>7000)
+			{
+				set @i,rand(getarraysize($@fbyszh_Item_Id_2));
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+				getitem $@fbyszh_Item_Id_2[@i],$@fbyszh_Item_Num_2[@i];
+	announce"[进击岛国]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得保卫战铜币1枚。",16;
+				set LinQuJianChe,0;
+				warp "gonryun.gat",159,118;
+				break;
+			} //30%開率
+			if(@pay<7000)
+			{
+				set @i,rand(getarraysize($@fbyszh_Item_Id_3));
+	set #rwjf,#rwjf+10;
+	dispbottom "[积分提示] - 增加10点任务积分,您目前的任务积分为:["+#rwjf+"].";
+				getitem $@fbyszh_Item_Id_3[@i],$@fbyszh_Item_Num_3[@i];
+	announce"[进击岛国]：恭喜玩家 [ "+strcharinfo(0)+" ] 获得保卫战铜币1枚。",16;
+				set LinQuJianChe,0;
+				warp "gonryun.gat",159,118;
+				break;
+			} //70%開率
+		}
+		next;
+		mes "[ 副本提示 ]";
+		mes "你已经领取过了哦.不能在领取了";
+		break;
+	case 2:
+		mes "-------固定奖励-------";
+		mes "-任务积分10点";
+		next;
+		mes "-------随机奖励-------";
+		mes "10%的几率获得:";
+		for (set .@a,0;.@a<getarraysize($@fbyszh_Item_Id_1);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbyszh_Item_Id_1[.@a])+"]^000000 X "+$@fbyszh_Item_Num_1[.@a]+"";
+		}
+		next;
+		mes "-------随机奖励-------";
+		mes "30%的几率获得:";
+		for (set .@a,0;.@a<getarraysize($@fbyszh_Item_Id_2);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbyszh_Item_Id_2[.@a])+"]^000000 X "+$@fbyszh_Item_Num_2[.@a]+"";
+		}
+		next;
+		mes "-------随机奖励-------";
+		mes "70%的几率获得:";
+		for (set .@a,0;.@a<getarraysize($@fbyszh_Item_Id_3);set .@a,.@a+1)
+		{
+			mes "-^FF0000["+getitemname($@fbyszh_Item_Id_3[.@a])+"]^000000 X "+$@fbyszh_Item_Num_2[.@a]+"";
+		}			
+		break;
+	case 3:
+		break;
+		end;
+	}
+	close;
+}
+
+1@yszh	mapflag	nomemo
+1@yszh	mapflag	noteleport	
+1@yszh	mapflag	nosave		SavePoint
+1@yszh	mapflag	nopenalty
+1@yszh	mapflag	nobranch
+1@yszh	mapflag	nobaseexp
+1@yszh	mapflag	partylock
+1@yszh	mapflag	monster_noteleport
+1@yszh	mapflag	restricted	5
+
+
+2@yszh	mapflag	nomemo
+2@yszh	mapflag	noteleport
+2@yszh	mapflag	nosave		SavePoint
+2@yszh	mapflag	nopenalty
+2@yszh	mapflag	nobranch
+2@yszh	mapflag	nobaseexp
+2@yszh	mapflag	partylock
+2@yszh	mapflag	monster_noteleport
+2@yszh	mapflag	restricted	5
+
+3@yszh	mapflag	nomemo
+3@yszh	mapflag	noteleport
+3@yszh	mapflag	nosave		SavePoint
+3@yszh	mapflag	nopenalty
+3@yszh	mapflag	nobranch
+3@yszh	mapflag	nobaseexp
+3@yszh	mapflag	partylock
+3@yszh	mapflag	monster_noteleport
+3@yszh	mapflag	restricted	5
+
+4@yszh	mapflag	nomemo
+4@yszh	mapflag	noteleport
+4@yszh	mapflag	nosave		SavePoint
+4@yszh	mapflag	nopenalty
+4@yszh	mapflag	nobranch
+4@yszh	mapflag	nobaseexp
+4@yszh	mapflag	partylock
+4@yszh	mapflag	monster_noteleport
+4@yszh	mapflag	restricted	5
+
+guild_3	mapflag	nomemo
+guild_3	mapflag	noteleport
+guild_3	mapflag	nosave		SavePoint
+guild_3	mapflag	nopenalty
+guild_3	mapflag	nobranch
+guild_3	mapflag	nobaseexp
+guild_3	mapflag	partylock
+guild_3	mapflag	monster_noteleport
+guild_3	mapflag	restricted	5

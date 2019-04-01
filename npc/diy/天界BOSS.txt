@@ -1,0 +1,82 @@
+//
+// 3BOSS by 2007-01-16
+//
+//- 
+prontera.gat,194,113,5	script	天界BOSS区传送	796,{
+        if (Zeny<2000000) goto Not;
+	mes"[天界BOSS区传送]";
+	mes"天界BOSS区，入场费200W。";
+	next;
+	menu "我要传送，费用200W",-,"我不去了",L_exit;
+	mes"[天界BOSS区传送]";
+	mes"我现在就送你过去";
+	next;
+        set zeny,zeny-2000000;
+	warp "vip8_fild06.gat",159,368;
+	close;
+L_exit:
+	next;
+	mes"[天界BOSS区传送]";
+	mes"欢迎你下次在来";
+	close;
+end;
+
+Not:
+    mes "[团长]";
+    mes "你的钱不够";
+    mes "请带好200W再来！";
+    close;
+
+OnInit:
+	waitingroom "[☆天界BOSS区☆]",0;
+	end;
+}
+
+// 怪物设定
+//[B]
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2426,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2427,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2428,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2429,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2430,1,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2431,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2432,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2433,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2434,1,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2435,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2436,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2437,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2438,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2439,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2440,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2441,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2442,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2443,2,0,0,0
+//vip8_fild06.gat,0,0,0,0	monster	--ja--	2444,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2445,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2446,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2447,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2448,1,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2449,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2450,1,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2451,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2452,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2453,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2454,1,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2455,1,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2456,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2457,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2458,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2459,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2460,2,0,0,0
+vip8_fild06.gat,0,0,0,0	monster	--ja--	2461,2,0,0,0
+
+
+// 地图属性设置
+vip8_fild06.gat	mapflag	nomemo	dummy
+vip8_fild06.gat	mapflag	nopenalty	dummy
+vip8_fild06.gat	mapflag	nobranch	dummy
+vip8_fild06.gat	mapflag	nowarp
+vip8_fild06.gat	mapflag	nowarpto
+vip8_fild06.gat	mapflag	nogo
+vip8_fild06.gat	mapflag	nosave

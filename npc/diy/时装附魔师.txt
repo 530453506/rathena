@@ -1,0 +1,591 @@
+-	script	aea_set1	-1,{
+OnInit:
+
+	setarray $@fm_xj[1],30201,30202,30203,30204,30205,30206,30207,30208;
+
+	setarray $@fm_xj1[1],30209,30210,30211,30212,30213;
+
+	setarray $@fm_sj[1],30214,30215,30216,30217,30218,30219,30220,30221;
+
+	setarray $@fm_sj1[1],30222,30223,30224,30225,30226,30227,30228;
+
+//----------附魔需要材料----------
+	set $@fm_ch,4696;
+	set $@fm_ch1,4748;
+	set $@fm_ch2,4758;
+
+//----------附魔需要材料数量----------
+	set $@fm_xhsl,1;
+}
+
+prontera.gat,164,86,4	script	时装附魔	986,{
+	mes "[附魔系统]";	
+	mes "可以帮你的装备附上各种属性";
+	mes "每件装备可以无限附魔";
+	mes "后一种会覆盖前一种的属性";		
+next;
+switch(select("时装附魔","影装附魔"))
+{
+case 1:
+switch(select("初级时装附魔","中级时装附魔","高级时装附魔"))
+{
+case 1:callfunc "初级时装附魔师"; break;
+case 2:callfunc "中级时装附魔师"; break;
+case 3:callfunc "高级时装附魔师"; break;
+}
+case 2:
+switch(select("仙晶附魔","神晶附魔"))
+{
+case 1:callfunc "仙晶附魔师"; break;
+case 2:callfunc "神晶附魔师"; break;
+}
+}
+OnInit:
+	waitingroom "[☆时装附魔☆]",0;
+end;
+}
+
+function	script	初级时装附魔师	{
+	mes "[初级附魔师]";
+	mes "^FF0000我可以将装备进行附魔^000000.";
+	mes "^FF0000把你要附魔的装备穿在身上.^000000";
+	mes "^FF0000随身物品不能有相同的装备.^000000";
+	next;
+	mes "[初级附魔师]";
+	mes "成功率100%";
+	mes "每次附魔需要^FF0000400W^000000以及";
+	mes "^FF00001^000000 个 ^FF0000"+getitemname($@fm_ch)+"^000000 .";
+	mes "是否要附魔";
+	next;
+	switch(select("我要附魔:下次再说")){
+	case 1:
+		set $@gfmRetPart11$,getequipname(11);
+		set $@gfmRetPart12$,getequipname(12);
+		set $@gfmRetPart13$,getequipname(13);
+		set $@gfmRetPart14$,getequipname(14);
+		set $@gfmmenu$,$@gfmRetPart11$+":"+$@gfmRetPart12$+":"+$@gfmRetPart13$+":"+$@gfmRetPart14$;
+	switch(select($@gfmmenu$)){
+	case 1:
+		set $@gfmpart,11;
+		if (getequipisequiped(11) == 0|| countitem(getequipid(11))!=1||getitemslots(getequipid(11))==4) {
+			mes "[初级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 2:
+		set $@gfmpart,12;
+		if (getequipisequiped(12) == 0|| countitem(getequipid(12))!=1||getitemslots(getequipid(12))==4) {
+			mes "[初级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 3:
+		set $@gfmpart,13;
+		if (getequipisequiped(13) == 0|| countitem(getequipid(13))!=1||getitemslots(getequipid(13))==4) {
+			mes "[初级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 4:
+		set $@gfmpart,14;
+		if (getequipisequiped(14) == 0|| countitem(getequipid(14))!=1||getitemslots(getequipid(14))==4) {
+			mes "[初级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	}
+
+	if (getequipisidentify($@gfmpart) == 0) {
+		mes "[初级附魔师]";
+		mes "这装备还没通过鉴定，无法附魔";
+		close;
+	}
+	if (Zeny < 4000000) {
+		mes "[初级附魔师]";
+		mes "你可没有足够的金钱,先去赚点钱再来吧!";
+		close;
+			}
+	if (countitem($@fm_ch)<1) {
+		mes "[初级附魔师]";
+		mes "你没有携带齐全 ^FF00001^000000 个 ^FF0000"+getitemname($@fm_ch)+"^000000";
+		close;
+	}
+	mes "[初级附魔师]";
+	mes "想要来一次真正的冒险吧? !";
+	next;
+	menu "开始吧",-,"不要了",dong3;
+	atcommand "@effect 111";
+	set $@gfmitemid,getequipid($@gfmpart);
+	set $@j,getequiprefinerycnt($@gfmpart);
+	set $@card01,getequipcardid($@gfmpart,0);
+	set $@card02,getequipcardid($@gfmpart,1);
+	set $@card03,getequipcardid($@gfmpart,2);
+	delitem $@fm_ch,1;
+	delitem $@gfmitemid,1;
+	set zeny,zeny-4000000;
+	getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, 4696;
+	mes "大功告成了!这是你的装备,请收好!";
+	close;
+
+	dong3:
+	mes "[初级附魔师]";
+	mes "等你想好了再来找我吧";
+	close;
+	}
+end;
+}
+
+function	script	中级时装附魔师	{
+	mes "[中级附魔师]";
+	mes "^FF0000我可以将装备进行附魔^000000.";
+	mes "^FF0000把你要附魔的装备穿在身上.^000000";
+	mes "^FF0000随身物品不能有相同的装备.^000000";
+	next;
+	mes "[中级附魔师]";
+	mes "成功率100%";
+	mes "每次附魔需要^FF00001000W^000000以及";
+	mes "^FF0000"+$@fm_xhsl+"^000000 个 ^FF0000"+getitemname($@fm_ch1)+"^000000 .";
+	mes "是否要附魔";
+	next;
+	switch(select("我要附魔:下次再说")){
+	case 1:
+		set $@gfmRetPart11$,getequipname(11);
+		set $@gfmRetPart12$,getequipname(12);
+		set $@gfmRetPart13$,getequipname(13);
+		set $@gfmRetPart14$,getequipname(14);
+		set $@gfmmenu$,$@gfmRetPart11$+":"+$@gfmRetPart12$+":"+$@gfmRetPart13$+":"+$@gfmRetPart14$;
+	switch(select($@gfmmenu$)){
+	case 1:
+		set $@gfmpart,11;
+		if (getequipisequiped(11) == 0|| countitem(getequipid(11))!=1||getitemslots(getequipid(11))==4) {
+			mes "[中级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 2:
+		set $@gfmpart,12;
+		if (getequipisequiped(12) == 0|| countitem(getequipid(12))!=1||getitemslots(getequipid(12))==4) {
+			mes "[中级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 3:
+		set $@gfmpart,13;
+		if (getequipisequiped(13) == 0|| countitem(getequipid(13))!=1||getitemslots(getequipid(13))==4) {
+			mes "[中级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 4:
+		set $@gfmpart,14;
+		if (getequipisequiped(14) == 0|| countitem(getequipid(14))!=1||getitemslots(getequipid(14))==4) {
+			mes "[中级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+
+	}
+
+	if (getequipisidentify($@gfmpart) == 0) {
+		mes "[中级附魔师]";
+		mes "这装备还没通过鉴定，无法附魔";
+		close;
+	}
+	if (Zeny < 10000000) {
+		mes "[中级附魔师]";
+		mes "你可没有足够的金钱,先去赚点钱再来吧!";
+		close;
+			}
+	if (countitem($@fm_ch1)<$@fm_xhsl) {
+		mes "[中级附魔师]";
+		mes "你没有携带齐全 ^FF0000"+$@fm_xhsl+"^000000 个 ^FF0000"+getitemname($@fm_ch1)+"^000000";
+		close;
+	}
+	mes "[中级附魔师]";
+	mes "想要来一次真正的冒险吧? !";
+	next;
+	menu "开始吧",-,"不要了",dong3;
+	atcommand "@effect 111";
+	set $@gfmitemid,getequipid($@gfmpart);
+	set $@j,getequiprefinerycnt($@gfmpart);
+	set $@card01,getequipcardid($@gfmpart,0);
+	set $@card02,getequipcardid($@gfmpart,1);
+	set $@card03,getequipcardid($@gfmpart,2);
+	delitem $@fm_ch1,$@fm_xhsl;
+	delitem $@gfmitemid,1;
+	set zeny,zeny-10000000;
+	getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, 4748;
+	mes "大功告成了!这是你的装备,请收好!";
+	close;
+	
+	dong3:
+	mes "[中级附魔师]";
+	mes "等你想好了再来找我吧";
+	close;
+	}
+	
+end;
+}
+
+
+function	script	高级时装附魔师	{
+	mes "[高级附魔师]";
+	mes "^FF0000我可以将装备进行附魔^000000.";
+	mes "^FF0000把你要附魔的装备穿在身上.^000000";
+	mes "^FF0000随身物品不能有相同的装备.^000000";
+	next;
+	mes "[高级附魔师]";
+	mes "成功率100%";
+	mes "每次附魔需要^FF00002000W^000000以及";
+	mes "^FF0000"+$@fm_xhsl+"^000000 个 ^FF0000"+getitemname($@fm_ch2)+"^000000 .";
+	mes "是否要附魔";
+	next;
+	switch(select("我要附魔:下次再说")){
+	case 1:
+		set $@gfmRetPart11$,getequipname(11);
+		set $@gfmRetPart12$,getequipname(12);
+		set $@gfmRetPart13$,getequipname(13);
+		set $@gfmRetPart14$,getequipname(14);
+		set $@gfmmenu$,$@gfmRetPart11$+":"+$@gfmRetPart12$+":"+$@gfmRetPart13$+":"+$@gfmRetPart14$;
+	switch(select($@gfmmenu$)){
+	case 1:
+		set $@gfmpart,11;
+		if (getequipisequiped(11) == 0|| countitem(getequipid(11))!=1||getitemslots(getequipid(11))==4) {
+			mes "[高级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 2:
+		set $@gfmpart,12;
+		if (getequipisequiped(12) == 0|| countitem(getequipid(12))!=1||getitemslots(getequipid(12))==4) {
+			mes "[高级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 3:
+		set $@gfmpart,13;
+		if (getequipisequiped(13) == 0|| countitem(getequipid(13))!=1||getitemslots(getequipid(13))==4) {
+			mes "[高级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 4:
+		set $@gfmpart,14;
+		if (getequipisequiped(14) == 0|| countitem(getequipid(14))!=1||getitemslots(getequipid(14))==4) {
+			mes "[高级附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+
+	}
+
+	if (getequipisidentify($@gfmpart) == 0) {
+		mes "[高级附魔师]";
+		mes "这装备还没通过鉴定，无法附魔";
+		close;
+	}
+	if (Zeny < 20000000) {
+		mes "[高级附魔师]";
+		mes "你可没有足够的金钱,先去赚点钱再来吧!";
+		close;
+			}
+	if (countitem($@fm_ch2)<$@fm_xhsl) {
+		mes "[高级附魔师]";
+		mes "你没有携带齐全 ^FF0000"+$@fm_xhsl+"^000000 个 ^FF0000"+getitemname($@fm_ch2)+"^000000";
+		close;
+	}
+	mes "[高级附魔师]";
+	mes "想要来一次真正的冒险吧? !";
+	next;
+	menu "开始吧",-,"不要了",dong3;
+	atcommand "@effect 111";
+	set $@gfmitemid,getequipid($@gfmpart);
+	set $@j,getequiprefinerycnt($@gfmpart);
+	set $@card01,getequipcardid($@gfmpart,0);
+	set $@card02,getequipcardid($@gfmpart,1);
+	set $@card03,getequipcardid($@gfmpart,2);
+	delitem $@fm_ch2,$@fm_xhsl;
+	delitem $@gfmitemid,1;
+	set zeny,zeny-20000000;
+	getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, 4758;
+	mes "大功告成了!这是你的装备,请收好!";
+	close;
+	
+	dong3:
+	mes "[高级附魔师]";
+	mes "等你想好了再来找我吧";
+	close;
+	}
+	
+end;
+}
+
+function	script	仙晶附魔师	{
+	mes "[仙晶附魔师]";
+	mes "^FF0000我可以将影装进行附魔^000000.";
+	mes "^FF0000HP附加500-3000随机.^000000";
+	mes "^FF0000受到岛国众伤害减少1%.^000000";
+	mes "^FF0000把你要附魔的装备穿在身上.^000000";
+	mes "^FF0000随身物品不能有相同的装备.^000000";
+	next;
+	mes "[仙晶附魔师]";
+	mes "成功率50%";
+	mes "每次附魔需要^FF00003000W^000000以及^FF0000仙晶x1^000000";
+	mes "是否要附魔";
+	next;
+	switch(select("我要附魔:下次再说")){
+	case 1:
+		set $@gfmRetPart15$,getequipname(15);
+		set $@gfmRetPart21$,getequipname(21);
+		set $@gfmRetPart17$,getequipname(17);
+		set $@gfmRetPart22$,getequipname(22);
+		set $@gfmRetPart19$,getequipname(19);
+		set $@gfmRetPart20$,getequipname(20);
+		set $@gfmmenu$,$@gfmRetPart15$+":"+$@gfmRetPart21$+":"+$@gfmRetPart17$+":"+$@gfmRetPart22$+":"+$@gfmRetPart19$+":"+$@gfmRetPart20$;
+	switch(select($@gfmmenu$)){
+	case 1:
+		set $@gfmpart,15;
+		if (getequipisequiped(15) == 0|| countitem(getequipid(15))!=1) {
+			mes "[仙晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 2:
+		set $@gfmpart,21;
+		if (getequipisequiped(21) == 0|| countitem(getequipid(21))!=1) {
+			mes "[仙晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 3:
+		set $@gfmpart,17;
+		if (getequipisequiped(17) == 0|| countitem(getequipid(17))!=1) {
+			mes "[仙晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 4:
+		set $@gfmpart,22;
+		if (getequipisequiped(22) == 0|| countitem(getequipid(22))!=1) {
+			mes "[仙晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 5:
+		set $@gfmpart,19;
+		if (getequipisequiped(19) == 0|| countitem(getequipid(19))!=1) {
+			mes "[仙晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 6:
+		set $@gfmpart,20;
+		if (getequipisequiped(20) == 0|| countitem(getequipid(20))!=1) {
+			mes "[仙晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	}
+	if (Zeny < 30000000) {
+		mes "[仙晶附魔师]";
+		mes "你可没有足够的金钱,先去赚点钱再来吧!";
+		close;
+			}
+	if (countitem(4694)<1) {
+		mes "[仙晶附魔师]";
+		mes "你没有仙晶x1";
+		close;
+	}
+	mes "[仙晶附魔师]";
+	mes "必须提醒你,附魔的结果是随机的.这就表示如果附魔失败,你的钱和材料会消失!";
+	mes "^FF0000附魔的装备不会消失哦！^000000";
+	mes "想要来一次真正的冒险吧? !";
+	next;
+	menu "开始吧",-,"不要了",dong3;
+	atcommand "@effect 111";
+	set $@Successrate,rand(100);
+	if ($@Successrate<50) {
+	set $@gfmitemid,getequipid($@gfmpart);
+	set $@j,getequiprefinerycnt($@gfmpart);
+	set $@card01,getequipcardid($@gfmpart,0);
+	set $@card02,getequipcardid($@gfmpart,1);
+	set $@card03,getequipcardid($@gfmpart,2);
+	delitem 4694,1;
+	delitem $@gfmitemid,1;
+	set zeny,zeny-30000000;
+	set $@Successrate1,rand(100);
+	if ($@Successrate1<=80) {
+	set $@fm_xj_tmp,rand(1,8);
+	getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, $@fm_xj[$@fm_xj_tmp];
+	}
+	if ($@Successrate1>80) {
+	set $@fm_xj1_tmp,rand(1,5);
+	getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, $@fm_xj1[$@fm_xj1_tmp];
+	}
+	mes "大功告成了!这是你的装备,请收好!";
+	close;
+	}
+	if ($@Successrate>=50) {
+	specialeffect2 EF_PHARMACY_FAIL;
+	delitem 4694,1;
+	set zeny,zeny-30000000;
+	mes "竟然失败了!";
+	close;
+	}
+	dong3:
+	mes "[仙晶附魔师]";
+	mes "等你想好了再来找我吧";
+	close;
+	}
+	
+end;
+}
+
+function	script	神晶附魔师	{
+	mes "[神晶附魔师]";
+	mes "^FF0000我可以将影装进行附魔^000000.";
+	mes "^FF0000HP附加3200-7000随机.^000000";
+	mes "^FF0000受到岛国众伤害减少1-2%随机.^000000";
+	mes "^FF0000把你要附魔的装备穿在身上.^000000";
+	mes "^FF0000随身物品不能有相同的装备.^000000";
+	mes "^0000FF只有被仙晶强化过的装备才能附魔^000000";
+	next;
+	mes "[神晶附魔师]";
+	mes "成功率50%";
+	mes "每次附魔需要^FF00002E^000000以及^FF0000神晶x1^000000";
+	mes "是否要附魔";
+	next;
+	switch(select("我要附魔:下次再说")){
+	case 1:
+		set $@gfmRetPart15$,getequipname(15);
+		set $@gfmRetPart21$,getequipname(21);
+		set $@gfmRetPart17$,getequipname(17);
+		set $@gfmRetPart22$,getequipname(22);
+		set $@gfmRetPart19$,getequipname(19);
+		set $@gfmRetPart20$,getequipname(20);
+		set $@gfmmenu$,$@gfmRetPart15$+":"+$@gfmRetPart21$+":"+$@gfmRetPart17$+":"+$@gfmRetPart22$+":"+$@gfmRetPart19$+":"+$@gfmRetPart20$;
+	switch(select($@gfmmenu$)){
+	case 1:
+		set $@gfmpart,15;
+		if (getequipisequiped(15) == 0|| countitem(getequipid(15))!=1)|| getequipcardcnt(15)==0 {
+			mes "[神晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 2:
+		set $@gfmpart,21;
+		if (getequipisequiped(21) == 0|| countitem(getequipid(21))!=1)|| getequipcardcnt(21)==0 {
+			mes "[神晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 3:
+		set $@gfmpart,17;
+		if (getequipisequiped(17) == 0|| countitem(getequipid(17))!=1)|| getequipcardcnt(17)==0 {
+			mes "[神晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 4:
+		set $@gfmpart,22;
+		if (getequipisequiped(22) == 0|| countitem(getequipid(22))!=1)|| getequipcardcnt(22)==0 {
+			mes "[神晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 5:
+		set $@gfmpart,19;
+		if (getequipisequiped(19) == 0|| countitem(getequipid(19))!=1)|| getequipcardcnt(19)==0 {
+			mes "[神晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	case 6:
+		set $@gfmpart,20;
+		if (getequipisequiped(20) == 0|| countitem(getequipid(20))!=1)|| getequipcardcnt(20)==0 {
+			mes "[神晶附魔师]";
+			mes "无法附魔";
+			close;
+		}
+		break;
+	}
+	if (Zeny < 200000000) {
+		mes "[神晶附魔师]";
+		mes "你可没有足够的金钱,先去赚点钱再来吧!";
+		close;
+			}
+	if (countitem(4693)<1) {
+		mes "[神晶附魔师]";
+		mes "你没有神晶x1";
+		close;
+	}
+	mes "[神晶附魔师]";
+	mes "必须提醒你,附魔的结果是随机的.这就表示如果附魔失败,你的钱和材料会消失!";
+	mes "^FF0000附魔的装备不会消失哦！^000000";
+	mes "想要来一次真正的冒险吧? !";
+	next;
+	menu "开始吧",-,"不要了",dong3;
+	atcommand "@effect 111";
+	set $@Successrate,rand(100);
+	if ($@Successrate<50) {
+	set $@gfmitemid,getequipid($@gfmpart);
+	set $@j,getequiprefinerycnt($@gfmpart);
+	set $@card01,getequipcardid($@gfmpart,0);
+	set $@card02,getequipcardid($@gfmpart,1);
+	set $@card03,getequipcardid($@gfmpart,2);
+	delitem 4693,1;
+	delitem $@gfmitemid,1;
+	set zeny,zeny-200000000;
+	set $@Successrate1,rand(100);
+	if ($@Successrate1<=80) {
+	set $@fm_sj_tmp,rand(1,8);
+	getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, $@fm_sj[$@fm_sj_tmp];
+	}
+	if ($@Successrate1>80) && ($@Successrate1<=95) {
+	set $@fm_sj1_tmp,rand(1,7);
+	getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, $@fm_sj1[$@fm_sj1_tmp];
+	}
+	if ($@Successrate1>95) {
+	getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, 30229;
+	}
+	mes "大功告成了!这是你的装备,请收好!";
+	close;
+	}
+	if ($@Successrate>=50) {
+	specialeffect2 EF_PHARMACY_FAIL;
+	delitem 4693,1;
+	set zeny,zeny-200000000;
+	mes "竟然失败了!";
+	close;
+	}
+	dong3:
+	mes "[神晶附魔师]";
+	mes "等你想好了再来找我吧";
+	close;
+	}
+	
+end;
+}

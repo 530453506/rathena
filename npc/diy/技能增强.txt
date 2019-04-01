@@ -1,0 +1,80 @@
+-	script	zq1	-1,{
+OnPCSCEndEvent:
+OnPCSCStartEvent:
+        status_calc();
+        end;
+OnPCStatCalcEvent:
+        if(sc_check(SC_BERSERK))
+        {
+	bonus bCritical,50;
+	bonus bHPGainOnAttack,20000;
+	bonus2 bSubRace,4,70;
+	bonus bhit,200;	
+	if(BaseJob == Job_Knight) bonus bCritAtkRate,150;
+        }
+        end;
+}
+
+-	script	zq2	-1,{
+OnPCSCEndEvent:
+OnPCSCStartEvent:
+        status_calc();
+        end;
+OnPCStatCalcEvent:
+        if(sc_check(SC_TWOHANDQUICKEN))
+        {
+	if( isequipped(26249)) { bonus2 bSubRace,RC_DemiHuman,20; bonus2 bSubRace,RC_Boss,20;bonus bmaxhprate,5;}
+	if( isequipped(26250)) { bonus2 bSubRace,RC_DemiHuman,25; bonus2 bSubRace,RC_Boss,25;bonus bmaxhprate,10;}
+	if( isequipped(26251)) { bonus2 bSubRace,RC_DemiHuman,30; bonus2 bSubRace,RC_Boss,30;bonus bmaxhprate,15;}
+	if( isequipped(26252)) { bonus2 bSubRace,RC_DemiHuman,35; bonus2 bSubRace,RC_Boss,35;bonus bmaxhprate,20;}
+        }
+        end;
+}
+
+-	script	zq3	-1,{
+OnPCSCEndEvent:
+OnPCSCStartEvent:
+        status_calc();
+        end;
+OnPCStatCalcEvent:
+        if(sc_check(SC_STRIPSHIELD))
+        {
+	if( isequipped(29001)) { bonus bNoMagicDamage,15;bonus bNoWeaponDamage,15;}	
+	if( isequipped(29014)) { bonus bNoMagicDamage,20;bonus bNoWeaponDamage,20;}	
+	if( isequipped(29027)) { bonus bNoMagicDamage,25;bonus bNoWeaponDamage,25;}	
+	if( isequipped(11239)) { bonus bNoMagicDamage,30;bonus bNoWeaponDamage,30;}		
+        }
+        end;
+}
+
+-	script	zq4	-1,{
+OnPCSCEndEvent:
+OnPCSCStartEvent:
+        status_calc();
+        end;
+OnPCStatCalcEvent:
+        if(sc_check(SC_TRUESIGHT))
+        {
+	if( isequipped(29008)) { bonus3 bAutoSpell,"SN_SHARPSHOOTING",2,700;}
+	if( isequipped(29021)) { bonus3 bAutoSpell,"SN_SHARPSHOOTING",3,700;}
+	if( isequipped(29034)) { bonus3 bAutoSpell,"SN_SHARPSHOOTING",4,700;}
+	if( isequipped(11245)) { bonus3 bAutoSpell,"SN_SHARPSHOOTING",5,700;}
+        }
+        end;
+}
+
+-	script	zq5	-1,{
+OnPCSCEndEvent:
+OnPCSCStartEvent:
+        status_calc();
+        end;
+OnPCStatCalcEvent:
+	if(sc_check(SC_EDP))
+	{
+		bonus2 bSkillAtk,"ASC_BREAKER",60;
+	}
+}
+
+
+
+

@@ -1,0 +1,8 @@
+payon.gat,0,0,0,0	monster	ÀÇÈË	1022,10,0,0,0
+
+function	script	×Ô±¬Ïä	{
+setarray $@toushiitem10[0],18110,18111,18112,18122,18123,18115,18116,18117,18118,18119,18120;
+	set @Pay988,rand(getarraysize($@toushiitem10));
+	getitem $@toushiitem10[@Pay988],1;
+	close;
+}

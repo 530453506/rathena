@@ -1,0 +1,272 @@
+prontera,146,147,5,	script	抽奖工作人员	716,{
+    mes "[工作人员]";
+    mes "想抽奖吗？";
+    mes "最幸运可以抽到进阶boss卡哦。";
+    next;
+    menu"我想要！",M4,"不要了。",L2;
+
+    M4:
+    mes "[工作人员]";
+    mes "请寻找以下物品来换：";
+    next;
+    mes "[工作人员]";
+    mes "^3355FF抽奖券^000000*1";
+    mes "^3355FF巴风特卡片^000000*1";
+    mes "^3355FF卡仑卡片^000000*1";
+    mes "^3355FF俄塞里斯卡片^000000*1";
+    mes "^3355FF黄金^000000*500";
+    mes "^3355FF神秘紫箱^000000*200";
+    next;
+    mes "[工作人员]";
+    mes "随机的哦。";
+    mes "注意背包空间。";
+    next;
+    menu"都准备好了！",G1,"这实在是太难了！",L2;
+
+    G1:
+    if(countitem(11078)<1) goto G2;
+    if(countitem(4147)<1) goto G2;
+    if(countitem(4324)<1) goto G2;
+    if(countitem(4144)<1) goto G2;
+    if(countitem(969)<500) goto G2;
+    if(countitem(617)<200) goto G2;
+	delitem 11078,1;
+	delitem 4147,1;
+	delitem 4324,1;
+	delitem 4144,1;
+	delitem 969,500;
+	delitem 617,200;
+    mes "[工作人员]";
+    mes "都齐了！";
+    mes "看你运气了！！";
+    next;
+	set $@Successrate,rand(1,10000);
+	if ($@Successrate<=3) {
+	getitem 4047,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得幽灵波利卡片1张",bc_all;
+	close;
+}	
+	if ($@Successrate>3) && ($@Successrate<=5) {
+	getitem 4441,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得堕落大神官卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>5) && ($@Successrate<=7) {
+	getitem 4302,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得塔奥群卡卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>7) && ($@Successrate<=9) {
+	getitem 4407,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得兰特克力斯卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>9) && ($@Successrate<=11) {
+	getitem 4128,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得黄金虫卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>11) && ($@Successrate<=13) {
+	getitem 4198,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得狂暴蚁后卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>13) && ($@Successrate<=90) {
+	getitem 25022,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得黑色女武神头盔1个",bc_all;
+	close;
+}
+	if ($@Successrate>90) && ($@Successrate<=95) {
+	getitem 25094,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得红莲之火1个",bc_all;
+	close;
+}
+	if ($@Successrate>95) && ($@Successrate<=100) {
+	getitem 25085,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得初云之海1个",bc_all;
+	close;
+}
+	if ($@Successrate>100) && ($@Successrate<=105) {
+	getitem 11033,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]贝思波卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>105) && ($@Successrate<=110) {
+	getitem 11029,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]嗒妮小姐卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>110) && ($@Successrate<=115) {
+	getitem 11042,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]死灵卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>115) && ($@Successrate<=120) {
+	getitem 11044,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]圣天使波利卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>120) && ($@Successrate<=125) {
+	getitem 11048,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]乌龟将军卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>125) && ($@Successrate<=130) {
+	getitem 11040,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]兽人英雄卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>130) && ($@Successrate<=131) {
+	getitem 11045,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]黄金虫卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>131) && ($@Successrate<=133) {
+	getitem 11047,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]幽灵波利卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>133) && ($@Successrate<=134) {
+	getitem 11050,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]兰特克力斯卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>134) && ($@Successrate<=135) {
+	getitem 11060,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]堕落大神官卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>135) && ($@Successrate<=136) {
+	getitem 11062,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]狂暴蚁后卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>136) && ($@Successrate<=137) {
+	getitem 11063,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得[进阶]塔奥群卡卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>137) && ($@Successrate<=237) {
+	getitem 27030,30;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得商城点数30点",bc_all;
+	close;
+}
+	if ($@Successrate>237) && ($@Successrate<=337) {
+	getitem 4123,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得虎王卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>337) && ($@Successrate<=437) {
+	getitem 4132,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得蜂后卡片1张",bc_all;
+	close;
+}	if ($@Successrate>437) && ($@Successrate<=537) {
+	getitem 4148,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得法老王卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>537) && ($@Successrate<=637) {
+	getitem 4374,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得贝思波卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>637) && ($@Successrate<=737) {
+	getitem 4376,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得嗒妮小姐卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>737) && ($@Successrate<=837) {
+	getitem 4276,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得死灵骑士卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>837) && ($@Successrate<=937) {
+	getitem 4142,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得死灵卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>937) && ($@Successrate<=1037) {
+	getitem 4241,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得圣天使波利卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>1037) && ($@Successrate<=1137) {
+	getitem 4305,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得乌龟卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>1137) && ($@Successrate<=1330) {
+	getitem 4330,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得墨蛇君卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>1330) && ($@Successrate<=1335) {
+	getitem 4263,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得元灵武士卡片1张",bc_all;
+	close;
+}	
+	if ($@Successrate>1335) && ($@Successrate<=1437) {
+	getitem 4143,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得兽人英雄卡片1张",bc_all;
+	close;
+}
+	if ($@Successrate>1437) && ($@Successrate<=4437) {
+	getitem 671,4;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得金币4个",bc_all;
+	close;
+}
+	if ($@Successrate>4437) && ($@Successrate<=8437) {
+	getitem 671,3;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得金币3个",bc_all;
+	close;
+}
+	if ($@Successrate>8437) && ($@Successrate<=8600) {
+	getitem 25019,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得绿色女武神头盔1个",bc_all;
+	close;
+}
+	if ($@Successrate>8600) && ($@Successrate<=8650) {
+	getitem 25020,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得红色女武神头盔1个",bc_all;
+	close;
+}
+	if ($@Successrate>8650) && ($@Successrate<=8670) {
+	getitem 27034,5;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得防爆卷5个",bc_all;
+	close;
+}
+	if ($@Successrate>8650) && ($@Successrate<=8655) {
+	getitem 27114,1;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得商城点数100点",bc_all;
+	close;
+}
+	if ($@Successrate>8655) && ($@Successrate<=9500) {
+	getitem 671,4;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得金币4个",bc_all;
+	close;
+}
+	if ($@Successrate>9500) {
+	getitem 671,5;
+	announce "[抽奖人员]:恭喜"+Strcharinfo(0)+"获得金币5个",bc_all;
+	close;
+}
+    A2:
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    G2:
+    mes "[工作人员]";
+    mes "你的东西还未找齐哦。";
+    mes "继续努力吧！！";
+    close;
+
+    L2:
+    mes "[工作人员]";
+    mes "哦，那太可惜了。";
+    close;
+OnInit:
+	waitingroom "[☆抽奖人员☆]",0;
+	end;
+}
+

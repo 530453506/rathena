@@ -1,0 +1,68 @@
+prontera.gat,146,125,5,	script	雷神腰带制作	716,{
+    mes "想要雷神腰带吗？";
+    mes "需要以下材料:";
+    mes "^3355FF雷神之锤^000000*2";
+    mes "^3355FF史雷普尼尔之靴^000000*2";
+    mes "^3355FF女神项链^000000*2";
+    mes "^3355FF黄金^000000*40";
+    mes "^3355FFROB^000000*20W";
+    next;
+    menu"兑换一个！",G1,"兑换十个！",G3,"不要了。",L2;
+
+    G1:
+    if(countitem(1530)<2) goto G2;
+    if(countitem(2630)<2) goto G2;
+    if(countitem(2410)<2) goto G2;
+    if(countitem(969)<40) goto G2;
+    if (Zeny<200000) goto G2;
+    delitem 1530,2;
+    delitem 2630,2;
+    delitem 2410,2;
+    delitem 969,40;
+    set zeny,zeny-200000;
+
+    mes "[工作人员]";
+    mes "都齐了！";
+    mes "现在就给你换！！";
+    next;
+    getitem 2629,1;      
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    G3:
+    if(countitem(1530)<20) goto G2;
+    if(countitem(2630)<20) goto G2;
+    if(countitem(2410)<20) goto G2;
+    if(countitem(969)<400) goto G2;
+    if (Zeny<2000000) goto G2;
+    delitem 1530,20;
+    delitem 2630,20;
+    delitem 2410,20;
+    delitem 969,400;
+    set zeny,zeny-2000000;
+
+    mes "[工作人员]";
+    mes "都齐了！";
+    mes "现在就给你换！！";
+    next;
+    getitem 2629,10;      
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    G2:
+    mes "[工作人员]";
+    mes "你的东西还未找齐哦。";
+    mes "继续努力吧！！";
+    close;
+
+    L2:
+    mes "[工作人员]";
+    mes "哦，那太可惜了。";
+    close;
+OnInit:
+	waitingroom "[☆雷腰制作☆]",0;
+	end;
+}
+

@@ -1,0 +1,287 @@
+//s 毕业试炼副本
+-	script	毕业试炼副本设置	-1,{
+	end;
+OnInit:
+	set $@2paybl_zeny,100000; //报名费用
+	set $@2paybl_min,1; //队伍最少挑战人数
+	set $@2paybl_max,12; //队伍最多挑战人数
+	set $@2paybl_tick,7200; //每次副本的时间（秒）
+	set $@2paybl_supply,600; //出副本的补给时间（秒）
+	set $@2paybl_mob_num_up,1; //队伍里，每多出最小挑战人数1人，多刷几只魔物
+	setarray $@2paybl_map$[0],"2@paybl"; //地图名字
+	setarray $@2paybl_item_id[0],27036; //入场道具编号
+	setarray $@2paybl_item_num[0],1; //入场道具数量
+	set $@2paybl_win_type,1; //奖励类型，0=随机给、1=全部给
+	setarray $@2paybl_win_item_id[0],19005,671; //奖励道具编号
+	setarray $@2paybl_win_item_num[0],1,1; //奖励道具数量
+	setarray $@2paybl_mob_id[0],3590,3591,3592,3593,3594,3595,3596,3598,3599,3600,3601,3602,3603,3604,3605,3606,3607,3608,3609,3611,3612,3613,3614,3615,3616,3617,3618,3619,3620,3621,3622; //刷怪ID设置
+	setarray $@2paybl_mob_num[0],6,6,6,6,2,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,2,6,6,6,2,2,6,6,6,6; //刷怪数量设置，请对应ID
+	end;
+}
+
+prontera,164,153,0	script	毕业试炼传送者	57,{
+	mes "[毕业试炼看守人]";
+	// 判断是否已在副本中
+	if ( instance_id(1) )
+	{
+		mes "你要回到队友的身边吗？";
+		next;
+		switch (select("是的","不要","重开副本"))
+		{
+			default:
+			case 1:
+				break;
+			case 2:
+				close;
+				break;
+			case 3:
+				goto L_Reset;
+				break;
+		}
+		if (giveTime == 0)
+		{
+			mes "领奖后不能再进入已完成的副本！";
+			close;
+		}
+		close2;
+		warp has_instance($@2paybl_map$['2paybl_room]),0,0;
+		end;
+	}
+L_Reset:
+	mes "^000fff可获得100W,中级宝箱钥匙^000000";
+	mes "^000fff还有2点任务积分^000000";
+	mes "进入副本每人都需要：";
+	// 循环显示进入要求
+	for (set $@a,0;$@a<getarraysize($@2paybl_item_id);set $@a,$@a+1)
+	{
+		mes ""+getitemname($@2paybl_item_id[$@a])+"x"+$@2paybl_item_num[$@a];
+	}
+	mes "金钱 "+$@2paybl_zeny;
+	mes "-------------------------";
+	// 判断是否有创建副本的资格
+	if ( !getcharid(1) || getcharid(0) != getpartyleader(getcharid(1),2) )
+	{
+		mes "对不起，你没有队伍，或者 你不是队长。";
+		close;
+	}
+	// 取得队伍成员信息组
+	getpartymember(getcharid(1),2);
+	// 循环判断队伍中的成员是否符合要求
+	// 显示出第一个不符合要求的成员
+	for (set $@i,0;$@i<$@partymembercount;set $@i,$@i+1)
+	{
+		if ( !isloggedin($@partymemberaid[$@i]) || !attachrid($@partymemberaid[$@i]) )
+		{
+			if ( !isloggedin($@partymemberaid[0]) || !attachrid($@partymemberaid[0]) )
+				end;
+			mes "队伍中有人不在线，无法报名。";
+			close;
+		}
+		for (set $@j,0;$@j<getarraysize($@2paybl_item_id);set $@j,$@j+1)
+		{
+			if (countitem($@2paybl_item_id[$@j]) < $@2paybl_item_num[$@j] || Zeny < $@2paybl_zeny)
+			{
+				if ( !isloggedin($@partymemberaid[0]) || !attachrid($@partymemberaid[0]) )
+					end;
+				mes "队伍中的 ["+rid2name($@partymemberaid[$@i])+"]";
+				mes "没有携带 "+getitemname($@2paybl_item_id[$@j])+" x "+$@2paybl_item_num[$@j]+" 或";
+				mes "金钱不足 "+$@2paybl_zeny+" Zeny。";
+				close;
+			}
+		}
+	}
+	// 脚本关联回到队长身上
+	if ( !isloggedin($@partymemberaid[0]) || !attachrid($@partymemberaid[0]) )
+		end;
+	mes "你想登记进入毕业试炼吗?";
+	next;
+	if ( select( "是的","不要" ) == 2 )
+		close;
+	mes "[毕业试炼看守人]";
+	// 判断队长身上的道具是否符合要求
+	for (set $@b,0;$@b<getarraysize($@2paybl_item_id);set $@b,$@b+1)
+	{
+		set @online_num,callfunc("2paybl_party_on",getcharid(1));
+		if ( @online_num < $@2paybl_min || @online_num > $@2paybl_max || Zeny < $@2paybl_zeny || countitem($@2paybl_item_id[$@b]) < $@2paybl_item_num[$@b])
+		{
+			mes "对不起！";
+			mes "你的队伍成员必须在["+$@2paybl_min+"]人以上，";
+			mes "或者队伍成员超过["+$@2paybl_max+"]人，";
+			mes "或者金钱不足"+$@2paybl_zeny+"Zeny，";
+			mes "或"+getitemname($@2paybl_item_id[$@b])+"不足"+$@2paybl_item_num[$@b]+"个。";
+			close;
+		}
+	}
+	mes "你确定要登记吗?";
+	next;
+	if ( select( "是的","不要" ) == 2 )
+		close;
+	mes "[毕业试炼看守人]";
+	mes "你的队伍已经成功登记了.";
+	mes "我将打开一个入口，它会把你们传送到里面.";
+	close2;
+	// 开始创建副本
+	if (instance_id(1))
+	{
+		instance_destroy(instance_id(1));
+	}
+	set @instance_id,instance_create("毕业试炼",getcharid(1));
+	instance_attachmap("2@paybl",@instance_id);
+	killmonsterall has_instance("2@paybl");	
+	instance_set_timeout $@2paybl_tick,$@2paybl_supply,@instance_id;
+	instance_init @instance_id;
+	announce "[公告] 队伍 "+getpartyname(getcharid(1))+" 进入了毕业试炼。",bc_all;
+	instance_attach instance_id(1);
+	// 设置魔物
+	callfunc "2paybl_mob",(callfunc("2paybl_party_on",getcharid(1))-$@2paybl_min)*$@2paybl_mob_num_up;
+	getpartymember(getcharid(1),2);
+	setd "$@2paybl_room_"+instance_id(1),0;
+	disablenpc instance_npcname("2paybl_warp_0",instance_id(1));
+	disablenpc instance_npcname("月光女神",instance_id(1));
+	// 判断队员身上的道具是否符合要求
+	for (set $@i,0;$@i<$@partymembercount;set $@i,$@i+1)
+	{
+		if ( !isloggedin($@partymemberaid[$@i]) || !attachrid($@partymemberaid[$@i]) )
+			continue;
+		// 删除所需道具
+		if (Zeny<$@2paybl_zeny)
+			continue;
+		set Zeny,Zeny-$@2paybl_zeny;
+		set giveTime,2;
+		set $@byboss,0;
+		for (set $@c,0;$@c<getarraysize($@2paybl_item_id);set $@c,$@c+1)
+		{
+			delitem $@2paybl_item_id[$@c],$@2paybl_item_num[$@c];
+		}
+		warp has_instance("2@paybl"),20,165;
+	}
+	end;
+}
+
+// callfunc "2paybl_party_on",<队伍ID>;
+function	script	2paybl_party_on	{
+	set .@party_on,0;
+	getpartymember(getarg(0),2);
+	for (set .@i,0;.@i<$@partymembercount;set .@i,.@i+1)
+	{
+		if ( isloggedin($@partymemberaid[.@i]) )
+			set .@party_on,.@party_on+1;
+	}
+	return .@party_on;
+}
+
+//----> 副本中杀死最后的BOSS所触发的事件
+
+-	script	2payblKillEvent	-1,{ end;
+OnDead1:
+	getmapxy(@map$,@x,@y,0);
+	if (getmapmobs(@map$) > 6)
+	{
+		instance_announce instance_id(1),"[副本提示] 当前地图剩余魔物 "+(getmapmobs(@map$)-1)+" 只！",bc_map;
+		
+	}
+	if (getmapmobs(@map$) <= 5){
+	if ($@byboss==1){close;}
+		instance_announce instance_id(1),"[副本提示] BOSS已经刷出",bc_map;
+		enablenpc instance_npcname("月光女神",instance_id(1));
+		set $@byboss,1;
+	}
+	end;
+OnDead2:
+	getmapxy(@map$,@x,@y,0);
+	instance_announce instance_id(1),"[副本提示] 现在可以通过当前地图某处的传送阵离开并领奖了",bc_map;
+	instance_announce instance_id(1),"[副本提示] 请在40秒内领奖,不然会直接传送出去",bc_map;
+	enablenpc instance_npcname("2paybl_warp_0",instance_id(1));
+	sleep2 39000;
+	set $@byboss,0;
+	sleep2 1000;
+	instance_destroy(instance_id(1));
+	end;
+}
+
+//----> 副本中的出现的所有魔物
+
+// 格式 callfunc "2paybl_mob",额外增加的数量
+
+function	script	2paybl_mob	{
+	for (set .@i,0;.@i<getarraysize($@2paybl_mob_id);set .@i,.@i+1) monster "2@paybl",0,0,"--ja--",$@2paybl_mob_id[.@i],$@2paybl_mob_num[.@i]+getarg(0),"2payblKillEvent::OnDead1";
+	return;
+}
+
+//----> 副本中的传送点
+
+
+2@paybl,20,160,3	script	领奖2	588,{
+	warp has_instance("2@paybl"),235,130;
+	close;
+OnInit:
+	waitingroom "领奖传送",0;
+	end;
+}
+
+2@paybl,235,125,0	script	2paybl_warp_0	45,1,1,{ end;
+OnTouch:
+	// 如果不是副本成员，立刻回城
+	if ( instance_id(1) < 1 )
+	{
+		warp "SavePoint",0,0;
+		end;
+	}
+	// 设置方便回到最深层的副本地图
+	if ( getd("$@2paybl_room_"+instance_id(1))<=0 )
+	{
+		setd "$@2paybl_room_"+instance_id(1),0;
+	}
+	callfunc "2paybl_Win";
+	warp "prontera",155,180;
+	end;
+}
+
+//----> 副本完成后的奖励
+
+function	script	2paybl_Win	{
+	//判断副本领奖参数
+	//判断是否已在该副本领奖
+	if (giveTime == 2)
+	{
+		//判断奖励类型
+		switch($@2paybl_win_type) {
+			case 0: //随机给一种
+				set @id,rand(getarraysize($@2paybl_win_item_id));
+				getitem $@2paybl_win_item_id[@id],$@2paybl_win_item_num[@id];
+				break;
+			case 1: //所有都给
+				for (set @i,0;@i<getarraysize($@2paybl_win_item_id);set @i,@i+1)
+				{
+					getitem $@2paybl_win_item_id[@i],$@2paybl_win_item_num[@i];
+				}
+				break;
+		}
+		set #rwjf,#rwjf+2;
+		dispbottom "[积分提示] - 增加2点任务积分,您目前的任务积分为:["+#rwjf+"].";
+		//标记已经领取奖励
+	}
+	set giveTime,0;
+	return;
+}
+
+2@paybl,235,125,4	script	月光女神	2037,5,5,{
+	end;
+OnTouch:
+	monster "2@paybl",235,125,"--ja--",3555,1,"2payblKillEvent::OnDead2";
+	disablenpc instance_npcname("月光女神",instance_id(1));
+	end;
+}
+
+
+//s 毕业试炼
+
+2@paybl	mapflag	nobranch
+2@paybl	mapflag	nomemo
+2@paybl	mapflag	nowarp
+2@paybl	mapflag	nowarpto
+2@paybl	mapflag	nogo
+2@paybl	mapflag	nosave
+2@paybl	mapflag	restricted	7
+2@paybl	mapflag	partylock
+2@paybl	mapflag	monster_noteleport

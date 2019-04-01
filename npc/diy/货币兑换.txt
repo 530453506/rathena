@@ -1,0 +1,68 @@
+prontera,176,125,3,	script	货币兑换	76,{
+    mes "[工作人员]";
+    mes "100枚银币换5枚金币";
+    mes "1000枚银币换50枚金币";
+    mes "1000W换1个金币袋子哦。";
+    mes "1E换10个金币袋子哦。";
+    next;
+    menu"100银币换5金币",A0,"1000银币换50金币",G0,"100W换1金币",G1,"1000W换1金币袋子",M2,"1E换10金币袋子",M3,"不要了",L2;
+A0:
+if(countitem(675)<100) goto L1;
+delitem 675,100;
+getitem 671,5;
+mes "[工作人员]";
+mes "欢迎再次使用本服务。";
+close;
+
+G0:
+if(countitem(675)<1000) goto L1;
+delitem 675,1000;
+getitem 671,50;
+mes "[工作人员]";
+mes "欢迎再次使用本服务。";
+close;
+
+    G1:
+    if(Zeny<1000000) goto N2;
+    set zeny,zeny-1000000;
+    getitem 671,1;      
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    M2:
+    if(Zeny<10000000) goto N2;
+    set zeny,zeny-10000000;
+    getitem 670,1;      
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    M3:
+    if(Zeny<100000000) goto N2;
+    set zeny,zeny-100000000;
+    getitem 670,10;      
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    N2:
+    mes "[工作人员]";
+    mes "你钱不够哦。";
+    close;
+
+    L1:
+    mes "[工作人员]";
+    mes "你银币不够哦。";
+    close;
+
+    L2:
+    mes "[工作人员]";
+    mes "哦，那太可惜了。";
+    close;
+
+OnInit:
+     waitingroom "[☆货币兑换☆]",0;
+     end;
+}
+

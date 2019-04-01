@@ -1,0 +1,36 @@
+//
+// 3BOSS by 2007-01-16
+//
+//- 
+prontera.gat,147,76,5	script	挂店区1	837,{
+	close;
+
+OnInit:
+	waitingroom "沿此线往下挂店",0;
+	end;
+}
+prontera.gat,164,76,5	script	挂店区3	837,{
+	close;
+
+OnInit:
+	waitingroom "沿此线往下挂店",0;
+	end;
+}
+
+
+prontera.gat,156,76,5	script	挂店区2	837,{
+	close;
+
+OnInit:
+	waitingroom "沿此线往下挂店",0;
+	end;
+}
+
+prontera.gat,156,80,5	script	挂积分	837,{
+	warp "morocc",158,93;
+	close;
+
+OnInit:
+	waitingroom "商人挂积分点我",0;
+	end;
+}

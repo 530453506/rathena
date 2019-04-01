@@ -1,0 +1,31 @@
+function	script	guaji	{
+	mes"[挂机小天使]";
+	mes"您要开启挂机系统吗。";
+	mes"目前处于测试阶段，无限制使用。";
+	next;
+switch(select("我要去爽","我不要爽了"))
+{
+case 1:
+	if(@guaji==1){close;}
+	set @guaji,1;
+	close2;
+	sleep2 1000;
+	atcommand "@ai";
+	break;
+case 2:
+	if(@guaji!=1){close;}
+	set @guaji,0;	
+	close2;
+	atcommand "@ai";
+	break;
+}
+end;
+}
+
+-	script	guaji1	-1,{
+OnPCDieEvent:
+	if(@guaji==1){	sleep2 500;atcommand "@ai";set @guaji,0;close;}	
+	if(@guaji!=1){close;}
+end;
+}
+

@@ -1,0 +1,73 @@
+
+prontera.gat,164,81,4	script	开洞	986,{
+	mes "[开洞系统]";	
+	mes "可以帮你的装备增加一个插卡的洞";
+	mes "需要1个神造之石和10个金币袋子";	
+	mes "只支持4种装备的开洞";
+	mes "开洞装备会失去精炼值，附魔石和卡片";		
+next;
+switch(select("<究极>白色女武神头盔","<究极>猩红女武神头盔","<究极>卡尔手套","<究极>闪灵戒指"))
+{
+case 1: 
+if (( countitem(670)<10) || ( countitem(9507)<1)||( countitem(11233)<1)) {	
+	mes "[开洞系统]";
+	mes "您的材料不足";
+	close;
+}
+delitem 670,10;
+delitem 9507,1;
+delitem 11233,1;
+	mes "[开洞系统]";
+	mes "请收好您的装备";
+	getitem 11256,1;
+	close;
+
+case 2:
+if (( countitem(670)<10) || ( countitem(9507)<1)||( countitem(11234)<1)) {	
+	mes "[开洞系统]";
+	mes "您的材料不足";
+	close;
+}
+delitem 670,10;
+delitem 9507,1;
+delitem 11234,1;
+	mes "[开洞系统]";
+	mes "请收好您的装备";
+	getitem 11257,1;
+	close;
+
+case 3:
+if (( countitem(670)<10) || ( countitem(9507)<1)||( countitem(11235)<1)) {	
+	mes "[开洞系统]";
+	mes "您的材料不足";
+	close;
+}
+delitem 670,10;
+delitem 9507,1;
+delitem 11235,1;
+	mes "[开洞系统]";
+	mes "请收好您的装备";
+	getitem 11254,1;
+	close;
+
+case 4:
+if ( (countitem(670)<10) || ( countitem(9507)<1)||( countitem(11236)<1)) {	
+	mes "[开洞系统]";
+	mes "您的材料不足";
+	close;
+}
+delitem 670,10;
+delitem 9507,1;
+delitem 11236,1;
+	mes "[开洞系统]";
+	mes "请收好您的装备";
+	getitem 11255,1;
+	close;
+
+
+}
+OnInit:
+	waitingroom "[☆开洞系统☆]",0;
+end;
+}
+

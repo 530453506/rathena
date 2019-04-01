@@ -1,0 +1,59 @@
+function	script	gvgwin	{
+	getitem 27011,10;
+	getitem 27013,10;
+	getitem 27014,10;
+	getitem 27015,10;
+	getitem 27016,10;
+	getitem 27020,10;
+	getitem 27022,10;
+	getitem 27023,10;
+	getitem 27024,10;
+	getitem 27025,10;
+	getitem 27001,5;
+	getitem 27003,5;
+	getitem 27004,5;
+	getitem 27005,5;
+	getitem 27006,5;
+	getitem 670,10;
+	getitem 27032,10;
+	getitem 29997,5;
+	getitem 27028,10;
+	getitem 27029,10;
+	getitem 27007,5;
+	getitem 19021,5;
+	getitem 19004,10;
+	getitem 19005,10;
+	getitem 19006,10;
+	getitem 19007,5;
+	end;
+}
+
+function	script	gvglose	{
+	getitem 27011,10;
+	getitem 27013,10;
+	getitem 27014,10;
+	getitem 27015,10;
+	getitem 27016,10;
+	getitem 27020,10;
+	getitem 27022,10;
+	getitem 27023,10;
+	getitem 27024,10;
+	getitem 27025,10;
+	getitem 27001,5;
+	getitem 27003,5;
+	getitem 27004,5;
+	getitem 27005,5;
+	getitem 27006,5;
+	getitem 670,5;
+	getitem 27032,5;
+	getitem 29997,3;
+	getitem 27028,10;
+	getitem 27029,5;
+	getitem 27007,3;
+	getitem 19021,3;
+	getitem 19004,5;
+	getitem 19005,5;
+	getitem 19006,5;
+	getitem 19007,3;
+	end;
+}

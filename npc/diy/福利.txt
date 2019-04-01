@@ -1,0 +1,10 @@
+-	script	lvlupdate	-1,{
+OnPCBaseLvUpEvent:
+if(metempsychosis==0){
+set .@getzenys,(BaseLevel-lastlvl)*5000;
+set Zeny,Zeny+.@getzenys;
+set lastlvl,BaseLevel;
+dispbottom "你已经获得ROB"+.@getzenys+"Z";
+end;
+}
+}

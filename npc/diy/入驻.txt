@@ -1,0 +1,12 @@
+function	script	F_tzqihei	{	
+getitem 27529,1;
+getitem 27530,1;	
+getitem 27531,1;
+getitem 671,5;
+getitem 12210,5;
+getitem 27032,2;
+getitem 27000,1;
+getitem 27111,1;
+end;
+}
+

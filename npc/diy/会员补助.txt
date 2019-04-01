@@ -1,0 +1,9 @@
+function	script	ghbox	{	
+getitem 2629,20;
+getitem 671,35;	
+getitem 607,50;
+getitem 608,50;
+getitem 27032,10;
+getitem 7621,50;
+end;
+}

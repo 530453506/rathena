@@ -1,0 +1,78 @@
+prontera,182,125,3,	script	道场积分兑换	76,{
+    mes "[工作人员]";
+    mes "10中级道场积分换^ff0000中级道场卷10点1张^000000";
+    mes "10中级道场积分换^ff0000毕业试炼入场券1张^000000";
+    mes "10高级道场积分换^ff0000高级道场卷10点1张^000000";
+    mes "10高级道场积分换^ff0000最终试炼入场券1张^000000";
+    mes "10究极道场积分换^ff0000究极道场卷10点1张^000000";
+    mes "10究极道场积分换^ff0000究极试炼入场券1张^000000";
+    mes "10天界道场积分换^ff0000天界道场卷10点1张^000000";
+    next;
+    menu"兑换中级道场卷10点",G0,"兑换高级道场卷10点",G1,"兑换究极道场卷10点",G4,"兑换天界道场卷10点",G6,"兑换毕业试炼入场券",G2,"兑换最终试炼入场券",G3,"兑换究极试炼入场券",G5;
+G0:
+if(zhongji<10) goto L1;
+set zhongji,zhongji-10;
+getitem 27028,1;
+mes "[工作人员]";
+mes "欢迎再次使用本服务。";
+close;
+
+    G1:
+if(gaoji<10) goto L1;
+set gaoji,gaoji-10;
+getitem 27029,1; 
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+    L1:
+    mes "[工作人员]";
+    mes "你的积分不够哦。";
+    close;
+
+    G4:
+if(jiuji<10) goto L1;
+set jiuji,jiuji-10;
+getitem 27007,1; 
+    mes "[工作人员]";
+    mes "欢迎再次使用本服务。";
+    close;
+
+G2:
+if(zhongji<10) goto L1;
+set zhongji,zhongji-10;
+getitem 27036,1;
+mes "[工作人员]";
+mes "欢迎再次使用本服务。";
+close;
+
+
+G3:
+if(gaoji<10) goto L1;
+set gaoji,gaoji-10;
+getitem 27037,1;
+mes "[工作人员]";
+mes "欢迎再次使用本服务。";
+close;
+
+G5:
+if(jiuji<10) goto L1;
+set jiuji,jiuji-10;
+getitem 27027,1;
+mes "[工作人员]";
+mes "欢迎再次使用本服务。";
+close;
+
+G6:
+if(tjjf<10) goto L1;
+set tjjf,tjjf-10;
+getitem 30161,1;
+mes "[工作人员]";
+mes "欢迎再次使用本服务。";
+close;
+
+OnInit:
+     waitingroom "[☆道场积分☆]",0;
+     end;
+}
+
