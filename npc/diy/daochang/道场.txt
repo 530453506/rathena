@@ -1,15 +1,14 @@
 prontera,164,113,3	script	道馆挑战	734,{
 	mes "[道场管理员]";
-	mes "欢迎挑战道场，我们供提供了5个等级的道场提供挑战，每个道场奖励也不同，你做好准备了吗？";
+	mes "欢迎挑战道场，我们供提供了4个等级的道场提供挑战，每个道场奖励也不同，你做好准备了吗？";
 	next;
-	switch(select("初级道场","中级道场","高级道场","究极道场","天界道场","以后在说"))
+	switch(select("初级道场","中级道场","高级道场","究极道场","以后在说"))
 	{
 		case 1:callfunc "初级道馆"; break;
 		case 2:callfunc "中级道馆"; break;
 		case 3:callfunc "高级道馆"; break;
 		case 4:callfunc "究极道馆"; break;
-		case 5:callfunc "天界道馆"; break;
-		case 6:
+		case 5:
 			mes "[道场管理员]";
 			mes "欢迎再次挑战";
 		close;

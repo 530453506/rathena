@@ -1,4 +1,4 @@
-function	script	F_tzqihei	{	
+function	script	gh_box	{
 getitem 27529,1;
 getitem 27530,1;	
 getitem 27531,1;
