@@ -2313,7 +2313,7 @@ int unit_attack(struct block_list *src,int target_id,int continuous)
 		ud->stepskill_id = 0;
 		ud->stepskill_lv = 0;
 		return 0; // Attacking will be handled by unit_walktoxy_timer in this case
-	} else if (sd->state.offline && !battle_check_range(src, target, range-1)) {
+	} else if (sd && sd->state.offline && !battle_check_range(src, target, range-1)) {
 		if((src->m == target->m) && unit_can_reach_bl(src,target, AREA_SIZE, 0, NULL, NULL)) {
 			if (check_distance_bl(src, target, AREA_SIZE)) {
 				unit_walktobl(src, target, AREA_SIZE, 0);
