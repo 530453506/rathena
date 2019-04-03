@@ -2748,3 +2748,4 @@
 2525,Egnigem Cenia@NPC_EMOTION,attack,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,,
 2525,Egnigem Cenia@NPC_EMOTION,chase,197,1,10000,0,5000,yes,self,skillused,28,15,,,,,,
 2525,Egnigem Cenia@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,,
+
