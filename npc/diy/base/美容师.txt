@@ -1,0 +1,146 @@
+prontera,141,92,5	script	美容师	985,{ 
+callfunc "xjcsxxgw"; 
+end;
+OnInit:
+	waitingroom "[☆美容师☆]",0;
+	end;
+}
+
+/******************** 脚本 ******************
+*		#define MAX_HAIR_COLOR 255	//扩展染色的上限
+*		#define MAX_CLOTH_COLOR 255	//扩展染色的上限;
+****************************************************/
+function	script	xjcsxxgw	{ 
+query_sql "SELECT `hair`,`hair_color`,`clothes_color` From `char` WHERE `char_id` = "+getcharid(0)+" ", .@hair ,.@h_color, .@c_color;
+	cutin "v_sprakki02",2;
+	mes "["+strnpcinfo(0)+"]";
+	mes "请问需要什麼服务呢?";
+	mes "当前衣色: ^0000FF"+.@c_color+"^000000";
+	mes "当前发型: ^0000FF"+.@hair+"^000000";
+	mes "当前发色: ^0000FF"+.@h_color+"^000000";
+	mes "^FF0000请选择染色模式^000000";
+	switch(select("随机染色","指定输入","边看边选","结束服务")){
+
+case 1:
+	switch(select("衣服 [001-553]","发型 [001-084]","染发 [001-251]")){
+
+	case 1: 
+	xdloop1:
+		.@rand=rand(1,553);
+		changelook 7,.@rand;
+		mes "衣服顏色: ^FF0000"+.@rand+"^000000";
+		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET clothes_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto xdloop1;
+
+	case 2:
+	xdloop2:
+		.@rand=rand(1,84);
+		changelook 1,.@rand;
+		mes "发型类别: ^FF0000"+.@rand+"^000000";
+		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET hair = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto xdloop2;
+
+	case 3:
+	xdloop3:
+		.@rand=rand(1,251); 
+		changelook 6,.@rand;
+		mes "发型类别: ^FF0000"+.@rand+"^000000";
+		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET hair_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto xdloop3;
+	}
+	close2; cutin "",255; end;
+
+
+case 2:
+
+	switch(select("衣服服务 [001-553]","发型服务 [001-084]","染发服务 [001-251]")){
+
+	case 1: 
+	inloop1:
+		input .@rand,1,553;
+		changelook 7,.@rand;
+		mes "衣服顏色: ^FF0000"+.@rand+"^000000";
+		if(select("再次指定:就是这个")==2){ query_sql("UPDATE `char` SET clothes_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto inloop1;
+
+	case 2:
+	inloop2:
+		input .@rand,1,84;
+		changelook 1,.@rand;
+		mes "发型类别: ^FF0000"+.@rand+"^000000";
+		if(select("再次指定:就是这个")==2){ query_sql("UPDATE `char` SET hair = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto inloop2;
+
+	case 3:
+	inloop3:
+		input .@rand,1,251;
+		changelook 6,.@rand;
+		mes "发型类别: ^FF0000"+.@rand+"^000000";
+		if(select("再次指定:就是这个")==2){ query_sql("UPDATE `char` SET hair_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto inloop3;
+	}
+	close2; cutin "",255; end;
+
+
+case 3:
+
+	switch(select("衣服服务 [001-553]","发型服务 [001-084]","染发服务 [001-251]")){
+
+	case 1:
+	.@rand=.@h_color;
+	ixloop1:
+		.@rand=.@rand+1;
+		if(.@rand > 553){.@rand = 1;}
+		changelook 7,.@rand;
+		mes "衣服顏色: ^FF0000"+.@rand+"^000000";
+		if(select("换下一个:就是这个")==2){ query_sql("UPDATE `char` SET clothes_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto ixloop1;
+
+	case 2:
+	.@rand=.@hair;
+	ixloop2:
+		.@rand=.@rand+1;
+		if(.@rand > 84){.@rand = 1;}
+		changelook 1,.@rand;
+		mes "发型类别: ^FF0000"+.@rand+"^000000";
+		if(select("换下一个:就是这个")==2){ query_sql("UPDATE `char` SET hair = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto ixloop2;
+
+	case 3:
+	.@rand=.@c_color;
+	ixloop3:
+		.@rand=.@rand+1;
+		if(.@rand > 251){.@rand = 1;}
+		changelook 6,.@rand;
+		mes "发型类别: ^FF0000"+.@rand+"^000000";
+		if(select("换下一个:就是这个")==2){ query_sql("UPDATE `char` SET hair_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		next;
+		mes "["+strnpcinfo(0)+"]";
+		goto ixloop3;
+	}
+	close2; cutin "",255; end;
+
+
+
+case 4:
+	break;
+}
+	close2; cutin "",255; end;
+	
+}

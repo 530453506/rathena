@@ -4422,6 +4422,61 @@
 9054,Nightmare_Terror_Egg,Æß²ÊÃÎ÷Ê³èÎïµ°,7,20,,0,,,,,,,,,,,,,{},{},{}
 9055,Succubus_Egg,¶ñÄ§Å®ÆÍ³èÎïµ°,7,20,,0,,,,,,,,,,,,,{},{},{}
 9056,Imp_Egg,ÖËÑæÄ§³èÎïµ°,7,20,,0,,,,,,,,,,,,,{},{},{}
+9057,Egg_Of_Tiny,Egg Of Tiny,7,20,,0,,,,,,,,,,,,,{},{},{}
+9058,Snow_Rabbit_Egg,Christmas Snow Rabbit Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9059,Tikbalang_Pet,Tikbalang Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9060,Brownie_Egg,Brownie Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9061,Marin_Egg,Marin Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9062,Novice_Poring_Egg,Novice Poring Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9063,Woodie_Egg,Woodie Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9064,Elephant_Egg,Elephant Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9065,Gorilla_Egg,Gorilla Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9066,Lion_Egg,Lion Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9067,Rhino_Egg,Rhino Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9068,Blue_Unicorn_Egg,Blue Unicorn Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9069,Mastering_Egg,Mastering Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9070,Savage_Egg,Savage Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9071,Grand_Peco_Peco_Egg,Grand Peco Peco Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9072,Orc_Hero_Egg,Orc Hero Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9073,Orc_Lord_Egg,Orc Lord Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9074,Rubylit_Egg,Rubylit Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9075,Sapphilit_Egg,Sapphilit Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9076,Emelit_Egg,Emelit Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9077,Topalit_Egg,Topalit Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9078,Amelit_Egg,Amelit Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9079,Mythlit_Egg,Mythlit Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9080,Tamadora_Egg,Tamadora Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+
+9087,High_Orc_Egg,High Orc Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9088,Angeling_Egg,Angeling Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9089,Am_Mut_Egg,Am Mut Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9090,Little_Isis_Egg,Little Isis Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9091,Choco_Egg,Choco Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9092,Eggring_Egg,Eggring Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9093,Hyegun_Egg,Hyegun Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9094,Dr_Lunatic_Egg,Leaf Lunatic Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9095,Nine_Tail_Egg,Nine Tail Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9096,Cat_o_Nine_Tail_Egg,Cat o Nine Tail Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9097,Diabolic_2_Egg,Diabolic Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9098,Fire_Deleter_Egg,Fire Deleter Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9099,Teddy_Bear_Egg,Teddy Bear Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9100,Gremlin_Egg,Gremlin Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9101,Scatleton_Egg,Scatleton Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9102,Mummy_Egg,Mummy Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9103,Willow_Egg,Willow Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9104,Roween_Egg,Roween Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9105,Hodremlin_Egg,Hodremlin Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9106,Metaller_Egg,Metaller Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9107,Ancient_Mummy_Egg,Ancient Mummy Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9108,Xm_Teddy_Bear_Egg,Xmas Teddy Bear Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9109,Sweet_Drops_Egg,Sweet Drops Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+
+9111,Phreeoni_Egg,Phreeoni Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9112,Moonlight_Egg,Moonlight Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9113,Skelion_Egg,Skelion Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9114,Pouring_Egg,Pouring Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+9115,Bacsojin2_Egg_,Bacsojin Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
+
 // Pet Accessories
 //===================================================================
 10001,Skull_Helm,Å£½Ç¹Ç¿ø,8,20,,0,,,,,,,,,,,,,{},{},{}
