@@ -29,7 +29,7 @@ case 1:
 		.@rand=rand(1,553);
 		changelook 7,.@rand;
 		mes "衣服顏色: ^FF0000"+.@rand+"^000000";
-		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET clothes_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		if(select("再次随机:就是这个")==2){ break; }
 		next;
 		mes "["+strnpcinfo(0)+"]";
 		goto xdloop1;
@@ -39,7 +39,7 @@ case 1:
 		.@rand=rand(1,84);
 		changelook 1,.@rand;
 		mes "发型类别: ^FF0000"+.@rand+"^000000";
-		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET hair = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		if(select("再次随机:就是这个")==2){  break; }
 		next;
 		mes "["+strnpcinfo(0)+"]";
 		goto xdloop2;
@@ -49,7 +49,7 @@ case 1:
 		.@rand=rand(1,251); 
 		changelook 6,.@rand;
 		mes "发型类别: ^FF0000"+.@rand+"^000000";
-		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET hair_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
+		if(select("再次随机:就是这个")==2){  break; }
 		next;
 		mes "["+strnpcinfo(0)+"]";
 		goto xdloop3;
