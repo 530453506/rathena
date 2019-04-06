@@ -29,7 +29,7 @@ case 1:
 		.@rand=rand(1,553);
 		changelook 7,.@rand;
 		mes "衣服顏色: ^FF0000"+.@rand+"^000000";
-		if(select("再次随机:就是这个")==2){ break; }
+		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET clothes_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
 		next;
 		mes "["+strnpcinfo(0)+"]";
 		goto xdloop1;
@@ -39,7 +39,7 @@ case 1:
 		.@rand=rand(1,84);
 		changelook 1,.@rand;
 		mes "发型类别: ^FF0000"+.@rand+"^000000";
-		if(select("再次随机:就是这个")==2){  break; }
+		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET hair = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
 		next;
 		mes "["+strnpcinfo(0)+"]";
 		goto xdloop2;
@@ -49,7 +49,7 @@ case 1:
 		.@rand=rand(1,251); 
 		changelook 6,.@rand;
 		mes "发型类别: ^FF0000"+.@rand+"^000000";
-		if(select("再次随机:就是这个")==2){  break; }
+		if(select("再次随机:就是这个")==2){ query_sql("UPDATE `char` SET hair_color = "+.@rand+" WHERE char_id = "+getcharid(0)); break; }
 		next;
 		mes "["+strnpcinfo(0)+"]";
 		goto xdloop3;
@@ -99,7 +99,12 @@ case 3:
 	switch(select("衣服服务 [001-553]","发型服务 [001-084]","染发服务 [001-251]")){
 
 	case 1:
-	.@rand=.@h_color;
+	next;
+	mes "["+strnpcinfo(0)+"]";
+	mes "当前数字: ^FF0000"+.@c_color+"^000000";
+	mes "请输入起始数字";
+    input .@rand,1,553;
+    .@rand = .@rand-1;
 	ixloop1:
 		.@rand=.@rand+1;
 		if(.@rand > 553){.@rand = 1;}
@@ -110,8 +115,15 @@ case 3:
 		mes "["+strnpcinfo(0)+"]";
 		goto ixloop1;
 
+
+
 	case 2:
-	.@rand=.@hair;
+	next;
+	mes "["+strnpcinfo(0)+"]";
+	mes "当前数字: ^FF0000"+.@hair+"^000000";
+	mes "请输入起始数字";
+    input .@rand,1,84;
+    .@rand = .@rand-1;
 	ixloop2:
 		.@rand=.@rand+1;
 		if(.@rand > 84){.@rand = 1;}
@@ -123,7 +135,12 @@ case 3:
 		goto ixloop2;
 
 	case 3:
-	.@rand=.@c_color;
+	next;
+	mes "["+strnpcinfo(0)+"]";
+	mes "当前数字: ^FF0000"+.@h_color+"^000000";
+	mes "请输入起始数字";
+    input .@rand,1,251;
+    .@rand = .@rand-1;
 	ixloop3:
 		.@rand=.@rand+1;
 		if(.@rand > 251){.@rand = 1;}

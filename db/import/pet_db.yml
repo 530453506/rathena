@@ -54,86 +54,40 @@ Header:
   Type: PET_DB
   Version: 1
 
-#Body:
-#  - Mob: PORING
-#    TameItem: Unripe_Apple
-#    EggItem: Poring_Egg
-#    EquipItem: Backpack
-#    FoodItem: Apple_Juice
-#    Fullness: 50
-#    IntimacyFed: 500
-#    CaptureRate: 2000
-#    AllowAutoFeed: true
-#    Script: >
-#      .@i = getpetinfo(PETINFO_INTIMATE);
+Body:
+- Mob: PET_BABY_SWORDMAN
+  TameItem: Baby_Swordman_Catch
+  EggItem: Baby_Swordman_Egg
+  FoodItem: Pet_Food
+  Fullness: 3
+  IntimacyFed: 50
+  CaptureRate: 10000
+  Script: >
+    .@i = getpetinfo(PETINFO_INTIMATE);
+
+    if( .@i >= PET_INTIMATE_LOYAL ){
+      bonus bLuk,2;
+      bonus bCritical,1;
+    }
+#  Evolution:
+#  - Target: SWORDMAN
+#    ItemRequirements:
+#    - Item: Leaf_Of_Yggdrasil
+#      Amount: 10
+#    - Item: Unripe_Apple
+#      Amount: 3
+
+#- Mob: SWORDMAN
+#  TameItem: Unripe_Apple
+#  EggItem: SWORDMAN_Egg
+#  FoodItem: Pet_Food
+#  Fullness: 3
+#  IntimacyFed: 50
+#  CaptureRate: 0
+#  Script: >
+#    .@i = getpetinfo(PETINFO_INTIMATE);
 #
-#      if( .@i >= PET_INTIMATE_LOYAL ){
-#        bonus bLuk,2;
-#        bonus bCritical,1;
-#      }
-#    Evolution:
-#      - Target: MASTERING
-#        ItemRequirements:
-#          - Item: Leaf_Of_Yggdrasil
-#            Amount: 10
-#          - Item: Unripe_Apple
-#            Amount: 3
-#  - Mob: MASTERING
-#    EggItem: Mastering_Egg
-#    FoodItem: Pet_Food
-#    Fullness: 50
-#    IntimacyFed: 500
-#    CaptureRate: 0
-#    SpecialPerformance: false
-#    AllowAutoFeed: true
-#    Script: >
-#      .@i = getpetinfo(PETINFO_INTIMATE);
-#
-#      if( .@i >= PET_INTIMATE_LOYAL ){
-#        bonus bLuk,3;
-#        bonus bCritical,3;
-#      }else if( .@i >= PET_INTIMATE_CORDIAL ){
-#        bonus bLuk,3;
-#        bonus bCritical,2;
-#      }else if( .@i >= PET_INTIMATE_NEUTRAL ){
-#        bonus bLuk,3;
-#        bonus bCritical,1;
-#      }else{
-#        bonus bLuk,2;
-#        bonus bCritical,1;
-#      }
-#    Evolution:
-#    - Target: ANGELING
-#      ItemRequirements:
-#      - Item: Yellow_Potion
-#        Amount: 20
-#      - Item: Spirit_Chain
-#        Amount: 1
-#      - Item: White_Herb
-#        Amount: 50
-#      - Item: Jellopy
-#        Amount: 200
-#  - Mob: ANGELING
-#    EggItem: Angeling_Egg
-#    FoodItem: Pet_Food
-#    Fullness: 50
-#    IntimacyFed: 500
-#    CaptureRate: 0
-#    SpecialPerformance: false
-#    AllowAutoFeed: true
-#    Script: >
-#      .@i = getpetinfo(PETINFO_INTIMATE);
-#
-#      if( .@i >= PET_INTIMATE_LOYAL ){
-#        bonus bMaxHPrate,2;
-#        bonus bHealPower,8;
-#      }else if( .@i >= PET_INTIMATE_CORDIAL ){
-#        bonus bMaxHPrate,2;
-#        bonus bHealPower,6;
-#      }else if( .@i >= PET_INTIMATE_NEUTRAL ){
-#        bonus bMaxHPrate,1;
-#        bonus bHealPower,4;
-#      }else{
-#        bonus bMaxHPrate,1;
-#        bonus bHealPower,2;
-#      }
+#    if( .@i >= PET_INTIMATE_LOYAL ){
+#      bonus bLuk,2;
+#      bonus bCritical,1;
+#    }

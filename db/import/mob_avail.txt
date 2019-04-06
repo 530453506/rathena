@@ -14,6 +14,10 @@
 // SpriteID is a job class value.
 // Weapon and Shield uses Item ID, while Head uses View ID.
 
+//宠物
+3001,4024,0,7,5,1101,2101,872,0,0,0,15
+3002,1,0,7,5,1101,2103,465,0,0,0,15
+
 //道场
 3500,1038
 3501,1039
