@@ -2771,7 +2771,7 @@ static int battle_get_weapon_element(struct Damage* wd, struct block_list *src, 
 	int element = skill_get_ele(skill_id, skill_lv);
     struct mob_data *md;
 
-    if (target->type == BL_MOB && sd->bonus.transfer_attr) {
+    if (sd && target->type == BL_MOB && sd->bonus.transfer_attr) {
         md = (TBL_MOB *) target;
         switch (md->db->status.def_ele) {
             case ELE_DARK:
@@ -5758,7 +5758,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 
     struct mob_data *md;
 
-    if (sd->bonus.transfer_attr && target->type == BL_MOB ) {
+    if (sd && sd->bonus.transfer_attr && target->type == BL_MOB ) {
         md = (TBL_MOB *) target;
         switch (md->db->status.def_ele) {
             case ELE_DARK:
