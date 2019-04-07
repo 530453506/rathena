@@ -111,11 +111,12 @@
 39036,Runstone_Quality_3,元婴之石,3,,,10,,,,,,,,,,,,,{},{},{}
 39037,Runstone_Quality_4,大乘之石,3,,,10,,,,,,,,,,,,,{},{},{}
 39038,Runstone_Quality_5,飞仙之石,3,,,10,,,,,,,,,,,,,{},{},{}
-39039,Runstone_Quality_6,筑基灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,5; bonus bLuk,-3; bonus2 bAddClass,Class_Boss,20;bonus2 bMagicAddClass,Class_Boss,20; bonus2 bSubRace,RC_DemiHuman,3; bonus2 bSubRace,RC_Player,3;bonus bAddDamage,2000;},{},{}
-39040,Runstone_Quality_7,结丹灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,10; bonus bLuk,-6; bonus2 bAddClass,Class_Boss,30;bonus2 bMagicAddClass,Class_Boss,30; bonus2 bSubRace,RC_DemiHuman,6; bonus2 bSubRace,RC_Player,6;bonus bTransferAttr,1;},{},{}
+39039,Runstone_Quality_6,筑基灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,5; bonus bLuk,-3; bonus2 bAddClass,Class_Boss,20;bonus2 bMagicAddClass,Class_Boss,20; bonus2 bSubRace,RC_DemiHuman,3; bonus2 bSubRace,RC_Player,3;},{},{}
+39040,Runstone_Quality_7,结丹灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,10; bonus bLuk,-6; bonus2 bAddClass,Class_Boss,30;bonus2 bMagicAddClass,Class_Boss,30; bonus2 bSubRace,RC_DemiHuman,6; bonus2 bSubRace,RC_Player,6;},{},{}
 39041,Runstone_Quality_8,元婴灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,15; bonus bLuk,-9; bonus2 bAddClass,Class_Boss,40;bonus2 bMagicAddClass,Class_Boss,40; bonus2 bSubRace,RC_DemiHuman,9; bonus2 bSubRace,RC_Player,9;},{},{}
-39042,Runstone_Quality_9,大乘灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,20; bonus bLuk,-12; bonus2 bAddClass,Class_Boss,50;bonus2 bMagicAddClass,Class_Boss,50; bonus2 bSubRace,RC_DemiHuman,12; bonus2 bSubRace,RC_Player,12;},{},{}
-39043,Runstone_Quality_10,飞仙灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,25; bonus bLuk,-15; bonus2 bAddClass,Class_Boss,60;bonus2 bMagicAddClass,Class_Boss,60; bonus2 bSubRace,RC_DemiHuman,15; bonus2 bSubRace,RC_Player,15;},{},{}
+39152,Runstone_Quality_9,渡劫灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,20; bonus bLuk,-12; bonus2 bAddClass,Class_Boss,50;bonus2 bMagicAddClass,Class_Boss,50; bonus2 bSubRace,RC_DemiHuman,12; bonus2 bSubRace,RC_Player,12;},{},{}
+39042,Runstone_Quality_11,大乘灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,25; bonus bLuk,-15; bonus2 bAddClass,Class_Boss,60;bonus2 bMagicAddClass,Class_Boss,60; bonus2 bSubRace,RC_DemiHuman,15; bonus2 bSubRace,RC_Player,15;},{},{}
+39043,Runstone_Quality_11,飞仙灵宝,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,30; bonus bLuk,-18; bonus2 bAddClass,Class_Boss,70;bonus2 bMagicAddClass,Class_Boss,70; bonus2 bSubRace,RC_DemiHuman,18; bonus2 bSubRace,RC_Player,18;},{},{}
 39044,newitem_51,黑龙战甲碎片,3,,,10,,,,,,,,,,,,,{},{},{}
 39045,newitem_52,黑龙之盾碎片,3,,,10,,,,,,,,,,,,,{},{},{}
 39046,newitem_53,黑龙战靴碎片,3,,,10,,,,,,,,,,,,,{},{},{}
@@ -168,7 +169,7 @@
 39093,newitem_47,防爆券,3,,,10,,,,,,,,,,,,,{},{},{}
 39094,newitem_25,卡片进阶券,3,,,10,,,,,,,,,,,,,{},{},{}
 39095,newitem_58,公会经验石,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ atcommand "@guildlvlup 50" ; },{},{}
-39096,newitem_64,新人卡,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "xinshou?ka"; },{},{}
+39096,newitem_64,新人卡,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "xinshouka"; },{},{}
 39097,newitem_69,高级会员状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "vip_status"; },{},{}
 39098,newitem_70,赞助会员状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "s_vip_status"; },{},{}
 39099,newitem_72,关闭光环,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "gh321"; },{},{}

@@ -1,0 +1,145 @@
+prontera,170,125,3,	script	修真者	76,{
+    mes "[修真者]";
+    mes "突破等级上限";
+    mes "99-109每级需要筑基之石, 金币2个";
+    mes "110-119每级需要结丹之石,金币4个";
+    mes "120-129每级需要元婴之石,金币8个";
+    mes "130-139每级需要大乘之石,金币16个";
+    mes "140-150每级需要飞仙之石,金币32个";
+    next;
+    mes "[修真者]";
+    mes "每突破一个阶段都可以获得相对应的灵宝";
+    mes "100-109级可获得筑基灵宝";
+    mes "110-119级可获得结丹灵宝";
+    mes "120-129级可获得元婴灵宝";
+    mes "130-139级可获得渡劫灵宝";
+    mes "140-149级可获得大乘灵宝";
+    mes "150级时可以获得飞仙灵宝";	
+    next;
+    switch(select("获得灵宝","筑基","结丹","元婴","大乘","飞仙")) {
+        case 1:
+            if(countitem(39039) > 0) {
+                delitem 39039,1;
+            }
+            if(countitem(39040) > 0) {
+                delitem 39040,1;
+            }
+            if(countitem(39041) > 0) {
+                delitem 39041,1;
+            }
+            if(countitem(39042) > 0) {
+                delitem 39042,1;
+            }
+            if(countitem(39043) > 0) {
+                delitem 39043,1;
+            }
+            if(countitem(39152) > 0) {
+                delitem 39152,1;
+            }
+            if(baselevel > 99 && baselevel < 110) {
+                getitem 39039,1;
+                close;
+            } else if(baselevel >= 110 && baselevel < 120) {
+                getitem 39040,1;
+                close;
+            } else if(baselevel >= 120 && baselevel < 130) {
+                getitem 39041,1;
+                close;
+            } else if(baselevel >= 130 && baselevel < 140) {
+                getitem 39152,1;
+                close;
+            } else if(baselevel >= 140 && baselevel < 150) {
+                getitem 39042,1;
+                close;
+            } else if(baselevel == 150) {
+                getitem 39043,1;
+                close;
+            }
+            break;
+
+        case 2:
+            if ((baselevel<99)||(baselevel>=110)) {
+                mes "[修真者]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if((countitem(39034)<1)||(countitem(671)<2)){
+                mes "[修真者]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39034,1;
+            delitem 671,2;
+            atcommand"@lvup 1";
+            close;
+
+        case 3:
+            if ((baselevel<110)||(baselevel>=120)) {
+                mes "[修真者]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if((countitem(39035)<1)||(countitem(671)<4)){
+                mes "[修真者]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39035,1;
+            delitem 671,4;
+            atcommand"@lvup 1";
+            close;
+
+        case 4:
+            if ((baselevel<120)||(baselevel>=130)) {
+                mes "[修真者]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if((countitem(39036)<1)||(countitem(671)<8)){
+                mes "[修真者]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39036,1;
+            delitem 671,8;
+            atcommand"@lvup 1";
+            close;
+
+        case 5:
+            if ((baselevel<130)||(baselevel>=140)) {
+                mes "[修真者]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if((countitem(39037)<1)||(countitem(671)<16)){
+                mes "[修真者]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39037,1;
+            delitem 671,16;
+            atcommand"@lvup 1";
+            close;
+
+        case 6:
+            if ((baselevel<140)|| (baselevel==150)){
+                mes "[修真者]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if((countitem(39038)<1)||(countitem(671)<32)){
+                mes "[修真者]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39038,1;
+            delitem 671,32;
+            atcommand"@lvup 1";
+            close;
+    }
+
+OnInit:
+     waitingroom "[☆突破极限☆]",0;
+     end;
+}
+
