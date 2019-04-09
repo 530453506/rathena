@@ -212,6 +212,134 @@ int map_fd;
 
 static int clif_parse (int fd);
 
+// @aura
+static int auraTable[][3] = {
+		{-1,  -1,  -1},
+		// Reserved for PK Mode
+		{586, -1,  -1}, // LH
+		{586, 362, -1}, // LH Mvp
+		{586, 362, 240}, // 1? PK Place
+		// Basic Auras
+		{418, -1,  -1}, // Red Fury
+		{486, -1,  -1}, // Blue Fury
+		{485, -1,  -1}, // White Fury
+		{239, -1,  -1}, // Aura Red
+		{240, -1,  -1}, // Aura White
+		{241, -1,  -1}, // Aura Yellow
+		{620, -1,  -1}, // Aura Blue
+		{202, -1,  -1}, // Lvl 99 Bubbles
+		{362, -1,  -1}, // Advanced Lvl 99 Bubbles
+		{678, -1,  -1}, // Brazil Aura Bubbles
+		{679, -1,  -1}, // Brazil Aura
+		{680, -1,  -1}, // Brazil Aura Floor
+		// 2 Sets
+		{239, 418, -1},
+		{239, 486, -1},
+		{239, 485, -1},
+		{240, 418, -1},
+		{240, 486, -1},
+		{240, 485, -1},
+		{241, 418, -1},
+		{241, 486, -1},
+		{241, 485, -1},
+		{620, 418, -1},
+		{620, 486, -1},
+		{620, 485, -1},
+		// Full Sets
+		{239, 418, 202},
+		{239, 486, 202},
+		{239, 485, 202},
+		{240, 418, 202},
+		{240, 486, 202},
+		{240, 485, 202},
+		{241, 418, 202},
+		{241, 486, 202},
+		{241, 485, 202},
+		{620, 418, 202},
+		{620, 486, 202},
+		{620, 485, 202},
+		{239, 418, 362},
+		{239, 486, 362},
+		{239, 485, 362},
+		{240, 418, 362},
+		{240, 486, 362},
+		{240, 485, 362},
+		{241, 418, 362},
+		{241, 486, 362},
+		{241, 485, 362},
+		{620, 418, 362},
+		{620, 486, 362},
+		{620, 485, 362},
+		{239, 418, 678},
+		{239, 486, 678},
+		{239, 485, 678},
+		{240, 418, 678},
+		{240, 486, 678},
+		{240, 485, 678},
+		{241, 418, 678},
+		{241, 486, 678},
+		{241, 485, 678},
+		{620, 418, 678},
+		{620, 486, 678},
+		{620, 485, 678},
+		// Oficial Set
+		{680, 679, 678},
+		{-1,  -1,  -1}
+};
+
+int aura_getSize() {
+	return sizeof(auraTable) / (sizeof(int) * 3) - 1;
+}
+
+int aura_getAuraEffect(struct map_session_data *sd, short pos) {
+	int aura = sd->status.aura;
+
+	if (pos < 0 || pos > 2)
+		return -1;
+
+	if (aura > aura_getSize() || aura < 0)
+		return -1;
+
+	return auraTable[aura][pos];
+}
+
+void clif_sendaurastoone(struct map_session_data *sd, struct map_session_data *dsd)
+{
+	int effect1, effect2, effect3;
+
+	if (pc_ishiding(sd))
+		return;
+
+	effect1 = aura_getAuraEffect(sd, 0);
+	effect2 = aura_getAuraEffect(sd, 1);
+	effect3 = aura_getAuraEffect(sd, 2);
+
+	if (effect1 >= 0)
+		clif_specialeffect_single(&sd->bl, effect1, dsd->fd);
+	if (effect2 >= 0)
+		clif_specialeffect_single(&sd->bl, effect2, dsd->fd);
+	if (effect3 >= 0)
+		clif_specialeffect_single(&sd->bl, effect3, dsd->fd);
+}
+
+void clif_sendauras(struct map_session_data *sd, enum send_target type) {
+	int effect1, effect2, effect3;
+
+	if (pc_ishiding(sd))
+		return;
+
+	effect1 = aura_getAuraEffect(sd, 0);
+	effect2 = aura_getAuraEffect(sd, 1);
+	effect3 = aura_getAuraEffect(sd, 2);
+
+	if (effect1 >= 0)
+		clif_specialeffect(&sd->bl, effect1, type);
+	if (effect2 >= 0)
+		clif_specialeffect(&sd->bl, effect2, type);
+	if (effect3 >= 0)
+		clif_specialeffect(&sd->bl, effect3, type);
+}
+
 /*==========================================
  * Ip setting of map-server
  *------------------------------------------*/
@@ -1472,6 +1600,7 @@ int clif_spawn(struct block_list *bl)
 				clif_specialeffect(bl,EF_GIANTBODY2,AREA);
 			else if(sd->state.size==SZ_MEDIUM)
 				clif_specialeffect(bl,EF_BABYBODY2,AREA);
+			clif_sendauras(sd, AREA);
 			if( sd->bg_id && map_getmapflag(sd->bl.m, MF_BATTLEGROUND) )
 				clif_sendbgemblem_area(sd);
 			if (sd->spiritcharm_type != CHARM_TYPE_NONE && sd->spiritcharm > 0)
@@ -4672,6 +4801,7 @@ void clif_getareachar_unit(struct map_session_data* sd,struct block_list *bl)
 				clif_specialeffect_single(bl,EF_GIANTBODY2,sd->fd);
 			else if(tsd->state.size==SZ_MEDIUM)
 				clif_specialeffect_single(bl,EF_BABYBODY2,sd->fd);
+			clif_sendaurastoone(tsd, sd);
 			if( tsd->bg_id && map_getmapflag(tsd->bl.m, MF_BATTLEGROUND) )
 				clif_sendbgemblem_single(sd->fd,tsd);
 			if ( tsd->status.robe )
@@ -4719,6 +4849,34 @@ void clif_getareachar_unit(struct map_session_data* sd,struct block_list *bl)
 			clif_pet_equip(sd, (TBL_PET*)bl); // needed to display pet equip properly
 		break;
 	}
+}
+
+int clif_insight2(struct block_list *bl, va_list ap) {
+	struct block_list *tbl;
+	struct map_session_data *sd, *tsd;
+	int flag;
+
+	tbl = va_arg(ap, struct block_list*);
+	flag = va_arg(ap, int);
+
+	if (bl == tbl && !flag)
+		return 0;
+
+	sd = BL_CAST(BL_PC, bl);
+	tsd = BL_CAST(BL_PC, tbl);
+
+	if (sd && sd->fd) {
+		if (bl == tbl)
+			clif_sendaurastoone(sd, tsd);
+		else
+			clif_getareachar_unit(sd, tbl);
+	}
+	return 0;
+}
+
+void clif_getareachar_char(struct block_list *bl, short flag) {
+	map_foreachinarea(clif_insight2, bl->m, bl->x - AREA_SIZE, bl->y - AREA_SIZE, bl->x + AREA_SIZE, bl->y + AREA_SIZE,
+					  BL_PC, bl, flag);
 }
 
 //Modifies the type of damage according to status changes [Skotlex]

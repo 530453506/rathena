@@ -540,6 +540,8 @@ struct mmo_charstatus {
 
 	unsigned char hotkey_rowshift;
 	unsigned long title_id;
+	// Aura System [Zephyrus]
+	int aura;
 };
 
 typedef enum mail_status {

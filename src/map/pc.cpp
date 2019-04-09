@@ -1606,6 +1606,8 @@ void pc_reg_received(struct map_session_data *sd)
 	sd->change_level_2nd = pc_readglobalreg(sd, add_str(JOBCHANGE2ND_VAR));
 	sd->change_level_3rd = pc_readglobalreg(sd, add_str(JOBCHANGE3RD_VAR));
 	sd->die_counter = pc_readglobalreg(sd, add_str(PCDIECOUNTER_VAR));
+	// @Aura
+	sd->status.aura = pc_readglobalreg(sd, add_str("USERAURA"));
 
 	sd->langtype = pc_readaccountreg(sd, add_str(LANGTYPE_VAR));
 	if (msg_checklangtype(sd->langtype,true) < 0)

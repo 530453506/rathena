@@ -11297,6 +11297,11 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 				ShowError("UnknownStatusChange [%d]\n", type);
 				return 0;
 			}
+			if (sd && sd->status.aura > 0 && (type == SC_HIDING || type == SC_CLOAKING || type == SC_CHASEWALK || type == SC_CLOAKINGEXCEED || type == SC__INVISIBILITY || type == SC__SHADOWFORM)) {
+				sd->status.aura *= -1;
+				clif_clearunit_area(&sd->bl, CLR_OUTSIGHT);
+				clif_getareachar_char(&sd->bl, 0);
+			}
 	} else // Special considerations when loading SC data.
 		switch( type ) {
 			case SC_WEDDING:
@@ -11713,6 +11718,11 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 			clif_changelook(bl,LOOK_SHIELD,0);
 			clif_changelook(bl,LOOK_CLOTHES_COLOR,vd->cloth_color);
 		}
+	}
+	// @Auras [Zephyrus]
+	if (sd && sd->status.aura < 0 && (type == SC_HIDING || type == SC_CLOAKING || type == SC_CHASEWALK || type == SC_CLOAKINGEXCEED || type == SC__INVISIBILITY || type == SC__SHADOWFORM)) {
+		sd->status.aura *= -1;
+		clif_sendauras(sd, AREA_WOS);
 	}
 	if (calc_flag&SCB_DYE) { // Reset DYE color
 		if (vd && vd->cloth_color) {

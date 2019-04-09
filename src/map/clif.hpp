@@ -1126,4 +1126,8 @@ void clif_equipswitch_reply( struct map_session_data* sd, bool failed );
 /// Pet evolution
 void clif_pet_evolution_result( struct map_session_data* sd, e_pet_evolution_result result );
 
+/// [@aura]
+void clif_sendauras(struct map_session_data *sd, enum send_target type);
+void clif_getareachar_char(struct block_list *bl, short flag);
+
 #endif /* CLIF_HPP */
