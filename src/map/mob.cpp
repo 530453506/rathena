@@ -344,6 +344,17 @@ struct mob_db* mobdb_search_aegisname( const char* str ){
 	return nullptr;
 }
 
+uint16 mobdb_search_aegis( const char* str ){
+	for( auto &mobdb_pair : mob_db_data ){
+		const uint16 mob_id = mobdb_pair.first;
+		if( strcmpi( str, mobdb_pair.second.sprite ) == 0 ){
+			return mob_id;
+		}
+	}
+
+	return 0;
+}
+
 /*==========================================
  * Founds up to N matches. Returns number of matches [Skotlex]
  *------------------------------------------*/

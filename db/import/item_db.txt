@@ -116,7 +116,7 @@
 39041,Runstone_Quality_8,‘™”§¡È±¶,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,15; bonus bLuk,-9; bonus2 bAddClass,Class_Boss,40;bonus2 bMagicAddClass,Class_Boss,40; bonus2 bSubRace,RC_DemiHuman,9; bonus2 bSubRace,RC_Player,9;},{},{}
 39152,Runstone_Quality_9,∂…ΩŸ¡È±¶,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,20; bonus bLuk,-12; bonus2 bAddClass,Class_Boss,50;bonus2 bMagicAddClass,Class_Boss,50; bonus2 bSubRace,RC_DemiHuman,12; bonus2 bSubRace,RC_Player,12;},{},{}
 39042,Runstone_Quality_11,¥Û≥À¡È±¶,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,25; bonus bLuk,-15; bonus2 bAddClass,Class_Boss,60;bonus2 bMagicAddClass,Class_Boss,60; bonus2 bSubRace,RC_DemiHuman,15; bonus2 bSubRace,RC_Player,15;},{},{}
-39043,Runstone_Quality_11,∑…œ…¡È±¶,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,30; bonus bLuk,-18; bonus2 bAddClass,Class_Boss,70;bonus2 bMagicAddClass,Class_Boss,70; bonus2 bSubRace,RC_DemiHuman,18; bonus2 bSubRace,RC_Player,18;},{},{}
+39043,Runstone_Quality_12,∑…œ…¡È±¶,20,,,10,,,,,,,,,,,,,{ bonus bAllStats,30; bonus bLuk,-18; bonus2 bAddClass,Class_Boss,70;bonus2 bMagicAddClass,Class_Boss,70; bonus2 bSubRace,RC_DemiHuman,18; bonus2 bSubRace,RC_Player,18;},{},{}
 39044,newitem_51,∫⁄¡˙’Ωº◊ÀÈ∆¨,3,,,10,,,,,,,,,,,,,{},{},{}
 39045,newitem_52,∫⁄¡˙÷Æ∂‹ÀÈ∆¨,3,,,10,,,,,,,,,,,,,{},{},{}
 39046,newitem_53,∫⁄¡˙’Ω—•ÀÈ∆¨,3,,,10,,,,,,,,,,,,,{},{},{}

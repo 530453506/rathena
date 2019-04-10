@@ -53,7 +53,8 @@ uint64 PetDatabase::parseBodyNode( const YAML::Node &node ){
 		return 0;
 	}
 
-	uint16 mob_id = mob->vd.class_;
+	uint16 mob_id = mobdb_search_aegis(mob_name.c_str());
+//	uint16 mob_id = mob->vd.class_;
 
 	std::shared_ptr<s_pet_db> pet = this->find( mob_id );
 	bool exists = pet != nullptr;
