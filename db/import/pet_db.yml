@@ -55,39 +55,35 @@ Header:
   Version: 1
 
 Body:
-- Mob: PET_BABY_SWORDMAN
-  TameItem: Baby_Swordman_Catch
+- Mob: BABY_SWORDMAN
   EggItem: Baby_Swordman_Egg
   FoodItem: Pet_Food
   Fullness: 3
-  IntimacyFed: 50
-  CaptureRate: 10000
+  CaptureRate: 0
   Script: >
     .@i = getpetinfo(PETINFO_INTIMATE);
 
     if( .@i >= PET_INTIMATE_LOYAL ){
-      bonus bLuk,2;
-      bonus bCritical,1;
+      bonus bLuk,20;
+      bonus bCritical,10;
     }
-#  Evolution:
-#  - Target: SWORDMAN
-#    ItemRequirements:
-#    - Item: Leaf_Of_Yggdrasil
-#      Amount: 10
-#    - Item: Unripe_Apple
-#      Amount: 3
+  Evolution:
+  - Target: SWORDMAN
+    ItemRequirements:
+    - Item: Leaf_Of_Yggdrasil
+      Amount: 10
+    - Item: Unripe_Apple
+      Amount: 3
 
-#- Mob: SWORDMAN
-#  TameItem: Unripe_Apple
-#  EggItem: SWORDMAN_Egg
-#  FoodItem: Pet_Food
-#  Fullness: 3
-#  IntimacyFed: 50
-#  CaptureRate: 0
-#  Script: >
-#    .@i = getpetinfo(PETINFO_INTIMATE);
-#
-#    if( .@i >= PET_INTIMATE_LOYAL ){
-#      bonus bLuk,2;
-#      bonus bCritical,1;
-#    }
+- Mob: SWORDMAN
+  EggItem: SWORDMAN_Egg
+  FoodItem: Pet_Food
+  Fullness: 3
+  CaptureRate: 0
+  Script: >
+    .@i = getpetinfo(PETINFO_INTIMATE);
+
+    if( .@i >= PET_INTIMATE_LOYAL ){
+      bonus bLuk,30;
+      bonus bCritical,20;
+    }

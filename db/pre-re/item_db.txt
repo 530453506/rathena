@@ -4447,35 +4447,7 @@
 9079,Mythlit_Egg,Mythlit Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
 9080,Tamadora_Egg,Tamadora Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
 
-9087,High_Orc_Egg,High Orc Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9088,Angeling_Egg,Angeling Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9089,Am_Mut_Egg,Am Mut Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9090,Little_Isis_Egg,Little Isis Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9091,Choco_Egg,Choco Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9092,Eggring_Egg,Eggring Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9093,Hyegun_Egg,Hyegun Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9094,Dr_Lunatic_Egg,Leaf Lunatic Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9095,Nine_Tail_Egg,Nine Tail Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9096,Cat_o_Nine_Tail_Egg,Cat o Nine Tail Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9097,Diabolic_2_Egg,Diabolic Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9098,Fire_Deleter_Egg,Fire Deleter Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9099,Teddy_Bear_Egg,Teddy Bear Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9100,Gremlin_Egg,Gremlin Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9101,Scatleton_Egg,Scatleton Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9102,Mummy_Egg,Mummy Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9103,Willow_Egg,Willow Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9104,Roween_Egg,Roween Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9105,Hodremlin_Egg,Hodremlin Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9106,Metaller_Egg,Metaller Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9107,Ancient_Mummy_Egg,Ancient Mummy Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9108,Xm_Teddy_Bear_Egg,Xmas Teddy Bear Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9109,Sweet_Drops_Egg,Sweet Drops Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
 
-9111,Phreeoni_Egg,Phreeoni Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9112,Moonlight_Egg,Moonlight Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9113,Skelion_Egg,Skelion Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9114,Pouring_Egg,Pouring Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
-9115,Bacsojin2_Egg_,Bacsojin Egg,7,20,,0,,,,,,,,,,,,,{},{},{}
 
 // Pet Accessories
 //===================================================================

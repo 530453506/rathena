@@ -410,7 +410,8 @@ uint64 PetDatabase::parseBodyNode( const YAML::Node &node ){
 				return 0;
 			}
 
-			uint16 targetId = mob->vd.class_;
+			uint16 targetId = mobdb_search_aegis(target_name.c_str());
+//			uint16 targetId = mob->vd.class_;
 
 			if( !this->nodeExists( evolutionNode, "ItemRequirements" ) ){
 				this->invalidWarning( evolutionNode, "Missing required node \"ItemRequirements\".\n" );
