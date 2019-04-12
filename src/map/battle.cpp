@@ -8598,6 +8598,8 @@ static const struct _battle_data {
 	{ "min_shop_sell",                      &battle_config.min_shop_sell,                   0,      0,      INT_MAX,        },
 	{ "feature.equipswitch",                &battle_config.feature_equipswitch,             1,      0,      1,              },
 	{ "pet_walk_speed",                     &battle_config.pet_walk_speed,                  1,      1,      3,              },
+	{ "gvg_max_aspd",                       &battle_config.gvg_max_aspd,                    190,    100,    199,            },
+	{ "pvp_max_aspd",                       &battle_config.pvp_max_aspd,                    190,    100,    199,            },
 
 #include "../custom/battle_config_init.inc"
 };
@@ -8653,6 +8655,8 @@ void battle_adjust_conf()
 {
 	battle_config.monster_max_aspd = 2000 - battle_config.monster_max_aspd * 10;
 	battle_config.max_aspd = 2000 - battle_config.max_aspd * 10;
+	battle_config.gvg_max_aspd = 2000 - battle_config.gvg_max_aspd * 10;
+	battle_config.pvp_max_aspd = 2000 - battle_config.pvp_max_aspd * 10;
 	battle_config.max_third_aspd = 2000 - battle_config.max_third_aspd * 10;
 	battle_config.max_extended_aspd = 2000 - battle_config.max_extended_aspd * 10;
 	battle_config.max_walk_speed = 100 * DEFAULT_WALK_SPEED / battle_config.max_walk_speed;

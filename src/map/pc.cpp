@@ -12715,6 +12715,12 @@ short pc_maxparameter(struct map_session_data *sd, enum e_params param) {
 */
 short pc_maxaspd(struct map_session_data *sd) {
 	nullpo_ret(sd);
+	if(map_getmapflag(sd->bl.m, MF_GVG_CASTLE) || map_getmapflag(sd->bl.m, MF_GVG)) {
+	    return battle_config.gvg_max_aspd;
+	}
+    if(map_getmapflag(sd->bl.m, MF_PVP)) {
+        return battle_config.pvp_max_aspd;
+    }
 
 	return (( sd->class_&JOBL_THIRD) ? battle_config.max_third_aspd : (
 			((sd->class_&MAPID_UPPERMASK) == MAPID_KAGEROUOBORO || (sd->class_&MAPID_UPPERMASK) == MAPID_REBELLION) ? battle_config.max_extended_aspd :
