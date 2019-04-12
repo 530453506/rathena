@@ -1,0 +1,27 @@
+1@dc	mapflag	nomemo
+1@dc	mapflag	noteleport
+1@dc	mapflag	nosave
+1@dc	mapflag	nobranch
+1@dc	mapflag	nopenalty
+1@dc	mapflag	partylock
+
+2@dc	mapflag	nomemo
+2@dc	mapflag	noteleport
+2@dc	mapflag	nosave
+2@dc	mapflag	nobranch
+2@dc	mapflag	nopenalty
+2@dc	mapflag	partylock
+
+3@dc	mapflag	nomemo
+3@dc	mapflag	noteleport
+3@dc	mapflag	nosave
+3@dc	mapflag	nobranch
+3@dc	mapflag	nopenalty
+3@dc	mapflag	partylock
+
+3@dc	mapflag	nomemo
+3@dc	mapflag	noteleport
+3@dc	mapflag	nosave
+3@dc	mapflag	nobranch
+3@dc	mapflag	nopenalty
+3@dc	mapflag	partylock

@@ -6,23 +6,14 @@ OnInit:
 	$@cjdc_min		=	1;			//设置进入最小人数
 	$@cjdc_max		=	12;			//设置进入最大人数
 	$@Dc_Misson_1		=	10;			//道场关数
-	$@Dc_Time_All_1		=	600;			//道场时间，单位：秒
-	$@Dc_Time_In_1		=	60;			//进场时间，单位：秒
 	$@Dc_Time_Space_1	=	5;			//每关间隔时间，单位：秒
-	setarray $@cjdc_item_id[0],12133;			//设置进入道具ID
 	setarray $@cjdc_item_num[0],1;			//设置进入道具所需数量,请对应ID修改
 	setarray $@Dc_Mob_Id_1[0],3500,3501,3502,3503,3504,3505,3506,3507,3508,3509,3510,3511,3512,3513,3514,3515,3516,3517,3518;				//设置道场刷怪ID
 	setarray $@Dc_Mob_Num_1[1],1,1,1,1,1,1,1,1,1,2; 	//每关刷怪数量
 	setarray $@Dc_Item_Id_1[0],969,617,616,1530,2630,2410,675,27035,27035; 	//设置奖励ID
 	setarray $@Dc_Item_Num_1[0],30,5,3,1,1,1,4,1,1;   				//设置奖励数量
 	$@Dc_Win_Zeny_1=rand(500000,500000);		//设置奖励金钱
-	setmapflag "2@xg_vs2",mf_nomemo;
-	setmapflag "2@xg_vs2",mf_noteleport;
-	setmapflag "2@xg_vs2",mf_nosave;
-	setmapflag "2@xg_vs2",mf_nobranch;
-	setmapflag "2@xg_vs2",mf_nopenalty;
-	setmapflag "2@xg_vs2",mf_partylock;
-	removemapflag "2@xg_vs2",mf_gvg;
+
 //e 初级结束
 	//s 中级道场
 	$@Dc_In_Zeny_2		=	100000; 		//设置入场消耗ROZ
@@ -40,13 +31,7 @@ OnInit:
 	setarray $@Dc_Item_Id_2[0],27011,27013,27014,27015,27016,27012,27030,27036,2629,27038,27039,27040,27041,27042,27043,969,616,616,616,27036,969,969;    
 	setarray $@Dc_Item_Num_2[0],1,1,1,1,1,1,5,2,2,1,1,1,1,1,1,60,10,10,10,2,60,60;
 	$@Dc_Win_Zeny_2=rand(1000000,1000000); //奖金
-	setmapflag "5@xg_vs2",mf_nomemo;
-	setmapflag "5@xg_vs2",mf_noteleport;
-	setmapflag "5@xg_vs2",mf_nosave;
-	setmapflag "5@xg_vs2",mf_nobranch;
-	setmapflag "5@xg_vs2",mf_nopenalty;
-	setmapflag "5@xg_vs2",mf_partylock;
-	removemapflag "5@xg_vs2",mf_gvg;
+
 //e 中级结束
 	//s 高级道场
 	$@Dc_In_Zeny		=	100000; 		//设置入场消耗ROZ
@@ -64,14 +49,9 @@ OnInit:
 	setarray $@Dc_Item_Id[0],27020,27022,27023,27024,27025,27012,27030,27037,2629,27038,27039,27040,27041,27042,27043,969,616,969,969,616,616,616,27037,969,616,969; 
 	setarray $@Dc_Item_Num[0],1,1,1,1,1,1,15,2,3,1,1,1,1,1,1,90,15,90,90,15,15,15,2,90,15,90;  
 	$@Dc_Win_Zeny=rand(1500000,1500000); 		//奖金
-	setmapflag "3@xg_vs2",mf_nomemo;
-	setmapflag "3@xg_vs2",mf_noteleport;
-	setmapflag "3@xg_vs2",mf_nosave;
-	setmapflag "3@xg_vs2",mf_nobranch;
-	setmapflag "3@xg_vs2",mf_nopenalty;
-	setmapflag "3@xg_vs2",mf_partylock;
-	removemapflag "3@xg_vs2",mf_gvg;
+
 //e 高级结束
+	//s 究极道场
 	$@Dc_In_Zeny_3		=	100000; 		//设置入场消耗ROZ
 	$@jjdc_level		=	1;			//设置进入最小等级
 	$@jjdc_min		=	1;			//设置进入最小人数
@@ -87,13 +67,6 @@ OnInit:
 	setarray $@Dc_Item_Id_3[0],27001,27003,27004,27005,27006,27012,27027,27027,27030,27038,27039,27040,27041,27042,27043,18102,18103,18104,18105,18106,18107,2629,969,616,969,969,969,616,616,616;  
 	setarray $@Dc_Item_Num_3[0],1,1,1,1,1,1,2,2,20,1,1,1,1,1,1,1,1,1,1,1,1,4,120,20,120,120,120,20,20,20;  
 	$@Dc_Win_Zeny_3=rand(2000000,2000000); 		//奖金
-	setmapflag "1@xg_vs2",mf_nomemo;
-	setmapflag "1@xg_vs2",mf_noteleport;
-	setmapflag "1@xg_vs2",mf_nosave;
-	setmapflag "1@xg_vs2",mf_nobranch;
-	setmapflag "1@xg_vs2",mf_nopenalty;
-	setmapflag "1@xg_vs2",mf_partylock;
-	removemapflag "1@xg_vs2",mf_gvg;
 	end;
 }
 
@@ -107,10 +80,4 @@ function	script	DC_Party_On	{
 	}
 	return .@party_on;
 }
-
-1@xg_vs2	mapflag	restricted	5
-
-
-
-
 
