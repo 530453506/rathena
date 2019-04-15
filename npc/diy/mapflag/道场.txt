@@ -1,3 +1,4 @@
+//道场
 1@dc	mapflag	nomemo
 1@dc	mapflag	noteleport
 1@dc	mapflag	nosave

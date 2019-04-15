@@ -1,39 +1,25 @@
-//
-// 3BOSS by 2007-01-16
-//
-//- 
-prontera.gat,170,113,5	script	BOSS区传送	796,{
+function	script	初级BOSS区	{
     if (Zeny<200000) goto Not;
-	mes"[初级BOSS区传送]";
 	mes"普通BOSS区，入场费20W。";
 	next;
 	menu "我要传送,费用20W",-,"我不去了",L_exit;
-	mes"[初级BOSS区传送]";
+	mes "["+strnpcinfo(0)+"]";
 	mes"我现在就送你过去";
 	next;
     set zeny,zeny-200000;
 	warp "boss_cj.gat",159,368;
 	close;
 L_exit:
-	next;
-	mes"[初级BOSS区传送]";
-	mes"欢迎你下次在来";
 	close;
-end;
-
 Not:
-    mes "[初级BOSS区传送]";
+    next;
+	mes "["+strnpcinfo(0)+"]";
     mes "你的钱不够";
     mes "请带好20W再来！";
     close;
-
-OnInit:
-	waitingroom "[☆初级BOSS区☆]",0;
-	end;
 }
 
 // 怪物设定
-//[B]
 boss_cj.gat,0,0,0,0	monster	俄赛里斯	3520,6,0,0,0
 boss_cj.gat,0,0,0,0	monster	巴风特	3521,6,0,0,0
 boss_cj.gat,0,0,0,0	monster	死灵	3522,6,0,0,0
@@ -70,12 +56,3 @@ boss_cj.gat,0,0,0,0	monster	圣天使波利	3552,6,0,0,0
 boss_cj.gat,0,0,0,0	monster	白素贞	3553,3,0,0,0
 boss_cj.gat,0,0,0,0	monster	阿特罗斯	3554,3,0,0,0
 boss_cj.gat,0,0,0,0	monster	闇●剑士 赛尼亚	3555,2,0,0,0
-
-// 地图属性设置
-boss_cj.gat	mapflag	nomemo	dummy
-boss_cj.gat	mapflag	nopenalty	dummy
-boss_cj.gat	mapflag	nobranch	dummy
-boss_cj.gat	mapflag	nowarp
-boss_cj.gat	mapflag	nowarpto
-boss_cj.gat	mapflag	nogo
-boss_cj.gat	mapflag	nosave

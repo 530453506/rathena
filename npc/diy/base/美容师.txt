@@ -14,7 +14,7 @@ function	script	xjcsxxgw	{
 query_sql "SELECT `hair`,`hair_color`,`clothes_color` From `char` WHERE `char_id` = "+getcharid(0)+" ", .@hair ,.@h_color, .@c_color;
 	cutin "v_sprakki02",2;
 	mes "["+strnpcinfo(0)+"]";
-	mes "请问需要什麼服务呢?";
+	mes "请问需要什么服务呢?";
 	mes "当前衣色: ^0000FF"+.@c_color+"^000000";
 	mes "当前发型: ^0000FF"+.@hair+"^000000";
 	mes "当前发色: ^0000FF"+.@h_color+"^000000";

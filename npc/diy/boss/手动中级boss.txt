@@ -1,14 +1,9 @@
-//
-// 3BOSS by 2007-01-16
-//
-//- 
-prontera.gat,176,113,5	script	中级BOSS区传送	796,{
+function	script	中级BOSS区	{
     if (Zeny<500000) goto Not;
-	mes"[中级BOSS区传送]";
 	mes"中级BOSS区，入场费50W。";
 	next;
 	menu "我要传送，费用50W",-,"不去了",L_exit;
-	mes"[中级BOSS区传送]";
+	mes "["+strnpcinfo(0)+"]";
 	mes"我现在就送你过去";
 	next;
     set zeny,zeny-500000;
@@ -17,18 +12,15 @@ prontera.gat,176,113,5	script	中级BOSS区传送	796,{
 L_exit:	
 	close;
 Not:
-    mes "[中级BOSS区传送]";
+    next;
+	mes "["+strnpcinfo(0)+"]";
     mes "你的钱不够";
     mes "请带好50W再来！";
     close;
 
-OnInit:
-	waitingroom "[☆中级BOSS区☆]",0;
-	end;
 }
 
 // 怪物设定
-//[B]
 boss_zj.gat,0,0,0,0	monster	俄赛里斯★	3590,2,0,0,0
 boss_zj.gat,0,0,0,0	monster	巴风特★	3591,2,0,0,0
 boss_zj.gat,0,0,0,0	monster	死灵★	3592,2,0,0,0
@@ -65,12 +57,3 @@ boss_zj.gat,0,0,0,0	monster	圣天使波利★	3622,2,0,0,0
 boss_zj.gat,0,0,0,0	monster	白素贞★	3623,2,0,0,0
 boss_zj.gat,0,0,0,0	monster	阿特罗斯★	3624,2,0,0,0
 boss_zj.gat,0,0,0,0	monster	闇●剑士 赛尼亚★	3625,2,0,0,0
-
-// 地图属性设置
-boss_zj.gat	mapflag	nomemo	dummy
-boss_zj.gat	mapflag	nopenalty	dummy
-boss_zj.gat	mapflag	nobranch	dummy
-boss_zj.gat	mapflag	nowarp
-boss_zj.gat	mapflag	nowarpto
-boss_zj.gat	mapflag	nogo
-boss_zj.gat	mapflag	nosave

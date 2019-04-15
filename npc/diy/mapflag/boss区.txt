@@ -1,0 +1,45 @@
+//boss
+boss_cj.gat	mapflag	nomemo
+boss_cj.gat	mapflag	nopenalty
+boss_cj.gat	mapflag	nobranch
+boss_cj.gat	mapflag	nowarp
+boss_cj.gat	mapflag	nowarpto
+boss_cj.gat	mapflag	nogo
+boss_cj.gat	mapflag	nosave
+boss_cj.gat	mapflag	monster_noteleport
+
+boss_zj.gat	mapflag	nomemo
+boss_zj.gat	mapflag	nopenalty
+boss_zj.gat	mapflag	nobranch
+boss_zj.gat	mapflag	nowarp
+boss_zj.gat	mapflag	nowarpto
+boss_zj.gat	mapflag	nogo
+boss_zj.gat	mapflag	nosave
+boss_zj.gat	mapflag	monster_noteleport
+
+boss_gj.gat	mapflag	nomemo
+boss_gj.gat	mapflag	nopenalty
+boss_gj.gat	mapflag	nobranch
+boss_gj.gat	mapflag	nowarp
+boss_gj.gat	mapflag	nowarpto
+boss_gj.gat	mapflag	nogo
+boss_gj.gat	mapflag	nosave
+boss_gj.gat	mapflag	monster_noteleport
+
+boss_jj.gat	mapflag	nomemo
+boss_jj.gat	mapflag	nopenalty
+boss_jj.gat	mapflag	nobranch
+boss_jj.gat	mapflag	nowarp
+boss_jj.gat	mapflag	nowarpto
+boss_jj.gat	mapflag	nogo
+boss_jj.gat	mapflag	nosave
+boss_jj.gat	mapflag	monster_noteleport
+
+boss_xy.gat	mapflag	nomemo
+boss_xy.gat	mapflag	nopenalty
+boss_xy.gat	mapflag	nobranch
+boss_xy.gat	mapflag	nowarp
+boss_xy.gat	mapflag	nowarpto
+boss_xy.gat	mapflag	nogo
+boss_xy.gat	mapflag	nosave
+boss_xy.gat	mapflag	monster_noteleport

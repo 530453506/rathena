@@ -1,39 +1,25 @@
-//
-// 3BOSS by 2007-01-16
-//
-//- 
-prontera.gat,188,113,5	script	究极BOSS区传送	796,{
+function	script	究极BOSS区	{
     if (Zeny<3000000) goto Not;
-	mes"[究极BOSS区传送]";
 	mes"究极BOSS区，入场费300W。";
 	next;
 	menu "我要传送，费用300W",-,"我不去了",L_exit;
-	mes"[究极BOSS区传送]";
+	mes "["+strnpcinfo(0)+"]";
 	mes"我现在就送你过去";
 	next;
     set zeny,zeny-3000000;
 	warp "boss_jj.gat",159,368;
 	close;
 L_exit:
-	next;
-	mes"[究极BOSS区传送]";
-	mes"欢迎你下次在来";
 	close;
-end;
-
 Not:
-    mes "[究极BOSS区传送]";
+    next;
+	mes "["+strnpcinfo(0)+"]";
     mes "你的钱不够";
     mes "请带好300W再来！";
     close;
-
-OnInit:
-	waitingroom "[☆究极BOSS区☆]",0;
-	end;
 }
 
 // 怪物设定
-//[B]
 boss_jj.gat,0,0,0,0	monster	俄赛里斯★★★	2490,2,0,0,0
 boss_jj.gat,0,0,0,0	monster	巴风特★★★	2491,2,0,0,0
 boss_jj.gat,0,0,0,0	monster	死灵★★★	2492,2,0,0,0
@@ -70,12 +56,3 @@ boss_jj.gat,0,0,0,0	monster	圣天使波利★★★	2522,2,0,0,0
 boss_jj.gat,0,0,0,0	monster	白素贞★★★	2523,2,0,0,0
 boss_jj.gat,0,0,0,0	monster	阿特罗斯★★★	2524,2,0,0,0
 boss_jj.gat,0,0,0,0	monster	闇●剑士 赛尼亚★★★	2525,2,0,0,0
-
-// 地图属性设置
-boss_jj.gat	mapflag	nomemo	dummy
-boss_jj.gat	mapflag	nopenalty	dummy
-boss_jj.gat	mapflag	nobranch	dummy
-boss_jj.gat	mapflag	nowarp
-boss_jj.gat	mapflag	nowarpto
-boss_jj.gat	mapflag	nogo
-boss_jj.gat	mapflag	nosave
