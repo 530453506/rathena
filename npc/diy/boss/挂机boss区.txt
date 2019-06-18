@@ -1,0 +1,15 @@
+prontera.gat,176,113,5	script	挂机BOSS区	796,{
+	mes "["+strnpcinfo(0)+"]";
+    mes "选择BOSS区进行传送";
+    switch(select("初级BOSS区","中级BOSS区","高级BOSS区","究极BOSS区")){
+        case 1: callfunc "挂机初级BOSS区"; break;
+        case 2: callfunc "挂机中级BOSS区"; break;
+        case 3: callfunc "挂机高级BOSS区"; break;
+        case 4: callfunc "挂机究极BOSS区"; break;
+    }
+    end;
+
+OnInit:
+	waitingroom "[☆挂机BOSS区☆]",0;
+	end;
+}

@@ -1,6 +1,6 @@
 function	script	初级BOSS区	{
     if (Zeny<200000) goto Not;
-	mes"普通BOSS区，入场费20W。";
+	mes"初级BOSS区，入场费20W。";
 	next;
 	menu "我要传送,费用20W",-,"我不去了",L_exit;
 	mes "["+strnpcinfo(0)+"]";

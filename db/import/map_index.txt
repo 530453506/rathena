@@ -27,3 +27,16 @@ boss_xy
 3@dc
 4@dc
 5@dc
+boss_gj_cj1
+boss_gj_cj2
+boss_gj_cj3
+boss_gj_zj1
+boss_gj_zj2
+boss_gj_zj3
+boss_gj_gj1
+boss_gj_gj2
+boss_gj_gj3
+boss_gj_jj1
+boss_gj_jj2
+boss_gj_jj3
+boss_gj_xy
