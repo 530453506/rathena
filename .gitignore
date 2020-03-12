@@ -51,7 +51,7 @@ Thumbs.db
 /3rdparty/yaml-cpp/Makefile
 
 # /db/
-#/db/import
+/db/import
 
 # /conf/
 /conf/import
@@ -102,6 +102,7 @@ Thumbs.db
 *.VC.db
 *.VC.opendb
 
+/.idea/
 /.idea/.name
 /.idea/misc.xml
 /.idea/modules.xml
@@ -125,5 +126,6 @@ Thumbs.db
 /pcre8.dll
 /zlib.dll
 
-/.idea
+# CMakeFiles
+/CMakeFiles/
 /cmake-build-debug
