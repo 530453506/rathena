@@ -10191,30 +10191,32 @@ ACMD_FUNC(camerainfo){
  * @author Zephyrus
  */
 ACMD_FUNC(aura) {
-	struct map_session_data *pl_sd = NULL;
-	int type = 0;
+    struct map_session_data *pl_sd = NULL;
+    int type = 0;
 
-	if (!message || !*message || sscanf(message, "%d %[^\n]", &type, atcmd_player_name) < 2) {
-		if (!message || !*message || sscanf(message, "%d", &type) < 1) {
-			clif_displaymessage(fd, "Please, enter at least an option (usage: @aura  ).");
-			return -1;
-		}
+    if (!message || !*message || sscanf(message, "%d %[^\n]", &type, atcmd_player_name) < 2) {
+        if (!message || !*message || sscanf(message, "%d", &type) < 1) {
+            clif_displaymessage(fd, "Please, enter at least an option (usage: @aura  ).");
+            return -1;
+        }
 
-		atcmd_player_name[0] = 0;
-		pl_sd = sd;
-	}
+        atcmd_player_name[0] = 0;
+        pl_sd = sd;
+    }
 
-	if (pl_sd != sd) {
-		if ((pl_sd = map_nick2sd(atcmd_player_name, true)) == NULL)
-			return -1;
-	}
+    if (pl_sd != sd) {
+        if ((pl_sd = map_nick2sd(atcmd_player_name, true)) == NULL)
+            return -1;
+    }
 
 //	clif_displaymessage(sd->fd, atcmd_output);
 
-	pl_sd->status.aura = type;
-	pc_setglobalreg(pl_sd, add_str("USERAURA"), type);
+    pl_sd->status.aura = type;
+    pc_setglobalreg(pl_sd, add_str("USERAURA"), type);
 
-	pc_setpos(pl_sd, pl_sd->mapindex, pl_sd->bl.x, pl_sd->bl.y, CLR_TELEPORT);
+    pc_setpos(pl_sd, pl_sd->mapindex, pl_sd->bl.x, pl_sd->bl.y, CLR_TELEPORT);
+
+}
 
 ACMD_FUNC(resurrect) {
 	nullpo_retr(-1, sd);
