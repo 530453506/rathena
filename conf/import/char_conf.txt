@@ -1,0 +1,6 @@
+char_name_option: 2
+char_name_letters: \ /:*?#@!
+pincode_enabled: no
+pincode_force: no
+server_name: mmro
+start_point_pre: prontera,156,120

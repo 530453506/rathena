@@ -1,0 +1,30 @@
+//battle
+//不消耗箭矢
+arrow_decrement: 0
+
+//client
+max_hair_style: 83
+// max_hair_color  发色编号的最大值
+max_hair_color: 250
+// max_cloth_color 服装颜色编号的最大值
+max_cloth_color: 552
+display_version: no
+
+//exp
+// Turn this on to allow a player to level up more than once from a kill. (Note 1)
+multi_level_up: yes
+
+//items
+// Allow changing of equipment while interacting with NPCs? (Note 1)
+item_enabled_npc: no
+
+//monster
+show_mob_info: 1
+
+//plyaer
+max_aspd: 197
+max_third_aspd: 197
+max_extended_aspd: 197
+gvg_max_aspd: 193
+pvp_max_aspd: 193
+

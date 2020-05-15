@@ -1,0 +1,54 @@
+//===== rAthena Script =======================================
+//= Sample Random Option Script
+//===== Description: =========================================
+//= Enchant a weapon with a random element option 
+//= to a weapon with no random option.
+//===== Changelogs: ==========================================
+//= 1.0 First version. [Secretdataz]
+//============================================================
+
+prontera,156,125,4	script	拜剑山庄傲拜	1_M_WIZARD,{
+	mes "[拜剑山庄傲拜]";
+	mes "我能让你更强.";
+	mes "感兴趣吗?";
+	next;
+	if(select("非常感兴趣.") == 1){
+		.@id = getequipid(EQI_HAND_R);
+		for(.@i = 0; .@i < .sz; ++.@i){
+			if(.@id == .alloweditems[.@i])
+				.@allowed = 1;
+		}
+		mes "[拜剑山庄傲拜]";
+		if(.@id == -1) {
+			mes "你的兵器呢?";
+			close;
+		} else if(!.@allowed){
+			mes "你的兵器不行.";
+			close;
+		}
+		//else if(getequiprandomoption(EQI_HAND_R,0,ROA_ID)){
+		//	mes "Your weapon has already been enchanted.";
+		//	close;
+		//}
+		mes "想要强化 " + getitemname(.@id) + " 吗?";
+		next;
+		if(select("请.") == 1){
+			mes "[拜剑山庄傲拜]";
+			mes "*duang duang duang*";
+			progressbar "#00FF00",2;
+			next;
+			setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_ATTPOWER,rand(50,100),0);
+			mes "[拜剑山庄傲拜]";
+			mes "幸不辱命.";
+			close;
+		}
+		close;
+	}
+	else{
+		close;
+	}
+	
+OnInit:
+	setarray .alloweditems[0],1201,1202; // Add more item ids here
+	.sz = getarraysize(.alloweditems);
+}

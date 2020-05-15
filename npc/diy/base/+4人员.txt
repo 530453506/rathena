@@ -34,7 +34,7 @@
 prontera.gat,146,107,5	script	安全精练人员	63,{
 	set @max,4;
 	set @part,1;
-	set @part_max,7;
+	set @part_max,10;
 	set @ngp,1;
 	set @ygp,1;
 	set @ngpmx,7;

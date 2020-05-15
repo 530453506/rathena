@@ -13,6 +13,9 @@
 // ID,Name,Name,Type,Price,Sell,Weight,ATK[:MATK],DEF,Range,Slot,Job,Class,Gender,Loc,wLV,eLV[:maxLevel],Refineable,View,{ Script },{ OnEquip_Script },{ OnUnequip_Script }
 //
 //=======================以下内容为正文========================
+
+1201,Knife,短剑,5,50,,400,17,,1,3,0x3E9F7EEF,7,2,2,1,1,1,1,{bonus bAtk,getrefine() * getequiprandomoption(EQI_HAND_R,0,ROA_VALUE);},{},{}
+
 2410,Sleipnir,史雷普尼尔之靴,3,,,,,,,,,,,,,,,,{},{},{}
 2629,Magingiorde,雷神腰带,3,,,,,,,,,,,,,,,,{},{},{}
 2630,Brysinggamen,女神颈链,3,,,,,,,,,,,,,,,,{},{},{}
