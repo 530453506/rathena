@@ -87,16 +87,16 @@
 39014,Cash_Box_2000,2000点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 2000"; },{},{}
 39015,Cash_Box_5000,5000点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 5000"; },{},{}
 // 自定义物品 - Zeny万元支票
-39016,Zeny_Cheque_1,1亿元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 100000000"; },{},{}
-39017,Zeny_Cheque_5,5万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 50000"; },{},{}
-39018,Zeny_Cheque_10,10万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 100000"; },{},{}
-39019,Zeny_Cheque_25,25万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 250000"; },{},{}
-39020,Zeny_Cheque_50,50万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 500000"; },{},{}
-39021,Zeny_Cheque_100,100万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 1000000"; },{},{}
-39022,Zeny_Cheque_500,500万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 5000000"; },{},{}
-39023,Zeny_Cheque_1000,1000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 10000000"; },{},{}
-39024,Zeny_Cheque_2000,2000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 20000000"; },{},{}
-39025,Zeny_Cheque_5000,5000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@zeny 50000000"; },{},{}
+39016,Zeny_Cheque_1,1亿元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+100000000; },{},{}
+39017,Zeny_Cheque_5,5万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+50000; },{},{}
+39018,Zeny_Cheque_10,10万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+100000; },{},{}
+39019,Zeny_Cheque_25,25万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+250000; },{},{}
+39020,Zeny_Cheque_50,50万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+500000; },{},{}
+39021,Zeny_Cheque_100,100万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+1000000; },{},{}
+39022,Zeny_Cheque_500,500万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+5000000; },{},{}
+39023,Zeny_Cheque_1000,1000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+10000000; },{},{}
+39024,Zeny_Cheque_2000,2000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+20000000; },{},{}
+39025,Zeny_Cheque_5000,5000万元支票,2,0,,20,,,,,0xFFFFFFFF,63,2,,,,,,{ set Zeny,Zeny+50000000; },{},{}
 39026,Jewel_Of_Prayer_2,初级宝箱,11,,,0,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "baoxiang1"; },{},{}
 39027,Jewel_Of_Prayer_3,中级宝箱,11,,,0,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "baoxiang2"; },{},{}
 39028,Jewel_Of_Prayer_4,高级宝箱,11,,,0,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "baoxiang3"; },{},{}
@@ -169,8 +169,7 @@
 39094,newitem_25,卡片进阶券,3,,,10,,,,,,,,,,,,,{},{},{}
 39095,newitem_58,公会经验石,2,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ atcommand "@guildlvlup 50" ; },{},{}
 39096,newitem_64,新人卡,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "xinshouka"; },{},{}
-39097,newitem_69,高级会员状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "vip_status"; },{},{}
-39098,newitem_70,赞助会员状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "s_vip_status"; },{},{}
+39097,newitem_69,状态卷轴,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "vip_status"; },{},{}
 39099,newitem_72,关闭光环,11,20,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ callfunc "gh321"; },{},{}
 
 39100,Infiltrator_Box_1,紫色梦幻天翼箱子,18,20,,10,,,,,0xFFFFFFFF,7,2,,,,,,{},{},{}
@@ -209,7 +208,7 @@
 39132,My_Cion3,保卫战积分100点,2,0,,0,,,,,0xFFFFFFFF,7,2,,,,,,{ set jifen,jifen+100; dispbottom "[积分提示] - 增长100点保卫战积分,您目前有:["+jifen+"]点保卫战积分"; },{},{}
 39133,newitem_45,在线积分500点,2,,,10,,,,,0xFFFFFFFF,7,2,,,,,,{ set paodian,paodian+500; dispbottom "[积分提示] - 增长500点在线积分,您目前有:["+paodian+"]点在线积分"; },{},{}
 39134,miniys,迷你天使波利药水,11,,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 15,15;},{},{}
-39135,item_6,天使波利药水,11,,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 25,25;},{},{}
+39135,item_6,天使波利药水,11,,,20,,,,,0xFFFFFFFF,7,2,,,,,,{ percentheal 15,15; if (vip_status(VIP_STATUS_ACTIVE)) {percentheal 5,5;}},{},{}
 39136,cjfm,初级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
 39137,zjfm,中级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}
 39138,gjfm,高级附魔之石,3,0,,10,,,,,,,,,,,,,{},{},{}

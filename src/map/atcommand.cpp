@@ -11068,7 +11068,7 @@ void autopot_motion(struct map_session_data *sd) {
         for (i = 0; i < MAX_INVENTORY; i++) {
             if (!sd->inventory_data[i])
                 continue;
-            if (sd->inventory_data[i]->nameid == 39097 || sd->inventory_data[i]->nameid == 39098) {
+            if (sd->inventory_data[i]->nameid == 39097) {
                 pc_useitem(sd, i);
             }
         }
@@ -11077,7 +11077,7 @@ void autopot_motion(struct map_session_data *sd) {
         for (i = 0; i < MAX_INVENTORY; i++) {
             if (!sd->inventory_data[i])
                 continue;
-            if (sd->inventory_data[i]->nameid == 39134 || sd->inventory_data[i]->nameid == 39135) {
+            if (sd->inventory_data[i]->nameid == 39135) {
                 pc_useitem(sd, i);
             }
         }

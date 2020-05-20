@@ -1,0 +1,53 @@
+function	script	vip_apply	{
+	mes "您是否想成为赞助会员呢？";
+	mes "免费附送无限双补药水.";
+	mes "状态卷轴和<初级>雅典娜神圣衣一件.";
+	next;
+	switch(select("非常愿意","以后在说"))	
+	{
+	    case 1:
+	        query_sql "select `account_id` from `login` where `account_id` = '"+getcharid(3)+"'",@account_id1;
+	        query_sql "select count(`account_id`) from `member_list` where `account_id` = "+@account_id1,@num1;
+	        if (@num1>0) {
+	            mes "该帐号已是会员,请不要重复添加.";
+	            close;
+	        }
+	        delitem 39151,1;
+	        query_sql "insert `member_list` values ("+getcharid(3)+",1,0)";
+	        mes "会员添加成功.";
+	        getitem 39135,100;
+	        getitem 39098,100;
+	        getitem 40561,1;
+	        close;
+	    case 2:
+	        mes "想加入的时候再找我";
+	        close;
+    }
+}
+
+-	script	vip_table	-1,{
+    OnInit:
+    	query_sql "create table if not exists `member_list` (`account_id` int(11) unsigned not null default '0',`lv` int(11) unsigned not null default '0',`state` int(11) unsigned not null default '0',primary key  (`account_id`)) engine=myisam";
+    	query_sql "create table if not exists `member_item` (`item_id` int(11) unsigned not null default '0',`item_num` int(11) unsigned not null default '0',`item_lv` int(11) unsigned not null default '0',primary key  (`item_id`)) engine=myisam";
+    	query_sql "select count(`item_id`) from `member_item`",$@num;
+    	if ($@num==0) {
+    		query_sql "insert `member_item` values (999999,5,0)";
+    		query_sql "insert `member_item` values (888888,1000000,0)";
+    		}
+    	end;
+
+    OnMon0000:
+    	query_sql "update `member_list` set `state` = 0";
+    	end;
+}
+
+function	script	vip_box	{
+    getitem 2629,20;
+    getitem 671,35;
+    getitem 607,50;
+    getitem 608,50;
+    getitem 39133,10;
+    getitem 7621,50;
+    end;
+}
+
