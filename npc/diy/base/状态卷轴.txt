@@ -6,12 +6,12 @@ function	script	vip_status	{
 	    sc_start SC_CP_HELM,120000,10; // 75
 	}
 	if (vip_status(VIP_STATUS_ACTIVE)) {
-		sc_start SC_STRFOOD,120000,10; //STR+10
-    	sc_start SC_INTFOOD,120000,10; //INT+10
-    	sc_start SC_VITFOOD,120000,10; //VIT+10
-    	sc_start SC_AGIFOOD,120000,10; //AGI+10
-    	sc_start SC_DEXFOOD,120000,10; //DEX+10
-    	sc_start SC_LUKFOOD,120000,10; //LUK+10
+		sc_start SC_STRFOOD,600000,10; //STR+10
+    	sc_start SC_INTFOOD,600000,10; //INT+10
+    	sc_start SC_VITFOOD,600000,10; //VIT+10
+    	sc_start SC_AGIFOOD,600000,10; //AGI+10
+    	sc_start SC_DEXFOOD,600000,10; //DEX+10
+    	sc_start SC_LUKFOOD,600000,10; //LUK+10
 	}
 	//sc_start SC_ENDURE,600000,10; // 21
     //sc_start SC_CONCENTRATE,600000,10; // 23

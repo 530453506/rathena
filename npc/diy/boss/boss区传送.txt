@@ -1,4 +1,4 @@
-prontera.gat,170,113,5	script	手动BOSS区	796,{
+prontera.gat,170,113,5	script	BOSS区传送	796,{
 	mes "["+strnpcinfo(0)+"]";
     mes "选择BOSS区进行传送";
     switch(select("初级BOSS区","中级BOSS区","高级BOSS区","究极BOSS区")){
@@ -7,9 +7,8 @@ prontera.gat,170,113,5	script	手动BOSS区	796,{
         case 3: callfunc "高级BOSS区"; break;
         case 4: callfunc "究极BOSS区"; break;
     }
-    end;
 
 OnInit:
-	waitingroom "[☆手动BOSS区☆]",0;
+	waitingroom "[☆BOSS区传送☆]",0;
 	end;
 }

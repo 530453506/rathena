@@ -16,7 +16,7 @@
 function	script	F_GM_NPC	{
 
 	// To disable all GM NPCs, uncomment the line below.
-	//end;
+	end;
 
 	// To set a minimum GM level to access the NPCs, edit the line below.
 	if (getgmlevel() < 99) {

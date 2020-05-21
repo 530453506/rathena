@@ -1,0 +1,142 @@
+function	script	中级BOSS区	{
+	.@zney = 500000;
+    .@count1 = getmapusers("boss_zj1");
+    .@count2 = getmapusers("boss_zj2");
+    .@count3 = getmapusers("boss_zj3");
+    mes "入场费" + .@zney;
+	next;
+	if (Zeny<.@zney) goto Not;
+	mes "["+strnpcinfo(0)+"]";
+	mes "选择BOSS区进行传送";
+	switch(select("1区 - 地图人数 ^0000FF"+.@count1+"^000000 人","2区 - 地图人数 ^0000FF"+.@count2+"^000000 人","3区 - 地图人数 ^0000FF"+.@count3+"^000000 人")){
+        case 1:
+            set zeny,zeny-.@zney;
+	        warp "boss_zj1",0,0;
+	        break;
+        case 2:
+            set zeny,zeny-.@zney;
+	        warp "boss_zj2",0,0;
+	        break;
+        case 3:
+            set zeny,zeny-.@zney;
+	        warp "boss_zj3",0,0;
+	        break;
+	}
+	close;
+Not:
+	mes "["+strnpcinfo(0)+"]";
+    mes "你的钱不够";
+    close;
+}
+
+// 怪物设定
+boss_zj1.gat,0,0,0,0	monster	俄赛里斯	3520,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	巴风特	3521,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	死灵	3522,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	蜂后	3523,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	黄金虫	3524,1,0,0,0
+boss_zj1.gat,0,0,0,0	monster	海盗之王	3525,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	虎王	3526,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	幽灵波利	3527,1,0,0,0
+boss_zj1.gat,0,0,0,0	monster	蚁后	3528,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	月夜猫	3529,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	法老王	3530,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	皮里恩	3531,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	兽人酋长	3532,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	冰暴骑士	3533,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	卡仑	3534,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	黑暗之王	3535,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	乌龟将军	3536,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	死灵骑士	3537,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	天使波利	3538,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	德古拉男爵	3539,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	墨蛇君	3540,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	怨灵武士	3541,2,0,0,0
+boss_zj1.gat,0,0,0,0	monster	古埃及王	3542,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	塔奥群卡	3543,1,0,0,0
+boss_zj1.gat,0,0,0,0	monster	RSX-0806	3544,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	嗒妮小姐	3545,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	迪塔勒泰晤勒斯	3546,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	堕落的大神官希巴姆	3547,1,0,0,0
+boss_zj1.gat,0,0,0,0	monster	巴基力 兰特克力斯	3548,1,0,0,0
+boss_zj1.gat,0,0,0,0	monster	恶魔波利	3549,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	兽人英雄	3550,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	贝思波	3551,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	圣天使波利	3552,6,0,0,0
+boss_zj1.gat,0,0,0,0	monster	白素贞	3553,3,0,0,0
+boss_zj1.gat,0,0,0,0	monster	阿特罗斯	3554,3,0,0,0
+boss_zj1.gat,0,0,0,0	monster	闇●剑士 赛尼亚	3555,2,0,0,0
+
+boss_zj2.gat,0,0,0,0	monster	俄赛里斯	3520,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	巴风特	3521,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	死灵	3522,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	蜂后	3523,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	黄金虫	3524,1,0,0,0
+boss_zj2.gat,0,0,0,0	monster	海盗之王	3525,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	虎王	3526,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	幽灵波利	3527,1,0,0,0
+boss_zj2.gat,0,0,0,0	monster	蚁后	3528,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	月夜猫	3529,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	法老王	3530,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	皮里恩	3531,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	兽人酋长	3532,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	冰暴骑士	3533,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	卡仑	3534,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	黑暗之王	3535,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	乌龟将军	3536,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	死灵骑士	3537,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	天使波利	3538,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	德古拉男爵	3539,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	墨蛇君	3540,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	怨灵武士	3541,2,0,0,0
+boss_zj2.gat,0,0,0,0	monster	古埃及王	3542,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	塔奥群卡	3543,1,0,0,0
+boss_zj2.gat,0,0,0,0	monster	RSX-0806	3544,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	嗒妮小姐	3545,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	迪塔勒泰晤勒斯	3546,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	堕落的大神官希巴姆	3547,1,0,0,0
+boss_zj2.gat,0,0,0,0	monster	巴基力 兰特克力斯	3548,1,0,0,0
+boss_zj2.gat,0,0,0,0	monster	恶魔波利	3549,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	兽人英雄	3550,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	贝思波	3551,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	圣天使波利	3552,6,0,0,0
+boss_zj2.gat,0,0,0,0	monster	白素贞	3553,3,0,0,0
+boss_zj2.gat,0,0,0,0	monster	阿特罗斯	3554,3,0,0,0
+boss_zj2.gat,0,0,0,0	monster	闇●剑士 赛尼亚	3555,2,0,0,0
+
+boss_zj3.gat,0,0,0,0	monster	俄赛里斯	3520,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	巴风特	3521,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	死灵	3522,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	蜂后	3523,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	黄金虫	3524,1,0,0,0
+boss_zj3.gat,0,0,0,0	monster	海盗之王	3525,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	虎王	3526,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	幽灵波利	3527,1,0,0,0
+boss_zj3.gat,0,0,0,0	monster	蚁后	3528,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	月夜猫	3529,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	法老王	3530,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	皮里恩	3531,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	兽人酋长	3532,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	冰暴骑士	3533,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	卡仑	3534,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	黑暗之王	3535,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	乌龟将军	3536,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	死灵骑士	3537,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	天使波利	3538,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	德古拉男爵	3539,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	墨蛇君	3540,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	怨灵武士	3541,2,0,0,0
+boss_zj3.gat,0,0,0,0	monster	古埃及王	3542,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	塔奥群卡	3543,1,0,0,0
+boss_zj3.gat,0,0,0,0	monster	RSX-0806	3544,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	嗒妮小姐	3545,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	迪塔勒泰晤勒斯	3546,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	堕落的大神官希巴姆	3547,1,0,0,0
+boss_zj3.gat,0,0,0,0	monster	巴基力 兰特克力斯	3548,1,0,0,0
+boss_zj3.gat,0,0,0,0	monster	恶魔波利	3549,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	兽人英雄	3550,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	贝思波	3551,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	圣天使波利	3552,6,0,0,0
+boss_zj3.gat,0,0,0,0	monster	白素贞	3553,3,0,0,0
+boss_zj3.gat,0,0,0,0	monster	阿特罗斯	3554,3,0,0,0
+boss_zj3.gat,0,0,0,0	monster	闇●剑士 赛尼亚	3555,2,0,0,0
