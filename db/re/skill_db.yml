@@ -6121,11 +6121,8 @@ Body:
     Name: NPC_DARKBREATH
     Description: Dark Breath
     MaxLevel: 5
-    Type: Misc
+    Type: Magic
     TargetType: Attack
-    DamageFlags:
-      IgnoreFlee: true
-      IgnoreDefCard: true
     Flags:
       IsNpc: true
     Range: 9
@@ -28375,6 +28372,7 @@ Body:
     HitCount: 1
     Requires:
       SpCost: 40
+      State: Cart
   - Id: 2552
     Name: RL_RICHS_COIN
     Description: Rich's Coin
