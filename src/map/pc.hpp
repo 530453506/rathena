@@ -530,6 +530,7 @@ struct map_session_data {
 		short weapon_atk_rate, weapon_matk_rate;
 		int add_damage;
 		int transfer_attr;
+		int element_power;
 	} bonus;
 	// zeroed vars end here.
 

@@ -3594,8 +3594,12 @@ void pc_bonus(struct map_session_data *sd,int type,int val)
         case SP_TRANSFER_ATTR:
             if (sd->state.lr_flag != 2)
                 sd->bonus.transfer_attr += val;
-            break;	
-		default:
+            break;
+        case SP_ELEMENT_POWER:
+            if (sd->state.lr_flag != 2)
+                sd->bonus.element_power += val;
+            break;
+        default:
 			if (current_equip_combo_pos > 0) {
 				ShowWarning("pc_bonus: unknown bonus type %d %d in a combo with item #%d\n", type, val, sd->inventory_data[pc_checkequip( sd, current_equip_combo_pos )]->nameid);
 			}

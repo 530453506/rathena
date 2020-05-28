@@ -1,32 +1,25 @@
 function	script	高级BOSS区	{
-	.@zney = 1000000;
     .@count1 = getmapusers("boss_gj1");
     .@count2 = getmapusers("boss_gj2");
     .@count3 = getmapusers("boss_gj3");
-    mes "入场费" + .@zney;
-	next;
-	if (Zeny<.@zney) goto Not;
 	mes "["+strnpcinfo(0)+"]";
 	mes "选择BOSS区进行传送";
 	switch(select("1区 - 地图人数 ^0000FF"+.@count1+"^000000 人","2区 - 地图人数 ^0000FF"+.@count2+"^000000 人","3区 - 地图人数 ^0000FF"+.@count3+"^000000 人")){
         case 1:
             set zeny,zeny-.@zney;
-	        warp "boss_gj1",0,0;
+	        warp "boss_gj1",159,368;
 	        break;
         case 2:
             set zeny,zeny-.@zney;
-	        warp "boss_gj2",0,0;
+	        warp "boss_gj2",159,368;
 	        break;
         case 3:
             set zeny,zeny-.@zney;
-	        warp "boss_gj3",0,0;
+	        warp "boss_gj3",159,368;
 	        break;
 	}
 	close;
-Not:
-	mes "["+strnpcinfo(0)+"]";
-    mes "你的钱不够";
-    close;
+	end;
 }
 
 // 怪物设定

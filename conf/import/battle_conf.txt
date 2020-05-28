@@ -18,6 +18,11 @@ multi_level_up: yes
 // Allow changing of equipment while interacting with NPCs? (Note 1)
 item_enabled_npc: no
 
+// Enable autospell card effects to stack?
+// NOTE: Different cards that grant the same skill will both
+// always work independently of each other regardless of setting.
+autospell_stacking: yes
+
 //monster
 show_mob_info: 1
 

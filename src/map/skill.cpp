@@ -1306,6 +1306,7 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, uint1
 		return 0;
 
 	switch(skill_id) {
+
 		case 0:
 			{ // Normal attacks (no skill used)
 				if( attack_type&BF_SKILL )
@@ -2207,6 +2208,25 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, uint1
 				continue; // one or more trigger conditions were not fulfilled
 
 			skill = (it.id > 0) ? it.id : -it.id;
+
+            if (sd->bonus.element_power && skill == NJ_SYURIKEN && dstmd) {
+                switch (dstmd->db->status.def_ele) {
+                    case ELE_EARTH:
+                        skill = MG_FIREBOLT;
+                        break;
+                    case ELE_FIRE:
+                        skill = MG_COLDBOLT;
+                        break;
+                    case ELE_WATER:
+                        skill = MG_LIGHTNINGBOLT;
+                        break;
+                    case ELE_UNDEAD:
+                        skill = MG_FIREBOLT;
+                        break;
+                    default:
+                        skill = MG_FIREBOLT;
+                }
+            }
 
 			sd->state.autocast = 1;
 			if ( skill_isNotOk(skill, sd) ) {

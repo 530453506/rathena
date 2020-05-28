@@ -14,35 +14,53 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
 	next;
 	if(select("·Ç³£¸ÐÐËÈ¤.") == 1){
 		.@id = getequipid(EQI_HAND_R);
-		for(.@i = 0; .@i < .sz; ++.@i){
-			if(.@id == .alloweditems[.@i])
-				.@allowed = 1;
+    	for(.@i = 0; .@i < .sz; ++.@i){
+    		if(.@id == .alloweditems[.@i])
+    			.@allowed = 1;
+    	}
+    	mes "[°Ý½£É½×¯°Á°Ý]";
+    	if(.@id == -1) {
+    		mes "ÄãµÄ±øÆ÷ÄØ?";
+    		close;
+    	} else if(!.@allowed){
+    		mes "ÄãµÄ±øÆ÷²»ÐÐ.";
+    		close;
+    	}
+		switch(select("ÎäÆ÷Ç¿»¯","ÔªËØÖ®ÐÄ")) {
+		    case 1:
+				mes "ÏëÒªÇ¿»¯ " + getitemname(.@id) + " Âð?";
+        		next;
+        		if(select("Çë.") == 1){
+        			mes "[°Ý½£É½×¯°Á°Ý]";
+        			mes "*duang duang duang*";
+        			progressbar "#00FF00",2;
+        			next;
+        			setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_ATTPOWER,rand(50,100),0);
+        			mes "[°Ý½£É½×¯°Á°Ý]";
+        			mes "ÐÒ²»ÈèÃü.";
+        			close;
+        		}
+        		close;
+        	case 2:
+        	    .@lvl = getequiprandomoption(EQI_HAND_R,1,ROA_VALUE);
+        	    mes "[°Ý½£É½×¯°Á°Ý]";
+        	    mes "ÄãµÄÔªËØÖ®ÐÄµÈ¼¶ÎªLv" + .@lvl +".";
+        	    mes "Òª¼ÌÐøÂð?";
+        	    next;
+        		if(select("Çë.") == 1){
+        			.@lvl = .@lvl+1;
+        			mes "[°Ý½£É½×¯°Á°Ý]";
+        			mes "*duang duang duang*";
+        			progressbar "#00FF00",2;
+        			next;
+        			setrandomoption(EQI_HAND_R,1,RDMOPT_ELEMENT_POWER,.@lvl,0);
+        			setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,.@lvl*5,100);
+        			mes "[°Ý½£É½×¯°Á°Ý]";
+        			mes "ÐÒ²»ÈèÃü.";
+        			close;
+        		}
+
 		}
-		mes "[°Ý½£É½×¯°Á°Ý]";
-		if(.@id == -1) {
-			mes "ÄãµÄ±øÆ÷ÄØ?";
-			close;
-		} else if(!.@allowed){
-			mes "ÄãµÄ±øÆ÷²»ÐÐ.";
-			close;
-		}
-		//else if(getequiprandomoption(EQI_HAND_R,0,ROA_ID)){
-		//	mes "Your weapon has already been enchanted.";
-		//	close;
-		//}
-		mes "ÏëÒªÇ¿»¯ " + getitemname(.@id) + " Âð?";
-		next;
-		if(select("Çë.") == 1){
-			mes "[°Ý½£É½×¯°Á°Ý]";
-			mes "*duang duang duang*";
-			progressbar "#00FF00",2;
-			next;
-			setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_ATTPOWER,rand(50,100),0);
-			mes "[°Ý½£É½×¯°Á°Ý]";
-			mes "ÐÒ²»ÈèÃü.";
-			close;
-		}
-		close;
 	}
 	else{
 		close;

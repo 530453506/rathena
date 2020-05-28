@@ -753,6 +753,9 @@
 	export_constant2("bNoWalkDelay",SP_NO_WALK_DELAY);
 	export_constant2("bLongSPGainValue",SP_LONG_SP_GAIN_VALUE);
 	export_constant2("bLongHPGainValue",SP_LONG_HP_GAIN_VALUE);
+	export_constant2("bAddDamage",SP_ADD_DAMAGE);
+	export_constant2("bTransferAttr",SP_TRANSFER_ATTR);
+    export_constant2("bElementPower",SP_ELEMENT_POWER);
 
 	/* equip indices */
 	export_constant(EQI_COMPOUND_ON);
