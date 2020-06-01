@@ -1,6 +1,5 @@
 
 boss_cj1.gat	mapflag	nomemo
-boss_cj1.gat	mapflag	nopenalty
 boss_cj1.gat	mapflag	nobranch
 boss_cj1.gat	mapflag	nowarp
 boss_cj1.gat	mapflag	nowarpto
@@ -8,7 +7,6 @@ boss_cj1.gat	mapflag	nogo
 boss_cj1.gat	mapflag	nosave
 
 boss_cj2.gat	mapflag	nomemo
-boss_cj2.gat	mapflag	nopenalty
 boss_cj2.gat	mapflag	nobranch
 boss_cj2.gat	mapflag	nowarp
 boss_cj2.gat	mapflag	nowarpto
@@ -16,7 +14,6 @@ boss_cj2.gat	mapflag	nogo
 boss_cj2.gat	mapflag	nosave
 
 boss_cj3.gat	mapflag	nomemo
-boss_cj3.gat	mapflag	nopenalty
 boss_cj3.gat	mapflag	nobranch
 boss_cj3.gat	mapflag	nowarp
 boss_cj3.gat	mapflag	nowarpto
@@ -24,7 +21,6 @@ boss_cj3.gat	mapflag	nogo
 boss_cj3.gat	mapflag	nosave
 
 boss_zj1.gat	mapflag	nomemo
-boss_zj1.gat	mapflag	nopenalty
 boss_zj1.gat	mapflag	nobranch
 boss_zj1.gat	mapflag	nowarp
 boss_zj1.gat	mapflag	nowarpto
@@ -32,7 +28,6 @@ boss_zj1.gat	mapflag	nogo
 boss_zj1.gat	mapflag	nosave
 
 boss_zj2.gat	mapflag	nomemo
-boss_zj2.gat	mapflag	nopenalty
 boss_zj2.gat	mapflag	nobranch
 boss_zj2.gat	mapflag	nowarp
 boss_zj2.gat	mapflag	nowarpto
@@ -40,7 +35,6 @@ boss_zj2.gat	mapflag	nogo
 boss_zj2.gat	mapflag	nosave
 
 boss_zj3.gat	mapflag	nomemo
-boss_zj3.gat	mapflag	nopenalty
 boss_zj3.gat	mapflag	nobranch
 boss_zj3.gat	mapflag	nowarp
 boss_zj3.gat	mapflag	nowarpto
@@ -48,7 +42,6 @@ boss_zj3.gat	mapflag	nogo
 boss_zj3.gat	mapflag	nosave
 
 boss_gj1.gat	mapflag	nomemo
-boss_gj1.gat	mapflag	nopenalty
 boss_gj1.gat	mapflag	nobranch
 boss_gj1.gat	mapflag	nowarp
 boss_gj1.gat	mapflag	nowarpto
@@ -56,7 +49,6 @@ boss_gj1.gat	mapflag	nogo
 boss_gj1.gat	mapflag	nosave
 
 boss_gj2.gat	mapflag	nomemo
-boss_gj2.gat	mapflag	nopenalty
 boss_gj2.gat	mapflag	nobranch
 boss_gj2.gat	mapflag	nowarp
 boss_gj2.gat	mapflag	nowarpto
@@ -64,7 +56,6 @@ boss_gj2.gat	mapflag	nogo
 boss_gj2.gat	mapflag	nosave
 
 boss_gj3.gat	mapflag	nomemo
-boss_gj3.gat	mapflag	nopenalty
 boss_gj3.gat	mapflag	nobranch
 boss_gj3.gat	mapflag	nowarp
 boss_gj3.gat	mapflag	nowarpto
@@ -72,25 +63,92 @@ boss_gj3.gat	mapflag	nogo
 boss_gj3.gat	mapflag	nosave
 
 boss_jj1.gat	mapflag	nomemo
-boss_jj1.gat	mapflag	nopenalty
 boss_jj1.gat	mapflag	nobranch
 boss_jj1.gat	mapflag	nowarp
 boss_jj1.gat	mapflag	nowarpto
 boss_jj1.gat	mapflag	nogo
 boss_jj1.gat	mapflag	nosave
 
-boss_jj2.gat	mapflag	nomemo
-boss_jj2.gat	mapflag	nopenalty
-boss_jj2.gat	mapflag	nobranch
-boss_jj2.gat	mapflag	nowarp
-boss_jj2.gat	mapflag	nowarpto
-boss_jj2.gat	mapflag	nogo
-boss_jj2.gat	mapflag	nosave
+vip_cj1.gat	mapflag	nomemo
+vip_cj1.gat	mapflag	nobranch
+vip_cj1.gat	mapflag	nowarp
+vip_cj1.gat	mapflag	nowarpto
+vip_cj1.gat	mapflag	nogo
+vip_cj1.gat	mapflag	nosave
 
-boss_jj3.gat	mapflag	nomemo
-boss_jj3.gat	mapflag	nopenalty
-boss_jj3.gat	mapflag	nobranch
-boss_jj3.gat	mapflag	nowarp
-boss_jj3.gat	mapflag	nowarpto
-boss_jj3.gat	mapflag	nogo
-boss_jj3.gat	mapflag	nosave
+vip_cj2.gat	mapflag	nomemo
+vip_cj2.gat	mapflag	nobranch
+vip_cj2.gat	mapflag	nowarp
+vip_cj2.gat	mapflag	nowarpto
+vip_cj2.gat	mapflag	nogo
+vip_cj2.gat	mapflag	nosave
+
+vip_cj3.gat	mapflag	nomemo
+vip_cj3.gat	mapflag	nobranch
+vip_cj3.gat	mapflag	nowarp
+vip_cj3.gat	mapflag	nowarpto
+vip_cj3.gat	mapflag	nogo
+vip_cj3.gat	mapflag	nosave
+
+vip_zj1.gat	mapflag	nomemo
+vip_zj1.gat	mapflag	nobranch
+vip_zj1.gat	mapflag	nowarp
+vip_zj1.gat	mapflag	nowarpto
+vip_zj1.gat	mapflag	nogo
+vip_zj1.gat	mapflag	nosave
+
+vip_zj2.gat	mapflag	nomemo
+vip_zj2.gat	mapflag	nobranch
+vip_zj2.gat	mapflag	nowarp
+vip_zj2.gat	mapflag	nowarpto
+vip_zj2.gat	mapflag	nogo
+vip_zj2.gat	mapflag	nosave
+
+vip_zj3.gat	mapflag	nomemo
+vip_zj3.gat	mapflag	nobranch
+vip_zj3.gat	mapflag	nowarp
+vip_zj3.gat	mapflag	nowarpto
+vip_zj3.gat	mapflag	nogo
+vip_zj3.gat	mapflag	nosave
+
+vip_gj1.gat	mapflag	nomemo
+vip_gj1.gat	mapflag	nobranch
+vip_gj1.gat	mapflag	nowarp
+vip_gj1.gat	mapflag	nowarpto
+vip_gj1.gat	mapflag	nogo
+vip_gj1.gat	mapflag	nosave
+
+vip_gj2.gat	mapflag	nomemo
+vip_gj2.gat	mapflag	nobranch
+vip_gj2.gat	mapflag	nowarp
+vip_gj2.gat	mapflag	nowarpto
+vip_gj2.gat	mapflag	nogo
+vip_gj2.gat	mapflag	nosave
+
+vip_gj3.gat	mapflag	nomemo
+vip_gj3.gat	mapflag	nobranch
+vip_gj3.gat	mapflag	nowarp
+vip_gj3.gat	mapflag	nowarpto
+vip_gj3.gat	mapflag	nogo
+vip_gj3.gat	mapflag	nosave
+
+vip_jj1.gat	mapflag	nomemo
+vip_jj1.gat	mapflag	nobranch
+vip_jj1.gat	mapflag	nowarp
+vip_jj1.gat	mapflag	nowarpto
+vip_jj1.gat	mapflag	nogo
+vip_jj1.gat	mapflag	nosave
+
+vip_jj2.gat	mapflag	nomemo
+vip_jj2.gat	mapflag	nobranch
+vip_jj2.gat	mapflag	nowarp
+vip_jj2.gat	mapflag	nowarpto
+vip_jj2.gat	mapflag	nogo
+vip_jj2.gat	mapflag	nosave
+
+vip_jj3.gat	mapflag	nomemo
+vip_jj3.gat	mapflag	nobranch
+vip_jj3.gat	mapflag	nowarp
+vip_jj3.gat	mapflag	nowarpto
+vip_jj3.gat	mapflag	nogo
+vip_jj3.gat	mapflag	nosave

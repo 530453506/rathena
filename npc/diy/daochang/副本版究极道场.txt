@@ -1,0 +1,201 @@
+function	script	究极道场	{
+	mes "[道场挑战]";
+	mes "欢迎您参加究极道场";
+	mes "^0000FF[组队限制] -" + $@jjdc_max+ "人版^000000";
+	mes "副本有时间限定,请玩家们注意时间";
+	mes "队长消耗^FF0000「RoZ」^000000 "+$@Dc_In_Zeny_4+"Z";
+	next;
+	menu "- [^0000FF道场报名^000000]",-,"- [^FF0000看看奖励^000000]",kjl_cj;
+	mes "[道场挑战]";
+	mes "进入副本队长需要：";
+	mes "金钱 ^FF0000"+$@Dc_In_Zeny_4+"^000000";
+	mes "-------------------------";
+	// 判断是否有创建副本的资格
+	if ( !getcharid(1) || getcharid(0) != getpartyleader(getcharid(1),2) )
+	{
+		mes "对不起，你没有队伍，或者 你不是队长。";
+		close;
+	}
+	// 取得队伍成员信息组
+	getpartymember(getcharid(1),2);
+	set .@partymembercount,$@partymembercount;
+	copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;
+	// 循环判断队伍中的成员是否符合要求
+	// 显示出第一个不符合要求的成员
+	for (.@i=0;.@i<.@partymembercount;.@i++)
+	{
+		if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+		{
+			if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+				end;
+			mes "队伍中有人不在线，无法报名。";
+			close;
+		}			
+		if(BaseLevel < $@jjdc_level)
+		{			
+			if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+				end;
+			mes "队伍中的 ["+rid2name(.@partymemberaid[.@i])+"]";
+			mes "等级还没到"+$@jjdc_level+".";
+			close;
+		}
+		}
+	if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
+						end;
+	mes "你想登记进入道场吗?";
+	next;
+	if ( select( "是的","不要" ) == 2 )
+		close;
+	mes "[道场挑战]";
+	// 判断队长身上的道具是否符合要求
+	set @online_num,callfunc("DC_Party_On",getcharid(1));
+	if ( BaseLevel < $@jjdc_level ) {
+		mes "对不起！";
+		mes "你的等级还没到"+$@jjdc_level+".";
+		close;
+	}
+	if ( @online_num < $@jjdc_min ) {
+		mes "对不起！";
+		mes "你的队伍成员必须在["+$@jjdc_min+"]人以上，";
+		close;
+	}
+	if ( @online_num > $@jjdc_max ) {
+		mes "对不起！";
+		mes "你的队伍成员超过["+$@jjdc_max+"]人，";
+		close;
+	}
+	if ( Zeny < $@Dc_In_Zeny_4 ) {
+		mes "对不起！";
+		mes "你的金钱不足"+$@Dc_In_Zeny_4+"Zeny，";
+		close;
+	}
+	if(instance_id(IM_PARTY)) {
+    	instance_destroy(instance_id(IM_PARTY));
+    }
+	if(instance_create("dc_jj") < 0) {
+	    mes "shibai: " +  instance_create("dc_jj");
+	    mes "创建失败，请稍后重试";
+	    close;
+	}
+	mes "你的队伍已经成功登记了.";
+	mes "我将打开一个入口，它会把你们传送到里面.";
+	switch(instance_enter("dc_jj",instance_id(IM_PARTY))) {
+    	case IE_OTHER:
+    	case IE_NOINSTANCE:
+    		mes "请稍后重试.";
+    		close;
+    	case IE_NOMEMBER:
+    		mes "Only a member of the party can enter the Memorial Dungeon.";
+    		close;
+    	case IE_OK:
+        	set zeny,zeny-$@Dc_In_Zeny_4;
+           	// 判断队员身上的道具是否符合要求
+           	getpartymember(getcharid(1),2);
+           	set .@partymembercount,$@partymembercount;
+           	copyarray .@partymemberaid[0],$@partymemberaid[0],.@partymembercount;
+           	for (.@i=0;.@i<.@partymembercount;.@i++) {
+           		if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
+           				continue;
+           		set @Dc_Win_CJ,1;
+           	}
+           	end;
+    }
+kjl_cj:
+	mes "----究极道场奖励----";
+	mes "固定奖励: " +$@Dc_Win_Zeny_4+ " ROZ";
+	mes "所有队员平分";
+	for (set .@a,0;.@a<8;set .@a,.@a+1)
+	mes "^0000FF["+getitemname($@Dc_Item_Id_4[.@a])+"]^000000 X ^FF0000"+$@Dc_Item_Num_4[.@a]+"^000000";
+	close;
+}
+
+4@dc,0,0,0	script	Dc_Main_4	-1,{
+OnInstanceInit:
+    set 'Dc_Truns,0;
+    set 'Dc_Party,0;
+    set 'Dc_timer,0;
+    set 'Dc_Mob,0;
+    killmonsterall instance_mapname("4@dc");
+    enablenpc instance_npcname("究极道场裁判");
+    disablenpc instance_npcname("究极道场领奖");
+	end;
+OnMain:
+	for (set @num,0;@num<$@Dc_Mob_Num_4['Dc_Truns];set @num,@num+1)
+		monster instance_mapname("4@dc",instance_id(IM_PARTY)),50,49,"--ja--",$@Dc_Mob_Id_4[rand(getarraysize($@Dc_Mob_Id_4))],1,instance_npcname("Dc_Main_4")+"::OnKillMob";
+	set 'Dc_Mob,$@Dc_Mob_Num_4['Dc_Truns];
+	instance_announce instance_id(IM_PARTY),"[ 究极道场 ] 魔物放出！第 "+'Dc_Truns+" 关挑战开始！",15;
+	end;
+
+OnKillMob:
+	set 'Dc_Mob,'Dc_Mob-1;
+	if('Dc_Mob>0)
+		end;
+	killmonsterall instance_mapname("4@dc",instance_id(IM_PARTY));
+	instance_announce instance_id(IM_PARTY),"[ 究极道场 ] "+getpartyname('Dc_Party) +" 队伍, 第 "+'Dc_Truns+" 关挑战成功！",15;
+    addtimer $@Dc_Time_Space_4*1000,instance_npcname("Dc_Main_4",instance_id(IM_PARTY))+"::OnGoTo";
+    set 'Dc_Truns,'Dc_Truns+1;
+	end;
+
+OnGoTo:
+	deltimer instance_npcname("Dc_Main_4",instance_id(IM_PARTY))+"::OnGoTo";
+	if ('Dc_Truns>$@Dc_Misson_4)
+	{
+		instance_announce instance_id(IM_PARTY),"[ 究极道场 ] "+getpartyname('Dc_Party) +" 队伍, 道场成功！",15;
+		instance_announce instance_id(IM_PARTY),"[ 究极道场 ] 请尽快领取奖品, 否则有可能领不到奖品！",15;
+		instance_announce instance_id(IM_PARTY),"[ 究极道场 ] 40秒后将背自动传送回首都",15;
+		enablenpc instance_npcname("究极道场领奖",instance_id(IM_PARTY));
+		instance_warpall "4@dc",49,47;
+		sleep2 40000;
+		instance_warpall "gonryun",159,118;
+		instance_destroy(instance_id(IM_PARTY));
+	}
+	else
+	{
+		doevent instance_npcname("Dc_Main_4",instance_id(IM_PARTY))+"::OnMain";
+	}
+	end;
+}
+
+4@dc,50,49,4	script	究极道场裁判	758,{
+	mes "[裁判]";
+	if ('Dc_Truns==0)
+	{
+		set 'Dc_Truns,1;
+		set 'Dc_Party,getcharid(1);	
+	}
+	if (getpartyleader(getcharid(1),2)!=getcharid(0))
+	{
+		mes "只有队长才可以开始挑战";
+		close;
+	}
+	set 'User,getmapusers(instance_mapname("4@dc"));
+	if ('User>$@jjdc_max)
+	{
+		instance_warpall "prontera",156,108;
+		set 'Dc_Party,0;
+		close;
+		end;
+	}
+	mes "您准备要开始挑战了吗？";
+	menu "是的",-;
+	close2;
+	doevent instance_npcname("Dc_Main_4",instance_id(IM_PARTY))+"::OnMain";
+	disablenpc instance_npcname("究极道场裁判",instance_id(IM_PARTY));
+	end;
+}
+
+4@dc,50,49,4	script	究极道场领奖	76,{
+	mes "[究极道场领奖]";
+	if (@Dc_Win_CJ == 1 && instance_id(IM_PARTY)) {
+		set @Pay,rand(getarraysize($@Dc_Item_Id_4));
+		getitem $@Dc_Item_Id_4[@Pay],$@Dc_Item_Num_4[@Pay];
+		set @money,$@Dc_Win_Zeny_4 / 'User;
+		set zeny,zeny+@money;
+		set @Dc_Win_CJ,0;
+		mes "[ROZ提示] -本次获取< "+@money+" > Z. ";
+	}
+	mes "请等待被传送出去！！";
+	instance_warpall "gonryun",159,118;
+	close;
+	end;
+}

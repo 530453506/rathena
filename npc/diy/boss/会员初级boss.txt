@@ -1,16 +1,16 @@
-function	script	初级BOSS区	{
-    .@count1 = getmapusers("boss_cj1");
-    .@count2 = getmapusers("boss_cj2");
-    .@count3 = getmapusers("boss_cj3");
+function	script	会员初级BOSS区	{
+    .@count1 = getmapusers("vip_cj1");
+    .@count2 = getmapusers("vip_cj2");
+    .@count3 = getmapusers("vip_cj3");
 	switch(select("1区 - 地图人数 ^0000FF"+.@count1+"^000000 人","2区 - 地图人数 ^0000FF"+.@count2+"^000000 人","3区 - 地图人数 ^0000FF"+.@count3+"^000000 人")){
         case 1:
-	        warp "boss_cj1",159,368;
+	        warp "vip_cj1",140,117;
 	        break;
         case 2:
-	        warp "boss_cj2",159,368;
+	        warp "vip_cj2",140,117;
 	        break;
         case 3:
-	        warp "boss_cj3",159,368;
+	        warp "vip_cj3",140,117;
 	        break;
 	}
 	close;

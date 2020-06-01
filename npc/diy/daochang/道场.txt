@@ -1,21 +1,88 @@
-prontera,164,113,3	script	道馆挑战	734,{
+prontera,164,113,3	script	道场挑战	734,{
 	mes "[道场管理员]";
 	mes "欢迎挑战道场，我们供提供了4个等级的道场提供挑战，每个道场奖励也不同，你做好准备了吗？";
 	next;
-	switch(select("初级道场","中级道场","高级道场","究极道场","以后在说"))
+	switch(select("初级道场","中级道场","高级道场","究极道场"))
 	{
-		case 1:callfunc "初级道馆"; break;
-		case 2:callfunc "中级道馆"; break;
-		case 3:callfunc "高级道馆"; break;
-		case 4:callfunc "究极道馆"; break;
-		case 5:
-			mes "[道场管理员]";
-			mes "欢迎再次挑战";
-		close;
+		case 1:callfunc "初级道场"; break;
+		case 2:callfunc "中级道场"; break;
+		case 3:callfunc "高级道场"; break;
+		case 4:callfunc "究极道场"; break;
 	}
-end;
+
 OnInit:
 	waitingroom "[☆道场挑战☆]",0;
 end;
 }
+
+-	script	OnInit_DC	-1,{
+OnInit:
+	//s 初级道场
+	$@Dc_In_Zeny_1		=	100000;			//设置入场消耗ROZ
+	$@cjdc_level		=	1;			//设置进入最小等级
+	$@cjdc_min		=	1;			//设置进入最小人数
+	$@cjdc_max		=	6;			//设置进入最大人数
+	$@Dc_Misson_1		=	10;			//道场关数
+	$@Dc_Time_Space_1	=	5;			//每关间隔时间，单位：秒
+	setarray $@Dc_Mob_Id_1[0],1002;				//设置道场刷怪ID
+	setarray $@Dc_Mob_Num_1[1],1,1,1,1,1,1,1,1,1,2; 	//每关刷怪数量
+	setarray $@Dc_Item_Id_1[0],969,617,616,1530,2630,2410,675,27035,27035; 	//设置奖励ID
+	setarray $@Dc_Item_Num_1[0],30,5,3,1,1,1,4,1,1;   				//设置奖励数量
+	$@Dc_Win_Zeny_1=600000;		//设置奖励金钱
+
+	//s 中级道场
+	$@Dc_In_Zeny_2		=	200000; 		//设置入场消耗ROZ
+	$@zjdc_level		=	1;			//设置进入最小等级
+	$@zjdc_min		=	1;			//设置进入最小人数
+	$@zjdc_max		=	8;			//设置进入最大人数
+	$@Dc_Misson_2		=	12; 			//道场关数
+	$@Dc_Time_Space_2	=	5; 				//每关间隔时间，单位：秒
+	//setarray $@zjdc_item_id[0],27019;			//设置进入道具ID
+	//setarray $@zjdc_item_num[0],1;			//设置进入道具所需数量,请对应ID修改
+	setarray $@Dc_Mob_Id_2[0],1007;
+	setarray $@Dc_Mob_Num_2[1],1,1,1,1,1,1,1,1,1,1,1,2; //每关刷怪数量
+	setarray $@Dc_Item_Id_2[0],27011,27013,27014,27015,27016,27012,27030,27036,2629,27038,27039,27040,27041,27042,27043,969,616,616,616,27036,969,969;
+	setarray $@Dc_Item_Num_2[0],1,1,1,1,1,1,5,2,2,1,1,1,1,1,1,60,10,10,10,2,60,60;
+	$@Dc_Win_Zeny_2=700000; //奖金
+
+	//s 高级道场
+	$@Dc_In_Zeny_3		=	300000; 		//设置入场消耗ROZ
+	$@gjdc_level		=	1;			//设置进入最小等级
+	$@gjdc_min		=	1;			//设置进入最小人数
+	$@gjdc_max		=	10;			//设置进入最大人数
+	$@Dc_Misson_3	=	14; 			//道场关数
+	$@Dc_Time_Space_3	=	5; 			//每关间隔时间，单位：秒
+	setarray $@Dc_Mob_Id_3[0],1010;
+	setarray $@Dc_Mob_Num_3[1],1,1,1,1,1,1,1,1,1,1,1,1,1,2; //每关刷怪数量
+	setarray $@Dc_Item_Id_3[0],27020,27022,27023,27024,27025,27012,27030,27037,2629,27038,27039,27040,27041,27042,27043,969,616,969,969,616,616,616,27037,969,616,969;
+	setarray $@Dc_Item_Num_3[0],1,1,1,1,1,1,15,2,3,1,1,1,1,1,1,90,15,90,90,15,15,15,2,90,15,90;
+	$@Dc_Win_Zeny_3=800000; 		//奖金
+
+	//s 究极道场
+	$@Dc_In_Zeny_4		=	400000; 		//设置入场消耗ROZ
+	$@jjdc_level		=	1;			//设置进入最小等级
+	$@jjdc_min		=	1;			//设置进入最小人数
+	$@jjdc_max		=	12;			//设置进入最大人数
+	$@Dc_Misson_4		=	16; 			//道场关数
+	$@Dc_Time_Space_4		=	5; 			//每关间隔时间，单位：秒
+	setarray $@Dc_Mob_Id_4[0],1011;
+	setarray $@Dc_Mob_Num_4[1],1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2; //每关刷怪数量
+	setarray $@Dc_Item_Id_4[0],27001,27003,27004,27005,27006,27012,27027,27027,27030,27038,27039,27040,27041,27042,27043,18102,18103,18104,18105,18106,18107,2629,969,616,969,969,969,616,616,616;
+	setarray $@Dc_Item_Num_4[0],1,1,1,1,1,1,2,2,20,1,1,1,1,1,1,1,1,1,1,1,1,4,120,20,120,120,120,20,20,20;
+	$@Dc_Win_Zeny_4=900000; 		//奖金
+	end;
+}
+
+function	script	DC_Party_On	{
+	set .@party_on,0;
+	getpartymember(getarg(0),2);
+	for (set .@i,0;.@i<$@partymembercount;set .@i,.@i+1)
+	{
+		if ( isloggedin($@partymemberaid[.@i]) )
+			set .@party_on,.@party_on+1;
+	}
+	return .@party_on;
+}
+
+
 		

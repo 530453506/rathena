@@ -1,7 +1,9 @@
-function	script	初级道馆	{
-	mes "[初级道场挑战]";
-	mes "欢迎您参加初级道馆";
-	mes "^0000FF[组队限制] -12人版^000000";
+function	script	初级道场	{
+	mes "[道场挑战]";
+	mes "欢迎您参加初级道场";
+	mes "^0000FF[组队限制] -" + $@cjdc_max+ "人版^000000";
+	mes "副本有时间限定,请玩家们注意时间";
+	mes "队长消耗^FF0000「RoZ」^000000 "+$@Dc_In_Zeny_1+"Z";
 	next;
 	menu "- [^0000FF道场报名^000000]",-,"- [^FF0000看看奖励^000000]",kjl_cj;
 	mes "[道场挑战]";
@@ -40,11 +42,11 @@ function	script	初级道馆	{
 		}
 	if ( !isloggedin(getpartyleader(getcharid(1),1)) || !attachrid(getpartyleader(getcharid(1),1)) )
 						end;
-	mes "你想登记进入道馆吗?";
+	mes "你想登记进入道场吗?";
 	next;
 	if ( select( "是的","不要" ) == 2 )
 		close;
-	mes "[道馆挑战]";
+	mes "[道场挑战]";
 	// 判断队长身上的道具是否符合要求
 	set @online_num,callfunc("DC_Party_On",getcharid(1));
 	if ( BaseLevel < $@cjdc_level ) {
@@ -67,21 +69,17 @@ function	script	初级道馆	{
 		mes "你的金钱不足"+$@Dc_In_Zeny_1+"Zeny，";
 		close;
 	}
-	mes "你确定要登记吗?";
-	next;
-	if ( select( "是的","不要" ) == 2 )
-		close;
-	if(instance_id()) {
-    	instance_destroy(instance_id());
+	if(instance_id(IM_PARTY)) {
+    	instance_destroy(instance_id(IM_PARTY));
     }
-	mes "[道馆挑战]";
 	if(instance_create("dc_cj") < 0) {
+	    mes "shibai: " +  instance_create("dc_cj");
 	    mes "创建失败，请稍后重试";
 	    close;
 	}
 	mes "你的队伍已经成功登记了.";
 	mes "我将打开一个入口，它会把你们传送到里面.";
-	switch(instance_enter("dc_cj",instance_id())) {
+	switch(instance_enter("dc_cj",instance_id(IM_PARTY))) {
     	case IE_OTHER:
     	case IE_NOINSTANCE:
     		mes "请稍后重试.";
@@ -91,13 +89,6 @@ function	script	初级道馆	{
     		close;
     	case IE_OK:
         	set zeny,zeny-$@Dc_In_Zeny_1;
-        	set 'Dc_Truns,0;
-           	set 'Dc_Party,0;
-           	set 'Dc_timer,0;
-           	set 'Dc_Mob,0;
-           	killmonsterall instance_mapname("1@dc",instance_id());
-           	enablenpc instance_npcname("裁判",instance_id());
-           	disablenpc instance_npcname("奖品发放员",instance_id());
            	// 判断队员身上的道具是否符合要求
            	getpartymember(getcharid(1),2);
            	set .@partymembercount,$@partymembercount;
@@ -110,61 +101,62 @@ function	script	初级道馆	{
            	end;
     }
 kjl_cj:
-	mes "----初级道馆奖励----";
-	mes "固定奖励: 50W ROZ";
+	mes "----初级道场奖励----";
+	mes "固定奖励: " +$@Dc_Win_Zeny_1+ " ROZ";
+	mes "所有队员平分";
 	for (set .@a,0;.@a<8;set .@a,.@a+1)
 	mes "^0000FF["+getitemname($@Dc_Item_Id_1[.@a])+"]^000000 X ^FF0000"+$@Dc_Item_Num_1[.@a]+"^000000";
 	close;
 }
 
-1@dc,0,0,0	script	Dc_Main	-1,{
+1@dc,0,0,0	script	Dc_Main_1	-1,{
+OnInstanceInit:
+    set 'Dc_Truns,0;
+    set 'Dc_Party,0;
+    set 'Dc_timer,0;
+    set 'Dc_Mob,0;
+    killmonsterall instance_mapname("1@dc");
+    enablenpc instance_npcname("初级道场裁判");
+    disablenpc instance_npcname("初级道场领奖");
 	end;
 OnMain:
 	for (set @num,0;@num<$@Dc_Mob_Num_1['Dc_Truns];set @num,@num+1)
-		monster instance_mapname("1@dc",instance_id()),50,49,"--ja--",$@Dc_Mob_Id_1[rand(getarraysize($@Dc_Mob_Id_1))],1,instance_npcname("Dc_Main")+"::OnKillMob";
+		monster instance_mapname("1@dc",instance_id(IM_PARTY)),50,49,"--ja--",$@Dc_Mob_Id_1[rand(getarraysize($@Dc_Mob_Id_1))],1,instance_npcname("Dc_Main_1")+"::OnKillMob";
 	set 'Dc_Mob,$@Dc_Mob_Num_1['Dc_Truns];
-	instance_announce instance_id(),"[ 初级道场 ] 魔物放出！第 "+'Dc_Truns+" 关挑战开始！",15;
+	instance_announce instance_id(IM_PARTY),"[ 初级道场 ] 魔物放出！第 "+'Dc_Truns+" 关挑战开始！",15;
 	end;
 
 OnKillMob:
 	set 'Dc_Mob,'Dc_Mob-1;
 	if('Dc_Mob>0)
 		end;
-	killmonsterall instance_mapname("1@dc",instance_id());
-	instance_announce instance_id(),"[ 初级道场 ] "+getpartyname('Dc_Party) +" 队伍, 第 "+'Dc_Truns+" 关挑战成功！",15;
-	if ( 'Dc_Truns == 5 ) {
-    	enablenpc instance_npcname("裁判",instance_id());
-    } else if ( 'Dc_Truns == 9 ) {
-    	enablenpc instance_npcname("裁判",instance_id());
-    } else {
-    	addtimer $@Dc_Time_Space_1*1000,instance_npcname("Dc_Main",instance_id())+"::OnGoTo";
-    }
-    if ( 'Dc_Truns < 10 ) {
-    	set 'Dc_Truns,'Dc_Truns+1;
-    }
+	killmonsterall instance_mapname("1@dc",instance_id(IM_PARTY));
+	instance_announce instance_id(IM_PARTY),"[ 初级道场 ] "+getpartyname('Dc_Party) +" 队伍, 第 "+'Dc_Truns+" 关挑战成功！",15;
+    addtimer $@Dc_Time_Space_1*1000,instance_npcname("Dc_Main_1",instance_id(IM_PARTY))+"::OnGoTo";
+    set 'Dc_Truns,'Dc_Truns+1;
 	end;
 
 OnGoTo:
-	deltimer instance_npcname("Dc_Main",instance_id())+"::OnGoTo";
-	if ('Dc_Truns==$@Dc_Misson_1)
+	deltimer instance_npcname("Dc_Main_1",instance_id(IM_PARTY))+"::OnGoTo";
+	if ('Dc_Truns>$@Dc_Misson_1)
 	{
-		instance_announce instance_id(),"[ 初级道场 ] "+getpartyname('Dc_Party) +" 队伍, 道场成功！",15;
-		instance_announce instance_id(),"[ 初级道场 ] 请尽快领取奖品, 否则有可能领不到奖品！",15;
-		instance_announce instance_id(),"[ 初级道场 ] 40秒后将背自动传送回首都",15;
-		enablenpc instance_npcname("奖品发放员",instance_id());
+		instance_announce instance_id(IM_PARTY),"[ 初级道场 ] "+getpartyname('Dc_Party) +" 队伍, 道场成功！",15;
+		instance_announce instance_id(IM_PARTY),"[ 初级道场 ] 请尽快领取奖品, 否则有可能领不到奖品！",15;
+		instance_announce instance_id(IM_PARTY),"[ 初级道场 ] 40秒后将背自动传送回首都",15;
+		enablenpc instance_npcname("初级道场领奖",instance_id(IM_PARTY));
 		instance_warpall "1@dc",49,47;
 		sleep2 40000;
 		instance_warpall "gonryun",159,118;
-		instance_destroy(instance_id());
+		instance_destroy(instance_id(IM_PARTY));
 	}
 	else
 	{
-		doevent instance_npcname("Dc_Main",instance_id())+"::OnMain";
+		doevent instance_npcname("Dc_Main_1",instance_id(IM_PARTY))+"::OnMain";
 	}
 	end;
 }
 
-1@dc,50,49,4	script	裁判	758,{
+1@dc,50,49,4	script	初级道场裁判	758,{
 	mes "[裁判]";
 	if ('Dc_Truns==0)
 	{
@@ -176,7 +168,8 @@ OnGoTo:
 		mes "只有队长才可以开始挑战";
 		close;
 	}
-	if (getmapusers(instance_mapname("1@dc",instance_id()))>12)
+	set 'User,getmapusers(instance_mapname("1@dc"));
+	if ('User>$@cjdc_max)
 	{
 		instance_warpall "prontera",156,108;
 		set 'Dc_Party,0;
@@ -186,33 +179,23 @@ OnGoTo:
 	mes "您准备要开始挑战了吗？";
 	menu "是的",-;
 	close2;
-	doevent instance_npcname("Dc_Main",instance_id())+"::OnMain";
-	disablenpc instance_npcname("裁判",instance_id());
+	doevent instance_npcname("Dc_Main_1",instance_id(IM_PARTY))+"::OnMain";
+	disablenpc instance_npcname("初级道场裁判",instance_id(IM_PARTY));
 	end;
 }
 
-1@dc,50,49,4	script	奖品发放员	76,{ 
-	callfunc "Dc_Pay","奖品"; 
-	end;
-}
-
-function	script	Dc_Pay	{
-	mes "["+getarg(0)+"发放员]";
-	if (@Dc_Win_CJ == 1 && instance_id())
-	{
-		mes "我是负责发放"+getarg(0)+"的";
-		next;
-		menu "我要领"+getarg(0)+"",-;
-			set @Pay,rand(getarraysize($@Dc_Item_Id_1));
-			getitem $@Dc_Item_Id_1[@Pay],$@Dc_Item_Num_1[@Pay];
-			set zeny,zeny+$@Dc_Win_Zeny_1;
-			set @Dc_Win_CJ,0;
-			mes "[ROZ提示] -本次获取< "+$@Dc_Win_Zeny_1+" > Z. ";
-			mes "请等待被传送出去！！";
-			instance_warpall "gonryun",159,118;
-			close;
-		}
+1@dc,50,49,4	script	初级道场领奖	76,{
+	mes "[初级道场领奖]";
+	if (@Dc_Win_CJ == 1 && instance_id(IM_PARTY)) {
+		set @Pay,rand(getarraysize($@Dc_Item_Id_1));
+		getitem $@Dc_Item_Id_1[@Pay],$@Dc_Item_Num_1[@Pay];
+		set @money,$@Dc_Win_Zeny_1 / 'User;
+		set zeny,zeny+@money;
+		set @Dc_Win_CJ,0;
+		mes "[ROZ提示] -本次获取< "+@money+" > Z. ";
+	}
 	mes "请等待被传送出去！！";
 	instance_warpall "gonryun",159,118;
 	close;
+	end;
 }

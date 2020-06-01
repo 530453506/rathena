@@ -36,3 +36,33 @@
 Header:
   Type: INSTANCE_DB
   Version: 1
+
+Body:
+  - Id: 5
+    Name: dc_cj
+    TimeLimit: 900
+    Enter:
+      Map: 1@dc
+      X: 50
+      Y: 49
+  - Id: 6
+    Name: dc_zj
+    TimeLimit: 1800
+    Enter:
+      Map: 2@dc
+      X: 50
+      Y: 49
+  - Id: 7
+    Name: dc_gj
+    TimeLimit: 2700
+    Enter:
+      Map: 3@dc
+      X: 50
+      Y: 49
+  - Id: 8
+    Name: dc_jj
+    TimeLimit: 3600
+    Enter:
+      Map: 4@dc
+      X: 50
+      Y: 49
