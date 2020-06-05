@@ -629,18 +629,18 @@
 40298,Magingiorde_new,[新手]雷神腰带,4,,,20,,0,,0,0xFFFFFFFF,7,2,136,,1,0,0,{ bonus bStr,20;bonus bDex,5;},{},{}
 40299,Brysinggamen_new,[新手]女神颈链,4,,,20,,0,,0,0xFFFFFFFF,7,2,136,,1,0,0,{bonus bDex,5;bonus bAgi,3; bonus bInt,3; bonus bLuk,3;},{},{}
 //头上
-40301,nnew_26,蓝色女武神头盔,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2001,{ bonus ballstats,6; bonus bLuk,-3; },{},{}
-40302,nnew_25,绿色女武神头盔,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2002,{ bonus ballstats,9; bonus bLuk,-6; },{},{}
-40303,nnew_24,红色女武神头盔,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2003,{ bonus ballstats,12; bonus bLuk,-9; },{},{}
-40304,nnew_22,黑色女武神头盔,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2004,{ bonus ballstats,15; bonus bLuk,-12; },{},{}
-40305,nnew_149,<初级>白色女武神头盔,4,,,200,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,15; bonus bLuk,-12; bonus2 bAddClass,Class_Boss,15;bonus bAtkRate,9; },{},{}
-40306,nnew_154,<中级>白色女武神头盔,4,,,200,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,18; bonus bLuk,-15; bonus2 bAddClass,Class_Boss,20;bonus bAtkRate,12; },{},{}
-40307,nnew_159,<高级>白色女武神头盔,4,,,200,,5,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,21; bonus bLuk,-18; bonus2 bAddClass,Class_Boss,25;bonus bAtkRate,15;bonus2 bAddRace,RC_DemiHuman,getrefine();bonus2 bAddRace,RC_Player,getrefine(); },{},{}
-40308,nnew_165,<究极>白色女武神头盔,4,,,200,,6,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,24; bonus bLuk,-21; bonus2 bAddClass,Class_Boss,30;bonus bAtkRate,18;bonus2 bAddRace,RC_DemiHuman,getrefine()*3/2;bonus2 bAddRace,RC_Player,getrefine()*3/2; },{},{}
-40309,nnew_153,<初级>猩红女武神头盔,4,,,200,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,15; bonus bLuk,-12; bonus2 bMagicAddClass,Class_Boss,15; bonus bMatkRate,9; bonus2 bSkillAtk,490,5; },{},{}
-40310,nnew_158,<中级>猩红女武神头盔,4,,,200,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,18; bonus bLuk,-15; bonus2 bMagicAddClass,Class_Boss,20; bonus bMatkRate,12; bonus2 bSkillAtk,490,10; },{},{}
-40311,nnew_163,<高级>猩红女武神头盔,4,,,200,,5,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,21; bonus bLuk,-18; bonus2 bMagicAddClass,Class_Boss,25; bonus bMatkRate,15; bonus2 bMagicAddRace,RC_DemiHuman,getrefine();bonus2 bMagicAddRace,RC_Player,getrefine();bonus2 bSkillAtk,490,15; },{},{}
-40312,nnew_166,<究极>猩红女武神头盔,4,,,200,,6,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,24; bonus bLuk,-21; bonus2 bMagicAddClass,Class_Boss,30; bonus bMatkRate,18; bonus2 bMagicAddRace,RC_DemiHuman,getrefine()*3/2;bonus2 bMagicAddRace,RC_Player,getrefine()*3/2;bonus2 bSkillAtk,490,20; },{},{}
+40301,nnew_26,蓝色女武神头盔,4,,,100,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2001,{ bonus ballstats,6; bonus bLuk,-6; },{},{}
+40302,nnew_25,绿色女武神头盔,4,,,100,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2002,{ bonus ballstats,9; bonus bLuk,-9; },{},{}
+40303,nnew_24,红色女武神头盔,4,,,100,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2003,{ bonus ballstats,12; bonus bLuk,-12; },{},{}
+40304,nnew_22,黑色女武神头盔,4,,,100,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2004,{ bonus ballstats,15; bonus bLuk,-15; },{},{}
+40305,nnew_149,<初级>白色女武神头盔,4,,,100,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,15; bonus bLuk,-15; bonus2 bAddClass,Class_Boss,15;bonus bAtk,getrefine()*2; },{},{}
+40306,nnew_154,<中级>白色女武神头盔,4,,,100,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,18; bonus bLuk,-18; bonus2 bAddClass,Class_Boss,20;bonus bAtk,getrefine()*4; },{},{}
+40307,nnew_159,<高级>白色女武神头盔,4,,,100,,5,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,21; bonus bLuk,-21; bonus2 bAddClass,Class_Boss,25;bonus bAtk,getrefine()*6; },{},{}
+//40308,nnew_165,<究极>白色女武神头盔,4,,,100,,6,,1,0xFFFFFFFF,7,2,256,,0,1,2005,{ bonus ballstats,24; bonus bLuk,-24; bonus2 bAddClass,Class_Boss,30;bonus bAtkRate,18;bonus2 bAddRace,RC_DemiHuman,getrefine()*3/2;bonus2 bAddRace,RC_Player,getrefine()*3/2; },{},{}
+40309,nnew_153,<初级>猩红女武神头盔,4,,,100,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,15; bonus bLuk,-15; bonus2 bMagicAddClass,Class_Boss,15; bonus bMatk,getrefine()*2; },{},{}
+40310,nnew_158,<中级>猩红女武神头盔,4,,,100,,4,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,18; bonus bLuk,-18; bonus2 bMagicAddClass,Class_Boss,20; bonus bMatk,getrefine()*4; },{},{}
+40311,nnew_163,<高级>猩红女武神头盔,4,,,100,,5,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,21; bonus bLuk,-21; bonus2 bMagicAddClass,Class_Boss,25; bonus bMatk,getrefine()*6; },{},{}
+//40312,nnew_166,<究极>猩红女武神头盔,4,,,100,,6,,1,0xFFFFFFFF,7,2,256,,0,1,2006,{ bonus ballstats,24; bonus bLuk,-24; bonus2 bMagicAddClass,Class_Boss,30; bonus bMatkRate,18; bonus2 bMagicAddRace,RC_DemiHuman,getrefine()*3/2;bonus2 bMagicAddRace,RC_Player,getrefine()*3/2;bonus2 bSkillAtk,490,20; },{},{}
 //头中
 40451,anye31,红岩之翼,4,,,100,,0,,1,0xFFFFFFFF,7,2,512,,1,0,2007,{ bonus ballstats,5;bonus bLuk,-2;},{},{}
 40452,anye32,冰岩之翼,4,,,100,,0,,1,0xFFFFFFFF,7,2,512,,1,0,2008,{ bonus ballstats,5;bonus bLuk,-2;},{},{}
@@ -709,10 +709,10 @@
 40663,bmzd,不灭之刃,12,,,100,150,,,,0xFFFFFFFF,7,2,131072,,1,0,0,{ bonus ballstats,4; bonus2 bAddRace,RC_DemiHuman,15; bonus2 bAddRace,RC_Player,15; bonus2 bAddClass,Class_Boss,50; },{},{}
 40664,bmfz,不灭之杖,12,,,100,150,,,,0xFFFFFFFF,7,2,131072,,1,0,0,{ bonus ballstats,4; bonus2 bmagicAddRace,RC_DemiHuman,15; bonus2 bmagicAddRace,RC_Player,15; bonus2 bMagicAddClass,Class_Boss,50; },{},{}
 //武器
-1231,UnknownItem_44,<初级>恶魔短剑,5,,,1000,200,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,10; bonus bdex,10; bonus bint,10;bonus bAtkRate,getrefine(); bonus bMatkRate,getrefine(); bonus2 bSkillAtk,212,getrefine()+10; bonus2 bSkillAtk,214,getrefine()+10; bonus2 bSkillAtk,379,getrefine()+10; bonus2 bAddClass,Class_Boss,100;},{},{}
-1233,UnknownItem_57,<中级>恶魔短剑,5,,,1000,250,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,15; bonus bdex,15; bonus bint,15;bonus bAtkRate,getrefine()*3/2; bonus bMatkRate,getrefine()*3/2; bonus2 bSkillAtk,212,getrefine()*3/2+10; bonus2 bSkillAtk,214,getrefine()*3/2+10; bonus2 bSkillAtk,379,getrefine()*3/2+10; bonus2 bAddClass,Class_Boss,120;},{},{}
-1234,UnknownItem_70,<高级>恶魔短剑,5,,,1000,300,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,20; bonus bdex,20; bonus bint,20;bonus bAtkRate,getrefine()*2; bonus bMatkRate,getrefine()*2; bonus2 bSkillAtk,212,getrefine()*2+10; bonus2 bSkillAtk,214,getrefine()*2+10; bonus2 bSkillAtk,379,getrefine()*2+10; bonus2 bAddClass,Class_Boss,150;},{},{}
-1235,UnknownItem_265,<究极>恶魔短剑,5,,,1000,350,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,25; bonus bdex,25; bonus bint,25;bonus bAtkRate,getrefine()*5/2; bonus bMatkRate,getrefine()*5/2; bonus2 bSkillAtk,212,getrefine()*5/2+10; bonus2 bSkillAtk,214,getrefine()*5/2+10; bonus2 bSkillAtk,379,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200;},{},{}
+//1231,UnknownItem_44,<初级>恶魔短剑,5,,,1000,200,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,10; bonus bdex,10; bonus bint,10;bonus bAtkRate,getrefine(); bonus bMatkRate,getrefine(); bonus2 bSkillAtk,212,getrefine()+10; bonus2 bSkillAtk,214,getrefine()+10; bonus2 bSkillAtk,379,getrefine()+10; bonus2 bAddClass,Class_Boss,100;},{},{}
+//1233,UnknownItem_57,<中级>恶魔短剑,5,,,1000,250,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,15; bonus bdex,15; bonus bint,15;bonus bAtkRate,getrefine()*3/2; bonus bMatkRate,getrefine()*3/2; bonus2 bSkillAtk,212,getrefine()*3/2+10; bonus2 bSkillAtk,214,getrefine()*3/2+10; bonus2 bSkillAtk,379,getrefine()*3/2+10; bonus2 bAddClass,Class_Boss,120;},{},{}
+//1234,UnknownItem_70,<高级>恶魔短剑,5,,,1000,300,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,20; bonus bdex,20; bonus bint,20;bonus bAtkRate,getrefine()*2; bonus bMatkRate,getrefine()*2; bonus2 bSkillAtk,212,getrefine()*2+10; bonus2 bSkillAtk,214,getrefine()*2+10; bonus2 bSkillAtk,379,getrefine()*2+10; bonus2 bAddClass,Class_Boss,150;},{},{}
+//1235,UnknownItem_265,<究极>恶魔短剑,5,,,1000,350,,1,4,0xFE9F7EEF,7,2,2,4,1,1,1,{bonus bstr,25; bonus bdex,25; bonus bint,25;bonus bAtkRate,getrefine()*5/2; bonus bMatkRate,getrefine()*5/2; bonus2 bSkillAtk,212,getrefine()*5/2+10; bonus2 bSkillAtk,214,getrefine()*5/2+10; bonus2 bSkillAtk,379,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200;},{},{}
 //
 40701,UnknownItem_267,<初级>恶魔双手剑,5,,,1000,200,,1,4,0x00000080,7,2,34,4,1,1,3,{bonus bcritical,10;bonus bstr,10; bonus bdex,10; bonus bvit,10;bonus bAtkRate,getrefine(); bonus2 bSkillAtk,62,getrefine()+10;bonus2 bAddClass,Class_Boss,100; bonus bCritAtkRate,getrefine()+10;bonus2 bSubClass,Class_Boss,20;},{},{}
 40702,UnknownItem_34,<初级>恶魔巨剑,5,,,1000,200,,1,4,0x00004000,7,2,2,4,1,1,2,{ bonus bvit,10; bonus bdex,10; bonus bint,10; bonus bmAtkRate,getrefine()*4; bonus2 bSkillAtk,254,getrefine()+10; bonus2 bSkillAtk,368,getrefine()+10; bonus2 bMagicAddClass,Class_Boss,100; bonus2 bIgnoreMdefClassRate,Class_Boss,20; bonus2 bAddClass,Class_Boss,100; },{},{}
@@ -769,6 +769,116 @@
 40771,UnknownItem_264,<究极>恶魔皮鞭,5,,,1000,350,,1,4,0x00080000,7,1,2,4,1,1,14,{ bonus bdex,25;bonus bluk,25; bonus bvit,25;bonus bAtkRate,getrefine()*5/2; bonus2 bSkillAtk,394,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200;},{},{}
 40772,UnknownItem_266,<究极>恶魔飞镖,5,,,1000,350,,1,4,0x02000000,7,2,2,4,1,1,22,{ bonus bint,25; bonus bvit,25; bonus bdex,25; bonus bMatkRate,getrefine()*5+10; bonus2 bSkillAtk,540,getrefine()*5/2+10; bonus2 bSkillAtk,537,getrefine()*5/2+10; bonus2 bSkillAtk,534,getrefine()*5/2+10; bonus2 bSkillAtk,541,getrefine()*5/2+10; bonus2 bSkillAtk,536,getrefine()*5/2+10; bonus2 bIgnoreMdefClassRate,Class_Boss,50; bonus2 bmagicAddClass,Class_Boss,200; },{},{}
 40773,UnknownItem_254,<究极>恶魔手枪,5,,,1000,350,,7,4,0x01000000,7,2,34,4,1,1,17,{ bonus bdex,25; bonus bluk,25; bonus bvit,25; bonus bAtkRate,getrefine()*5/2; bonus2 bSkillAtk,516,getrefine()*5/2+10; bonus2 bSkillAtk,512,getrefine()*5/2+10; bonus2 bSkillAtk,515,getrefine()*5/2+10; bonus2 bAddClass,Class_Boss,200; bonus2 bSubClass,Class_Boss,35; },{},{}
+
+//铠甲
+40801,ydnkj1,<初级>雅典娜的战争盔甲,4,,,100,,5,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,5+getrefine()%5*1; bonus bLuk,-5-getrefine()%5*1; bonus bMaxHP,1000+getrefine()%5*1000;},{},{}
+40802,ydnkj2,<中级>雅典娜的战争盔甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,10+getrefine()%5*2; bonus bLuk,-10-getrefine()%5*2; bonus bMaxHP,2000+getrefine()%5*1500;},{},{}
+40803,ydnkj3,<高级>雅典娜的战争盔甲,4,,,100,,7,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,15+getrefine()%5*3; bonus bLuk,-15-getrefine()%5*3; bonus bMaxHP,3000+getrefine()%5*2000;},{},{}
+
+40805,hdskj1,<初级>哈迪斯的不洁盔甲,4,,,100,,5,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,5+getrefine()%5*1; bonus bLuk,-5-getrefine()%5*1; bonus bMaxHP,1000+getrefine()%5*1000;},{},{}
+40806,hdskj2,<中级>哈迪斯的不洁盔甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,10+getrefine()%5*2; bonus bLuk,-10-getrefine()%5*2; bonus bMaxHP,2000+getrefine()%5*1500;},{},{}
+40807,hdskj3,<高级>哈迪斯的不洁盔甲,4,,,100,,7,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,15+getrefine()%5*3; bonus bLuk,-15-getrefine()%5*3; bonus bMaxHP,3000+getrefine()%5*2000;},{},{}
+
+40809,zskj1,<初级>神王宙斯权力之甲,4,,,100,,5,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,5+getrefine()%5*1; bonus bLuk,-5-getrefine()%5*1; bonus bMaxHP,1000+getrefine()%5*1000;},{},{}
+40810,zskj2,<中级>神王宙斯权力之甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,10+getrefine()%5*2; bonus bLuk,-10-getrefine()%5*2; bonus bMaxHP,2000+getrefine()%5*1500;},{},{}
+40811,zskj3,<高级>神王宙斯权力之甲,4,,,100,,7,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,15+getrefine()%5*3; bonus bLuk,-15-getrefine()%5*3; bonus bMaxHP,3000+getrefine()%5*2000;},{},{}
+
+40813,aklskj1,<初级>阿喀琉斯残破盔甲,4,,,100,,5,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,5+getrefine()%5*1; bonus bLuk,-5-getrefine()%5*1; bonus bMaxHP,1000+getrefine()%5*1000;},{},{}
+40814,aklskj2,<中级>阿喀琉斯残破盔甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,10+getrefine()%5*2; bonus bLuk,-10-getrefine()%5*2; bonus bMaxHP,2000+getrefine()%5*1500;},{},{}
+40815,aklskj3,<高级>阿喀琉斯残破盔甲,4,,,100,,7,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,15+getrefine()%5*3; bonus bLuk,-15-getrefine()%5*3; bonus bMaxHP,3000+getrefine()%5*2000;},{},{}
+
+//靴子
+40817,ydnxz1,<初级>雅典娜的战争靴子,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bStr,getrefine()%5*1;},{},{}
+40818,ydnxz2,<中级>雅典娜的战争靴子,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bStr,getrefine()%5*2;},{},{}
+40819,ydnxz3,<高级>雅典娜的战争靴子,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bStr,getrefine()%5*3;},{},{}
+
+40821,hdsxz1,<初级>哈迪斯的不洁战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bDex,getrefine()%5*1;},{},{}
+40822,hdsxz2,<中级>哈迪斯的不洁战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bDex,getrefine()%5*2;},{},{}
+40823,hdsxz3,<高级>哈迪斯的不洁战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bDex,getrefine()%5*3;},{},{}
+
+40825,zsxz1,<初级>神王宙斯权力战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bInt,getrefine()%5*1;},{},{}
+40826,zsxz2,<中级>神王宙斯权力战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bInt,getrefine()%5*2;},{},{}
+40827,zsxz3,<高级>神王宙斯权力战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bInt,getrefine()%5*3;},{},{}
+
+40829,aklsxz1,<初级>阿喀琉斯残破战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bVit,getrefine()%5*1;},{},{}
+40830,aklsxz2,<中级>阿喀琉斯残破战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bVit,getrefine()%5*2;},{},{}
+40831,aklsxz3,<高级>阿喀琉斯残破战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bVit,getrefine()%5*3;},{},{}
+
+//披肩
+40833,ydnpf1,<初级>雅典娜的战争披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bStr,getrefine()%5*1;},{},{}
+40834,ydnpf2,<中级>雅典娜的战争披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bStr,getrefine()%5*2;},{},{}
+40835,ydnpf3,<高级>雅典娜的战争披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bStr,getrefine()%5*3;},{},{}
+
+40837,hdspf1,<初级>哈迪斯的不洁披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bDex,getrefine()%5*1;},{},{}
+40838,hdspf2,<中级>哈迪斯的不洁披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bDex,getrefine()%5*2;},{},{}
+40839,hdspf3,<高级>哈迪斯的不洁披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bDex,getrefine()%5*3;},{},{}
+
+40841,zspf1,<初级>神王宙斯权力披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bInt,getrefine()%5*1;},{},{}
+40842,zspf2,<中级>神王宙斯权力披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bInt,getrefine()%5*2;},{},{}
+40843,zspf3,<高级>神王宙斯权力披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bInt,getrefine()%5*3;},{},{}
+
+40845,aklspf1,<初级>阿喀琉斯残破披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bVit,getrefine()%5*1;},{},{}
+40846,aklspf2,<中级>阿喀琉斯残破披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bVit,getrefine()%5*2;},{},{}
+40847,aklspf3,<高级>阿喀琉斯残破披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bVit,getrefine()%5*3;},{},{}
+
+//武器
+40901,zsqz1,<初级>宙斯之雷霆权杖,5,,,1000,150,,1,4,0x00000200,7,2,2,4,1,1,10,{},{},{}
+40902,zsqz2,<中级>宙斯之雷霆权杖,5,,,1000,200,,1,4,0x00000200,7,2,2,4,1,1,10,{},{},{}
+40903,zsqz3,<高级>宙斯之雷霆权杖,5,,,1000,250,,1,4,0x00000200,7,2,2,4,1,1,10,{},{},{}
+
+40905,ydnzq1,<初级>雅典娜重枪,5,,,1000,150,,2,4,0x00004000,7,2,2,4,1,1,4,{},{},{}
+40906,ydnzq2,<中级>雅典娜重枪,5,,,1000,200,,3,4,0x00004000,7,2,2,4,1,1,4,{},{},{}
+40907,ydnzq3,<高级>雅典娜重枪,5,,,1000,250,,4,4,0x00004000,7,2,2,4,1,1,4,{},{},{}
+
+40909,arszm1,<初级>阿瑞斯战矛,5,,,5000,150,,2,4,0x00000080,7,2,2,4,1,1,4,{},{},{}
+40910,arszm2,<中级>阿瑞斯战矛,5,,,10000,200,,3,4,0x00000080,7,2,2,4,1,1,4,{},{},{}
+40911,arszm3,<高级>阿瑞斯战矛,5,,,15000,250,,4,4,0x00000080,7,2,2,4,1,1,4,{},{},{}
+
+40913,arsjj1,<初级>阿瑞斯巨剑,5,,,1000,150,,2,4,0x00000080,7,2,2,4,1,1,3,{},{},{}
+40914,arsjj2,<中级>阿瑞斯巨剑,5,,,1000,200,,3,4,0x00000080,7,2,2,4,1,1,3,{},{},{}
+40915,arsjj3,<高级>阿瑞斯巨剑,5,,,1000,250,,4,4,0x00000080,7,2,2,4,1,1,3,{},{},{}
+
+40917,hktdr1,<初级>赫卡忒短刃,5,,,1000,150,,2,4,0x00001000,7,2,2,4,1,1,1,{},{},{}
+40918,hktdr2,<中级>赫卡忒短刃,5,,,1000,200,,3,4,0x00001000,7,2,2,4,1,1,1,{},{},{}
+40919,hktdr3,<高级>赫卡忒短刃,5,,,1000,250,,4,4,0x00001000,7,2,2,4,1,1,1,{},{},{}
+
+40921,tmsyf1,<初级>忒弥斯金斧,5,,,1000,150,,1,4,0x00040000,7,2,2,4,1,1,6,{},{},{}
+40922,tmsyf2,<中级>忒弥斯金斧,5,,,1000,200,,1,4,0x00040000,7,2,2,4,1,1,6,{},{},{}
+40923,tmsyf3,<高级>忒弥斯金斧,5,,,1000,250,,1,4,0x00040000,7,2,2,4,1,1,6,{},{},{}
+
+40925,hfstszc1,<初级>赫菲斯托斯之锤,5,,,1000,150,,2,4,0x00000100,7,2,2,4,1,1,8,{},{},{}
+40926,hfstszc2,<中级>赫菲斯托斯之锤,5,,,1000,200,,3,4,0x00000100,7,2,2,4,1,1,8,{},{},{}
+40927,hfstszc3,<高级>赫菲斯托斯之锤,5,,,1000,250,,4,4,0x00000100,7,2,2,4,1,1,8,{},{},{}
+
+40929,arsqt1,<初级>阿瑞斯拳套,5,,,1000,150,,2,4,0x00008000,7,2,2,4,1,1,12,{},{},{}
+40930,arsqt2,<中级>阿瑞斯拳套,5,,,1000,200,,3,4,0x00008000,7,2,2,4,1,1,12,{},{},{}
+40931,arsqt3,<高级>阿瑞斯拳套,5,,,1000,250,,4,4,0x00008000,7,2,2,4,1,1,12,{},{},{}
+
+40933,hfstsqr1,<初级>赫菲斯托斯拳刃,5,,,1000,150,,2,4,0x00001000,7,2,34,4,1,1,16,{},{},{}
+40934,hfstsqr2,<中级>赫菲斯托斯拳刃,5,,,1000,200,,3,4,0x00001000,7,2,34,4,1,1,16,{},{},{}
+40935,hfstsqr3,<高级>赫菲斯托斯拳刃,5,,,1000,250,,4,4,0x00001000,7,2,34,4,1,1,16,{},{},{}
+
+40937,ablsg1,<初级>阿波罗神弓,5,,,1000,150,,5,4,0x00020800,7,2,34,4,1,1,11,{},{},{}
+40938,ablsg2,<中级>阿波罗神弓,5,,,1000,200,,5,4,0x00020800,7,2,34,4,1,1,11,{},{},{}
+40939,ablsg3,<高级>阿波罗神弓,5,,,1000,250,,5,4,0x00020800,7,2,34,4,1,1,11,{},{},{}
+
+40941,afldtzz1,<初级>阿佛洛狄忒之镜,5,,,1000,150,,1,4,0x00010000,7,2,2,4,1,1,15,{},{},{}
+40942,afldtzz2,<中级>阿佛洛狄忒之镜,5,,,1000,200,,1,4,0x00010000,7,2,2,4,1,1,15,{},{},{}
+40943,afldtzz3,<高级>阿佛洛狄忒之镜,5,,,1000,250,,1,4,0x00010000,7,2,2,4,1,1,15,{},{},{}
+
+40945,gyzf1,<初级>盖娅战斧,5,,,1000,150,,2,4,0x00000400,7,2,2,4,1,1,6,{},{},{}
+40946,gyzf2,<中级>盖娅战斧,5,,,1000,200,,3,4,0x00000400,7,2,2,4,1,1,6,{},{},{}
+40947,gyzf3,<高级>盖娅战斧,5,,,1000,250,,4,4,0x00000400,7,2,2,4,1,1,6,{},{},{}
+
+40949,qsslq1,<初级>岐神手里剑,5,,,1000,150,,1,4,0x02000000,7,2,2,4,1,1,22,{},{},{}
+40950,qsslq2,<中级>岐神手里剑,5,,,1000,200,,1,4,0x02000000,7,2,2,4,1,1,22,{},{},{}
+40951,qsslq3,<高级>岐神手里剑,5,,,1000,250,,1,4,0x02000000,7,2,2,4,1,1,22,{},{},{}
+
+40953,smzy1,<初级>沙漠之鹰,5,,,1000,150,,7,4,0x01000000,7,2,34,4,1,1,17,{},{},{}
+40954,smzy2,<初级>沙漠之鹰,5,,,1000,200,,7,4,0x01000000,7,2,34,4,1,1,17,{},{},{}
+40955,smzy3,<初级>沙漠之鹰,5,,,1000,250,,7,4,0x01000000,7,2,34,4,1,1,17,{},{},{}
+
+
 // ==================================================================================================== //
 //                            日本时装/道具/转蛋（预定范围：50001 - 50999）                             //
 // ==================================================================================================== //

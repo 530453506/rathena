@@ -25,7 +25,7 @@ struct status_change;
 #ifdef RENEWAL
 #	define MAX_REFINE 20
 #else
-#	define MAX_REFINE 10
+#	define MAX_REFINE 50
 #endif
 
 /// Refine type

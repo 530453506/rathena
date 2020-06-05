@@ -34,7 +34,7 @@ OnBuyItem:
 	}
 	end;
 
-	function	HandDo	{
+	function	HandDo  {
 		deletearray @shop[0],128;
 		switch(getarg(0)) 
 		{

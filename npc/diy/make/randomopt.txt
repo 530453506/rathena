@@ -67,6 +67,6 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
 	}
 	
 OnInit:
-	setarray .alloweditems[0],1201,1202; // Add more item ids here
+	setarray .alloweditems[0],1201,40901,40902; // Add more item ids here
 	.sz = getarraysize(.alloweditems);
 }

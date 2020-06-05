@@ -14,6 +14,11 @@ display_version: no
 // Turn this on to allow a player to level up more than once from a kill. (Note 1)
 multi_level_up: yes
 
+// Use the contents of db/statpoint.txt when doing a stats reset and leveling up? (Note 1)
+// If no, an equation will be used which preserves statpoints earned/lost
+// through external means (ie: stat point buyers/sellers)
+use_statpoint_table: no
+
 //items
 // Allow changing of equipment while interacting with NPCs? (Note 1)
 item_enabled_npc: no
@@ -32,6 +37,16 @@ max_third_aspd: 197
 max_extended_aspd: 197
 gvg_max_aspd: 193
 pvp_max_aspd: 193
+
+//status
+// Will certain skill status-changes be removed on logout?
+// This mimics official servers, where Extremity Fist's no SP regen,
+// Strip Equipment, and some other buffs are removed when you logout. Setting is:
+// 0 = remove nothing.
+// 1 = remove negative buffs (stripping, EF)
+// 2 = remove positive buffs (maximize power, steel body...)
+// 3 = remove both negative and positive buffs.
+debuff_on_logout: 1
 
 //===================================
 // VIP system

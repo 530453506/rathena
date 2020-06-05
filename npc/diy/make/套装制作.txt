@@ -1,0 +1,198 @@
+-	shop	TSHOP1	-1,512:-1
+-	shop	TSHOP2	-1,512:-1
+-	shop	TSHOP3	-1,512:-1
+-	shop	TSHOP4	-1,512:-1
+prontera,146,113,5	script	套装制作	716,{
+	function	WeaponDo;
+
+	mes "[套装制作]";
+	mes "^FF0000升级套装必须装备在身上^000000";
+	mes "^FF0000新套装会继承原套装的精炼值，卡片等^000000";
+	mes "^FF0000不必担心，放心升级^000000";
+	@s=(select("头盔制作:盔甲制作:靴子制作:披肩制作"));
+	callshop "TSHOP"+@s,1;
+	npcshopattach "TSHOP"+@s;
+	end;
+
+OnBuyItem:
+	.@j=0;
+	while (.@j < getarraysize(getd(".Shop"+@s))) {
+		if(getd(".Shop"+@s+"["+.@j+"]") == @bought_nameid[.@i]) 
+		{
+			WeaponDo(@bought_nameid,@bought_nameid);
+		}
+		.@j++; 
+	}
+	end;
+
+	function	WeaponDo    {
+		deletearray @shop[0],128;
+		switch(getarg(0)) 
+		{
+			Default: 
+				mes "[套装制作]";
+				mes "ID错误,请报告给GM!!";
+				mes "ID ["+@bought_nameid+"]";
+				close;
+			//头上
+			case 40301: setarray @shop[0],0,EQI_HEAD_TOP,0,0,512,1; break;
+			case 40302: setarray @shop[0],0,EQI_HEAD_TOP,40301,1; break;
+			case 40303: setarray @shop[0],0,EQI_HEAD_TOP,40302,1; break;
+			case 40304: setarray @shop[0],0,EQI_HEAD_TOP,40303,1; break;
+			case 40305: setarray @shop[0],0,EQI_HEAD_TOP,40304,1; break;
+			case 40306: setarray @shop[0],0,EQI_HEAD_TOP,40305,1; break;
+			case 40307: setarray @shop[0],0,EQI_HEAD_TOP,40306,1; break;
+			case 40309: setarray @shop[0],0,EQI_HEAD_TOP,40304,1; break;
+			case 40310: setarray @shop[0],0,EQI_HEAD_TOP,40309,1; break;
+			case 40311: setarray @shop[0],0,EQI_HEAD_TOP,40310,1; break;
+
+			//铠甲
+			case 40801: setarray @shop[0],0,EQI_ARMOR,0,0,512,1; break;
+            case 40802: setarray @shop[0],0,EQI_ARMOR,40801,1; break;
+            case 40803: setarray @shop[0],0,EQI_ARMOR,40802,1; break;
+
+			case 40805: setarray @shop[0],0,EQI_ARMOR,0,0,512,1; break;
+			case 40806: setarray @shop[0],0,EQI_ARMOR,40805,1; break;
+			case 40807: setarray @shop[0],0,EQI_ARMOR,40806,1; break;
+
+			case 40809: setarray @shop[0],0,EQI_ARMOR,0,0,512,1; break;
+			case 40810: setarray @shop[0],0,EQI_ARMOR,40809,1; break;
+			case 40811: setarray @shop[0],0,EQI_ARMOR,40810,1; break;
+
+			case 40813: setarray @shop[0],0,EQI_ARMOR,0,0,512,1; break;
+			case 40814: setarray @shop[0],0,EQI_ARMOR,40813,1; break;
+			case 40815: setarray @shop[0],0,EQI_ARMOR,40814,1; break;
+
+			//靴子
+			case 40817: setarray @shop[0],0,EQI_SHOES,0,0,512,1; break;
+			case 40818: setarray @shop[0],0,EQI_SHOES,40817,1; break;
+			case 40819: setarray @shop[0],0,EQI_SHOES,40818,1; break;
+
+			case 40821: setarray @shop[0],0,EQI_SHOES,0,0,512,1; break;
+			case 40822: setarray @shop[0],0,EQI_SHOES,40821,1; break;
+			case 40823: setarray @shop[0],0,EQI_SHOES,40822,1; break;
+
+			case 40825: setarray @shop[0],0,EQI_SHOES,0,0,512,1; break;
+			case 40826: setarray @shop[0],0,EQI_SHOES,40825,1; break;
+			case 40827: setarray @shop[0],0,EQI_SHOES,40826,1; break;
+
+			case 40829: setarray @shop[0],0,EQI_SHOES,0,0,512,1; break;
+			case 40830: setarray @shop[0],0,EQI_SHOES,40829,1; break;
+			case 40831: setarray @shop[0],0,EQI_SHOES,40830,1; break;
+
+			//披风
+			case 40833: setarray @shop[0],0,EQI_GARMENT,0,0,512,1; break;
+			case 40834: setarray @shop[0],0,EQI_GARMENT,40833,1; break;
+			case 40835: setarray @shop[0],0,EQI_GARMENT,40834,1; break;
+
+			case 40837: setarray @shop[0],0,EQI_GARMENT,0,0,512,1; break;
+			case 40838: setarray @shop[0],0,EQI_GARMENT,40837,1; break;
+			case 40839: setarray @shop[0],0,EQI_GARMENT,40838,1; break;
+
+			case 40841: setarray @shop[0],0,EQI_GARMENT,0,0,512,1; break;
+			case 40842: setarray @shop[0],0,EQI_GARMENT,40841,1; break;
+			case 40843: setarray @shop[0],0,EQI_GARMENT,40842,1; break;
+
+			case 40845: setarray @shop[0],0,EQI_GARMENT,0,0,512,1; break;
+			case 40846: setarray @shop[0],0,EQI_GARMENT,40845,1; break;
+			case 40847: setarray @shop[0],0,EQI_GARMENT,40846,1; break;
+
+		}
+		mes "[套装制作]";
+		mes "-制作 ^FF0000"+getitemname(@bought_nameid)+"^000000";
+		mes "-请准备好下面的材料!";
+		for(@e=2;@e<=getarraysize(@shop);@e+=2) {
+		    if (@shop[@e] > 0) {
+			    mes "^0066CC材料:  "+getitemname(@shop[@e])+"^000000 x " + "[^009900" + countitem(@shop[@e]) +"^000000/^FF6600"+ @shop[@e+1] +"^000000]" + (countitem(@shop[@e]) >= @shop[@e+1]?("^D2691E已完成^000000"):("^999999未完成^000000"));
+		    }
+		}
+		mes "-需要^0066CC"+@shop[0]+"^000000Z";
+		next;
+		switch(select("^0000FF制作^000000:结束对话")) {
+		case 1:	
+			if(Zeny <= @shop[0]) {
+				mes "[套装制作]";
+				mes "您的Zeny不够";
+				close;
+			}
+			if (@shop[2] > 0 && countitem(@shop[2]) > 1) {
+				mes "[套装制作]";
+				mes "检测到您有多件需要升级的装备";
+				mes "请把多余的装备存到仓库中";
+				close;
+			}
+			for(@e=4;@shop[@e] != 0;@e+=2) {
+				if(countitem(@shop[@e]) < @shop[@e+1]) {
+					mes "[套装制作]";
+					mes "你身上有 ^FF0000" + countitem(@shop[@e]) + "^000000 个 ^FF0000" + getitemname(@shop[@e]) + "^000000,我需要 ^009900" + @shop[@e+1] + "^000000 个";
+					mes "请补齐 ^FF0000" + ((@shop[@e+1])-countitem(@shop[@e])) + "^000000 个 ^FF0000" + getitemname(@shop[@e]) + "^000000 再来找我.";
+					close;
+				}
+			}
+			if (@shop[2] > 0) {
+			    if (@shop[2] != getequipid(@shop[1])) {
+				    mes "[套装制作]";
+				    mes "请穿上需要升级的装备";
+				    close;
+				} else {
+				    set .@refine, getequiprefinerycnt(@shop[1]);
+                    set .@card0, getequipcardid(@shop[1], 0);
+                    set .@card1, getequipcardid(@shop[1], 1);
+                    set .@card2, getequipcardid(@shop[1], 2);
+                    set .@card3, getequipcardid(@shop[1], 3);
+                    set .@randomId0, getequiprandomoption(@shop[1], 0, ROA_ID);
+                    set .@randomValue0, getequiprandomoption(@shop[1], 0, ROA_VALUE);
+                    set .@randomParam0, getequiprandomoption(@shop[1], 0, ROA_PARAM);
+                    set .@randomId1, getequiprandomoption(@shop[1], 1, ROA_ID);
+                    set .@randomValue1, getequiprandomoption(@shop[1], 1, ROA_VALUE);
+                    set .@randomParam1, getequiprandomoption(@shop[1], 1, ROA_PARAM);          
+                    set .@randomId2, getequiprandomoption(@shop[1], 2, ROA_ID);
+                    set .@randomValue2, getequiprandomoption(@shop[1], 2, ROA_VALUE);
+                    set .@randomParam2, getequiprandomoption(@shop[1], 2, ROA_PARAM);           
+                    set .@randomId3, getequiprandomoption(@shop[1], 3, ROA_ID);
+                    set .@randomValue3, getequiprandomoption(@shop[1], 3, ROA_VALUE);
+                    set .@randomParam3, getequiprandomoption(@shop[1], 3, ROA_PARAM);          
+                    set .@randomId4, getequiprandomoption(@shop[1], 4, ROA_ID);
+                    set .@randomValue4, getequiprandomoption(@shop[1], 4, ROA_VALUE);
+                    set .@randomParam4, getequiprandomoption(@shop[1], 4, ROA_PARAM);
+                    setarray .@OptID[0],.@randomId0,.@randomId1,.@randomId2,.@randomId3,.@randomId4;
+                    setarray .@OptVal[0],.@randomValue0,.@randomValue1,.@randomValue2,.@randomValue3,.@randomValue4;
+                    setarray .@OptParam[0],.@randomParam0,.@randomParam1,.@randomParam2,.@randomParam3,.@randomParam4;                                         
+				}
+			}
+			zeny-=@shop[0];
+			for(@e=2;@e<=getarraysize(@shop);@e+=2) {
+			    if (@shop[@e] >0) {
+			        delitem @shop[@e],@shop[@e+1];
+			    }
+			}
+			mes "[套装制作]";
+			mes "制作成功";
+			getitem3 getarg(1),1,1,.@refine,0,.@card0,.@card1,.@card2,.@card3,.@OptID,.@OptVal,.@OptParam;
+			close;
+		case 3:
+			close;
+		}
+	}
+	
+OnInit:
+	waitingroom "[☆套装制作☆]",0;
+	.ShopCount= 4;
+	setarray .Shop1[0],40301,40302,40303,40304,40305,40309,40306,40310,40307,40311;
+	setarray .Shop2[0],40801,40805,40809,40813,40802,40806,40810,40814,40803,40807,40811,40815;
+	setarray .Shop3[0],40817,40821,40825,40829,40818,40822,40826,40830,40819,40823,40827,40831;
+	setarray .Shop4[0],40833,40837,40841,40845,40834,40838,40842,40846,40835,40839,40843,40847;
+	.@i=1;
+	while (.@i <= .ShopCount)
+	{
+		.@j=0;
+		while (.@j < getarraysize(getd(".Shop"+.@i))) 
+		{
+			npcshopdelitem "TSHOP"+.@i,512;
+			npcshopadditem "TSHOP"+.@i, getd(".Shop"+.@i+"["+.@j+"]"), 1;
+			.@j++; 
+		}
+		.@i++; 
+	}
+	end;
+}
