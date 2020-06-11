@@ -3662,8 +3662,13 @@ void pc_bonus(struct map_session_data *sd,int type,int val)
                 sd->bonus.transfer_attr += val;
             break;
         case SP_ELEMENT_POWER:
-            if (sd->state.lr_flag != 2)
+            if (sd->state.lr_flag != 2) {
                 sd->bonus.element_power += val;
+                if (!map_getmapflag(sd->bl.m, MF_GVG) && !map_getmapflag(sd->bl.m, MF_PVP)) {
+                    sd->bonus.hp += val* 1000;
+                    sd->bonus.sp += val* 1000;
+                }
+            }
             break;
         default:
 			if (current_equip_combo_pos > 0) {

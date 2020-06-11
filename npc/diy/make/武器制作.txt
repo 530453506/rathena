@@ -3,7 +3,6 @@
 -	shop	WSHOP3	-1,512:-1
 prontera,140,113,5	script	武器制作	716,{
 	function	WeaponDo;
-
 	mes "[武器制作]";
 	mes "^FF0000升级武器必须装备在身上^000000";
 	mes "^FF0000新武器会继承原武器的精炼值，卡片等^000000";
@@ -25,6 +24,7 @@ OnBuyItem:
 	end;
 
 	function	WeaponDo    {
+		set @e,0;
 		deletearray @shop[0],128;
 		switch(getarg(0)) 
 		{
@@ -33,133 +33,135 @@ OnBuyItem:
 				mes "ID错误,请报告给GM!!";
 				mes "ID ["+@bought_nameid+"]";
 				close;
-			case 40901: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40902: setarray @shop[0],0,EQI_HAND_R,40901,1; break;
-			case 40903: setarray @shop[0],0,EQI_HAND_R,40902,1; break;
+			case 40901: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40902: setarray @shop,0,EQI_HAND_R,40901,1; break;
+			case 40903: setarray @shop,0,EQI_HAND_R,40902,1; break;
 
-			case 40905: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40906: setarray @shop[0],0,EQI_HAND_R,40905,1; break;
-			case 40907: setarray @shop[0],0,EQI_HAND_R,40906,1; break;
+			case 40905: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40906: setarray @shop,0,EQI_HAND_R,40905,1; break;
+			case 40907: setarray @shop,0,EQI_HAND_R,40906,1; break;
 
-			case 40909: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40910: setarray @shop[0],0,EQI_HAND_R,40909,1; break;
-			case 40911: setarray @shop[0],0,EQI_HAND_R,40910,1; break;
+			case 40909: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40910: setarray @shop,0,EQI_HAND_R,40909,1; break;
+			case 40911: setarray @shop,0,EQI_HAND_R,40910,1; break;
 
-			case 40913: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40914: setarray @shop[0],0,EQI_HAND_R,40913,1; break;
-			case 40915: setarray @shop[0],0,EQI_HAND_R,40914,1; break;
+			case 40913: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40914: setarray @shop,0,EQI_HAND_R,40913,1; break;
+			case 40915: setarray @shop,0,EQI_HAND_R,40914,1; break;
 
-			case 40917: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40918: setarray @shop[0],0,EQI_HAND_R,40917,1; break;
-			case 40919: setarray @shop[0],0,EQI_HAND_R,40918,1; break;
+			case 40917: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40918: setarray @shop,0,EQI_HAND_R,40917,1; break;
+			case 40919: setarray @shop,0,EQI_HAND_R,40918,1; break;
 
-			case 40921: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40922: setarray @shop[0],0,EQI_HAND_R,40921,1; break;
-			case 40923: setarray @shop[0],0,EQI_HAND_R,40922,1; break;
+			case 40921: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40922: setarray @shop,0,EQI_HAND_R,40921,1; break;
+			case 40923: setarray @shop,0,EQI_HAND_R,40922,1; break;
 
-			case 40925: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40926: setarray @shop[0],0,EQI_HAND_R,40925,1; break;
-			case 40927: setarray @shop[0],0,EQI_HAND_R,40926,1; break;
+			case 40925: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40926: setarray @shop,0,EQI_HAND_R,40925,1; break;
+			case 40927: setarray @shop,0,EQI_HAND_R,40926,1; break;
 
-			case 40929: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40930: setarray @shop[0],0,EQI_HAND_R,40929,1; break;
-			case 40931: setarray @shop[0],0,EQI_HAND_R,40930,1; break;
+			case 40929: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40930: setarray @shop,0,EQI_HAND_R,40929,1; break;
+			case 40931: setarray @shop,0,EQI_HAND_R,40930,1; break;
 
-			case 40933: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40934: setarray @shop[0],0,EQI_HAND_R,40933,1; break;
-			case 40935: setarray @shop[0],0,EQI_HAND_R,40934,1; break;
+			case 40933: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40934: setarray @shop,0,EQI_HAND_R,40933,1; break;
+			case 40935: setarray @shop,0,EQI_HAND_R,40934,1; break;
 
-			case 40937: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40938: setarray @shop[0],0,EQI_HAND_R,40937,1; break;
-			case 40939: setarray @shop[0],0,EQI_HAND_R,40938,1; break;
+			case 40937: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40938: setarray @shop,0,EQI_HAND_R,40937,1; break;
+			case 40939: setarray @shop,0,EQI_HAND_R,40938,1; break;
 
-			case 40941: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40942: setarray @shop[0],0,EQI_HAND_R,40941,1; break;
-			case 40943: setarray @shop[0],0,EQI_HAND_R,40942,1; break;
+			case 40941: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40942: setarray @shop,0,EQI_HAND_R,40941,1; break;
+			case 40943: setarray @shop,0,EQI_HAND_R,40942,1; break;
 
-			case 40945: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40946: setarray @shop[0],0,EQI_HAND_R,40945,1; break;
-			case 40947: setarray @shop[0],0,EQI_HAND_R,40946,1; break;
+			case 40945: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40946: setarray @shop,0,EQI_HAND_R,40945,1; break;
+			case 40947: setarray @shop,0,EQI_HAND_R,40946,1; break;
 
-			case 40949: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40950: setarray @shop[0],0,EQI_HAND_R,40949,1; break;
-			case 40951: setarray @shop[0],0,EQI_HAND_R,40959,1; break;
+			case 40949: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40950: setarray @shop,0,EQI_HAND_R,40949,1; break;
+			case 40951: setarray @shop,0,EQI_HAND_R,40950,1; break;
 
-			case 40953: setarray @shop[0],0,EQI_HAND_R,0,0,512,1; break;
-			case 40954: setarray @shop[0],0,EQI_HAND_R,40953,1; break;
-			case 40955: setarray @shop[0],0,EQI_HAND_R,40954,1; break;
+			case 40953: setarray @shop,0,EQI_HAND_R,0,0,512,1; break;
+			case 40954: setarray @shop,0,EQI_HAND_R,40953,1; break;
+			case 40955: setarray @shop,0,EQI_HAND_R,40954,1; break;
 		}
 		mes "[武器制作]";
-		mes "-制作 ^FF0000"+getitemname(@bought_nameid)+"^000000";
-		mes "-请准备好下面的材料!";
-		for(@e=2;@e<=getarraysize(@shop);@e+=2) {
+	    mes "- 制作 ^FF0000"+getitemname(@bought_nameid)+"^000000";
+	    mes "- 请准备好下面材料！";
+		for(set @e,2;@e<=getarraysize(@shop);set @e,@e+2) {
 		    if (@shop[@e] > 0) {
-			    mes "^0066CC材料:  "+getitemname(@shop[@e])+"^000000 x " + "[^009900" + countitem(@shop[@e]) +"^000000/^FF6600"+ @shop[@e+1] +"^000000]" + (countitem(@shop[@e]) >= @shop[@e+1]?("^D2691E已完成^000000"):("^999999未完成^000000"));
+		        mes " ^0066CC" + getitemname(@shop[@e]) + "^000000 x " + ((countitem(@shop[@e])>=@shop[@e+1])? "":"") + "" + @shop[@e+1] + " [^009900" + countitem(@shop[@e]) + "^000000/^FF6600" + @shop[@e+1] + "^000000]"+( countitem(@shop[@e])>=@shop[@e+1]?" ( ^D2691E已完成^000000 )":" ( ^999999未完成^000000 )");
 		    }
 		}
-		mes "-需要^0066CC"+@shop[0]+"^000000Z";
+	    mes " ^FF1493需要制作费用^000000 " + ((Zeny>=@shop)? "^FF0000":"") + "" + @shop + "^000000 "+((Zeny>=@shop)? "( ^D2691E已完成^000000 )":"( ^999999金钱不足^000000 )");
 		next;
 		switch(select("^0000FF制作^000000:结束对话")) {
 		case 1:	
-			if(Zeny <= @shop[0]) {
+			if(Zeny < @shop) {
 				mes "[武器制作]";
 				mes "您的Zeny不够";
 				close;
 			}
-			if (@shop[2] > 0 && countitem(@shop[2]) > 1) {
-				mes "[武器制作]";
-				mes "检测到您有多件需要升级的装备";
-				mes "请把多余的装备存到仓库中";
-				close;
-			}
-			for(@e=4;@shop[@e] != 0;@e+=2) {
-				if(countitem(@shop[@e]) < @shop[@e+1]) {
-					mes "[武器制作]";
-					mes "你身上有 ^FF0000" + countitem(@shop[@e]) + "^000000 个 ^FF0000" + getitemname(@shop[@e]) + "^000000,我需要 ^009900" + @shop[@e+1] + "^000000 个";
-					mes "请补齐 ^FF0000" + ((@shop[@e+1])-countitem(@shop[@e])) + "^000000 个 ^FF0000" + getitemname(@shop[@e]) + "^000000 再来找我.";
-					close;
+			for(set @e,2;@e<=getarraysize(@shop);set @e,@e+2) {
+				if(@shop[@e] > 0) {
+				    if( countitem(@shop[@e]) < @shop[@e+1]) {
+                	    mes "[武器制作]";
+                		mes "材料不足";
+                		close;
+                	}
 				}
 			}
 			if (@shop[2] > 0) {
+			    if (countitem(@shop[2]) > 1) {
+				    mes "[武器制作]";
+				    mes "检测到您有多件需要升级的装备";
+				    mes "请把多余的装备存到仓库中";
+				    close;
+			    }
 			    if (@shop[2] != getequipid(@shop[1])) {
 				    mes "[武器制作]";
 				    mes "请穿上需要升级的装备";
 				    close;
 				} else {
-				    set .@refine, getequiprefinerycnt(@shop[1]);
-                    set .@card0, getequipcardid(@shop[1], 0);
-                    set .@card1, getequipcardid(@shop[1], 1);
-                    set .@card2, getequipcardid(@shop[1], 2);
-                    set .@card3, getequipcardid(@shop[1], 3);
-                    set .@randomId0, getequiprandomoption(@shop[1], 0, ROA_ID);
-                    set .@randomValue0, getequiprandomoption(@shop[1], 0, ROA_VALUE);
-                    set .@randomParam0, getequiprandomoption(@shop[1], 0, ROA_PARAM);
-                    set .@randomId1, getequiprandomoption(@shop[1], 1, ROA_ID);
-                    set .@randomValue1, getequiprandomoption(@shop[1], 1, ROA_VALUE);
-                    set .@randomParam1, getequiprandomoption(@shop[1], 1, ROA_PARAM);          
-                    set .@randomId2, getequiprandomoption(@shop[1], 2, ROA_ID);
-                    set .@randomValue2, getequiprandomoption(@shop[1], 2, ROA_VALUE);
-                    set .@randomParam2, getequiprandomoption(@shop[1], 2, ROA_PARAM);           
-                    set .@randomId3, getequiprandomoption(@shop[1], 3, ROA_ID);
-                    set .@randomValue3, getequiprandomoption(@shop[1], 3, ROA_VALUE);
-                    set .@randomParam3, getequiprandomoption(@shop[1], 3, ROA_PARAM);          
-                    set .@randomId4, getequiprandomoption(@shop[1], 4, ROA_ID);
-                    set .@randomValue4, getequiprandomoption(@shop[1], 4, ROA_VALUE);
-                    set .@randomParam4, getequiprandomoption(@shop[1], 4, ROA_PARAM);
-                    setarray .@OptID[0],.@randomId0,.@randomId1,.@randomId2,.@randomId3,.@randomId4;
-                    setarray .@OptVal[0],.@randomValue0,.@randomValue1,.@randomValue2,.@randomValue3,.@randomValue4;
-                    setarray .@OptParam[0],.@randomParam0,.@randomParam1,.@randomParam2,.@randomParam3,.@randomParam4;                                         
+				    set @refine, getequiprefinerycnt(@shop[1]);
+                    set @card0, getequipcardid(@shop[1], 0);
+                    set @card1, getequipcardid(@shop[1], 1);
+                    set @card2, getequipcardid(@shop[1], 2);
+                    set @card3, getequipcardid(@shop[1], 3);
+                    set @randomId0, getequiprandomoption(@shop[1], 0, ROA_ID);
+                    set @randomValue0, getequiprandomoption(@shop[1], 0, ROA_VALUE);
+                    set @randomParam0, getequiprandomoption(@shop[1], 0, ROA_PARAM);
+                    set @randomId1, getequiprandomoption(@shop[1], 1, ROA_ID);
+                    set @randomValue1, getequiprandomoption(@shop[1], 1, ROA_VALUE);
+                    set @randomParam1, getequiprandomoption(@shop[1], 1, ROA_PARAM);          
+                    set @randomId2, getequiprandomoption(@shop[1], 2, ROA_ID);
+                    set @randomValue2, getequiprandomoption(@shop[1], 2, ROA_VALUE);
+                    set @randomParam2, getequiprandomoption(@shop[1], 2, ROA_PARAM);           
+                    set @randomId3, getequiprandomoption(@shop[1], 3, ROA_ID);
+                    set @randomValue3, getequiprandomoption(@shop[1], 3, ROA_VALUE);
+                    set @randomParam3, getequiprandomoption(@shop[1], 3, ROA_PARAM);          
+                    set @randomId4, getequiprandomoption(@shop[1], 4, ROA_ID);
+                    set @randomValue4, getequiprandomoption(@shop[1], 4, ROA_VALUE);
+                    set @randomParam4, getequiprandomoption(@shop[1], 4, ROA_PARAM);
+                    setarray @OptID[0],@randomId0,@randomId1,@randomId2,@randomId3,@randomId4;
+                    setarray @OptVal[0],@randomValue0,@randomValue1,@randomValue2,@randomValue3,@randomValue4;
+                    setarray @OptParam[0],@randomParam0,@randomParam1,@randomParam2,@randomParam3,@randomParam4;                                         
 				}
 			}
-			zeny-=@shop[0];
-			for(@e=2;@e<=getarraysize(@shop);@e+=2) {
+			zeny-=@shop;
+			for(set @e,2;@e<=getarraysize(@shop);set @e,@e+2) {
 			    if (@shop[@e] >0) {
 			        delitem @shop[@e],@shop[@e+1];
 			    }
 			}
 			mes "[武器制作]";
 			mes "制作成功";
-			getitem3 getarg(1),1,1,.@refine,0,.@card0,.@card1,.@card2,.@card3,.@OptID,.@OptVal,.@OptParam;
+			getitem3 getarg(1),1,1,@refine,0,@card0,@card1,@card2,@card3,@OptID,@OptVal,@OptParam;
+			equip getarg(1);
 			close;
 		case 3:
 			close;

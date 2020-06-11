@@ -1,0 +1,69 @@
+function	script	初级头中	{
+    set @item, rand(40455,40458);
+    set @random1, rand(9999999999);
+    set @random2, rand(9999999999);
+    setarray @OptID[0],rand(3,8),rand(220,237),0,0,0;
+    setarray @OptVal[0],@random1%5+1,@random2%4+1,0,0,0;
+    setarray @OptParam[0],0,0,0,0,0;
+    delitem 39153,1;
+    getitem3 @item,1,1,0,0,0,0,0,0,@OptID,@OptVal,@OptParam;
+}
+
+function	script	初级头下	{
+    set @item, rand(40502,40505);
+    set @random1, rand(9999999999);
+    set @random2, rand(9999999999);
+    setarray @OptID[0],rand(3,8),rand(220,237),0,0,0;
+    setarray @OptVal[0],@random1%5+1,@random2%4+1,0,0,0;
+    setarray @OptParam[0],0,0,0,0,0;
+    delitem 39156,1;
+    getitem3 @item,1,1,0,0,0,0,0,0,@OptID,@OptVal,@OptParam;
+}
+
+function	script	中级头中	{
+    set @item, rand(40455,40458);
+    set @random1, rand(9999999999);
+    set @random2, rand(9999999999);
+    setarray @OptID[0],rand(3,8),rand(220,237),0,0,0;
+    setarray @OptID[0],.stats[@random3%6],.skills[@random4%16],0,0,0;
+    setarray @OptVal[0],@random1%5+6,@random2%4+5,0,0,0;
+    setarray @OptParam[0],0,0,0,0,0;
+    delitem 39154,1;
+    getitem3 @item,1,1,0,0,0,0,0,0,@OptID,@OptVal,@OptParam;
+}
+
+function	script	中级头下	{
+    set @item, rand(40502,40505);
+    set @random1, rand(9999999999);
+    set @random2, rand(9999999999);
+    setarray @OptID[0],rand(3,8),rand(220,237),0,0,0;
+    setarray @OptID[0],.stats[@random3%6],.skills[@random4%16],0,0,0;
+    setarray @OptVal[0],@random1%5+6,@random2%4+5,0,0,0;
+    setarray @OptParam[0],0,0,0,0,0;
+    delitem 39157,1;
+    getitem3 @item,1,1,0,0,0,0,0,0,@OptID,@OptVal,@OptParam;
+}
+
+function	script	高级头中	{
+    set @item, rand(40455,40458);
+    set @random1, rand(9999999999);
+    set @random2, rand(9999999999);
+    setarray @OptID[0],rand(3,8),rand(220,237),0,0,0;
+    setarray @OptID[0],.stats[@random3%6],.skills[@random4%16],0,0,0;
+    setarray @OptVal[0],@random1%5+11,@random2%4+9,0,0,0;
+    setarray @OptParam[0],0,0,0,0,0;
+    delitem 39155,1;
+    getitem3 @item,1,1,0,0,0,0,0,0,@OptID,@OptVal,@OptParam;
+}
+
+function	script	高级头下	{
+    set @item, rand(40502,40505);
+    set @random1, rand(9999999999);
+    set @random2, rand(9999999999);
+    setarray @OptID[0],rand(3,8),rand(220,237),0,0,0;
+    setarray @OptID[0],.stats[@random3%6],.skills[@random4%16],0,0,0;
+    setarray @OptVal[0],@random1%5+11,@random2%4+9,0,0,0;
+    setarray @OptParam[0],0,0,0,0,0;
+    delitem 39158,1;
+    getitem3 @item,1,1,0,0,0,0,0,0,@OptID,@OptVal,@OptParam;
+}

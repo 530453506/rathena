@@ -2220,6 +2220,9 @@ int skill_additional_effect(struct block_list* src, struct block_list *bl, uint1
                     case ELE_WATER:
                         skill = MG_LIGHTNINGBOLT;
                         break;
+                    case ELE_WIND:
+                        skill = MG_EARTHBOLT;
+                        break;
                     case ELE_UNDEAD:
                         skill = MG_FIREBOLT;
                         break;
@@ -2331,6 +2334,72 @@ int skill_onskillusage(struct map_session_data *sd, struct block_list *bl, uint1
 			continue;  // autospell already being executed
 
 		skill = it.id;
+        struct mob_data *dstmd;
+        dstmd = BL_CAST(BL_MOB, bl);
+        if (sd->bonus.element_power && dstmd) {
+            if (skill == NJ_SYURIKEN) {
+                switch (dstmd->db->status.def_ele) {
+                    case ELE_EARTH:
+                        skill = MG_FIREBOLT;
+                        break;
+                    case ELE_FIRE:
+                        skill = MG_COLDBOLT;
+                        break;
+                    case ELE_WATER:
+                        skill = MG_LIGHTNINGBOLT;
+                        break;
+                    case ELE_WIND:
+                        skill = MG_EARTHBOLT;
+                        break;
+                    case ELE_UNDEAD:
+                        skill = MG_FIREBOLT;
+                        break;
+                    default:
+                        skill = MG_FIREBOLT;
+                }
+            } else if (skill == NJ_ZENYNAGE) {
+                switch (dstmd->db->status.def_ele) {
+                    case ELE_EARTH:
+                        skill = WZ_METEOR;
+                        break;
+                    case ELE_FIRE:
+                        skill = WZ_STORMGUST;
+                        break;
+                    case ELE_WATER:
+                        skill = WZ_VERMILION;
+                        break;
+                    case ELE_WIND:
+                        skill = WZ_HEAVENDRIVE;
+                        break;
+                    case ELE_UNDEAD:
+                        skill = WZ_METEOR;
+                        break;
+                    default:
+                        skill = WZ_METEOR;
+                }
+            } else if (skill == NJ_KUNAI) {
+                switch (dstmd->db->status.def_ele) {
+                    case ELE_EARTH:
+                        skill = NJ_BAKUENRYU;
+                        break;
+                    case ELE_FIRE:
+                        skill = NJ_HYOUSYOURAKU;
+                        break;
+                    case ELE_WATER:
+                        skill = NJ_RAIGEKISAI;
+                        break;
+                    case ELE_WIND:
+                        skill = NJ_BAKUENRYU;
+                        break;
+                    case ELE_UNDEAD:
+                        skill = NJ_BAKUENRYU;
+                        break;
+                    default:
+                        skill = NJ_RAIGEKISAI;
+                }
+            }
+        }
+
 		sd->state.autocast = 1; //set this to bypass sd->canskill_tick check
 
 		if( skill_isNotOk((skill > 0) ? skill : skill*-1, sd) ) {
@@ -3828,6 +3897,7 @@ int64 skill_attack (int attack_type, struct block_list* src, struct block_list *
 		switch (skill_id) {
 			case MG_COLDBOLT:
 			case MG_FIREBOLT:
+            case MG_EARTHBOLT:
 			case MG_LIGHTNINGBOLT:
 				if (sc && sc->data[SC_DOUBLECAST] && rnd() % 100 < sc->data[SC_DOUBLECAST]->val2)
 					//skill_addtimerskill(src, tick + dmg.div_*dmg.amotion, bl->id, 0, 0, skill_id, skill_lv, BF_MAGIC, flag|2);
@@ -5441,6 +5511,7 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 	case NPC_DARKSTRIKE:
 	case MG_COLDBOLT:
 	case MG_FIREBOLT:
+    case MG_EARTHBOLT:
 	case MG_LIGHTNINGBOLT:
 	case WZ_EARTHSPIKE:
 	case AL_HEAL:
@@ -14368,10 +14439,10 @@ int skill_unit_onplace_timer(struct skill_unit *unit, struct block_list *bl, t_t
 			break;
 
 		case UNT_MAGNUS:
-#ifndef RENEWAL
-			if (!battle_check_undead(tstatus->race,tstatus->def_ele) && tstatus->race!=RC_DEMON)
-				break;
-#endif
+//#ifndef RENEWAL
+//			if (!battle_check_undead(tstatus->race,tstatus->def_ele) && tstatus->race!=RC_DEMON)
+//				break;
+//#endif
 			skill_attack(BF_MAGIC,ss,&unit->bl,bl,sg->skill_id,sg->skill_lv,tick,0);
 			break;
 
@@ -16649,7 +16720,27 @@ bool skill_check_condition_castend(struct map_session_data* sd, uint16 skill_id,
 			continue;
 		index[i] = pc_search_inventory(sd,require.itemid[i]);
 		if( index[i] < 0 || sd->inventory.u.items_inventory[index[i]].amount < require.amount[i] ) {
-			if( require.itemid[i] == ITEMID_HOLY_WATER )
+            //无限炼金套瓶
+		    if (require.itemid[i] == 7135 || require.itemid[i] == 7136) {
+                index[i] = pc_search_inventory(sd,39159);
+                if (index[i] < 0) {
+                    clif_skill_fail( sd, skill_id, USESKILL_FAIL_NEED_ITEM, ( require.itemid[i] << 16 ) | require.amount[i] ); // [%s] required '%d' amount.
+                    return false;
+                } else {
+                    break;
+                }
+            }
+		    //无限毒药瓶
+            if (require.itemid[i] == 678) {
+                index[i] = pc_search_inventory(sd,39160);
+                if (index[i] < 0) {
+                    clif_skill_fail( sd, skill_id, USESKILL_FAIL_NEED_ITEM, ( require.itemid[i] << 16 ) | require.amount[i] ); // [%s] required '%d' amount.
+                    return false;
+                } else {
+                    break;
+                }
+            }
+            if( require.itemid[i] == ITEMID_HOLY_WATER )
 				clif_skill_fail(sd,skill_id,USESKILL_FAIL_HOLYWATER,0); //Holy water is required.
 			else if( require.itemid[i] == ITEMID_RED_GEMSTONE )
 				clif_skill_fail(sd,skill_id,USESKILL_FAIL_REDJAMSTONE,0); //Red gemstone is required.

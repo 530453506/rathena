@@ -3,6 +3,6 @@ char_name_letters: \ /:*?#@!
 pincode_enabled: no
 pincode_force: no
 server_name: mmro
-start_point_pre: prontera,156,100
+start_point_pre: prontera,155,101
 //login_ip: 192.168.0.76
 //char_ip: 192.168.0.76

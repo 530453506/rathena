@@ -28,9 +28,44 @@
 		mes "[孙燕姿]";
 		mes "请问你是来做什么的呢？";
 		next;
-		switch(select( "学习新技能","租用职业道具","点数重置" ))
+		switch(select( "转生","学习新技能","租用职业道具","点数重置" ))
 		{
-			case 1:
+		    case 1:
+		        mes "[孙燕姿]";
+		        mes "基本等级"+.Job_option[0]+"，职业等级50可以转生";
+		        mes "每个人物可以转生"+.Job_option[1]+"次";
+		        mes "每次转生赠送"+.Job_option[2]+"素质点";
+		        mes "您目前的转生次数为"+metempsychosis+"次";
+                mes "确定要转生吗？";
+                next;
+                menu "确定转生",-;
+        		mes "[孙燕姿]";
+        	    if ( Weight > 10000 ) {
+        		    mes "你的负重为"+Weight/10+".";
+        		    mes "请不要超过^FF00001000^000000负重.";
+        	    } else if (metempsychosis>=.Job_option[1]) {
+        	        mes "您已经无法再转生了!";
+        	    } else if (BaseLevel<.Job_option[0] || Class==0 || JobLevel<50) {
+        			mes "对不起，您的等级不够。";
+        		} else {
+        		    nude;
+				    if(checkcart()) setcart 0;
+				    if(checkfalcon()) setfalcon 0;
+				    if(checkriding()) setriding 0;
+				    resetskill;
+                    resetstatus;
+                    set metempsychosis,metempsychosis+1;
+            		set SkillPoint,0;
+            		set StatusPoint,.Job_option[2]*metempsychosis;
+            		set BaseLevel,1;
+            		set JobLevel,1;
+            		set BaseExp,0;
+            		set JobExp,0;
+            		atcommand"@lvup 79";
+		            mes "恭喜您转生成功。";
+		        }
+		        break;
+			case 2:
 				mes "[孙燕姿]";
 				switch (BaseClass)
 				{
@@ -105,7 +140,7 @@
 				}
 				mes "我已经把招数教给你了，打开技能表看一下吧";
 				break;
-			case 2:
+			case 3:
 				mes "[孙燕姿]";
 				switch(BaseJob)
 				{
@@ -139,7 +174,7 @@
 					mes "设置道具成功。";
 				}	
 				break;
-			case 3:
+			case 4:
 				mes "[孙燕姿]";
 				mes "我专门负责重置点数";
 				mes "你想重置什么呢？";
@@ -173,6 +208,10 @@ OnTouch:
 	sc_end SC_Curse;
 	sc_end SC_Hallucination;
 	emotion 2;
+
+OnInit:
+	//转生等级,转生次数,转生增点(次数大于1有效)
+	setarray .Job_option[0],99,10,50;
 	end;
 }
 

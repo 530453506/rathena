@@ -257,59 +257,57 @@ Body:
     Help: |
       Params: <job name|ID>
       Changes your job.
-      ----- Novice / 1st Class -----
-         0 Novice              1 Swordman            2 Magician            3 Archer
-         4 Acolyte              5 Merchant               6 Thief
-      ----- 2nd Class -----
-         7 Knight               8 Priest                     9 Wizard               10 Blacksmith
-        11 Hunter           12 Assassin            14 Crusader          15 Monk
-        16 Sage              17 Rogue                 18 Alchemist         19 Bard
-        20 Dancer
-      ----- High Novice / High 1st Class -----
-      4001 Novice High     4002 Swordman High    4003 Magician High    4004 Archer High
-      4005 Acolyte High     4006 Merchant High       4007 Thief High
-      ----- Transcendent 2nd Class -----
-      4008 Lord Knight      4009 High Priest             4010 High Wizard      4011 Whitesmith
-      4012 Sniper               4013 Assassin Cross   4015 Paladin              4016 Champion
-      4017 Professor         4018 Stalker                    4019 Creator               4020 Clown
-      4021 Gypsy
-      ----- 3rd Class (Regular) -----
-      4054 Rune Knight    4055 Warlock                 4056 Ranger            4057 Arch Bishop
-      4058 Mechanic         4059 Guillotine Cross  4066 Royal Guard   4067 Sorcerer
-      4068 Minstrel            4069 Wanderer              4070 Sura                 4071 Genetic
-      4072 Shadow Chaser
-      ----- 3rd Class (Transcendent) -----
-      4060 Rune Knight    4061 Warlock                 4062 Ranger             4063 Arch Bishop
-      4064 Mechanic         4065 Guillotine Cross  4073 Royal Guard    4074 Sorcerer
-      4075 Minstrel            4076 Wanderer              4077 Sura                  4078 Genetic
-      4079 Shadow Chaser
-      ----- Expanded Class -----
-           23 Super Novice      24 Gunslinger              25 Ninja                 4045 Super Baby
-      4046 Taekwon           4047 Star Gladiator     4049 Soul Linker            4050 Gangsi
-      4051 Death Knight    4052 Dark Collector    4190 Ex. Super Novice  4191 Ex. Super Baby
-      4211 Kagerou            4212 Oboro             4215 Rebellion        4218 Summoner
-      4239 Star Emperor   4240 Soul Reaper
-      ----- Baby Novice And Baby 1st Class -----
-      4023 Baby Novice      4024 Baby Swordman    4025 Baby Magician   4026 Baby Archer
-      4027 Baby Acolyte      4028 Baby Merchant       4029 Baby Thief
-      ---- Baby 2nd Class ----
-      4030 Baby Knight     4031 Baby Priest         4032 Baby Wizard         4033 Baby Blacksmith
-      4034 Baby Hunter    4035 Baby Assassin   4037 Baby Crusader    4038 Baby Monk
-      4039 Baby Sage       4040 Baby Rogue        4041 Baby Alchemist   4042 Baby Bard
-      4043 Baby Dancer
-      ---- Baby 3rd Class ----
-      4096 Baby Rune Knight  4097 Baby Warlock     4098 Baby Ranger           4099 Baby Arch Bishop
-      4100 Baby Mechanic       4101 Baby Glt. Cross  4102 Baby Royal Guard  4103 Baby Sorcerer
-      4104 Baby Minstrel          4105 Baby Wanderer   4106 Baby Sura             4107 Baby Genetic
-      4108 Baby Shadow Chaser
-      ---- Expanded Baby Class ----
-      4220 Baby Summoner        4222 Baby Ninja        4223 Baby Kagero         4224 Baby Oboro
-      4225 Baby Taekwon       4226 Baby Star Glad    4227 Baby Soul Linker    4228 Baby Gunslinger
-      4229 Baby Rebellion   4241 Baby Star Emperor    4242 Baby Soul Reaper
-      ---- Modes And Others ----
-       22 Wedding            26 Christmas          27 Summer           28 Hanbok
-       29 Oktoberfest       30 Summer 2
-       4048 Star Gladiator (Union)	    4238 Baby Star Glad (Union)
+      ----- 初学者 / 普通 一转职业 -----
+      0 初学者            1 剑士              2 魔法师              3 弓箭手
+      4 服事              5 商人              6 盗贼
+      ----- 普通 二转职业 -----
+      7 骑士              8 牧师              9 巫师               10 铁匠
+      11 猎人             12 刺客             14 十字军             15 武僧
+      16 贤者             17 流氓             18 炼金术师           19 诗人
+      20 舞娘
+      ----- 普通 三转职业 -----
+      4054 卢恩骑士       4055 大法师         4056 游侠             4057 大主教
+      4058 机匠           4059 十字斩首者     4066 皇家卫士         4067 元素使
+      4068 宫廷乐师       4069 浪姬舞者       4070 修罗             4071 基因学者
+      4072 魅影追踪者
+      ----- 进阶 初学者 / 进阶 一转职业 -----
+      4001 进阶初学者     4002 进阶剑士       4003 进阶魔法师       4004 进阶弓箭手
+      4005 进阶服事       4006 进阶商人       4007 进阶盗贼
+      ----- 进阶 二转职业 -----
+      4008 骑士领主       4009 神官           4010 超魔导师         4011 神工匠
+      4012 神射手         4013 十字刺客       4015 圣殿十字军       4016 武术宗师
+      4017 智者           4018 神行太保       4019 创造者           4020 搞笑艺人
+      4021 冷艳舞姬
+      ----- 进阶 三转职业 -----
+      4060 卢恩骑士       4061 大法师         4062 游侠             4063 大主教
+      4064 机匠           4065 十字斩首者     4073 皇家卫士         4074 元素使
+      4075 宫廷乐师       4076 浪姬舞者       4077 修罗             4078 基因学者
+      4079 魅影追踪者
+      ----- 拓展职业 -----
+      23 超级初学者       24 枪手             25 忍者             4045 超初宝宝
+      4046 跆拳少年       4047 拳圣           4049 灵媒             4050 Gangsi
+      4051 死亡骑士       4052 黑暗收集者     4190 进阶超级初学者   4191 进阶超初宝宝
+      4211 日影忍者       4212 月影忍者       4215 反叛者           4218 召唤师
+      ----- 宝宝 初学者 / 宝宝 一转职业 -----
+      4023 初学者宝宝     4024 剑士宝宝       4025 魔法师宝宝       4026 弓箭手宝宝
+      4027 服事宝宝       4028 商人宝宝       4029 盗贼宝宝
+      ----- 宝宝 二转职业 -----
+      4030 骑士宝宝       4031 牧师宝宝       4032 巫师宝宝         4033 铁匠宝宝
+      4034 猎人宝宝       4035 刺客宝宝       4037 十字军宝宝       4038 武僧宝宝
+      4039 贤者宝宝       4040 流氓宝宝       4041 炼金术师宝宝     4042 诗人宝宝
+      4043 舞娘宝宝
+      ----- 宝宝 三转职业 -----
+      4096 卢恩骑士宝宝   4097 大法师宝宝     4098 游侠宝宝         4099 大主教宝宝
+      4100 机匠宝宝       4101 十字斩首者宝宝 4102 皇家卫士宝宝     4103 元素使宝宝
+      4104 宫廷乐师宝宝   4105 浪姬舞者宝宝   4106 修罗宝宝         4107 基因学者宝宝
+      4108 魅影追踪者宝宝
+      ----- 宝宝 拓展职业 -----
+      4220 召唤师宝宝     4222 忍者宝宝       4223 日影忍者宝宝     4224 月影忍者宝宝
+      4225 跆拳少年宝宝   4226 拳圣宝宝       4227 灵媒宝宝         4228 枪手宝宝
+      4229 反叛者宝宝
+      ----- 模型以及其他 -----
+      22 结婚礼服         26 圣诞节服装       27 夏日服装           28 韩国服装
+      4048 Star Gladiator (Union)             4238 Baby Star Glad (Union)
   - Command: option
     Help: |
       Params: <param1> <param2>(stackable) <param3>(stackable)

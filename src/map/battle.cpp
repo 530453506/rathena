@@ -6285,9 +6285,11 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						skillratio -= 50;
 						break;
 					case MG_FIREBOLT:
+					case MG_EARTHBOLT:
 					case MG_COLDBOLT:
 					case MG_LIGHTNINGBOLT:
-						if (sc && sc->data[SC_SPELLFIST] && mflag&BF_SHORT)  {
+                        MATK_ADD(sstatus->batk);
+                        if (sc && sc->data[SC_SPELLFIST] && mflag&BF_SHORT)  {
 							skillratio += (sc->data[SC_SPELLFIST]->val4 * 100) + (sc->data[SC_SPELLFIST]->val1 * 50) - 100;// val4 = used bolt level, val2 = used spellfist level. [Rytech]
 							ad.div_ = 1; // ad mods, to make it work similar to regular hits [Xazax]
 							ad.flag = BF_WEAPON|BF_SHORT;
@@ -6802,7 +6804,8 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						ad.damage += (6 + sstatus->int_ / 4) + max(sstatus->dex - 10, 0) / 30;
 					break;
 				case WZ_EARTHSPIKE:
-				case WZ_HEAVENDRIVE:
+                case MG_EARTHBOLT:
+                case WZ_HEAVENDRIVE:
 					if(sc->data[SC_PETROLOGY_OPTION])
 						ad.damage += (6 + sstatus->int_ / 4) + max(sstatus->dex - 10, 0) / 30;
 					break;

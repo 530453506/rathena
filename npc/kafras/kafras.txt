@@ -261,7 +261,7 @@ prontera,146,89,6	script	卡普拉 职员::kaf_prontera5	117,{
 	mes "我们将永远为您提供最优质的服务!";
 	mes "请问您需要什么服务呢?";
 	callfunc "F_Kafra",5,0,0,40,800;
-	savepoint "prontera",156,100,1,1;
+	savepoint "prontera",155,101,1,1;
 	callfunc "F_KafEnd",0,1,"普隆德拉城内";
 }
 
