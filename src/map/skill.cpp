@@ -7114,7 +7114,6 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 			break;
 		}
 	case PR_SLOWPOISON:
-	case PR_LEXAETERNA:
 #ifndef RENEWAL
 	case PR_IMPOSITIO:
 	case PR_SUFFRAGIUM:
@@ -7209,7 +7208,10 @@ int skill_castend_nodamage_id (struct block_list *src, struct block_list *bl, ui
 		clif_skill_nodamage(src,bl,skill_id,skill_lv,
 			sc_start(src,bl,type,100,skill_lv,skill_get_time(skill_id,skill_lv)));
 		break;
-
+	case PR_LEXAETERNA:
+        clif_skill_nodamage(src,bl,skill_id,skill_lv,
+                            sc_start2(src,bl,type,100,skill_lv,skill_lv,skill_get_time(skill_id,skill_lv)));
+        break;
 	case SJ_GRAVITYCONTROL: {
 			int fall_damage = sstatus->batk + sstatus->rhw.atk - tstatus->def2;
 

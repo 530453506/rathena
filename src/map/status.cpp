@@ -4229,6 +4229,20 @@ int status_calc_pc_sub(struct map_session_data* sd, enum e_status_calc_opt opt)
 
 // ----- STATS CALCULATION -----
 
+    if (sd->status.title_id) {
+        int tmp = 0;
+        switch(sd->status.title_id) {
+            case 1001: tmp = 3; break;
+            case 1002: tmp = 6; break;
+            default: break;
+        }
+        base_status->str = base_status->str + tmp;
+        base_status->agi = base_status->agi + tmp;
+        base_status->vit = base_status->vit + tmp;
+        base_status->int_ = base_status->int_ + tmp;
+        base_status->dex = base_status->dex + tmp;
+    }
+
 	// Job bonuses
 	index = pc_class2idx(sd->status.class_);
 	for(i=0;i<(int)sd->status.job_level && i<MAX_LEVEL;i++) {

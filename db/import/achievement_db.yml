@@ -80,3 +80,21 @@
 Header:
   Type: ACHIEVEMENT_DB
   Version: 1
+
+Body:
+  - ID: 110000
+    Group: "AG_DIY"
+    Name: "转身次数达到5次"
+    Score: 100
+    Reward:
+      TitleID: 1001
+
+  - ID: 110001
+    Group: "AG_DIY"
+    Name: "转身次数达到10次"
+    Score: 100
+    Reward:
+      TitleID: 1002
+    Dependent:
+      - Id: 110000
+

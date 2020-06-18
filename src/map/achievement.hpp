@@ -43,6 +43,7 @@ enum e_achievement_group {
 	AG_SEE,
 	AG_SPEND_ZENY,
 	AG_TAMING,
+	AG_DIY,
 	AG_MAX
 };
 

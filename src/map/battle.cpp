@@ -1290,8 +1290,15 @@ int64 battle_calc_damage(struct block_list *src,struct block_list *bl,struct Dam
 
 		//Now damage increasing effects
 		if (sc->data[SC_AETERNA] && skill_id != PF_SOULBURN) {
-			if (src->type != BL_MER || !skill_id)
-				damage <<= 1; // Lex Aeterna only doubles damage of regular attacks from mercenaries
+			if (src->type != BL_MER || !skill_id) {
+			    if (sc->data[SC_AETERNA]->val2 == 1) {
+                    damage <<= 1; // Lex Aeterna only doubles damage of regular attacks from mercenaries
+                } else if ((sc->data[SC_AETERNA]->val2 == 2)) {
+			        damage *= 2.5;
+			    } else if ((sc->data[SC_AETERNA]->val2 == 3)) {
+                    damage *= 3;
+			    }
+            }
 
 #ifndef RENEWAL
 			if( skill_id != ASC_BREAKER || !(flag&BF_WEAPON) )
@@ -6288,7 +6295,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					case MG_EARTHBOLT:
 					case MG_COLDBOLT:
 					case MG_LIGHTNINGBOLT:
-                        MATK_ADD(sstatus->batk);
+                        MATK_ADD(sstatus->batk + sstatus->rhw.atk+ sstatus->rhw.atk2);
                         if (sc && sc->data[SC_SPELLFIST] && mflag&BF_SHORT)  {
 							skillratio += (sc->data[SC_SPELLFIST]->val4 * 100) + (sc->data[SC_SPELLFIST]->val1 * 50) - 100;// val4 = used bolt level, val2 = used spellfist level. [Rytech]
 							ad.div_ = 1; // ad mods, to make it work similar to regular hits [Xazax]

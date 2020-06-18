@@ -19830,6 +19830,7 @@ void clif_change_title_ack(struct map_session_data *sd, unsigned char result, un
 	WFIFOB(fd, 2) = result;
 	WFIFOL(fd, 3) = title_id;
 	WFIFOSET(fd, packet_len(0xa2f));
+    status_calc_pc(sd,SCO_FORCE);
 #endif
 }
 

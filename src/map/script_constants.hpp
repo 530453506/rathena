@@ -5018,6 +5018,7 @@
 	export_constant2("AG_SEE", AG_SEE);
 	export_constant2("AG_SPEND_ZENY", AG_SPEND_ZENY);
 	export_constant2("AG_TAMING", AG_TAMING);
+	export_constant2("AG_DIY", AG_DIY);
 
 	/* achievement info */
 	export_constant(ACHIEVEINFO_COUNT1);

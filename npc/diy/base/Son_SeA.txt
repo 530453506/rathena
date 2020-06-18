@@ -5,7 +5,7 @@
 	mes "[孙燕姿]";
 	mes "请你跟我说需要什么样的服务呢？";
 	next;
-	switch(select("状态服务","传送服务","职业服务"))
+	switch(select("状态服务","传送服务","职业服务","领取成就"))
 	{
 	case 1:
 		mes "[孙燕姿]";
@@ -195,6 +195,9 @@
 				break;
 		}
 		break;
+	case 4:
+        achievementcomplete 110001;
+        break;
 	}
 	cutin "son",255;
 	close;
