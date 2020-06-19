@@ -19,6 +19,11 @@ multi_level_up: yes
 // through external means (ie: stat point buyers/sellers)
 use_statpoint_table: no
 
+//feature
+feature.roulette: off
+feature.attendance: off
+feature.privateairship: off
+
 //items
 // Allow changing of equipment while interacting with NPCs? (Note 1)
 item_enabled_npc: no

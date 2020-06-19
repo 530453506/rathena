@@ -7304,15 +7304,15 @@ struct Damage battle_calc_attack(int attack_type,struct block_list *bl,struct bl
 
 	sd = BL_CAST(BL_PC, bl);
 
+    if( sd && d.type != DMG_LUCY_DODGE && target->type == BL_MOB){
+        d.damage += sd->bonus.add_damage * d.div_;
+        if(d.damage2){
+            d.damage2 += sd->bonus.add_damage * d.div_;
+        }
+    }
+
 	if (sd && d.damage + d.damage2 > 1)
 		battle_vanish_damage(sd, target, d.flag);
-
-	if( sd && target->type == BL_MOB){
-		d.damage += sd->bonus.add_damage * d.div_;
-		if(d.damage2){
-			d.damage2 += sd->bonus.add_damage * d.div_;
-		}
-	}
 
 	return d;
 }
