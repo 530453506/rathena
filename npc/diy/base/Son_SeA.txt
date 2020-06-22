@@ -5,7 +5,7 @@
 	mes "[孙燕姿]";
 	mes "请你跟我说需要什么样的服务呢？";
 	next;
-	switch(select("状态服务","传送服务","职业服务","领取成就"))
+	switch(select("状态服务","传送服务","职业服务"))
 	{
 	case 1:
 		mes "[孙燕姿]";
@@ -56,12 +56,24 @@
                     resetstatus;
                     set metempsychosis,metempsychosis+1;
             		set SkillPoint,0;
-            		set StatusPoint,.Job_option[2]*metempsychosis;
+            		set StatusPoint,.Job_option[2]*metempsychosis+100;
             		set BaseLevel,1;
             		set JobLevel,1;
             		set BaseExp,0;
             		set JobExp,0;
             		atcommand"@lvup 79";
+            	    switch (metempsychosis) {
+                      case 1: achievementcomplete 110000; break;
+                      case 2: achievementcomplete 110001; break;
+                      case 3: achievementcomplete 110002; break;
+                      case 4: achievementcomplete 110003; break;
+                      case 5: achievementcomplete 110004; break;
+                      case 6: achievementcomplete 110005; break;
+                      case 7: achievementcomplete 110006; break;
+                      case 8: achievementcomplete 110007; break;
+                      case 9: achievementcomplete 110008; break;
+                      case 10: achievementcomplete 110009; break;
+                    }
 		            mes "恭喜您转生成功。";
 		        }
 		        break;
@@ -195,9 +207,6 @@
 				break;
 		}
 		break;
-	case 4:
-        achievementcomplete 110001;
-        break;
 	}
 	cutin "son",255;
 	close;
@@ -214,7 +223,7 @@ OnTouch:
 
 OnInit:
 	//转生等级,转生次数,转生增点(次数大于1有效)
-	setarray .Job_option[0],99,10,50;
+	setarray .Job_option[0],99,10,100;
 	end;
 }
 

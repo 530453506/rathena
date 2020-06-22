@@ -35,13 +35,16 @@ autospell_stacking: yes
 
 //monster
 show_mob_info: 1
+monster_max_aspd: 197
 
-//plyaer
+//player
 max_aspd: 197
 max_third_aspd: 197
 max_extended_aspd: 197
 gvg_max_aspd: 193
 pvp_max_aspd: 193
+max_parameter: 110
+max_trans_parameter: 110
 
 //status
 // Will certain skill status-changes be removed on logout?

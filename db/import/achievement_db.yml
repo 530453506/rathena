@@ -84,17 +84,62 @@ Header:
 Body:
   - ID: 110000
     Group: "AG_DIY"
-    Name: "转身次数达到5次"
+    Name: "转身次数达到1次"
+    Score: 100
+    Reward:
+      TitleID: 1000
+  - ID: 110001
+    Group: "AG_DIY"
+    Name: "转身次数达到2次"
     Score: 100
     Reward:
       TitleID: 1001
-
-  - ID: 110001
+  - ID: 110002
+    Group: "AG_DIY"
+    Name: "转身次数达到3次"
+    Score: 100
+    Reward:
+      TitleID: 1002
+  - ID: 110003
+    Group: "AG_DIY"
+    Name: "转身次数达到4次"
+    Score: 100
+    Reward:
+      TitleID: 1003
+  - ID: 110004
+    Group: "AG_DIY"
+    Name: "转身次数达到5次"
+    Score: 100
+    Reward:
+      TitleID: 1004
+  - ID: 110005
+    Group: "AG_DIY"
+    Name: "转身次数达到6次"
+    Score: 100
+    Reward:
+      TitleID: 1005
+  - ID: 110006
+    Group: "AG_DIY"
+    Name: "转身次数达到7次"
+    Score: 100
+    Reward:
+      TitleID: 1006
+  - ID: 110007
+    Group: "AG_DIY"
+    Name: "转身次数达到8次"
+    Score: 100
+    Reward:
+      TitleID: 1007
+  - ID: 110008
+    Group: "AG_DIY"
+    Name: "转身次数达到9次"
+    Score: 100
+    Reward:
+      TitleID: 1008
+  - ID: 110009
     Group: "AG_DIY"
     Name: "转身次数达到10次"
     Score: 100
     Reward:
-      TitleID: 1002
-    Dependent:
-      - Id: 110000
+      TitleID: 1009
 

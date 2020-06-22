@@ -3354,7 +3354,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 					sd->inventory_data[index] &&
 					sd->inventory_data[index]->type == IT_WEAPON)
 					wd->damage = sd->inventory_data[index]->weight*8/100; //80% of weight
-
+			    wd->damage += battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, i);
 				ATK_ADDRATE(wd->damage, wd->damage2, 50*skill_lv); //Skill modifier applies to weight only.
 			} else {
 				wd->damage = battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0); //Monsters have no weight and use ATK instead

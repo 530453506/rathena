@@ -35,7 +35,8 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
         			mes "*duang duang duang*";
         			progressbar "#00FF00",2;
         			next;
-        			setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_ATTPOWER,rand(50,100),0);
+        			set @random, rand(9999999999);
+        			setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_ATTPOWER,@random%10+1,0);
         			mes "[°Ý½£É½×¯°Á°Ý]";
         			mes "ÐÒ²»ÈèÃü.";
         			close;
@@ -59,7 +60,6 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
         			mes "ÐÒ²»ÈèÃü.";
         			close;
         		}
-
 		}
 	}
 	else{
@@ -67,6 +67,6 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
 	}
 	
 OnInit:
-	setarray .alloweditems[0],1201,40901,40902; // Add more item ids here
+	setarray .alloweditems[0],40901,40905,40909,40913,40917,40921,40925,40929,40933,40937,40941,40945,40949,40953; // Add more item ids here
 	.sz = getarraysize(.alloweditems);
 }

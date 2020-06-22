@@ -1,10 +1,14 @@
 function	script	vip_status	{
-    if (!agitcheck()) {
-	    sc_start SC_CP_WEAPON,120000,10; // 72
-	    sc_start SC_CP_SHIELD,120000,10; // 73
-	    sc_start SC_CP_ARMOR,120000,10; // 74
-	    sc_start SC_CP_HELM,120000,10; // 75
-	}
+    //if (!agitcheck()) {
+	    sc_start SC_CP_WEAPON,600000,10; // 72
+	    sc_start SC_CP_SHIELD,600000,10; // 73
+	    sc_start SC_CP_ARMOR,600000,10; // 74
+	    sc_start SC_CP_HELM,600000,10; // 75
+	    sc_start SC_BLESSING,600000,10; // 30
+        sc_start SC_INCREASEAGI,600000,10; // 32
+        sc_start SC_ASSUMPTIO,600000,10; // 115
+        sc_start SC_ASPDPOTION2,600000,10; // 57
+	//}
 	if (vip_status(VIP_STATUS_ACTIVE)) {
 		sc_start SC_STRFOOD,600000,10; //STR+10
     	sc_start SC_INTFOOD,600000,10; //INT+10
@@ -15,8 +19,6 @@ function	script	vip_status	{
 	}
 	//sc_start SC_ENDURE,600000,10; // 21
     //sc_start SC_CONCENTRATE,600000,10; // 23
-    //sc_start SC_BLESSING,600000,10; // 30
-    //sc_start SC_INCREASEAGI,600000,10; // 32
     //sc_start SC_IMPOSITIO,600000,10; // 35
     //sc_start SC_SUFFRAGIUM,600000,10; // 36
     //sc_start SC_MAGNIFICAT,600000,10; // 40
@@ -24,10 +26,8 @@ function	script	vip_status	{
     //sc_start SC_WEAPONPERFECTION,600000,10; // 44
    	//sc_start SC_MAXIMIZEPOWER,600000,10; // 46
     //sc_start SC_LOUD,600000,10; // 48
-   	//sc_start SC_ASPDPOTION2,600000,10; // 57
    	//sc_start SC_ATKPOTION,600000,10; //ATK 61
    	//sc_start SC_MATKPOTION,600000,10; //MATK 62
-   	//sc_start SC_ASSUMPTIO,600000,10; // 115
     //sc_start SC_ADRENALINE2,600000,10; // 145
     //sc_start SC_RICHMANKIM,600000,10; // 166
 }

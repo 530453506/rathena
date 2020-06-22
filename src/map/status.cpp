@@ -4231,16 +4231,51 @@ int status_calc_pc_sub(struct map_session_data* sd, enum e_status_calc_opt opt)
 
     if (sd->status.title_id) {
         int tmp = 0;
+        int aspd = 0;
+        int batk = 0;
+        int matk_min = 0;
+        int matk_max = 0;
         switch(sd->status.title_id) {
-            case 1001: tmp = 3; break;
-            case 1002: tmp = 6; break;
+            case 1001: tmp = 1; break;
+            case 1002: tmp = 2; break;
+            case 1003: tmp = 3; break;
+            case 1004: tmp = 4; break;
+            case 1005:
+                tmp = 5;
+                aspd = 1;
+                break;
+            case 1006:
+                tmp = 6;
+                aspd = 1;
+                break;
+            case 1007:
+                tmp = 7;
+                aspd = 1;
+                break;
+            case 1008:
+                tmp = 8;
+                aspd = 1;
+                break;
+            case 1009:
+                tmp = 9;
+                aspd = 1;
+                break;
+            case 1010:
+                tmp = 10;
+                aspd = 2;
+                break;
             default: break;
         }
-        base_status->str = base_status->str + tmp;
-        base_status->agi = base_status->agi + tmp;
-        base_status->vit = base_status->vit + tmp;
-        base_status->int_ = base_status->int_ + tmp;
-        base_status->dex = base_status->dex + tmp;
+        base_status->str += tmp;
+        base_status->agi += tmp;
+        base_status->vit += tmp;
+        base_status->int_ += tmp;
+        base_status->dex += tmp;
+        base_status->luk += tmp;
+        base_status->amotion -= 10*aspd;
+        base_status->batk += batk;
+        base_status->matk_min += matk_min;
+        base_status->matk_max += matk_max;
     }
 
 	// Job bonuses

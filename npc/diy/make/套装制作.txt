@@ -2,13 +2,14 @@
 -	shop	TSHOP2	-1,512:-1
 -	shop	TSHOP3	-1,512:-1
 -	shop	TSHOP4	-1,512:-1
-prontera,146,113,5	script	套装制作	716,{
+-	shop	TSHOP5	-1,512:-1
+prontera,146,113,5	script	防具制作	716,{
 	function	AmorDo;
-	mes "[套装制作]";
+	mes "[防具制作]";
 	mes "^FF0000升级套装必须装备在身上^000000";
 	mes "^FF0000新套装会继承原套装的精炼值，卡片等^000000";
 	mes "^FF0000不必担心，放心升级^000000";
-	@s=(select("头盔制作:盔甲制作:靴子制作:披肩制作"));
+	@s=(select("头盔制作:盔甲制作:靴子制作:披肩制作:饰品制作"));
 	callshop "TSHOP"+@s,1;
 	npcshopattach "TSHOP"+@s;
 	end;
@@ -30,7 +31,7 @@ OnBuyItem:
 		switch(getarg(0)) 
 		{
 			Default: 
-				mes "[套装制作]";
+				mes "[防具制作]";
 				mes "ID错误,请报告给GM!!";
 				mes "ID ["+@bought_nameid+"]";
 				close;
@@ -97,8 +98,16 @@ OnBuyItem:
 			case 40846: setarray @shop[0],0,EQI_GARMENT,40845,1; break;
 			case 40847: setarray @shop[0],0,EQI_GARMENT,40846,1; break;
 
+			//饰品
+			case 41001: setarray @shop[0],0,EQP_ACC_R,0,0,512,1; break;
+			case 41002: setarray @shop[0],0,EQP_ACC_R,41001,1; break;
+			case 41003: setarray @shop[0],0,EQP_ACC_R,41002,1; break;
+			case 41005: setarray @shop[0],0,EQP_ACC_R,0,0,512,1; break;
+			case 41006: setarray @shop[0],0,EQP_ACC_R,41005,1; break;
+			case 41007: setarray @shop[0],0,EQP_ACC_R,41006,1; break;
+
 		}
-		mes "[套装制作]";
+		mes "[防具制作]";
 	    mes "- 制作 ^FF0000"+getitemname(@bought_nameid)+"^000000";
 	    mes "- 请准备好下面材料！";
 		for(set @e,2;@e<=getarraysize(@shop);set @e,@e+2) {
@@ -111,7 +120,7 @@ OnBuyItem:
 		switch(select("^0000FF制作^000000:结束对话")) {
 		case 1:	
 			if(Zeny <= @shop[0]) {
-				mes "[套装制作]";
+				mes "[防具制作]";
 				mes "您的Zeny不够";
 				close;
 			}
@@ -126,13 +135,13 @@ OnBuyItem:
 			}
 			if (@shop[2] > 0) {
 			    if (countitem(@shop[2]) > 1) {
-				    mes "[套装制作]";
+				    mes "[防具制作]";
 				    mes "检测到您有多件需要升级的装备";
 				    mes "请把多余的装备存到仓库中";
 				    close;
 			    }			
 			    if (@shop[2] != getequipid(@shop[1])) {
-				    mes "[套装制作]";
+				    mes "[防具制作]";
 				    mes "请穿上需要升级的装备";
 				    close;
 				} else {
@@ -167,7 +176,7 @@ OnBuyItem:
 			        delitem @shop[@e],@shop[@e+1];
 			    }
 			}
-			mes "[套装制作]";
+			mes "[防具制作]";
 			mes "制作成功";
 			getitem3 getarg(1),1,1,@refine,0,@card0,@card1,@card2,@card3,@OptID,@OptVal,@OptParam;
 			equip getarg(1);
@@ -178,12 +187,13 @@ OnBuyItem:
 	}
 	
 OnInit:
-	waitingroom "[☆套装制作☆]",0;
-	.ShopCount= 4;
+	waitingroom "[☆防具制作☆]",0;
+	.ShopCount= 5;
 	setarray .Shop1[0],40301,40302,40303,40304,40305,40306,40307,40309,40310,40311;
 	setarray .Shop2[0],40801,40802,40803,40805,40806,40807,40809,40810,40811,40813,40814,40815;
 	setarray .Shop3[0],40817,40818,40819,40821,40822,40823,40825,40826,40827,40829,40830,40831;
 	setarray .Shop4[0],40833,40834,40835,40837,40838,40839,40841,40842,40843,40845,40846,40847;
+	setarray .Shop5[0],41001,41002,41003,41005,41006,41007;
 	.@i=1;
 	while (.@i <= .ShopCount)
 	{
