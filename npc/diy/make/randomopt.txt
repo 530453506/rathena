@@ -36,7 +36,7 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
         			progressbar "#00FF00",2;
         			next;
         			set @random, rand(9999999999);
-        			setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_ATTPOWER,@random%10+1,0);
+        			setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_EXT,@random%10+1,0);
         			mes "[°Ý½£É½×¯°Á°Ý]";
         			mes "ÐÒ²»ÈèÃü.";
         			close;

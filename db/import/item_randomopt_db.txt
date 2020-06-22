@@ -18,7 +18,7 @@ RDMOPT_VAR_ATKPERCENT,{ bonus2 bAddClass,Class_All,getrandomoptinfo(ROA_VALUE); 
 RDMOPT_VAR_MAGICATKPERCENT,{ bonus bMatkRate,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_VAR_PLUSASPD,{ bonus bAspd,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_VAR_PLUSASPDPERCENT,{ bonus bAspdRate,getrandomoptinfo(ROA_VALUE); }
-RDMOPT_VAR_ATTPOWER,{ bonus bBaseAtk,getrandomoptinfo(ROA_VALUE); }
+RDMOPT_VAR_ATTPOWER,{ bonus bAtk,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_VAR_HITSUCCESSVALUE,{ bonus bHit,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_VAR_ATTMPOWER,{ bonus bMatk,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_VAR_ITEMDEFPOWER,{ bonus bDef,getrandomoptinfo(ROA_VALUE); }
@@ -217,6 +217,7 @@ RDMOPT_SKILL_534_537_540,{bonus2 bSkillAtk,534,getrandomoptinfo(ROA_VALUE);bonus
 RDMOPT_SKILL_536_539_541,{bonus2 bSkillAtk,536,getrandomoptinfo(ROA_VALUE);bonus2 bSkillAtk,539,getrandomoptinfo(ROA_VALUE);bonus2 bSkillAtk,541,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_SKILL_137,{bonus2 bSkillAtk,137,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_SKILL_379,{bonus2 bSkillAtk,379,getrandomoptinfo(ROA_VALUE); }
+RDMOPT_VAR_EXT,{bonus bBaseAtk,getrandomoptinfo(ROA_VALUE)*getrefine(); bonus bMAtk,getrandomoptinfo(ROA_VALUE)*getrefine();}
 
 RDMOPT_ELEMENT_POWER,{ bonus bElementPower,1; }
 //物理攻击触发4系箭
