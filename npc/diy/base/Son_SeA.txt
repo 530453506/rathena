@@ -32,6 +32,7 @@
 		{
 		    case 1:
 		        mes "[孙燕姿]";
+		        mes "^FF00005转赠送装饰品,10转赠送顶级vip^000000"
 		        mes "基本等级"+.Job_option[0]+"，职业等级50可以转生";
 		        mes "每个人物可以转生"+.Job_option[1]+"次";
 		        mes "每次转生赠送"+.Job_option[2]+"素质点";
@@ -67,7 +68,9 @@
                       case 2: achievementcomplete 110001; break;
                       case 3: achievementcomplete 110002; break;
                       case 4: achievementcomplete 110003; break;
-                      case 5: achievementcomplete 110004; break;
+                      case 5: achievementcomplete 110004;
+                              getitem 41009,1;
+                              break;
                       case 6: achievementcomplete 110005; break;
                       case 7: achievementcomplete 110006; break;
                       case 8: achievementcomplete 110007; break;
@@ -75,6 +78,7 @@
                       case 10: achievementcomplete 110009; break;
                     }
 		            mes "恭喜您转生成功。";
+		            mes "请在成就面板领取相应成就。";
 		        }
 		        break;
 			case 2:

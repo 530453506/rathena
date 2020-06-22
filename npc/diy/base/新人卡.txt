@@ -1,8 +1,8 @@
 
 function	script	xinshouka	{
-		if (BaseLevel>=99) {
+		if (metempsychosis>0) {
 		    mes "[服务人员]";
-		    mes"等级太高，无法使用新人卡";
+		    mes"无法使用新人卡";
 		    close;
 		}
 		if ( Weight > 10000 ) {
@@ -13,8 +13,11 @@ function	script	xinshouka	{
         }
         mes "[服务人员]";
         mes "请选择你要成为的职业。";
+        mes "^FF0000本服无法混转，^000000";
+        mes "^FF0000一经选择，将无法更换职业。^000000";
+        mes "^FF0000请慎重考虑！^000000";
         next;
-        switch(select("骑士领主","超魔导士","神射手","神官","神工匠","十字刺客","圣殿十字军","智者","小丑/舞姬","武术宗师","创造者","神行太保","忍者","枪手","拳圣","灵媒")) {
+        switch(select("骑士领主","超魔导士","神射手","神官","神工匠","十字刺客","圣殿十字军","智者","诗人/舞姬","武术宗师","创造者","神行太保","忍者","枪手","拳圣","灵媒")) {
         	case 1: set .@jobchange,4008; break;
         	case 2: set .@jobchange,4010; break;
         	case 3: set .@jobchange,4012; break;
@@ -44,7 +47,7 @@ function	script	xinshouka	{
 		//set SkillPoint,0;
 		//set StatusPoint,0;
 		//set BaseLevel,99;
-		set JobLevel,40;
+		set JobLevel,50;
 		set BaseExp,0;
 		set JobExp,0;
 		atcommand"@lvup 98";
