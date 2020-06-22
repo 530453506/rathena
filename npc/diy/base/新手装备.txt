@@ -3,7 +3,7 @@
 OnInit:
 
         // 物品编号,数量
-        setarray $@NewPlayerItem[0],5074,1,19152,1,39115,1,40294,1,40295,1,40296,1,40297,1,601,1,602,1,40299,2,12622,1,39096,1,39097,100,39135,100;
+        setarray $@NewPlayerItem[0],5074,1,18730,1,19152,1,39115,1,40294,1,40295,1,40296,1,40297,1,601,1,602,1,40299,2,12622,1,39096,1,39097,100,39135,100;
 }
 
 -	script	LoginNewPlayerB	-1,{
@@ -24,10 +24,6 @@ OnPCLoginEvent:
 
         for(set .@i,0; .@i<getarraysize($@NewPlayerItem); set .@i,.@i+2) 
         getitem $@NewPlayerItem[.@i],$@NewPlayerItem[.@i+1];
-        if (#NewPlayer != 1) {
-            rentitem2 18730,604800,1,4,0,0,0,0,39344;
-        }
         set NewPlayer,1;
-        set #NewPlayer,1;
         close;
 }
