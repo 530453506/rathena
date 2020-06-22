@@ -1,3 +1,4 @@
+start_zeny: 10000000
 char_name_option: 2
 char_name_letters: \ /:*?#@!
 pincode_enabled: no

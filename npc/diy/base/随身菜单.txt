@@ -20,7 +20,7 @@ switch(select("^0088FF会员服务^000000","超级传送","安全拆卡","装备修理"))
 		mes "[服务人员]";
 		if (!vip_status(VIP_STATUS_ACTIVE)) {
 		    mes "^0088FFGM唯一QQ：530453506^000000";
-		    mes "1、会员boss区, 稀有怪物增加.";
+		    mes "1、会员boss区, 怪物数量增加.";
 		    mes "2、免费All+10料理加持.";
             mes "3、经验, 掉宝率增加50%.";
 		    mes "4、免费安全拆卡.";
