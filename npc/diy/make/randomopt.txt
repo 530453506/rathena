@@ -44,18 +44,71 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
         		close;
         	case 2:
         	    .@lvl = getequiprandomoption(EQI_HAND_R,1,ROA_VALUE);
+        	    .@ext = getequiprandomoption(EQI_HAND_R,0,ROA_ID);
+        	    if (!.@ext) {
+        	        mes "[°Ý½£É½×¯°Á°Ý]";
+        	        mes "ÎäÆ÷Ç¿»¯ºó²ÅÄÜ¸½¼ÓÔªËØÖ®ÐÄ£¡";
+        	        close;
+        	    }
         	    mes "[°Ý½£É½×¯°Á°Ý]";
         	    mes "ÄãµÄÔªËØÖ®ÐÄµÈ¼¶ÎªLv" + .@lvl +".";
         	    mes "Òª¼ÌÐøÂð?";
         	    next;
         		if(select("Çë.") == 1){
-        			.@lvl = .@lvl+1;
+        			.@lvl = 1;
         			mes "[°Ý½£É½×¯°Á°Ý]";
         			mes "*duang duang duang*";
         			progressbar "#00FF00",2;
         			next;
         			setrandomoption(EQI_HAND_R,1,RDMOPT_ELEMENT_POWER,.@lvl,0);
-        			setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,.@lvl*5,100);
+        			switch(.@id){
+        			    case 40901:
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_WIZARD_BOLT,150,.@lvl*5);
+        			        break;
+        			    case 40905:
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*5);
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_CRUSADER_BOLT,150,.@lvl*5);
+        			        break;
+        			    case 40909:
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*5);
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_KNIGHT_BOLT,150,.@lvl*5);
+        			        break;
+        			    case 40913:
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*5);
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_KNIGHT_BOLT,150,.@lvl*5);
+        			        break;
+        			    case 40917:
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*5);
+        			        break;
+        			    case 40921:
+        			        setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ALCHEMIST_BOLT,150,.@lvl*5);
+        			        break;
+        			    case 40925:
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_PRIEST_BOLT,150,.@lvl*5);
+                            break;
+                        case 40929:
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_VAR_MAXSPAMOUNT,.@lvl*1000,0);
+                            break;
+        			    case 40933:
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*5);
+                            break;
+        			    case 40937:
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*5);
+                            break;
+        			    case 40941:
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_SAGE_BOLT,150,.@lvl*5);
+                            break;
+        			    case 40945:
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*5);
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_BLACKSMITH_BOLT,150,.@lvl*5);
+                            break;
+        			    case 40949:
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_NINJA_BOLT,150,.@lvl*5);
+                            break;
+        			    case 40953:
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*5);
+                            break;
+        			}
         			mes "[°Ý½£É½×¯°Á°Ý]";
         			mes "ÐÒ²»ÈèÃü.";
         			close;
@@ -67,6 +120,6 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
 	}
 	
 OnInit:
-	setarray .alloweditems[0],40901,40905,40909,40913,40917,40921,40925,40929,40933,40937,40941,40945,40949,40953; // Add more item ids here
+	setarray .alloweditems[0],40901,40905,40909,40913,40917,40921,40925,40929,40933,40937,40941,40945,40949,40953;
 	.sz = getarraysize(.alloweditems);
 }
