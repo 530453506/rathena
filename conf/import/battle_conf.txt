@@ -10,9 +10,13 @@ max_hair_color: 250
 max_cloth_color: 552
 display_version: no
 
+//drops
+item_rate_card: 50000
+item_rate_card_boss: 50000
+
 //exp
-base_exp_rate: 1000
-job_exp_rate: 1000
+base_exp_rate: 5000
+job_exp_rate: 5000
 
 // Turn this on to allow a player to level up more than once from a kill. (Note 1)
 multi_level_up: yes

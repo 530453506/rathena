@@ -4,17 +4,9 @@
 function	script	renwushouce	{
 mes "当前共有^FF0000["+ getusers(1) + "]^000000人在线";
 mes "在线积分:     [ ^FF0000"+paodian+"^000000 ]";
-mes "任务积分:     [ ^FF0000"+#rwjf+"^000000 ]";
-mes "环球积分:     [ ^FF0000"+hqjf+"^000000 ]";
-mes "岛国积分:     [ ^FF0000"+daoguo+"^000000 ]";
 mes "商城积分:     [ ^FF0000"+#CASHPOINTS+"^000000 ]";
-mes "保卫战积分:   [ ^FF0000"+jifen+"^000000 ]";
-mes "中级道场积分: [ ^FF0000"+zhongji+"^000000 ]";
-mes "高级道场积分: [ ^FF0000"+gaoji+"^000000 ]";
-mes "究极道场积分: [ ^FF0000"+jiuji+"^000000 ]";
-mes "天界道场积分: [ ^FF0000"+tjjf+"^000000 ]";
 next;
-switch(select("^0088FF会员服务^000000","超级传送","安全拆卡","装备修理"))
+switch(select("^0088FF会员服务^000000","超级传送","安全拆卡","装备修理","学习技能"))
 {
 	case 1:
 		mes "[服务人员]";
@@ -44,6 +36,9 @@ switch(select("^0088FF会员服务^000000","超级传送","安全拆卡","装备修理"))
 	    }
 		callfunc "My_zbxiulia";
 		break;
+	case 5:
+	    atcommand"@allskill";
+	    break;
 }
 close;
 end;

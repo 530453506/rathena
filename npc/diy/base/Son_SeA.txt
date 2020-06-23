@@ -68,14 +68,18 @@
                       case 2: achievementcomplete 110001; break;
                       case 3: achievementcomplete 110002; break;
                       case 4: achievementcomplete 110003; break;
-                      case 5: achievementcomplete 110004;
-                              getitem 41009,1;
-                              break;
+                      case 5:
+                        achievementcomplete 110004;
+                        getitem 41009,1;
+                        break;
                       case 6: achievementcomplete 110005; break;
                       case 7: achievementcomplete 110006; break;
                       case 8: achievementcomplete 110007; break;
                       case 9: achievementcomplete 110008; break;
-                      case 10: achievementcomplete 110009; break;
+                      case 10:
+                        achievementcomplete 110009;
+                        vip_time 5256000;
+                        break;
                     }
 		            mes "恭喜您转生成功。";
 		            mes "请在成就面板领取相应成就。";
