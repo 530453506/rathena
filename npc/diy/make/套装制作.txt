@@ -99,12 +99,12 @@ OnBuyItem:
 			case 40847: setarray @shop[0],0,EQI_GARMENT,40846,1; break;
 
 			//饰品
-			case 41001: setarray @shop[0],0,EQP_ACC_R,0,0,512,1; break;
-			case 41002: setarray @shop[0],0,EQP_ACC_R,41001,1; break;
-			case 41003: setarray @shop[0],0,EQP_ACC_R,41002,1; break;
-			case 41005: setarray @shop[0],0,EQP_ACC_R,0,0,512,1; break;
-			case 41006: setarray @shop[0],0,EQP_ACC_R,41005,1; break;
-			case 41007: setarray @shop[0],0,EQP_ACC_R,41006,1; break;
+			case 41001: setarray @shop[0],0,EQI_ACC_R,0,0,512,1; break;
+			case 41002: setarray @shop[0],0,EQI_ACC_R,41001,1; break;
+			case 41003: setarray @shop[0],0,EQI_ACC_R,41002,1; break;
+			case 41005: setarray @shop[0],0,EQI_ACC_R,0,0,512,1; break;
+			case 41006: setarray @shop[0],0,EQI_ACC_R,41005,1; break;
+			case 41007: setarray @shop[0],0,EQI_ACC_R,41006,1; break;
 
 		}
 		mes "[防具制作]";
