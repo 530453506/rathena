@@ -28,7 +28,7 @@
 		mes "[孙燕姿]";
 		mes "请问你是来做什么的呢？";
 		next;
-		switch(select( "转生","学习新技能","租用职业道具","点数重置" ))
+		switch(select( "转生","混转","学习新技能","租用职业道具","点数重置" ))
 		{
 		    case 1:
 		        mes "[孙燕姿]";
@@ -85,7 +85,37 @@
 		            mes "请在成就面板领取相应成就。";
 		        }
 		        break;
-			case 2:
+		    case 2:
+				mes "[孙燕姿]";
+                switch(select("骑士领主","超魔导士","神射手","神官","神工匠","十字刺客","圣殿十字军","智者","诗人/舞姬","武术宗师","创造者","神行太保","忍者","枪手","拳圣","灵媒")) {
+                	case 1: set .@jobchange,4008; break;
+                	case 2: set .@jobchange,4010; break;
+                	case 3: set .@jobchange,4012; break;
+                	case 4: set .@jobchange,4009; break;
+                	case 5: set .@jobchange,4011; break;
+                	case 6: set .@jobchange,4013; break;
+                	case 7: set .@jobchange,4015; break;
+                	case 8: set .@jobchange,4017; break;
+                	case 9: if (Sex) set .@jobchange,4020;
+                	        else set .@jobchange,4021;
+                	        break;
+                	case 10: set .@jobchange,4016; break;
+                	case 11: set .@jobchange,4019; break;
+                	case 12: set .@jobchange,4018; break;
+                	case 13: set .@jobchange,25; break;
+                	case 14: set .@jobchange,24; break;
+                	case 15: set .@jobchange,4047; break;
+                	case 16: set .@jobchange,4049; break;
+                }
+                if(checkcart()) setcart 0;
+                if(checkfalcon()) setfalcon 0;
+                if(checkriding()) setriding 0;
+                nude;
+                jobchange .@jobchange;
+                resetskill;
+        		resetstatus;
+        		break;
+			case 3:
 				mes "[孙燕姿]";
 				switch (BaseClass)
 				{
@@ -160,7 +190,7 @@
 				}
 				mes "我已经把招数教给你了，打开技能表看一下吧";
 				break;
-			case 3:
+			case 4:
 				mes "[孙燕姿]";
 				switch(BaseJob)
 				{
@@ -194,7 +224,7 @@
 					mes "设置道具成功。";
 				}	
 				break;
-			case 4:
+			case 5:
 				mes "[孙燕姿]";
 				mes "我专门负责重置点数";
 				mes "你想重置什么呢？";
