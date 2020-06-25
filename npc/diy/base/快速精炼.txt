@@ -7,7 +7,7 @@ prontera.gat,146,107,5	script	快速精炼大师	63,{
     //if(select("好.:不好.") == 2) {
     //	mes "["+ .@npc_name$ +"]";
     //    mes "欢迎下次再来.";
-       	close;
+    //   	close;
     //}
     switch(select("+4","+10","+20")) {
         case 1:

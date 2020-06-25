@@ -275,7 +275,8 @@ Body:
     Sprite: B_YGNIZEM
   - Mob: B_YGNIZEM_4
     Sprite: B_YGNIZEM
-
+  - Mob: DADDY
+    Sprite: PUPA
 
 
 #Body:
