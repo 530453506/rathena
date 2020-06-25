@@ -1,13 +1,24 @@
 prontera.gat,146,107,5	script	快速精炼大师	63,{
-	.@max = 20;
+	//.@max = 20;
 	mes "[快速精炼大师]";
 	mes "我是专门锻治武器与防具的铁匠。";
-	mes "我可以^ff0000超快速^000000把所有物品安全＋"+.@max+"";
+	//mes "我可以^ff0000超快速^000000把所有物品安全＋"+.@max+"";
 	next;
-    if(select("好.:不好.") == 2) {
-    	mes "["+ .@npc_name$ +"]";
-        mes "欢迎下次再来.";
+    //if(select("好.:不好.") == 2) {
+    //	mes "["+ .@npc_name$ +"]";
+    //    mes "欢迎下次再来.";
        	close;
+    //}
+    switch(select("+4","+10","+20")) {
+        case 1:
+            .@max = 4;
+            break;
+        case 2:
+            .@max = 10;
+            break;
+        case 3:
+            .@max = 20;
+            break;
     }
     setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES;
     for(.@i = 1; .@i<getarraysize(.@indices); ++.@i) {
