@@ -1995,8 +1995,7 @@ int status_damage(struct block_list *src,struct block_list *target,int64 dhp, in
 
 	if (sc && hp && status->hp) {
 		if (sc->data[SC_AUTOBERSERK] &&
-			(!sc->data[SC_PROVOKE] || !sc->data[SC_PROVOKE]->val2) &&
-			status->hp < status->max_hp>>2)
+			(!sc->data[SC_PROVOKE] || !sc->data[SC_PROVOKE]->val2) )
 			sc_start4(src,target,SC_PROVOKE,100,10,1,0,0,0);
 		if (sc->data[SC_BERSERK] && status->hp <= 100)
 			status_change_end(target, SC_BERSERK, INVALID_TIMER);
@@ -2182,13 +2181,13 @@ int status_heal(struct block_list *bl,int64 hhp,int64 hsp, int flag)
 	status->hp += hp;
 	status->sp += sp;
 
-	if(hp && sc &&
-		sc->data[SC_AUTOBERSERK] &&
-		sc->data[SC_PROVOKE] &&
-		sc->data[SC_PROVOKE]->val2==1 &&
-		status->hp>=status->max_hp>>2
-	)	// End auto berserk.
-		status_change_end(bl, SC_PROVOKE, INVALID_TIMER);
+//	if(hp && sc &&
+//		sc->data[SC_AUTOBERSERK] &&
+//		sc->data[SC_PROVOKE] &&
+//		sc->data[SC_PROVOKE]->val2==1 &&
+//		status->hp>=status->max_hp>>2
+//	)	// End auto berserk.
+//		status_change_end(bl, SC_PROVOKE, INVALID_TIMER);
 
 	// Send HP update to client
 	switch(bl->type) {
@@ -10329,7 +10328,7 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 				tick = INFINITE_TICK;
 			break;
 		case SC_AUTOBERSERK:
-			if (status->hp < status->max_hp>>2 &&
+			if (
 				(!sc->data[SC_PROVOKE] || sc->data[SC_PROVOKE]->val2==0))
 					sc_start4(src,bl,SC_PROVOKE,100,10,1,0,0,60000);
 			tick = INFINITE_TICK;

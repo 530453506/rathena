@@ -5898,7 +5898,7 @@ int pc_steal_coin(struct map_session_data *sd,struct block_list *target)
 		int amount = (rnd() % (2 * target_lv + 1)) + 8 * target_lv; // Reduced formula
 
 		pc_getzeny(sd, amount, LOG_TYPE_STEAL, NULL);
-		md->state.steal_coin_flag = 1;
+//		md->state.steal_coin_flag = 1;
 		return 1;
 	}
 	return 0;

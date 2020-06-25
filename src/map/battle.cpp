@@ -3682,8 +3682,9 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 	}
 
 	switch(skill_id) {
-		case SM_BASH:
-		case MS_BASH:
+        case SM_BASH:
+        case BS_HAMMERFALL:
+        case MS_BASH:
 			skillratio += 30 * skill_lv;
 			break;
 		case SM_MAGNUM:
@@ -5196,6 +5197,9 @@ static void battle_calc_attack_post_defense(struct Damage* wd, struct block_list
 			ATK_ADD(wd->damage, wd->damage2, (3 + sc->data[SC_AURABLADE]->val1) * status_get_lv(src)); // !TODO: Confirm formula
 #else
 			ATK_ADD(wd->damage, wd->damage2, 20 * sc->data[SC_AURABLADE]->val1);
+			if (sc->data[SC_AURABLADE]->val1 && sc->data[SC_AURABLADE]->val1 > 5) {
+			    ATK_ADDRATE(wd->damage, wd->damage2, (sc->data[SC_AURABLADE]->val1 - 5) * 15);
+			}
 #endif
 		}
 	}

@@ -285,3 +285,69 @@ Body:
       Weapon:
         1hSpear: true
         2hSpear: true
+  - Id: 48
+    Name: TF_DOUBLE
+    Description: Double Attack
+    MaxLevel: 10
+    Type: Weapon
+    Range: -1
+    Hit: Multi_Hit
+    HitCount: 2
+    Element: Weapon
+    DamageFlags:
+      Critical: true
+  - Id: 110
+    Name: BS_HAMMERFALL
+    Description: Hammer Fall
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Ground
+    DamageFlags:
+      Splash: true
+    Flags:
+      AllowOnMado: true
+    Range: 1
+    Hit: Multi_Hit
+    HitCount:
+      - Level: 1
+        Count: 1
+      - Level: 2
+        Count: 2
+      - Level: 3
+        Count: 3
+      - Level: 4
+        Count: 4
+      - Level: 5
+        Count: 5
+      - Level: 6
+        Count: 6
+      - Level: 7
+        Count: 7
+      - Level: 8
+        Count: 8
+    SplashArea:
+      - Level: 1
+        Area: 2
+      - Level: 2
+        Area: 2
+      - Level: 3
+        Area: 2
+      - Level: 4
+        Area: 2
+      - Level: 5
+        Area: 2
+      - Level: 6
+        Area: 3
+      - Level: 7
+        Area: 3
+      - Level: 8
+        Area: 3
+    Duration2: 5000
+    Requires:
+      SpCost: 10
+      Weapon:
+        Dagger: true
+        1hSword: true
+        1hAxe: true
+        2hAxe: true
+        Mace: true

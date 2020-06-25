@@ -3,15 +3,6 @@
 // Structure of Database:
 // ID:ID:ID:ID,{ Script }
 
-40561:40581:40591,{ bonus2 bSubEle,3,5;bonus2 bSubEle,6,5;bonus2 bSubEle,1,5;bonus2 bSubEle,4,5;bonus2 bSubEle,7,5;bonus ballstats,5;bonus bluk,-5; }
-40562:40582:40592,{ bonus2 bSubEle,3,10; bonus2 bSubEle,6,10; bonus2 bSubEle,1,10; bonus2 bSubEle,4,10; bonus2 bSubEle,7,10; bonus ballstats,10; bonus bluk,-10; }
-40563:40583:40593,{ bonus2 bSubEle,3,15; bonus2 bSubEle,6,15; bonus2 bSubEle,1,15; bonus2 bSubEle,4,15; bonus2 bSubEle,7,15; bonus ballstats,15; bonus bluk,-15; }
-40564:40584:40594,{ bonus2 bSubEle,3,20; bonus2 bSubEle,6,20; bonus2 bSubEle,1,20; bonus2 bSubEle,4,20; bonus2 bSubEle,7,20; bonus ballstats,20; bonus bluk,-20; }
-40654:40655,{ bonus2 bResEff,Eff_silence,10000; }
-40651:40652:40653,{ bonus2 bResEff,Eff_Stone,10000; bonus bmaxhp,5000; }
-40651:40652:40653:40654:40655:40656,{ bonus2 bAddEff,SC_STONE,500; bonus2 bAddEff,SC_SILENCE,500; bonus bmaxhp,5000; }
-40651:40652:40653:40654:40655:40657,{ bonus2 bAddEffWhenHit,SC_STONE,500; bonus2 bAddEffWhenHit,SC_SILENCE,500; bonus bmaxhp,5000; }
-40658:40659:40660,{ bonus2 bResEff,Eff_freeze,10000; bonus2 bResEff,Eff_stun,10000; bonus bmaxhp,10000; }
-40661:40662,{ bonus bNoKnockback,0; bonus2 bResEff,Eff_Stone,10000; bonus2 bResEff,Eff_silence,10000; }
-40658:40659:40660:40661:40662:40663,{ bonus2 bAddEff,SC_STONE,500; bonus2 bAddEff,SC_SILENCE,500; bonus2 bAddEff,SC_STUN,500; bonus2 bAddEff,SC_FREEZE,500; bonus bmaxhp,10000;}
-40658:40659:40660:40661:40662:40664,{ bonus2 bAddEffWhenHit,SC_STONE,500; bonus2 bAddEffWhenHit,SC_SILENCE,500; bonus2 bAddEffWhenHit,SC_STUN,500; bonus2 bAddEffWhenHit,SC_FREEZE,500; bonus bmaxhp,10000;}
+40801:40817:40833,{skill 355,6; }
+40802:40818:40834,{skill 355,7; skill 146,1;}
+40803:40819:40835,{skill 355,8; skill 146,1;}

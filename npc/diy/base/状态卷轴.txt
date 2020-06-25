@@ -9,7 +9,7 @@ function	script	vip_status	{
         sc_start SC_ASSUMPTIO,600000,10; // 115
         sc_start SC_ASPDPOTION2,600000,10; // 57
 	//}
-	if (vip_status(VIP_STATUS_ACTIVE)) {
+	//if (vip_status(VIP_STATUS_ACTIVE)) {
 		sc_start SC_STRFOOD,600000,10; //STR+10
     	sc_start SC_INTFOOD,600000,10; //INT+10
     	sc_start SC_VITFOOD,600000,10; //VIT+10
@@ -29,5 +29,5 @@ function	script	vip_status	{
        	//sc_start SC_MATKPOTION,600000,10; //MATK 62
         //sc_start SC_ADRENALINE2,600000,10; // 145
         //sc_start SC_RICHMANKIM,600000,10; // 166
-	}
+	//}
 }

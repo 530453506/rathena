@@ -239,7 +239,7 @@ RDMOPT_ELEMENT_KNIGHT_BOLT,{bonus4 bAutoSpellOnSkill,397,"NJ_SYURIKEN",getrandom
 //十字军触发4系箭
 RDMOPT_ELEMENT_CRUSADER_BOLT,{bonus4 bAutoSpellOnSkill,254,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);}
 //铁匠触发4系箭
-RDMOPT_ELEMENT_BLACKSMITH_BOLT,{bonus4 bAutoSpellOnSkill,485,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);}
+RDMOPT_ELEMENT_BLACKSMITH_BOLT,{bonus4 bAutoSpellOnSkill,110,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);}
 //贤者触发4系箭
 RDMOPT_ELEMENT_SAGE_BOLT,{bonus4 bAutoSpellOnSkill,14,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus4 bAutoSpellOnSkill,19,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus4 bAutoSpellOnSkill,20,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus4 bAutoSpellOnSkill,800,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);}
 

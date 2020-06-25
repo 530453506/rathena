@@ -4834,7 +4834,8 @@ int skill_castend_damage_id (struct block_list* src, struct block_list *bl, uint
 	switch(skill_id) {
 	case MER_CRASH:
 	case SM_BASH:
-	case MS_BASH:
+    case BS_HAMMERFALL:
+    case MS_BASH:
 	case MC_MAMMONITE:
 	case TF_DOUBLE:
 	case AC_DOUBLE:
@@ -12356,7 +12357,7 @@ int skill_castend_pos2(struct block_list* src, int x, int y, uint16 skill_id, ui
 		map_foreachinallarea(skill_area_sub,
 			src->m, x-i, y-i, x+i, y+i, BL_CHAR,
 			src, skill_id, skill_lv, tick, flag|BCT_ENEMY|2,
-			skill_castend_nodamage_id);
+			skill_castend_damage_id);
 		break;
 
 	case HT_DETECTING:
