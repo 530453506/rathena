@@ -285,6 +285,7 @@ Body:
       Weapon:
         1hSpear: true
         2hSpear: true
+        2hSword: true
   - Id: 48
     Name: TF_DOUBLE
     Description: Double Attack
@@ -351,3 +352,58 @@ Body:
         1hAxe: true
         2hAxe: true
         Mace: true
+  - Id: 254
+    Name: CR_GRANDCROSS
+    Description: Grand Cross
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Self
+    DamageFlags:
+      IgnoreAtkCard: true
+      IgnoreFlee: true
+    Flags:
+      TargetSelf: true
+    Range: 5
+    Hit: Single
+    HitCount: 1
+    Element: Holy
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastDefenseReduction: 33
+    CastTime: 3000
+    AfterCastActDelay: 1500
+    AfterCastWalkDelay: 800
+    Duration1: 800
+    Duration2: 30000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 37
+        - Level: 2
+          Amount: 44
+        - Level: 3
+          Amount: 51
+        - Level: 4
+          Amount: 58
+        - Level: 5
+          Amount: 65
+        - Level: 6
+          Amount: 72
+        - Level: 7
+          Amount: 79
+        - Level: 8
+          Amount: 86
+        - Level: 9
+          Amount: 93
+        - Level: 10
+          Amount: 100
+      HpRateCost: 20
+    Unit:
+      Id: Dummyskill
+      Layout: -1
+      Interval: 50
+      Target: Enemy
+      Flag:
+        PathCheck: true

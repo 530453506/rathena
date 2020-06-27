@@ -756,6 +756,7 @@
 	export_constant2("bAddDamage",SP_ADD_DAMAGE);
 	export_constant2("bTransferAttr",SP_TRANSFER_ATTR);
     export_constant2("bElementPower",SP_ELEMENT_POWER);
+    export_constant2("bIgnoreMdefClass",SP_IGNORE_MDEF_CLASS);
 
 	/* equip indices */
 	export_constant(EQI_COMPOUND_ON);

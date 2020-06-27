@@ -44,14 +44,12 @@ function	script	xinshouka	{
         jobchange .@jobchange;
         resetskill;
 		resetstatus;
-		//set SkillPoint,0;
-		//set StatusPoint,0;
-		//set BaseLevel,99;
 		set JobLevel,50;
 		set BaseExp,0;
 		set JobExp,0;
 		atcommand"@lvup 98";
-		//set StatusPoint,2525;
+		set metempsychosis,9;
+		getitem 41009,1;
 	    delitem 39096,1;
 	    close;
 }

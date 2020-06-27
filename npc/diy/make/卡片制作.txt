@@ -1,0 +1,101 @@
+-	shop	CSHOP1	-1,512:-1
+prontera,146,125,5	script	卡片制作	716,{
+	function	CardDo;
+	mes "[卡片制作]";
+	mes "^FF0000选择卡片的类型^000000";
+	@s=(select("铜卡"));
+	callshop "CSHOP"+@s,1;
+	npcshopattach "CSHOP"+@s;
+	end;
+
+OnBuyItem:
+	.@j=0;
+	while (.@j < getarraysize(getd(".Shop"+@s))) {
+		if(getd(".Shop"+@s+"["+.@j+"]") == @bought_nameid[.@i]) 
+		{
+			CardDo(@bought_nameid,@bought_nameid);
+		}
+		.@j++; 
+	}
+	end;
+
+	function	CardDo    {
+		set @e,0;
+		deletearray .@shop[0],128;
+		switch(getarg(0)) 
+		{
+			Default: 
+				mes "[卡片制作]";
+				mes "ID错误,请报告给GM!!";
+				mes "ID ["+@bought_nameid+"]";
+				close;
+			case 39491: setarray .@shop[0],100,4366,10; break;
+			case 39492: setarray .@shop[0],100,4358,10; break;
+			case 39493: setarray .@shop[0],100,4105,10; break;
+			case 39494: setarray .@shop[0],100,4141,10; break;
+			case 39495: setarray .@shop[0],100,4064,10; break;
+			case 39496: setarray .@shop[0],100,4079,10; break;
+			case 39497: setarray .@shop[0],100,4053,10; break;
+			case 39498: setarray .@shop[0],100,4022,10; break;
+			case 39499: setarray .@shop[0],100,4133,10; break;
+			case 39500: setarray .@shop[0],100,4160,10; break;
+		}
+		mes "[卡片制作]";
+	    mes "- 制作 ^FF0000"+getitemname(@bought_nameid)+"^000000";
+	    mes "- 请准备好下面材料！";
+		for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
+		    if (.@shop[@e] > 0) {
+		        mes " ^0066CC" + getitemname(.@shop[@e]) + "^000000 x " + ((countitem(.@shop[@e])>=.@shop[@e+1])? "":"") + "" + .@shop[@e+1] + " [^009900" + countitem(.@shop[@e]) + "^000000/^FF6600" + .@shop[@e+1] + "^000000]"+( countitem(.@shop[@e])>=.@shop[@e+1]?" ( ^D2691E已完成^000000 )":" ( ^999999未完成^000000 )");
+		    }
+		}
+	    mes " ^FF1493需要制作费用^000000 " + ((Zeny>=.@shop[0])? "^FF0000":"") + "" + .@shop[0] + "^000000 "+((Zeny>=.@shop[0])? "( ^D2691E已完成^000000 )":"( ^999999金钱不足^000000 )");
+		next;
+		switch(select("^0000FF制作^000000:结束对话")) {
+		case 1:	
+			if(Zeny < .@shop[0]) {
+				mes "[卡片制作]";
+				mes "您的Zeny不够";
+				close;
+			}
+			for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
+				if(.@shop[@e] > 0) {
+				    if( countitem(.@shop[@e]) < .@shop[@e+1]) {
+                	    mes "[卡片制作]";
+                		mes "材料不足";
+                		close;
+                	}
+				}
+			}
+			zeny-=.@shop[0];
+			for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
+			    if (.@shop[@e] >0) {
+			        delitem .@shop[@e],.@shop[@e+1];
+			    }
+			}
+			mes "[卡片制作]";
+			mes "制作成功";
+			getitem getarg(1),1;
+			close;
+		case 3:
+			close;
+		}
+	}
+	
+OnInit:
+	waitingroom "[☆卡片制作☆]",0;
+	.ShopCount= 1;
+	setarray .Shop1[0],39491,39492,39493,39494,39495,39496,39497,39498,39499,39500;
+	.@i=1;
+	while (.@i <= .ShopCount)
+	{
+		.@j=0;
+		while (.@j < getarraysize(getd(".Shop"+.@i))) 
+		{
+			npcshopdelitem "CSHOP"+.@i,512;
+			npcshopadditem "CSHOP"+.@i, getd(".Shop"+.@i+"["+.@j+"]"), 1;
+			.@j++; 
+		}
+		.@i++; 
+	}
+	end;
+}

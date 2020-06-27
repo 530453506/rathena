@@ -3,6 +3,18 @@
 // Structure of Database:
 // ID:ID:ID:ID,{ Script }
 
-40801:40817:40833,{skill 355,6; }
-40802:40818:40834,{skill 355,7; skill 146,1;}
-40803:40819:40835,{skill 355,8; skill 146,1;}
+40801:40817:40833,{if(BaseJob==Job_Knight) {skill 355,6;} }
+40802:40818:40834,{if(BaseJob==Job_Knight) {skill 355,7; skill 146,1;}}
+40803:40819:40835,{if(BaseJob==Job_Knight) {skill 355,8; skill 146,1;}}
+
+40805:40821:40837,{bonus bLongAtkRate,20; }
+40806:40822:40838,{bonus bLongAtkRate,40; }
+40807:40823:40839,{bonus bLongAtkRate,60; }
+
+40809:40825:40841,{if(BaseJob==Job_Alchemist) {bonus bInt,10;}else{bonus2 bIgnoreMdefClassRate,Class_Boss,20; bonus2 bIgnoreMdefClass,Class_Boss,20;}}
+40810:40826:40842,{if(BaseJob==Job_Alchemist) {bonus bInt,20;}else{bonus2 bIgnoreMdefClassRate,Class_Boss,40; bonus2 bIgnoreMdefClass,Class_Boss,30;}}
+40811:40827:40843,{if(BaseJob==Job_Alchemist) {bonus bInt,30;}else{bonus2 bIgnoreMdefClassRate,Class_Boss,60; bonus2 bIgnoreMdefClass,Class_Boss,40;}}
+
+40813:40829:40845,{bonus bMaxHp,10000;bonus bStr,10;bonus bInt,10;bonus bVit,10;}
+40814:40830:40846,{bonus bMaxHp,20000;bonus bStr,20;bonus bInt,20;bonus bVit,20;}
+40815:40831:40847,{bonus bMaxHp,30000;bonus bStr,30;bonus bInt,30;bonus bVit,30;}

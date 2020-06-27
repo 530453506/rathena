@@ -17,3 +17,4 @@
 //bAddDamage  2097
 //bTransferAttr   2098
 //bElementPower 2099
+//bIgnoreMdefClass  2100

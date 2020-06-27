@@ -459,7 +459,8 @@ struct map_session_data {
 	int ignore_mdef_by_race2[RC2_MAX];
 	int dropaddrace[RC_MAX];
 	int dropaddclass[CLASS_MAX];
-	// zeroed arrays end here.
+    int ignore_fixed_mdef_by_class[CLASS_MAX];
+    // zeroed arrays end here.
 
 	std::vector<s_autospell> autospell, autospell2, autospell3;
 	std::vector<s_addeffect> addeff, addeff_atked;

@@ -112,6 +112,7 @@
                 if(checkriding()) setriding 0;
                 nude;
                 jobchange .@jobchange;
+            	atcommand"@joblvup 69";
                 resetskill;
         		resetstatus;
         		break;

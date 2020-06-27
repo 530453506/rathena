@@ -3305,7 +3305,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 	switch (skill_id) {	//Calc base damage according to skill
 		case PA_SACRIFICE:
 			wd->damage = sstatus->max_hp* 9/100;
-			wd->damage2 = 0;
+            wd->damage2 = 0;
 #ifdef RENEWAL
 			wd->weaponAtk = wd->damage;
 			wd->weaponAtk2 = wd->damage2;
@@ -6762,6 +6762,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					mdef -= mdef * i/100;
 					//mdef2-= mdef2* i/100;
 				}
+				mdef -= (sd->ignore_fixed_mdef_by_class[tstatus->class_] + sd->ignore_fixed_mdef_by_class[CLASS_ALL]);
 			}
 #ifdef RENEWAL
 			/**
@@ -6832,9 +6833,9 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						ad.damage = 0;
 #else
 					if(src == target) {
-						if(src->type == BL_PC)
-							ad.damage = ad.damage / 2;
-						else
+//						if(src->type == BL_PC)
+//							ad.damage = ad.damage / 2;
+//						else
 							ad.damage = 0;
 					}
 #endif

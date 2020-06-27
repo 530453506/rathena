@@ -138,7 +138,7 @@ function	script	chaika	{
 	mes "每张卡片收费" + .@percardcost + "金币.";
 	mes "^0088FF会员免费^000000.";
 	next;
-	setarray .@indices[1], EQI_HEAD_TOP, EQP_HEAD_MID, EQP_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R;
+	setarray .@indices[1], EQI_HEAD_TOP, EQI_HEAD_MID, EQI_HEAD_LOW, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES, EQI_ACC_L, EQI_ACC_R;
 	for(.@i = 1; .@i<getarraysize(.@indices); ++.@i) {
 		if(getequipisequiped(.@indices[.@i])) {
 			.@menu$ = .@menu$ + F_getpositionname(.@indices[.@i]) + "-[" + getequipname(.@indices[.@i]) + "]";

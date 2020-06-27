@@ -3837,6 +3837,7 @@ int status_calc_pc_sub(struct map_session_data* sd, enum e_status_calc_opt opt)
 		+ sizeof(sd->ignore_mdef_by_race2)
 		+ sizeof(sd->dropaddrace)
 		+ sizeof(sd->dropaddclass)
+		+ sizeof(sd->ignore_fixed_mdef_by_class)
 		);
 
 	memset (&sd->right_weapon.overrefine, 0, sizeof(sd->right_weapon) - sizeof(sd->right_weapon.atkmods));
@@ -4235,31 +4236,31 @@ int status_calc_pc_sub(struct map_session_data* sd, enum e_status_calc_opt opt)
         int matk_min = 0;
         int matk_max = 0;
         switch(sd->status.title_id) {
-            case 1001: tmp = 1; break;
-            case 1002: tmp = 2; break;
-            case 1003: tmp = 3; break;
-            case 1004: tmp = 4; break;
-            case 1005:
+            case 1000: tmp = 1; break;
+            case 1001: tmp = 2; break;
+            case 1002: tmp = 3; break;
+            case 1003: tmp = 4; break;
+            case 1004:
                 tmp = 5;
                 aspd = 1;
                 break;
-            case 1006:
+            case 1005:
                 tmp = 6;
                 aspd = 1;
                 break;
-            case 1007:
+            case 1006:
                 tmp = 7;
                 aspd = 1;
                 break;
-            case 1008:
+            case 1007:
                 tmp = 8;
                 aspd = 1;
                 break;
-            case 1009:
+            case 1008:
                 tmp = 9;
                 aspd = 1;
                 break;
-            case 1010:
+            case 1009:
                 tmp = 10;
                 aspd = 2;
                 break;

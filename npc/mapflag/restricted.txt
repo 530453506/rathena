@@ -94,7 +94,7 @@ moc_ruins	mapflag	restricted	7
 morocc	mapflag	restricted	7
 moscovia	mapflag	restricted	7
 niflheim	mapflag	restricted	7
-prontera	mapflag	restricted	7
+//prontera	mapflag	restricted	7
 payon	mapflag	restricted	7
 pay_arche	mapflag	restricted	7
 rachel	mapflag	restricted	7
