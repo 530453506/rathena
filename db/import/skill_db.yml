@@ -132,6 +132,821 @@ Header:
   Version: 1
 
 Body:
+  - Id: 14
+    Name: MG_COLDBOLT
+    Description: Cold Bolt
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Attack
+    Flags:
+      IsAutoShadowSpell: true
+    Range: 9
+    Hit: Multi_Hit
+    HitCount:
+      - Level: 1
+        Count: 1
+      - Level: 2
+        Count: 2
+      - Level: 3
+        Count: 3
+      - Level: 4
+        Count: 4
+      - Level: 5
+        Count: 5
+      - Level: 6
+        Count: 6
+      - Level: 7
+        Count: 7
+      - Level: 8
+        Count: 8
+      - Level: 9
+        Count: 9
+      - Level: 10
+        Count: 10
+    Element: Water
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime:
+      - Level: 1
+        Time: 700
+      - Level: 2
+        Time: 1400
+      - Level: 3
+        Time: 2100
+      - Level: 4
+        Time: 2800
+      - Level: 5
+        Time: 3500
+      - Level: 6
+        Time: 4200
+      - Level: 7
+        Time: 4900
+      - Level: 8
+        Time: 5600
+      - Level: 9
+        Time: 6300
+      - Level: 10
+        Time: 7000
+    AfterCastActDelay:
+      - Level: 1
+        Time: 500
+      - Level: 2
+        Time: 600
+      - Level: 3
+        Time: 700
+      - Level: 4
+        Time: 800
+      - Level: 5
+        Time: 900
+      - Level: 6
+        Time: 1000
+      - Level: 7
+        Time: 1100
+      - Level: 8
+        Time: 1200
+      - Level: 9
+        Time: 1300
+      - Level: 10
+        Time: 1400
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 12
+        - Level: 2
+          Amount: 14
+        - Level: 3
+          Amount: 16
+        - Level: 4
+          Amount: 18
+        - Level: 5
+          Amount: 20
+        - Level: 6
+          Amount: 22
+        - Level: 7
+          Amount: 24
+        - Level: 8
+          Amount: 26
+        - Level: 9
+          Amount: 28
+        - Level: 10
+          Amount: 30
+  - Id: 19
+    Name: MG_FIREBOLT
+    Description: Fire Bolt
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Attack
+    Flags:
+      IsAutoShadowSpell: true
+    Range: 9
+    Hit: Multi_Hit
+    HitCount:
+      - Level: 1
+        Count: 1
+      - Level: 2
+        Count: 2
+      - Level: 3
+        Count: 3
+      - Level: 4
+        Count: 4
+      - Level: 5
+        Count: 5
+      - Level: 6
+        Count: 6
+      - Level: 7
+        Count: 7
+      - Level: 8
+        Count: 8
+      - Level: 9
+        Count: 9
+      - Level: 10
+        Count: 10
+    Element: Fire
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime:
+      - Level: 1
+        Time: 700
+      - Level: 2
+        Time: 1400
+      - Level: 3
+        Time: 2100
+      - Level: 4
+        Time: 2800
+      - Level: 5
+        Time: 3500
+      - Level: 6
+        Time: 4200
+      - Level: 7
+        Time: 4900
+      - Level: 8
+        Time: 5600
+      - Level: 9
+        Time: 6300
+      - Level: 10
+        Time: 7000
+    AfterCastActDelay:
+      - Level: 1
+        Time: 500
+      - Level: 2
+        Time: 600
+      - Level: 3
+        Time: 700
+      - Level: 4
+        Time: 800
+      - Level: 5
+        Time: 900
+      - Level: 6
+        Time: 1000
+      - Level: 7
+        Time: 1100
+      - Level: 8
+        Time: 1200
+      - Level: 9
+        Time: 1300
+      - Level: 10
+        Time: 1400
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 12
+        - Level: 2
+          Amount: 14
+        - Level: 3
+          Amount: 16
+        - Level: 4
+          Amount: 18
+        - Level: 5
+          Amount: 20
+        - Level: 6
+          Amount: 22
+        - Level: 7
+          Amount: 24
+        - Level: 8
+          Amount: 26
+        - Level: 9
+          Amount: 28
+        - Level: 10
+          Amount: 30
+  - Id: 20
+    Name: MG_LIGHTNINGBOLT
+    Description: Lightning Bolt
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Attack
+    Flags:
+      IsAutoShadowSpell: true
+    Range: 9
+    Hit: Multi_Hit
+    HitCount:
+      - Level: 1
+        Count: 1
+      - Level: 2
+        Count: 2
+      - Level: 3
+        Count: 3
+      - Level: 4
+        Count: 4
+      - Level: 5
+        Count: 5
+      - Level: 6
+        Count: 6
+      - Level: 7
+        Count: 7
+      - Level: 8
+        Count: 8
+      - Level: 9
+        Count: 9
+      - Level: 10
+        Count: 10
+    Element: Wind
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime:
+      - Level: 1
+        Time: 700
+      - Level: 2
+        Time: 1400
+      - Level: 3
+        Time: 2100
+      - Level: 4
+        Time: 2800
+      - Level: 5
+        Time: 3500
+      - Level: 6
+        Time: 4200
+      - Level: 7
+        Time: 4900
+      - Level: 8
+        Time: 5600
+      - Level: 9
+        Time: 6300
+      - Level: 10
+        Time: 7000
+    AfterCastActDelay:
+      - Level: 1
+        Time: 500
+      - Level: 2
+        Time: 600
+      - Level: 3
+        Time: 700
+      - Level: 4
+        Time: 800
+      - Level: 5
+        Time: 900
+      - Level: 6
+        Time: 1000
+      - Level: 7
+        Time: 1100
+      - Level: 8
+        Time: 1200
+      - Level: 9
+        Time: 1300
+      - Level: 10
+        Time: 1400
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 12
+        - Level: 2
+          Amount: 14
+        - Level: 3
+          Amount: 16
+        - Level: 4
+          Amount: 18
+        - Level: 5
+          Amount: 20
+        - Level: 6
+          Amount: 22
+        - Level: 7
+          Amount: 24
+        - Level: 8
+          Amount: 26
+        - Level: 9
+          Amount: 28
+        - Level: 10
+          Amount: 30
+  - Id: 48
+    Name: TF_DOUBLE
+    Description: Double Attack
+    MaxLevel: 10
+    Type: Weapon
+    Range: -1
+    Hit: Multi_Hit
+    HitCount: 2
+    Element: Weapon
+    DamageFlags:
+      Critical: true
+  - Id: 79
+    Name: PR_MAGNUS
+    Description: Magnus Exorcismus
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Ground
+    Range: 9
+    Hit: Multi_Hit
+    HitCount:
+      - Level: 1
+        Count: 1
+      - Level: 2
+        Count: 2
+      - Level: 3
+        Count: 3
+      - Level: 4
+        Count: 4
+      - Level: 5
+        Count: 5
+      - Level: 6
+        Count: 6
+      - Level: 7
+        Count: 7
+      - Level: 8
+        Count: 8
+      - Level: 9
+        Count: 9
+      - Level: 10
+        Count: 10
+    Element: Holy
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime: 15000
+    AfterCastActDelay: 4000
+    Duration1:
+      - Level: 1
+        Time: 5000
+      - Level: 2
+        Time: 6000
+      - Level: 3
+        Time: 7000
+      - Level: 4
+        Time: 8000
+      - Level: 5
+        Time: 9000
+      - Level: 6
+        Time: 10000
+      - Level: 7
+        Time: 11000
+      - Level: 8
+        Time: 12000
+      - Level: 9
+        Time: 13000
+      - Level: 10
+        Time: 14000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 40
+        - Level: 2
+          Amount: 42
+        - Level: 3
+          Amount: 44
+        - Level: 4
+          Amount: 46
+        - Level: 5
+          Amount: 48
+        - Level: 6
+          Amount: 50
+        - Level: 7
+          Amount: 52
+        - Level: 8
+          Amount: 54
+        - Level: 9
+          Amount: 56
+        - Level: 10
+          Amount: 58
+      ItemCost:
+        - Item: Blue_Gemstone
+          Amount: 1
+    Unit:
+      Id: Magnus
+      Layout: -1
+      Range: 1
+      Interval: 2000
+      Target: Enemy
+      Flag:
+        NoOverlap: true
+        PathCheck: true
+        RemovedByFireRain: true
+  - Id: 83
+    Name: WZ_METEOR
+    Description: Meteor Storm
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Ground
+    Flags:
+      IsAutoShadowSpell: true
+    Range: 9
+    Hit: Multi_Hit
+    HitCount:
+      - Level: 1
+        Count: 1
+      - Level: 2
+        Count: 1
+      - Level: 3
+        Count: 2
+      - Level: 4
+        Count: 2
+      - Level: 5
+        Count: 3
+      - Level: 6
+        Count: 3
+      - Level: 7
+        Count: 4
+      - Level: 8
+        Count: 4
+      - Level: 9
+        Count: 5
+      - Level: 10
+        Count: 5
+      - Level: 11
+        Count: 15
+    Element: Fire
+    SplashArea:
+      - Level: 1
+        Area: 3
+      - Level: 2
+        Area: 3
+      - Level: 3
+        Area: 3
+      - Level: 4
+        Area: 3
+      - Level: 5
+        Area: 3
+      - Level: 6
+        Area: 3
+      - Level: 7
+        Area: 3
+      - Level: 8
+        Area: 3
+      - Level: 9
+        Area: 3
+      - Level: 10
+        Area: 3
+      - Level: 11
+        Area: 14
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime: 15000
+    AfterCastActDelay: 5000
+    Duration1:
+      - Level: 1
+        Time: 2000
+      - Level: 2
+        Time: 3000
+      - Level: 3
+        Time: 3000
+      - Level: 4
+        Time: 4000
+      - Level: 5
+        Time: 4000
+      - Level: 6
+        Time: 5000
+      - Level: 7
+        Time: 5000
+      - Level: 8
+        Time: 6000
+      - Level: 9
+        Time: 6000
+      - Level: 10
+        Time: 7000
+    Duration2: 5000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 20
+        - Level: 2
+          Amount: 24
+        - Level: 3
+          Amount: 30
+        - Level: 4
+          Amount: 34
+        - Level: 5
+          Amount: 40
+        - Level: 6
+          Amount: 44
+        - Level: 7
+          Amount: 50
+        - Level: 8
+          Amount: 54
+        - Level: 9
+          Amount: 60
+        - Level: 10
+          Amount: 64
+    Unit:
+      Id: Dummyskill
+      Range: 3
+      Interval: 500
+      Target: Enemy
+      Flag:
+        PathCheck: true
+  - Id: 85
+    Name: WZ_VERMILION
+    Description: Lord of Vermilion
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Ground
+    Flags:
+      IsAutoShadowSpell: true
+    Range: 9
+    Hit: Multi_Hit
+    HitCount: 10
+    Element: Wind
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime:
+      - Level: 1
+        Time: 15000
+      - Level: 2
+        Time: 14500
+      - Level: 3
+        Time: 14000
+      - Level: 4
+        Time: 13500
+      - Level: 5
+        Time: 13000
+      - Level: 6
+        Time: 12500
+      - Level: 7
+        Time: 12000
+      - Level: 8
+        Time: 11500
+      - Level: 9
+        Time: 11000
+      - Level: 10
+        Time: 10500
+    AfterCastActDelay: 5000
+    Duration1: 4000
+    Duration2: 30000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 60
+        - Level: 2
+          Amount: 64
+        - Level: 3
+          Amount: 68
+        - Level: 4
+          Amount: 72
+        - Level: 5
+          Amount: 76
+        - Level: 6
+          Amount: 80
+        - Level: 7
+          Amount: 84
+        - Level: 8
+          Amount: 88
+        - Level: 9
+          Amount: 92
+        - Level: 10
+          Amount: 96
+    Unit:
+      Id: Dummyskill
+      Layout:
+        - Level: 1
+          Size: 5
+        - Level: 2
+          Size: 5
+        - Level: 3
+          Size: 5
+        - Level: 4
+          Size: 5
+        - Level: 5
+          Size: 5
+        - Level: 6
+          Size: 5
+        - Level: 7
+          Size: 5
+        - Level: 8
+          Size: 5
+        - Level: 9
+          Size: 5
+        - Level: 10
+          Size: 5
+        - Level: 11
+          Size: 7
+      Range: 1
+      Interval: 500
+      Target: Enemy
+      Flag:
+        NoOverlap: true
+        PathCheck: true
+  - Id: 110
+    Name: BS_HAMMERFALL
+    Description: Hammer Fall
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Ground
+    DamageFlags:
+      Splash: true
+    Flags:
+      AllowOnMado: true
+    Range: 1
+    Hit: Multi_Hit
+    HitCount:
+      - Level: 1
+        Count: 1
+      - Level: 2
+        Count: 2
+      - Level: 3
+        Count: 3
+      - Level: 4
+        Count: 4
+      - Level: 5
+        Count: 5
+      - Level: 6
+        Count: 6
+      - Level: 7
+        Count: 7
+      - Level: 8
+        Count: 8
+    SplashArea:
+      - Level: 1
+        Area: 2
+      - Level: 2
+        Area: 2
+      - Level: 3
+        Area: 2
+      - Level: 4
+        Area: 2
+      - Level: 5
+        Area: 2
+      - Level: 6
+        Area: 3
+      - Level: 7
+        Area: 3
+      - Level: 8
+        Area: 3
+    Duration2: 5000
+    Requires:
+      SpCost: 10
+      Weapon:
+        Dagger: true
+        1hSword: true
+        1hAxe: true
+        2hAxe: true
+        Mace: true
+  - Id: 137
+    Name: AS_GRIMTOOTH
+    Description: Grimtooth
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Attack
+    DamageFlags:
+      Splash: true
+    Flags:
+      TargetTrap: true
+      AllowWhenHidden: true
+    Range:
+      - Level: 1
+        Size: 3
+      - Level: 2
+        Size: 4
+      - Level: 3
+        Size: 5
+      - Level: 4
+        Size: 6
+      - Level: 5
+        Size: 7
+      - Level: 6
+        Size: 8
+      - Level: 7
+        Size: 9
+    Hit: Single
+    HitCount: 1
+    Element: Weapon
+    SplashArea: 1
+    Requires:
+      SpCost: 3
+      Weapon:
+        Katar: true
+      Status:
+        Hiding: true
+  - Id: 254
+    Name: CR_GRANDCROSS
+    Description: Grand Cross
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Self
+    DamageFlags:
+      IgnoreAtkCard: true
+      IgnoreFlee: true
+    Flags:
+      TargetSelf: true
+    Range: 5
+    Hit: Single
+    HitCount: 1
+    Element: Holy
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastDefenseReduction: 33
+    CastTime: 3000
+    AfterCastActDelay: 1500
+    AfterCastWalkDelay: 800
+    Duration1: 800
+    Duration2: 30000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 37
+        - Level: 2
+          Amount: 44
+        - Level: 3
+          Amount: 51
+        - Level: 4
+          Amount: 58
+        - Level: 5
+          Amount: 65
+        - Level: 6
+          Amount: 72
+        - Level: 7
+          Amount: 79
+        - Level: 8
+          Amount: 86
+        - Level: 9
+          Amount: 93
+        - Level: 10
+          Amount: 100
+      HpRateCost: 20
+    Unit:
+      Id: Dummyskill
+      Layout: -1
+      Interval: 50
+      Target: Enemy
+      Flag:
+        PathCheck: true
+  - Id: 397
+    Name: LK_SPIRALPIERCE
+    Description: Spiral Pierce
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Attack
+    DamageFlags:
+      IgnoreDefense: true
+    Flags:
+      TargetTrap: true
+    Range: 5
+    Hit: Multi_Hit
+    HitCount: 5
+    Element: Weapon
+    CastTime:
+      - Level: 1
+        Time: 300
+      - Level: 2
+        Time: 500
+      - Level: 3
+        Time: 700
+      - Level: 4
+        Time: 900
+      - Level: 5
+        Time: 1000
+    AfterCastActDelay:
+      - Level: 1
+        Time: 400
+      - Level: 2
+        Time: 500
+      - Level: 3
+        Time: 600
+      - Level: 4
+        Time: 700
+      - Level: 5
+        Time: 800
+    Duration2: 800
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 18
+        - Level: 2
+          Amount: 21
+        - Level: 3
+          Amount: 24
+        - Level: 4
+          Amount: 27
+        - Level: 5
+          Amount: 30
+      Weapon:
+        1hSpear: true
+        2hSpear: true
+        2hSword: true
   - Id: 800
     Name: MG_EARTHBOLT
     Description: Earth Bolt
@@ -192,25 +1007,25 @@ Body:
         Time: 7000
     AfterCastActDelay:
       - Level: 1
-        Time: 1000
+        Time: 500
       - Level: 2
-        Time: 1200
+        Time: 600
       - Level: 3
-        Time: 1400
+        Time: 700
       - Level: 4
-        Time: 1600
+        Time: 800
       - Level: 5
-        Time: 1800
+        Time: 900
       - Level: 6
-        Time: 2000
+        Time: 1000
       - Level: 7
-        Time: 2200
+        Time: 1100
       - Level: 8
-        Time: 2400
+        Time: 1200
       - Level: 9
-        Time: 2600
+        Time: 1300
       - Level: 10
-        Time: 2800
+        Time: 1400
     Requires:
       SpCost:
         - Level: 1
@@ -233,177 +1048,3 @@ Body:
           Amount: 28
         - Level: 10
           Amount: 30
-  - Id: 397
-    Name: LK_SPIRALPIERCE
-    Description: Spiral Pierce
-    MaxLevel: 5
-    Type: Weapon
-    TargetType: Attack
-    DamageFlags:
-      IgnoreDefense: true
-    Flags:
-      TargetTrap: true
-    Range: 5
-    Hit: Multi_Hit
-    HitCount: 5
-    Element: Weapon
-    CastTime:
-      - Level: 1
-        Time: 300
-      - Level: 2
-        Time: 500
-      - Level: 3
-        Time: 700
-      - Level: 4
-        Time: 900
-      - Level: 5
-        Time: 1000
-    AfterCastActDelay:
-      - Level: 1
-        Time: 400
-      - Level: 2
-        Time: 500
-      - Level: 3
-        Time: 600
-      - Level: 4
-        Time: 700
-      - Level: 5
-        Time: 800
-    Duration2: 800
-    Requires:
-      SpCost:
-        - Level: 1
-          Amount: 18
-        - Level: 2
-          Amount: 21
-        - Level: 3
-          Amount: 24
-        - Level: 4
-          Amount: 27
-        - Level: 5
-          Amount: 30
-      Weapon:
-        1hSpear: true
-        2hSpear: true
-        2hSword: true
-  - Id: 48
-    Name: TF_DOUBLE
-    Description: Double Attack
-    MaxLevel: 10
-    Type: Weapon
-    Range: -1
-    Hit: Multi_Hit
-    HitCount: 2
-    Element: Weapon
-    DamageFlags:
-      Critical: true
-  - Id: 110
-    Name: BS_HAMMERFALL
-    Description: Hammer Fall
-    MaxLevel: 5
-    Type: Weapon
-    TargetType: Ground
-    DamageFlags:
-      Splash: true
-    Flags:
-      AllowOnMado: true
-    Range: 1
-    Hit: Multi_Hit
-    HitCount:
-      - Level: 1
-        Count: 1
-      - Level: 2
-        Count: 2
-      - Level: 3
-        Count: 3
-      - Level: 4
-        Count: 4
-      - Level: 5
-        Count: 5
-      - Level: 6
-        Count: 6
-      - Level: 7
-        Count: 7
-      - Level: 8
-        Count: 8
-    SplashArea:
-      - Level: 1
-        Area: 2
-      - Level: 2
-        Area: 2
-      - Level: 3
-        Area: 2
-      - Level: 4
-        Area: 2
-      - Level: 5
-        Area: 2
-      - Level: 6
-        Area: 3
-      - Level: 7
-        Area: 3
-      - Level: 8
-        Area: 3
-    Duration2: 5000
-    Requires:
-      SpCost: 10
-      Weapon:
-        Dagger: true
-        1hSword: true
-        1hAxe: true
-        2hAxe: true
-        Mace: true
-  - Id: 254
-    Name: CR_GRANDCROSS
-    Description: Grand Cross
-    MaxLevel: 10
-    Type: Magic
-    TargetType: Self
-    DamageFlags:
-      IgnoreAtkCard: true
-      IgnoreFlee: true
-    Flags:
-      TargetSelf: true
-    Range: 5
-    Hit: Single
-    HitCount: 1
-    Element: Holy
-    CopyFlags:
-      Skill:
-        Plagiarism: true
-        Reproduce: true
-    CastDefenseReduction: 33
-    CastTime: 3000
-    AfterCastActDelay: 1500
-    AfterCastWalkDelay: 800
-    Duration1: 800
-    Duration2: 30000
-    Requires:
-      SpCost:
-        - Level: 1
-          Amount: 37
-        - Level: 2
-          Amount: 44
-        - Level: 3
-          Amount: 51
-        - Level: 4
-          Amount: 58
-        - Level: 5
-          Amount: 65
-        - Level: 6
-          Amount: 72
-        - Level: 7
-          Amount: 79
-        - Level: 8
-          Amount: 86
-        - Level: 9
-          Amount: 93
-        - Level: 10
-          Amount: 100
-      HpRateCost: 20
-    Unit:
-      Id: Dummyskill
-      Layout: -1
-      Interval: 50
-      Target: Enemy
-      Flag:
-        PathCheck: true

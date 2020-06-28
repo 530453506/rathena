@@ -129,7 +129,7 @@
 					case 1:
 						skill 144,1,0;
 						skill 145,1,0;
-						skill 146,1,0;
+						//skill 146,1,0;
 						if (BaseJob==7) skill 1001,1,0;
 						if (BaseJob==14) skill 1002,1,0;
 						break;
