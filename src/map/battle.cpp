@@ -5856,6 +5856,11 @@ static struct Damage battle_calc_weapon_attack(struct block_list *src, struct bl
 			ATK_ADD(wd.damage, wd.damage2, 90);
 			break;
 #endif
+	    case CR_GRANDCROSS:
+	        if (src->type == BL_PC) {
+                struct status_data *sstatus = status_get_status_data(src);
+                ATK_ADD(wd.damage, wd.damage2, sstatus->max_hp / 20);
+            }
 		case TK_DOWNKICK:
 		case TK_STORMKICK:
 		case TK_TURNKICK:

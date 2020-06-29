@@ -379,8 +379,8 @@ IG_BlueBox,1220,3	// Gladius
 IG_BlueBox,1222,3	// Damascus
 IG_BlueBox,1226,3	// Damascus
 IG_BlueBox,1243,3	// Novice Main Gauche
-IG_BlueBox,1245,1	// Cinquedea
-IG_BlueBox,1247,1	// Kindle Dagger
+//IG_BlueBox,1245,1	// Cinquedea
+//IG_BlueBox,1247,1	// Kindle Dagger
 IG_BlueBox,1248,1	// Obsidian Dagger
 IG_BlueBox,1249,1	// Fisherman's Dagger
 IG_BlueBox,1250,3	// Jur

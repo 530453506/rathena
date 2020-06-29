@@ -28,17 +28,17 @@
 //铁匠高级
 40803:40947,{ skill 110,8; }
 //刺客短剑初级
-40801:40917,{ skill 48,14; }
-40801:40918,{ skill 48,14; }
-40801:40919,{ skill 48,14; }
-40802:40917,{ skill 48,14; }
-40803:40917,{ skill 48,14; }
+40801:1245,{ bonus bDoubleRate,70; }
+40801:1246,{ bonus bDoubleRate,70; }
+40801:1247,{ bonus bDoubleRate,70; }
+40802:1245,{ bonus bDoubleRate,70; }
+40803:1245,{ bonus bDoubleRate,70; }
 //刺客短剑中级
-40802:40918,{ skill 48,17; }
-40802:40919,{ skill 48,17; }
-40803:40918,{ skill 48,17; }
+40802:1246,{ bonus bDoubleRate,85; skill 133,6; }
+40802:1247,{ bonus bDoubleRate,85; skill 133,6; }
+40803:1246,{ bonus bDoubleRate,85; skill 133,6; }
 //刺客短剑高级
-40803:40919,{ skill 48,20; }
+40803:1247,{ bonus bDoubleRate,100; skill 133,7; }
 //刺客拳刃初级
 40801:40933,{ skill 376,10; }
 40801:40934,{ skill 376,10; }
@@ -46,28 +46,128 @@
 40802:40933,{ skill 376,10; }
 40803:40933,{ skill 376,10; }
 //刺客拳刃中级
-40802:40934,{ skill 376,10; skill 137,6; }
-40802:40935,{ skill 376,10; skill 137,6; }
-40803:40934,{ skill 376,10; skill 137,6; }
+40802:40934,{ skill 376,15; skill 137,6; }
+40802:40935,{ skill 376,15; skill 137,6; }
+40803:40934,{ skill 376,15; skill 137,6; }
 //刺客拳刃高级
-40803:40935,{ skill 376,10; skill 137,7; }
+40803:40935,{ skill 376,20; skill 137,7; }
 //铁匠初级
-40801:40945,{ skill 110,6; }
-40801:40946,{ skill 110,6; }
-40801:40947,{ skill 110,6; }
-40802:40945,{ skill 110,6; }
-40803:40945,{ skill 110,6; }
+40801:40945,{ skill 110,6; skill 2263,1; }
+40801:40946,{ skill 110,6; skill 2263,1; }
+40801:40947,{ skill 110,6; skill 2263,1; }
+40802:40945,{ skill 110,6; skill 2263,1; }
+40803:40945,{ skill 110,6; skill 2263,1; }
 //铁匠中级
-40802:40946,{ skill 110,7; }
-40802:40947,{ skill 110,7; }
-40803:40946,{ skill 110,7; }
+40802:40946,{ skill 110,7; skill 2263,1; }
+40802:40947,{ skill 110,7; skill 2263,1; }
+40803:40946,{ skill 110,7; skill 2263,1; }
 //铁匠高级
-40803:40947,{ skill 110,7; }
-
-
-
-
-
-
-
-
+40803:40947,{ skill 110,8; skill 2263,1; }
+//法师初级
+40809:40901,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40809:40902,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40809:40903,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40810:40901,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40811:40901,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+//法师中级
+40810:40902,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+40810:40903,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+40811:40902,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+//法师高级
+40811:40903,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,40; bonus2 bIgnoreMdefClass,CLASS_BOSS,40; }
+//贤者初级
+40809:40941,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40809:40942,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40809:40943,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40810:40941,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40811:40941,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+//贤者中级
+40810:40942,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+40810:40943,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+40811:40942,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+//贤者高级
+40811:40943,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,40; bonus2 bIgnoreMdefClass,CLASS_BOSS,40; }
+//忍者初级
+40809:40949,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40809:40950,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40809:40951,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40810:40949,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40811:40949,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+//忍者中级
+40810:40950,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+40810:40951,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+40811:40950,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+//忍者高级
+40811:40951,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,40; bonus2 bIgnoreMdefClass,CLASS_BOSS,40; }
+//牧师初级
+40809:40925,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40809:40926,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40809:40927,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40810:40925,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+40811:40925,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
+//牧师中级
+40810:40926,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+40810:40927,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+40811:40926,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,30; bonus2 bIgnoreMdefClass,CLASS_BOSS,30; }
+//牧师高级
+40811:40927,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,40; bonus2 bIgnoreMdefClass,CLASS_BOSS,40; }
+//炼金初级
+40809:40921,{ bonus bInt,10; }
+40809:40922,{ bonus bInt,10; }
+40809:40923,{ bonus bInt,10; }
+40810:40921,{ bonus bInt,10; }
+40811:40921,{ bonus bInt,10; }
+//炼金中级
+40810:40922,{ bonus bInt,20; }
+40810:40923,{ bonus bInt,20; }
+40811:40922,{ bonus bInt,20; }
+//炼金高级
+40811:40923,{ bonus bInt,30; }
+//弓初级
+40805:40937,{ bonus bLongAtkRate,20; if (BaseJob == Job_Rogue) { skill 378,1; } }
+40805:40938,{ bonus bLongAtkRate,20; if (BaseJob == Job_Rogue) { skill 378,1; } }
+40805:40939,{ bonus bLongAtkRate,20; if (BaseJob == Job_Rogue) { skill 378,1; } }
+40806:40937,{ bonus bLongAtkRate,20; if (BaseJob == Job_Rogue) { skill 378,1; } }
+40807:40937,{ bonus bLongAtkRate,20; if (BaseJob == Job_Rogue) { skill 378,1; } }
+//弓中级
+40806:40938,{ bonus bLongAtkRate,40; if (BaseJob == Job_Rogue) { skill 378,1; } }
+40806:40939,{ bonus bLongAtkRate,40; if (BaseJob == Job_Rogue) { skill 378,1; } }
+40807:40938,{ bonus bLongAtkRate,40; if (BaseJob == Job_Rogue) { skill 378,1; } }
+//弓高级
+40807:40939,{ bonus bLongAtkRate,60; if (BaseJob == Job_Rogue) { skill 378,1; } }
+//枪手初级
+40805:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
+40805:40954,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
+40805:40955,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
+40806:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
+40807:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
+//枪手中级
+40806:40954,{ bonus bLongAtkRate,40; skill 425,7; skill 511,17; }
+40806:40955,{ bonus bLongAtkRate,40; skill 425,7; skill 511,17; }
+40807:40954,{ bonus bLongAtkRate,40; skill 425,7; skill 511,17; }
+//枪手高级
+40807:40955,{ bonus bLongAtkRate,60; skill 425,7; skill 511,20; }
+//AB初级
+40801:40929,{ skill 2338,1; }
+40801:40930,{ skill 2338,1; }
+40801:40931,{ skill 2338,1; }
+40802:40929,{ skill 2338,1; }
+40803:40929,{ skill 2338,1; }
+//AB中级
+40802:40930,{ skill 2338,6; }
+40802:40931,{ skill 2338,6; }
+40803:40930,{ skill 2338,6; }
+//AB高级
+40803:40931,{ skill 2338,10; }
+//十字军初级
+40905:40813,{ bonus bVit,10; bonus bMaxHp,10000; }
+40905:40814,{ bonus bVit,10; bonus bMaxHp,10000; }
+40905:40815,{ bonus bVit,10; bonus bMaxHp,10000; }
+40906:40813,{ bonus bVit,10; bonus bMaxHp,10000; }
+40907:40813,{ bonus bVit,10; bonus bMaxHp,10000; }
+//十字军中级
+40906:40814,{ bonus bVit,20; bonus bMaxHp,20000; }
+40906:40815,{ bonus bVit,20; bonus bMaxHp,20000; }
+40907:40814,{ bonus bVit,20; bonus bMaxHp,20000; }
+//十字军高级
+40907:40815,{ bonus bVit,30; bonus bMaxHp,30000; }

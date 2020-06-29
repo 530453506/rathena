@@ -11,8 +11,8 @@ max_cloth_color: 552
 display_version: no
 
 //drops
-item_rate_card: 50000
-item_rate_card_boss: 50000
+item_rate_card: 100000
+item_rate_card_boss: 100000
 
 //exp
 base_exp_rate: 5000

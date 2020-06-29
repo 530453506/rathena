@@ -62,7 +62,8 @@
             		set JobLevel,1;
             		set BaseExp,0;
             		set JobExp,0;
-            		atcommand"@lvup 79";
+            		atcommand"@lvup 98";
+            		atcommand"@joblvup 69";
             	    switch (metempsychosis) {
                       case 1: achievementcomplete 110000; break;
                       case 2: achievementcomplete 110001; break;

@@ -29,16 +29,28 @@ OnBuyItem:
 				mes "ID错误,请报告给GM!!";
 				mes "ID ["+@bought_nameid+"]";
 				close;
-			case 39491: setarray .@shop[0],100,4366,10; break;
-			case 39492: setarray .@shop[0],100,4358,10; break;
-			case 39493: setarray .@shop[0],100,4105,10; break;
-			case 39494: setarray .@shop[0],100,4141,10; break;
-			case 39495: setarray .@shop[0],100,4064,10; break;
-			case 39496: setarray .@shop[0],100,4079,10; break;
-			case 39497: setarray .@shop[0],100,4053,10; break;
-			case 39498: setarray .@shop[0],100,4022,10; break;
-			case 39499: setarray .@shop[0],100,4133,10; break;
-			case 39500: setarray .@shop[0],100,4160,10; break;
+			//case 39490: setarray .@shop[0],100,4140,10; break;
+			//case 39491: setarray .@shop[0],100,4366,10; break;
+			//case 39492: setarray .@shop[0],100,4358,10; break;
+			//case 39493: setarray .@shop[0],100,4105,10; break;
+			//case 39494: setarray .@shop[0],100,4141,10; break;
+			//case 39495: setarray .@shop[0],100,4064,10; break;
+			//case 39496: setarray .@shop[0],100,4079,10; break;
+			//case 39497: setarray .@shop[0],100,4053,10; break;
+			//case 39498: setarray .@shop[0],100,4022,10; break;
+			//case 39499: setarray .@shop[0],100,4133,10; break;
+			//case 39500: setarray .@shop[0],100,4160,10; break;
+			case 39490: setarray .@shop[0],100,512,1; break;
+			case 39491: setarray .@shop[0],100,512,1; break;
+			case 39492: setarray .@shop[0],100,512,1; break;
+			case 39493: setarray .@shop[0],100,512,1; break;
+			case 39494: setarray .@shop[0],100,512,1; break;
+			case 39495: setarray .@shop[0],100,512,1; break;
+			case 39496: setarray .@shop[0],100,512,1; break;
+			case 39497: setarray .@shop[0],100,512,1; break;
+			case 39498: setarray .@shop[0],100,512,1; break;
+			case 39499: setarray .@shop[0],100,512,1; break;
+			case 39500: setarray .@shop[0],100,512,1; break;
 		}
 		mes "[卡片制作]";
 	    mes "- 制作 ^FF0000"+getitemname(@bought_nameid)+"^000000";
@@ -84,7 +96,7 @@ OnBuyItem:
 OnInit:
 	waitingroom "[☆卡片制作☆]",0;
 	.ShopCount= 1;
-	setarray .Shop1[0],39491,39492,39493,39494,39495,39496,39497,39498,39499,39500;
+	setarray .Shop1[0],39490,39491,39492,39493,39494,39495,39496,39497,39498,39499,39500;
 	.@i=1;
 	while (.@i <= .ShopCount)
 	{

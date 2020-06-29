@@ -133,7 +133,7 @@ Header:
 
 Body:
   - Id: 14
-    Name: MG_COLDBOLT
+    Name: MG_COLDBOLT #冰箭术
     Description: Cold Bolt
     MaxLevel: 10
     Type: Magic
@@ -234,7 +234,7 @@ Body:
         - Level: 10
           Amount: 30
   - Id: 19
-    Name: MG_FIREBOLT
+    Name: MG_FIREBOLT #火箭术
     Description: Fire Bolt
     MaxLevel: 10
     Type: Magic
@@ -335,7 +335,7 @@ Body:
         - Level: 10
           Amount: 30
   - Id: 20
-    Name: MG_LIGHTNINGBOLT
+    Name: MG_LIGHTNINGBOLT #雷击术
     Description: Lightning Bolt
     MaxLevel: 10
     Type: Magic
@@ -436,7 +436,7 @@ Body:
         - Level: 10
           Amount: 30
   - Id: 48
-    Name: TF_DOUBLE
+    Name: TF_DOUBLE #二刀连击
     Description: Double Attack
     MaxLevel: 10
     Type: Weapon
@@ -447,7 +447,7 @@ Body:
     DamageFlags:
       Critical: true
   - Id: 79
-    Name: PR_MAGNUS
+    Name: PR_MAGNUS #十字驱魔术
     Description: Magnus Exorcismus
     MaxLevel: 10
     Type: Magic
@@ -540,7 +540,7 @@ Body:
         PathCheck: true
         RemovedByFireRain: true
   - Id: 83
-    Name: WZ_METEOR
+    Name: WZ_METEOR #陨石术
     Description: Meteor Storm
     MaxLevel: 10
     Type: Magic
@@ -655,7 +655,7 @@ Body:
       Flag:
         PathCheck: true
   - Id: 85
-    Name: WZ_VERMILION
+    Name: WZ_VERMILION #怒雷强击
     Description: Lord of Vermilion
     MaxLevel: 10
     Type: Magic
@@ -749,7 +749,7 @@ Body:
         NoOverlap: true
         PathCheck: true
   - Id: 110
-    Name: BS_HAMMERFALL
+    Name: BS_HAMMERFALL #大地之击
     Description: Hammer Fall
     MaxLevel: 5
     Type: Weapon
@@ -803,6 +803,170 @@ Body:
         1hAxe: true
         2hAxe: true
         Mace: true
+  - Id: 111
+    Name: BS_ADRENALINE #速度激发
+    Description: Adrenaline Rush
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+      Splash: true
+    Flags:
+      AllowOnMado: true
+    Hit: Single
+    HitCount: 1
+    SplashArea: -1
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 20
+        - Level: 2
+          Amount: 23
+        - Level: 3
+          Amount: 26
+        - Level: 4
+          Amount: 29
+        - Level: 5
+          Amount: 32
+      Weapon:
+        1hAxe: true
+        2hAxe: true
+        Mace: true
+  - Id: 112
+    Name: BS_WEAPONPERFECT #无视体型攻击
+    Description: Weapon Perfection
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+      Splash: true
+    Flags:
+      AllowOnMado: true
+    Hit: Single
+    HitCount: 1
+    SplashArea: -1
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 18
+        - Level: 2
+          Amount: 16
+        - Level: 3
+          Amount: 14
+        - Level: 4
+          Amount: 12
+        - Level: 5
+          Amount: 10
+  - Id: 113
+    Name: BS_OVERTHRUST #凶砍
+    Description: Power-Thrust
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+      Splash: true
+    Flags:
+      AllowOnMado: true
+    Hit: Single
+    HitCount: 1
+    SplashArea: -1
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 18
+        - Level: 2
+          Amount: 16
+        - Level: 3
+          Amount: 14
+        - Level: 4
+          Amount: 12
+        - Level: 5
+          Amount: 10
+      Weapon:
+        Dagger: true
+        1hSword: true
+        2hSword: true
+        1hSpear: true
+        2hSpear: true
+        1hAxe: true
+        2hAxe: true
+        Mace: true
+        2hMace: true
+        Staff: true
+        Bow: true
+        Knuckle: true
+        Musical: true
+        Whip: true
+        Book: true
+        Katar: true
+        Revolver: true
+        Rifle: true
+        Gatling: true
+        Shotgun: true
+        Grenade: true
+        Huuma: true
+        2hStaff: true
+  - Id: 114
+    Name: BS_MAXIMIZE #武器值最大化
+    Description: Maximize Power
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Flags:
+      AllowOnMado: true
+    Hit: Single
+    HitCount: 1
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+    Requires:
+      SpCost: 10
   - Id: 137
     Name: AS_GRIMTOOTH
     Description: Grimtooth
@@ -839,63 +1003,333 @@ Body:
         Katar: true
       Status:
         Hiding: true
-  - Id: 254
-    Name: CR_GRANDCROSS
-    Description: Grand Cross
+  - Id: 263
+    Name: MO_TRIPLEATTACK #六合拳
+    Description: Raging Trifecta Blow
     MaxLevel: 10
-    Type: Magic
-    TargetType: Self
-    DamageFlags:
-      IgnoreAtkCard: true
-      IgnoreFlee: true
+    Type: Weapon
     Flags:
-      TargetSelf: true
-    Range: 5
-    Hit: Single
-    HitCount: 1
-    Element: Holy
+      TargetTrap: true
+      TargetEmperium: true
+    Range: -1
+    Hit: Multi_Hit
+    HitCount: -3
+    Element: Weapon
+    DamageFlags:
+      Critical: true
     CopyFlags:
       Skill:
         Plagiarism: true
         Reproduce: true
-    CastDefenseReduction: 33
-    CastTime: 3000
-    AfterCastActDelay: 1500
-    AfterCastWalkDelay: 800
-    Duration1: 800
-    Duration2: 30000
+    CastDelayFlags:
+      IgnoreStatus: true
+  - Id: 355
+    Name: LK_AURABLADE #灵气剑
+    Description: Aura Blade
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+      - Level: 6
+        Time: 300000
+      - Level: 7
+        Time: 300000
+      - Level: 8
+        Time: 300000
     Requires:
       SpCost:
         - Level: 1
-          Amount: 37
+          Amount: 18
         - Level: 2
-          Amount: 44
+          Amount: 26
         - Level: 3
-          Amount: 51
+          Amount: 34
         - Level: 4
-          Amount: 58
+          Amount: 42
         - Level: 5
-          Amount: 65
+          Amount: 50
+      Weapon:
+        Dagger: true
+        1hSword: true
+        2hSword: true
+        1hSpear: true
+        2hSpear: true
+        1hAxe: true
+        2hAxe: true
+        Mace: true
+        2hMace: true
+        Staff: true
+        Bow: true
+        Knuckle: true
+        Musical: true
+        Whip: true
+        Book: true
+        Katar: true
+        Revolver: true
+        Rifle: true
+        Gatling: true
+        Shotgun: true
+        Grenade: true
+        Huuma: true
+  - Id: 356
+    Name: LK_PARRYING #双剑格挡
+    Description: Parrying
+    MaxLevel: 10
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+      - Level: 6
+        Time: 300000
+      - Level: 7
+        Time: 300000
+      - Level: 8
+        Time: 300000
+      - Level: 9
+        Time: 300000
+      - Level: 10
+        Time: 300000
+    Requires:
+      SpCost: 50
+      Weapon:
+        2hSword: true
+  - Id: 357
+    Name: LK_CONCENTRATION
+    Description: Concentration
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 14
+        - Level: 2
+          Amount: 18
+        - Level: 3
+          Amount: 22
+        - Level: 4
+          Amount: 26
+        - Level: 5
+          Amount: 30
+  - Id: 380
+    Name: SN_SIGHT #狙杀瞄准
+    Description: Falcon Eyes
+    MaxLevel: 10
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    Duration1: 300000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 20
+        - Level: 2
+          Amount: 20
+        - Level: 3
+          Amount: 25
+        - Level: 4
+          Amount: 25
+        - Level: 5
+          Amount: 30
         - Level: 6
-          Amount: 72
+          Amount: 30
         - Level: 7
-          Amount: 79
+          Amount: 35
         - Level: 8
-          Amount: 86
+          Amount: 35
         - Level: 9
-          Amount: 93
+          Amount: 40
         - Level: 10
-          Amount: 100
-      HpRateCost: 20
-    Unit:
-      Id: Dummyskill
-      Layout: -1
-      Interval: 50
-      Target: Enemy
-      Flag:
-        PathCheck: true
+          Amount: 40
+  - Id: 384
+    Name: WS_MELTDOWN #野蛮凶砍
+    Description: Shattering Strike
+    MaxLevel: 10
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Flags:
+      AllowOnMado: true
+    HitCount: 1
+    CastCancel: true
+    CastTime:
+      - Level: 1
+        Time: 500
+      - Level: 2
+        Time: 500
+      - Level: 3
+        Time: 600
+      - Level: 4
+        Time: 600
+      - Level: 5
+        Time: 700
+      - Level: 6
+        Time: 700
+      - Level: 7
+        Time: 800
+      - Level: 8
+        Time: 800
+      - Level: 9
+        Time: 900
+      - Level: 10
+        Time: 1000
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+      - Level: 6
+        Time: 300000
+      - Level: 7
+        Time: 300000
+      - Level: 8
+        Time: 300000
+      - Level: 9
+        Time: 300000
+      - Level: 10
+        Time: 300000
+    Duration2: 5000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 50
+        - Level: 2
+          Amount: 50
+        - Level: 3
+          Amount: 60
+        - Level: 4
+          Amount: 60
+        - Level: 5
+          Amount: 70
+        - Level: 6
+          Amount: 70
+        - Level: 7
+          Amount: 80
+        - Level: 8
+          Amount: 80
+        - Level: 9
+          Amount: 90
+        - Level: 10
+          Amount: 90
+  - Id: 387
+    Name: WS_CARTBOOST #手推车加速
+    Description: Cart Boost
+    MaxLevel: 1
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Flags:
+      AllowOnMado: true
+    Hit: Single
+    HitCount: 1
+    Duration1: 300000
+    Requires:
+      SpCost: 20
+      State: Cart
+  - Id: 486
+    Name: WS_OVERTHRUSTMAX #凶砍最大值
+    Description: Maximum Power Thrust
+    MaxLevel: 5
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Flags:
+      AllowOnMado: true
+    Hit: Single
+    HitCount: 1
+    Duration1: 300000
+    Requires:
+      SpCost: 15
+      ZenyCost:
+        - Level: 1
+          Amount: 3000
+        - Level: 2
+          Amount: 3500
+        - Level: 3
+          Amount: 4000
+        - Level: 4
+          Amount: 4500
+        - Level: 5
+          Amount: 5000
+      Weapon:
+        Fist: true
+        Dagger: true
+        1hSword: true
+        2hSword: true
+        1hSpear: true
+        2hSpear: true
+        1hAxe: true
+        2hAxe: true
+        Mace: true
+        2hMace: true
+        Staff: true
+        Knuckle: true
+        Musical: true
+        Whip: true
+        Book: true
+        Katar: true
+        Revolver: true
+        Rifle: true
+        Gatling: true
+        Shotgun: true
+        Grenade: true
+        Huuma: true
   - Id: 397
-    Name: LK_SPIRALPIERCE
+    Name: LK_SPIRALPIERCE #螺旋击刺
     Description: Spiral Pierce
     MaxLevel: 5
     Type: Weapon
@@ -947,8 +1381,211 @@ Body:
         1hSpear: true
         2hSpear: true
         2hSword: true
+  - Id: 482
+    Name: PF_DOUBLECASTING #双倍投掷
+    Description: Double Casting
+    MaxLevel: 5
+    Type: Magic
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastTime: 2000
+    Duration1: 300000
+    CastTimeFlags:
+      IgnoreDex: true
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 40
+        - Level: 2
+          Amount: 45
+        - Level: 3
+          Amount: 50
+        - Level: 4
+          Amount: 55
+        - Level: 5
+          Amount: 60
+  - Id: 506
+    Name: GS_INCREASING #逐渐精确
+    Description: Increasing Accuracy
+    MaxLevel: 1
+    Type: Weapon
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    AfterCastActDelay: 1000
+    Duration1: 300000
+    Requires:
+      SpCost: 30
+      SpiritSphereCost: 4
+  - Id: 531
+    Name: NJ_UTSUSEMI #金蝉脱壳
+    Description: Cicada Skin Sheeding
+    MaxLevel: 5
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    Knockback: 7
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    AfterCastActDelay: 1000
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 12
+        - Level: 2
+          Amount: 15
+        - Level: 3
+          Amount: 18
+        - Level: 4
+          Amount: 21
+        - Level: 5
+          Amount: 24
+  - Id: 532
+    Name: NJ_BUNSINJYUTSU #幻影化身
+    Description: Mirror Image
+    MaxLevel: 10
+    Type: Magic
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    CastTime:
+      - Level: 1
+        Time: 4000
+      - Level: 2
+        Time: 3500
+      - Level: 3
+        Time: 3000
+      - Level: 4
+        Time: 2500
+      - Level: 5
+        Time: 2000
+      - Level: 6
+        Time: 1500
+      - Level: 7
+        Time: 1000
+      - Level: 8
+        Time: 1000
+      - Level: 9
+        Time: 1000
+      - Level: 10
+        Time: 1000
+    AfterCastActDelay: 1000
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+      - Level: 6
+        Time: 300000
+      - Level: 7
+        Time: 300000
+      - Level: 8
+        Time: 300000
+      - Level: 9
+        Time: 300000
+      - Level: 10
+        Time: 300000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 30
+        - Level: 2
+          Amount: 32
+        - Level: 3
+          Amount: 34
+        - Level: 4
+          Amount: 36
+        - Level: 5
+          Amount: 38
+        - Level: 6
+          Amount: 40
+        - Level: 7
+          Amount: 42
+        - Level: 8
+          Amount: 44
+        - Level: 9
+          Amount: 46
+        - Level: 10
+          Amount: 48
+      ItemCost:
+        - Item: Shadow_Orb
+          Amount: 1
+  - Id: 543
+    Name: NJ_NEN #念
+    Description: Soul
+    MaxLevel: 5
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Hit: Single
+    HitCount: 1
+    CastCancel: true
+    CastTime:
+      - Level: 1
+        Time: 5000
+      - Level: 2
+        Time: 4000
+      - Level: 3
+        Time: 3000
+      - Level: 4
+        Time: 2000
+      - Level: 5
+        Time: 1000
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 20
+        - Level: 2
+          Amount: 30
+        - Level: 3
+          Amount: 40
+        - Level: 4
+          Amount: 50
+        - Level: 5
+          Amount: 60
+      HpRateCost: -5
   - Id: 800
-    Name: MG_EARTHBOLT
+    Name: MG_EARTHBOLT #地箭术
     Description: Earth Bolt
     MaxLevel: 10
     Type: Magic
@@ -1048,3 +1685,50 @@ Body:
           Amount: 28
         - Level: 10
           Amount: 30
+  - Id: 2263
+    Name: NC_HOVERING #悬浮
+    Description: Hovering
+    MaxLevel: 1
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Flags:
+      AllowOnMado: true
+    Hit: Single
+    HitCount: 1
+    Duration1: 300000
+    Requires:
+      SpCost: 25
+  - Id: 2338
+    Name: SR_RAISINGDRAGON
+    Description: Raising Dragon
+    MaxLevel: 10
+    TargetType: Self
+    DamageFlags:
+      NoDamage: true
+    Range: 1
+    Hit: Single
+    HitCount: 1
+    Duration1:
+      - Level: 1
+        Time: 300000
+      - Level: 2
+        Time: 300000
+      - Level: 3
+        Time: 300000
+      - Level: 4
+        Time: 300000
+      - Level: 5
+        Time: 300000
+      - Level: 6
+        Time: 300000
+      - Level: 7
+        Time: 300000
+      - Level: 8
+        Time: 300000
+      - Level: 9
+        Time: 300000
+      - Level: 10
+        Time: 300000
+    Requires:
+      SpCost: 120

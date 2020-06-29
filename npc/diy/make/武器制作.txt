@@ -45,9 +45,9 @@ OnBuyItem:
 			case 40914: setarray .@shop[0],100,EQI_HAND_R,40913,1; break;
 			case 40915: setarray .@shop[0],100,EQI_HAND_R,40914,1; break;
 
-			case 40917: setarray .@shop[0],100,EQI_HAND_R,0,0,512,1; break;
-			case 40918: setarray .@shop[0],100,EQI_HAND_R,40917,1; break;
-			case 40919: setarray .@shop[0],100,EQI_HAND_R,40918,1; break;
+			case 1245: setarray .@shop[0],100,EQI_HAND_R,0,0,512,1; break;
+			case 1246: setarray .@shop[0],100,EQI_HAND_R,1245,1; break;
+			case 1247: setarray .@shop[0],100,EQI_HAND_R,1246,1; break;
 
 			case 40921: setarray .@shop[0],100,EQI_HAND_R,0,0,512,1; break;
 			case 40922: setarray .@shop[0],100,EQI_HAND_R,40921,1; break;
@@ -167,9 +167,9 @@ OnBuyItem:
 OnInit:
 	waitingroom "[¡îÎäÆ÷ÖÆ×÷¡î]",0;
 	.ShopCount= 3;
-	setarray .Shop1[0],40901,40905,40913,40917,40921,40925,40929,40933,40937,40941,40945,40949,40953;
-	setarray .Shop2[0],40902,40906,40914,40918,40922,40926,40930,40934,40938,40942,40946,40950,40954;
-	setarray .Shop3[0],40903,40907,40915,40919,40923,40927,40931,40935,40939,40943,40947,40951,40955;
+	setarray .Shop1[0],40901,40905,40913,1245,40921,40925,40929,40933,40937,40941,40945,40949,40953;
+	setarray .Shop2[0],40902,40906,40914,1246,40922,40926,40930,40934,40938,40942,40946,40950,40954;
+	setarray .Shop3[0],40903,40907,40915,1247,40923,40927,40931,40935,40939,40943,40947,40951,40955;
 	.@i=1;
 	while (.@i <= .ShopCount)
 	{
