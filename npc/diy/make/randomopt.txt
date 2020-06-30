@@ -93,7 +93,7 @@ prontera,156,125,4	script	°Ý½£É½×¯°Á°Ý	1_M_WIZARD,{
                             setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_NINJA_BOLT,300,.@lvl*3);
                             break;
         			    case 40953:
-                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,300,.@lvl*3);
+                            setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
                             break;
         			}
         			mes "[°Ý½£É½×¯°Á°Ý]";

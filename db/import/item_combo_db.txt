@@ -136,11 +136,11 @@
 //弓高级
 40807:40939,{ bonus bLongAtkRate,60; if (BaseJob == Job_Rogue) { skill 378,1; } }
 //枪手初级
-40805:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
-40805:40954,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
-40805:40955,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
-40806:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
-40807:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,13; }
+40805:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,14; }
+40805:40954,{ bonus bLongAtkRate,20; skill 425,7; skill 511,14; }
+40805:40955,{ bonus bLongAtkRate,20; skill 425,7; skill 511,14; }
+40806:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,14; }
+40807:40953,{ bonus bLongAtkRate,20; skill 425,7; skill 511,14; }
 //枪手中级
 40806:40954,{ bonus bLongAtkRate,40; skill 425,7; skill 511,17; }
 40806:40955,{ bonus bLongAtkRate,40; skill 425,7; skill 511,17; }

@@ -179,7 +179,6 @@ OnBuyItem:
 			mes "[防具制作]";
 			mes "制作成功";
 			getitem3 getarg(1),1,1,.@refine,0,.@card0,.@card1,.@card2,.@card3,.@OptID,.@OptVal,.@OptParam;
-			equip getarg(1);
 			close;
 		case 3:
 			close;
