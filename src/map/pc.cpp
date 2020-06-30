@@ -6313,17 +6313,17 @@ static void pc_checkallowskill(struct map_session_data *sd)
 		// Spurt requires bare hands (feet, in fact xD)
 		status_change_end(&sd->bl, SC_SPURT, INVALID_TIMER);
 
-	if(sd->status.shield <= 0) { // Skills requiring a shield
-		const enum sc_type scs_list[] = {
-			SC_AUTOGUARD,
-			SC_DEFENDER,
-			SC_REFLECTSHIELD,
-			SC_REFLECTDAMAGE
-		};
-		for (i = 0; i < ARRAYLENGTH(scs_list); i++)
-			if(sd->sc.data[scs_list[i]])
-				status_change_end(&sd->bl, scs_list[i], INVALID_TIMER);
-	}
+//	if(sd->status.shield <= 0) { // Skills requiring a shield
+//		const enum sc_type scs_list[] = {
+//			SC_AUTOGUARD,
+//			SC_DEFENDER,
+//			SC_REFLECTSHIELD,
+//			SC_REFLECTDAMAGE
+//		};
+//		for (i = 0; i < ARRAYLENGTH(scs_list); i++)
+//			if(sd->sc.data[scs_list[i]])
+//				status_change_end(&sd->bl, scs_list[i], INVALID_TIMER);
+//	}
 }
 
 /*==========================================
@@ -9556,7 +9556,7 @@ void pc_setoption(struct map_session_data *sd,int type)
 		} else if( !(type&OPTION_MADOGEAR) && p_type&OPTION_MADOGEAR ) {
 			status_calc_pc(sd,SCO_NONE);
 			status_change_end(&sd->bl,SC_SHAPESHIFT,INVALID_TIMER);
-			status_change_end(&sd->bl,SC_HOVERING,INVALID_TIMER);
+//			status_change_end(&sd->bl,SC_HOVERING,INVALID_TIMER);
 			status_change_end(&sd->bl,SC_ACCELERATION,INVALID_TIMER);
 			status_change_end(&sd->bl,SC_OVERHEAT_LIMITPOINT,INVALID_TIMER);
 			status_change_end(&sd->bl,SC_OVERHEAT,INVALID_TIMER);
@@ -10826,7 +10826,7 @@ bool pc_unequipitem(struct map_session_data *sd, int n, int flag) {
 	// On armor change
 	if (pos & EQP_ARMOR) {
 		if (sd->sc.data[SC_HOVERING] && sd->inventory_data[n]->nameid == ITEMID_HOVERING_BOOSTER)
-			status_change_end(&sd->bl, SC_HOVERING, INVALID_TIMER);
+//			status_change_end(&sd->bl, SC_HOVERING, INVALID_TIMER);
 		//status_change_end(&sd->bl, SC_BENEDICTIO, INVALID_TIMER); // No longer is removed? Need confirmation
 		status_change_end(&sd->bl, SC_ARMOR_RESIST, INVALID_TIMER);
 	}

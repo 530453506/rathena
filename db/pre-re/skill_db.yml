@@ -6659,7 +6659,7 @@ Body:
           Amount: 28
         - Level: 10
           Amount: 30
-      State: Shield
+#      State: Shield
   - Id: 250
     Name: CR_SHIELDCHARGE
     Description: Smite
@@ -6687,7 +6687,7 @@ Body:
     Duration2: 5000
     Requires:
       SpCost: 10
-      State: Shield
+#      State: Shield
   - Id: 251
     Name: CR_SHIELDBOOMERANG
     Description: Shield Boomerang
@@ -6748,7 +6748,7 @@ Body:
           Amount: 75
         - Level: 10
           Amount: 80
-      State: Shield
+#      State: Shield
   - Id: 253
     Name: CR_HOLYCROSS
     Description: Holy Cross
@@ -6895,7 +6895,7 @@ Body:
     HitCount: 1
     CastCancel: true
     CastTime: 3000
-    Duration1: 180000
+    Duration1: 300000
     Requires:
       SpCost: 30
   - Id: 257
@@ -6912,7 +6912,7 @@ Body:
     Duration1: 180000
     Requires:
       SpCost: 30
-      State: Shield
+#      State: Shield
   - Id: 258
     Name: CR_SPEARQUICKEN
     Description: Spear Quicken
@@ -20542,19 +20542,11 @@ Body:
     TargetType: Self
     DamageFlags:
       NoDamage: true
-    Flags:
-      AllowOnMado: true
     Hit: Single
     HitCount: 1
-    Duration1: 90000
+    Duration1: 300000
     Requires:
       SpCost: 25
-      State: Mado
-      ItemCost:
-        - Item: Magic_Gear_Fuel
-          Amount: 1
-      Equipment:
-        Hovering_Booster: true
   - Id: 2264
     Name: NC_F_SIDESLIDE
     Description: Front-Side Slide
