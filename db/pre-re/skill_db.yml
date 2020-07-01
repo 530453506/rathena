@@ -6795,7 +6795,6 @@ Body:
     Type: Magic
     TargetType: Self
     DamageFlags:
-      IgnoreAtkCard: true
       IgnoreFlee: true
     Flags:
       TargetSelf: true

@@ -664,7 +664,7 @@ Body:
       IsAutoShadowSpell: true
     Range: 9
     Hit: Multi_Hit
-    HitCount: 10
+    HitCount: 6
     Element: Wind
     CopyFlags:
       Skill:

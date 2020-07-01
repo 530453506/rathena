@@ -1,1 +1,2 @@
 new_account: yes
+chars_per_account: 15

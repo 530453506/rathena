@@ -3682,8 +3682,10 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 	}
 
 	switch(skill_id) {
-        case SM_BASH:
         case BS_HAMMERFALL:
+            skillratio += 30 * skill_lv + sstatus->str;
+            break;
+        case SM_BASH:
         case MS_BASH:
 			skillratio += 30 * skill_lv;
 			break;
@@ -3762,7 +3764,9 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			}
 			break;
 		case KN_BOWLINGBASH:
-		case MS_BOWLINGBASH:
+            skillratio += 40 * skill_lv + sstatus->str;
+            break;
+        case MS_BOWLINGBASH:
 			skillratio += 40 * skill_lv;
 			break;
 		case AS_GRIMTOOTH:
@@ -6348,6 +6352,10 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					case WZ_EARTHSPIKE:
 						skillratio += 100;
 						break;
+#else
+					case WZ_EARTHSPIKE:
+					    skillratio += sstatus->int_ * 35 / 100;
+					    break;
 #endif
 					case HW_NAPALMVULCAN:
 #ifdef RENEWAL
@@ -6452,7 +6460,11 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					case WZ_VERMILION:
 						skillratio += 20 * skill_lv - 20;
 						break;
+					case WZ_METEOR:
+						skillratio += sstatus->int_ * 35 / 100;
+						break;
 					case PR_MAGNUS:
+					    skillratio += sstatus->int_ * 35 / 100;
 						if (battle_check_undead(tstatus->race, tstatus->def_ele) || tstatus->race == RC_DEMON)
 							skillratio += 30;
 						break;

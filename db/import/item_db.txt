@@ -245,10 +245,10 @@
 39344,fm_cx,神佑初心,3,20,,10,,,,,,,,,,,,,{ bonus bAllstats,10;},{},{}
 
 //
-39489,Shecil_Card_I,[进阶]暗●神射手卡片,6,20,,10,,,,,,,,2,,,,,{ bonus bAtkRate,2; bonus bDex,2; },{},{}
+39489,Shecil_Card_I,[进阶]暗●神射手卡片,6,20,,10,,,,,,,,2,,,,,{ bonus bDex,3; },{},{}
 39490,Knight_Of_Abyss_Card_I,[进阶]深渊骑士卡片,6,20,,10,,,,,,,,2,,,,,{ bonus2 bAddClass,Class_Boss,25;bonus2 bMagicAddClass,Class_Boss,25; },{},{}
-39491,Katrinn_Card_I,[进阶]暗●超魔导师卡片,6,20,,10,,,,,,,,769,,,,,{ bonus bMatkRate,2; bonus bInt,2; },{},{}
-39492,Seyren_Card_I,[进阶]暗●骑士领主卡片,6,20,,10,,,,,,,,769,,,,,{ bonus bAtkRate,2; bonus bStr,2; },{},{}
+39491,Katrinn_Card_I,[进阶]暗●超魔导师卡片,6,20,,10,,,,,,,,769,,,,,{ bonus bInt,3; },{},{}
+39492,Seyren_Card_I,[进阶]暗●骑士领主卡片,6,20,,10,,,,,,,,769,,,,,{ bonus bStr,3; },{},{}
 39493,Marc_Card_I,[进阶]马克卡片,6,20,,10,,,,,,,,16,,,,,{ bonus bMaxHp,1000; bonus2 bSubEle,Ele_Water,5; bonus2 bResEff,Eff_Freeze,10000; },{},{}
 39494,Evil_Druid_Card_I,[进阶]暗神官卡片,6,20,,10,,,,,,,,16,,,,,{ bonus bMaxHp,1000; bonus bDefEle,Ele_Undead; bonus bInt,1; bonus bDef,1; },{},{}
 39495,Zerom_Card_I,[进阶]杰洛米卡片,6,20,,10,,,,,,,,136,,,,,{ bonus bDex,5; },{},{}
@@ -256,7 +256,7 @@
 39497,Vitata_Card_I,[进阶]黑蚁卡片,6,20,,10,,,,,,,,136,,,,,{ bonus bInt,5; },{},{}
 39498,Spore_Card_I,[进阶]魔菇卡片,6,20,,10,,,,,,,,136,,,,,{ bonus bVit,5; },{},{}
 39499,Daydric_Card_I,[进阶]幽灵剑士卡片,6,20,,10,,,,,,,,4,,,,,{ bonus2 bSubEle,Ele_Neutral,22; },{},{}
-39500,Antique_Firelock_Card_I,[进阶]武士火枪兵卡片,6,20,,10,,,,,,,,64,,,,,{ bonus bStr,3;bonus bInt,3;bonus bMaxHPrate,10; bonus bMaxSPrate,10; },{},{}
+39500,Antique_Firelock_Card_I,[进阶]武士火枪兵卡片,6,20,,10,,,,,,,,64,,,,,{ bonus bStr,2;bonus bInt,2;bonus Dex,2;bonus bMaxHPrate,10; bonus bMaxSPrate,10; },{},{}
 
 39501,Garm_Card_I,[进阶]卡仑卡片,6,,,10,,,,,,,,769,,,,,{ bonus bdex,5;bonus2 bSkillAtk,515,10; bonus2 bSkillAtk,516,10;},{},{}
 39502,Osiris_Card_I,[进阶]俄塞里斯卡片,6,,,10,,,,,,,,2,,,,,{bonus bint,5; bonus2 bSkillAtk,534,10; bonus2 bSkillAtk,536,10; bonus2 bSkillAtk,537,10; bonus2 bSkillAtk,539,10; bonus2 bSkillAtk,540,10; bonus2 bSkillAtk,541,10;},{},{}
@@ -762,9 +762,9 @@
 40930,arsqt2,<中级>阿瑞斯拳套,5,,,1000,200,,1,4,0x00008000,7,2,34,4,1,1,12,{ bonus2 bSkillAtk,271,getrefine(); bonus bAtkRate,getrefine()/10*5; if(getrefine()>=35){ bonus bMaxSp,2000; } else if(getrefine()>=20){ bonus bMaxSp,1000; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,2; } },{},{}
 40931,arsqt3,<高级>阿瑞斯拳套,5,,,1000,250,,1,4,0x00008000,7,2,34,4,1,1,12,{ bonus2 bSkillAtk,271,getrefine(); bonus bAtkRate,getrefine()/10*5; if(getrefine()>=50){ bonus bMaxSp,3000; } else if(getrefine()>=35){ bonus bMaxSp,2000; } else if(getrefine()>=20){ bonus bMaxSp,1000; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,3; } },{},{}
 
-40933,hfstsqr1,<初级>赫菲斯托斯拳刃,5,,,1000,150,,1,4,0x00001000,7,2,34,4,1,1,16,{ bonus2 bSkillAtk,137,getrefine(); bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=20){ bonus3 bAutoSpell,137,5,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,1; } },{},{}
-40934,hfstsqr2,<中级>赫菲斯托斯拳刃,5,,,1000,200,,1,4,0x00001000,7,2,34,4,1,1,16,{ bonus2 bSkillAtk,137,getrefine(); bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=35){ bonus3 bAutoSpell,137,6,200; } else if(getrefine()>=20){ bonus3 bAutoSpell,137,5,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,2; } },{},{}
-40935,hfstsqr3,<高级>赫菲斯托斯拳刃,5,,,1000,250,,1,4,0x00001000,7,2,34,4,1,1,16,{ bonus2 bSkillAtk,137,getrefine(); bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=50){ bonus3 bAutoSpell,137,7,300; } else if(getrefine()>=35){ bonus3 bAutoSpell,137,6,200; } else if(getrefine()>=20){ bonus3 bAutoSpell,137,5,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,3; } },{},{}
+40933,hfstsqr1,<初级>赫菲斯托斯拳刃,5,,,1000,150,,1,4,0x00001000,7,2,34,4,1,1,16,{ bonus2 bSkillAtk,136,getrefine(); bonus2 bSkillAtk,137,getrefine(); bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=20){ bonus3 bAutoSpell,137,5,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,1; } },{},{}
+40934,hfstsqr2,<中级>赫菲斯托斯拳刃,5,,,1000,200,,1,4,0x00001000,7,2,34,4,1,1,16,{ bonus2 bSkillAtk,136,getrefine(); bonus2 bSkillAtk,137,getrefine(); bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=35){ bonus3 bAutoSpell,137,6,200; } else if(getrefine()>=20){ bonus3 bAutoSpell,137,5,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,2; } },{},{}
+40935,hfstsqr3,<高级>赫菲斯托斯拳刃,5,,,1000,250,,1,4,0x00001000,7,2,34,4,1,1,16,{ bonus2 bSkillAtk,136,getrefine(); bonus2 bSkillAtk,137,getrefine(); bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=50){ bonus3 bAutoSpell,137,7,300; } else if(getrefine()>=35){ bonus3 bAutoSpell,137,6,200; } else if(getrefine()>=20){ bonus3 bAutoSpell,137,5,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,3; } },{},{}
 
 40937,ablsg1,<初级>阿波罗神弓,5,,,1000,150,,5,4,0x00020800,7,2,34,4,1,1,11,{ bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(BaseJob==Job_rogue) { bonus2 bSkillAtk,46,getrefine(); if(getrefine()>=20){ bonus3 bAutoSpell,46,10,100; } } else if(BaseJob==Job_hunter){ bonus2 bSkillAtk,382,getrefine(); if(getrefine()>=20){ bonus3 bAutoSpell,382,5,100; } } },{},{}
 40938,ablsg2,<中级>阿波罗神弓,5,,,1000,200,,5,4,0x00020800,7,2,34,4,1,1,11,{ bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(BaseJob==Job_rogue) { bonus2 bSkillAtk,46,getrefine(); if(getrefine()>=35){ bonus3 bAutoSpell,46,10,200; } else if(getrefine()>=20){ bonus3 bAutoSpell,46,10,100; } } else if(BaseJob==Job_hunter){ bonus2 bSkillAtk,382,getrefine(); if(getrefine()>=35){ bonus3 bAutoSpell,382,5,200; } else if(getrefine()>=20){ bonus3 bAutoSpell,382,5,100; } } },{},{}
@@ -2976,9 +2976,9 @@
 4363,B_Magaleta_Card,暗●神官 玛嘉雷特卡片,6,20,,10,,,,,,,,16,,,,,{ bonus5 bAutoSpellWhenHit,"HP_ASSUMPTIO",1,50,BF_WEAPON|BF_MAGIC,0; },{},{}
 4364,Magaleta_Card,暗●神官卡片,6,20,,10,,,,,,,,769,,,,,{ bonus bInt,1; bonus5 bAutoSpellWhenHit,"PR_LEXDIVINA",5,150,BF_MAGIC,1; },{},{}
 4365,B_Katrinn_Card,暗●超魔导师 凯特莉娜卡片,6,20,,10,,,,,,,,769,,,,,{ bonus2 bIgnoreMdefClassRate,Class_Normal,100; bonus bCastrate,100; bonus bSPrecovRate,-100; },{},{ heal 0,-2000; }
-4366,Katrinn_Card,暗●超魔导师卡片,6,20,,10,,,,,,,,769,,,,,{ bonus bCastrate,getrefine()*-1; if(getrefine()>=9) { bonus bMatkRate,2; } },{},{}
+4366,Katrinn_Card,暗●超魔导师卡片,6,20,,10,,,,,,,,769,,,,,{},{},{}
 4367,B_Shecil_Card,暗●神射手 迪文卡片,6,20,,10,,,,,,,,2,,,,,{ bonus2 bHPDrainRate,50,20; bonus bHPrecovRate,-10; },{},{}
-4368,Shecil_Card,暗●神射手卡片,6,20,,10,,,,,,,,2,,,,,{ bonus bAspdRate,5; bonus bHit,-30; },{},{}
+4368,Shecil_Card,暗●神射手卡片,6,20,,10,,,,,,,,2,,,,,{},{},{}
 4369,Venatu_Card,红凡娜图卡片,6,20,,10,,,,,,,,16,,,,,{ bonus bLuk,readparam(bAgi)/18; },{},{}
 4370,Dimik_Card,迪靡克卡片,6,20,,10,,,,,,,,16,,,,,{ bonus bVit,getrefine()-5; },{},{}
 4371,Archdam_Card,阿克坦卡片,6,20,,10,,,,,,,,16,,,,,{ bonus bBaseAtk,10; bonus bCastrate,20; },{},{}
