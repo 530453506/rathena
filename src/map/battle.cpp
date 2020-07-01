@@ -3388,7 +3388,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 					sd->inventory_data[index] &&
 					sd->inventory_data[index]->type == IT_WEAPON)
 					wd->damage = sd->inventory_data[index]->weight*8/100; //80% of weight
-			    wd->damage += battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, i);
+			    wd->damage += battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, i);   //技能增强:螺旋
 				ATK_ADDRATE(wd->damage, wd->damage2, 50*skill_lv); //Skill modifier applies to weight only.
 			} else {
 				wd->damage = battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0); //Monsters have no weight and use ATK instead
@@ -3722,7 +3722,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 
 	switch(skill_id) {
         case BS_HAMMERFALL:
-            skillratio += 30 * skill_lv + sstatus->str;
+            skillratio += 30 * skill_lv + sstatus->str; //技能增强:大地之击
             break;
         case SM_BASH:
         case MS_BASH:
@@ -3803,7 +3803,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			}
 			break;
 		case KN_BOWLINGBASH:
-            skillratio += 40 * skill_lv + sstatus->str;
+            skillratio += 40 * skill_lv + sstatus->str; //技能增强:怪物互击
             break;
         case MS_BOWLINGBASH:
 			skillratio += 40 * skill_lv;
@@ -5881,7 +5881,7 @@ static struct Damage battle_calc_weapon_attack(struct block_list *src, struct bl
 	if(skill_id == CR_GRANDCROSS || skill_id == NPC_GRANDDARKNESS) {
         if (src->type == BL_PC) {
             struct status_data *sstatus = status_get_status_data(src);
-            ATK_ADD(wd.damage, wd.damage2, sstatus->max_hp * 5 / 100);
+            ATK_ADD(wd.damage, wd.damage2, sstatus->max_hp * 5 / 100);  //技能增强:圣十字审判
         }
         return wd; //Enough, rest is not needed.
     }
@@ -6344,7 +6344,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					case MG_EARTHBOLT:
 					case MG_COLDBOLT:
 					case MG_LIGHTNINGBOLT:
-                        MATK_ADD(sstatus->batk + sstatus->rhw.atk+ sstatus->rhw.atk2);
+                        MATK_ADD(sstatus->batk + sstatus->rhw.atk+ sstatus->rhw.atk2);  //技能增强:四系元素箭
                         if (sc && sc->data[SC_SPELLFIST] && mflag&BF_SHORT)  {
 							skillratio += (sc->data[SC_SPELLFIST]->val4 * 100) + (sc->data[SC_SPELLFIST]->val1 * 50) - 100;// val4 = used bolt level, val2 = used spellfist level. [Rytech]
 							ad.div_ = 1; // ad mods, to make it work similar to regular hits [Xazax]
@@ -6388,7 +6388,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						skillratio -= 30; // Offset only once
 						skillratio += 50 * skill_lv;
 #else
-						skillratio += 40 * skill_lv;
+						skillratio += 40 * skill_lv + sstatus->int_ * 40 / 100; //技能增强:怒雷
 #endif
 						break;
 #ifdef RENEWAL
@@ -6397,7 +6397,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						break;
 #else
 					case WZ_EARTHSPIKE:
-					    skillratio += sstatus->int_ * 35 / 100;
+					    skillratio += sstatus->int_ * 35 / 100; //技能增强:崩裂
 					    break;
 #endif
 					case HW_NAPALMVULCAN:
@@ -6501,13 +6501,13 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						break;
 #else
 					case WZ_VERMILION:
-						skillratio += 20 * skill_lv - 20;
+						skillratio += 20 * skill_lv - 20 + sstatus->int_;    //技能增强:怒雷强击
 						break;
 					case WZ_METEOR:
-						skillratio += sstatus->int_ * 35 / 100;
+						skillratio += sstatus->int_ * 35 / 100; //技能增强:陨石
 						break;
 					case PR_MAGNUS:
-					    skillratio += sstatus->int_ * 35 / 100;
+					    skillratio += sstatus->int_ * 35 / 100; //技能增强:十字驱魔
 						if (battle_check_undead(tstatus->race, tstatus->def_ele) || tstatus->race == RC_DEMON)
 							skillratio += 30;
 						break;
