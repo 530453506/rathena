@@ -758,7 +758,7 @@ Body:
       Splash: true
     Flags:
       AllowOnMado: true
-    Range: 1
+    Range: 2
     Hit: Multi_Hit
     HitCount:
       - Level: 1
