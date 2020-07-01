@@ -256,7 +256,7 @@
 39497,Vitata_Card_I,[½ø½×]ºÚÒÏ¿¨Æ¬,6,20,,10,,,,,,,,136,,,,,{ bonus bInt,5; },{},{}
 39498,Spore_Card_I,[½ø½×]Ä§¹½¿¨Æ¬,6,20,,10,,,,,,,,136,,,,,{ bonus bVit,5; },{},{}
 39499,Daydric_Card_I,[½ø½×]ÓÄÁé½£Ê¿¿¨Æ¬,6,20,,10,,,,,,,,4,,,,,{ bonus2 bSubEle,Ele_Neutral,22; },{},{}
-39500,Antique_Firelock_Card_I,[½ø½×]ÎäÊ¿»ðÇ¹±ø¿¨Æ¬,6,20,,10,,,,,,,,64,,,,,{ bonus bStr,2;bonus bInt,2;bonus Dex,2;bonus bMaxHPrate,10; bonus bMaxSPrate,10; },{},{}
+39500,Antique_Firelock_Card_I,[½ø½×]ÎäÊ¿»ðÇ¹±ø¿¨Æ¬,6,20,,10,,,,,,,,64,,,,,{ bonus bStr,2;bonus bInt,2;bonus bDex,2;bonus bMaxHPrate,10; bonus bMaxSPrate,10; },{},{}
 
 39501,Garm_Card_I,[½ø½×]¿¨ÂØ¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bdex,5;bonus2 bSkillAtk,515,10; bonus2 bSkillAtk,516,10;},{},{}
 39502,Osiris_Card_I,[½ø½×]¶íÈûÀïË¹¿¨Æ¬,6,,,10,,,,,,,,2,,,,,{bonus bint,5; bonus2 bSkillAtk,534,10; bonus2 bSkillAtk,536,10; bonus2 bSkillAtk,537,10; bonus2 bSkillAtk,539,10; bonus2 bSkillAtk,540,10; bonus2 bSkillAtk,541,10;},{},{}
