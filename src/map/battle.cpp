@@ -6397,7 +6397,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						break;
 #else
 					case WZ_EARTHSPIKE:
-					    skillratio += sstatus->int_ * 35 / 100; //技能增强:崩裂
+					    skillratio += sstatus->int_; //技能增强:崩裂
 					    break;
 #endif
 					case HW_NAPALMVULCAN:
