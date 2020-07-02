@@ -54,7 +54,6 @@ max_parameter: 110
 max_trans_parameter: 110
 
 //skill
-no_skill_delay: 3
 min_skill_delay_limit: 150
 
 //status
