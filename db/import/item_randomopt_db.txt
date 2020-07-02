@@ -200,7 +200,7 @@ RDMOPT_MDAMAGE_SIZE_LARGE_TARGET,{ bonus2 bMagicAddSize,Size_Large,getrandomopti
 //RDMOPT_ATTR_TOLERACE_ALL,{}
 
 RDMOPT_SKILL_397,{bonus2 bSkillAtk,397,getrandomoptinfo(ROA_VALUE); }
-RDMOPT_SKILL_62,{bonus2 bSkillAtk,62,getrandomoptinfo(ROA_VALUE); }
+RDMOPT_CRI_RATE,{bonus bCritAtkRate,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_SKILL_136,{bonus2 bSkillAtk,136,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_SKILL_254,{bonus2 bSkillAtk,254,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_SKILL_84,{bonus2 bSkillAtk,84,getrandomoptinfo(ROA_VALUE); }
@@ -231,7 +231,7 @@ RDMOPT_ELEMENT_PRIEST_BOLT,{bonus4 bAutoSpellOnSkill,79,"NJ_SYURIKEN",getrandomo
 //炼金触发4系箭
 RDMOPT_ELEMENT_ALCHEMIST_BOLT,{bonus4 bAutoSpellOnSkill,490,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus2 bSkillDelay,14,-1300;bonus2 bSkillDelay,19,-1300;bonus2 bSkillDelay,20,-1300;bonus2 bSkillDelay,800,-1300;}
 //骑士触发4系箭
-RDMOPT_ELEMENT_KNIGHT_BOLT,{bonus4 bAutoSpellOnSkill,397,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus4 bAutoSpellOnSkill,62,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus2 bSkillDelay,14,-1300;bonus2 bSkillDelay,19,-1300;bonus2 bSkillDelay,20,-1300;bonus2 bSkillDelay,800,-1300;}
+RDMOPT_ELEMENT_KNIGHT_BOLT,{bonus4 bAutoSpellOnSkill,397,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus2 bSkillDelay,14,-1300;bonus2 bSkillDelay,19,-1300;bonus2 bSkillDelay,20,-1300;bonus2 bSkillDelay,800,-1300;}
 //十字军触发4系箭
 RDMOPT_ELEMENT_CRUSADER_BOLT,{bonus4 bAutoSpellOnSkill,254,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus2 bSkillDelay,14,-1300;bonus2 bSkillDelay,19,-1300;bonus2 bSkillDelay,20,-1300;bonus2 bSkillDelay,800,-1300;}
 //铁匠触发4系箭
