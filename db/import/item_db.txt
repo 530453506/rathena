@@ -691,43 +691,43 @@
 40810,zskj2,<中级>神王宙斯权力之甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,10+getrefine(); bonus bLuk,-10-getrefine(); bonus bMaxHP,4000+getrefine()/5*1000;},{},{}
 40811,zskj3,<高级>神王宙斯权力之甲,4,,,100,,7,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,15+getrefine(); bonus bLuk,-15-getrefine(); bonus bMaxHP,6000+getrefine()/5*1000;},{},{}
 
-40813,aklskj1,<初级>阿喀琉斯残破盔甲,4,,,100,,5,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,5+getrefine(); bonus bLuk,-5-getrefine(); bonus bMaxHP,2000+getrefine()/5*1000;},{},{}
-40814,aklskj2,<中级>阿喀琉斯残破盔甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,10+getrefine(); bonus bLuk,-10-getrefine(); bonus bMaxHP,4000+getrefine()/5*1000;},{},{}
-40815,aklskj3,<高级>阿喀琉斯残破盔甲,4,,,100,,7,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,15+getrefine(); bonus bLuk,-15-getrefine(); bonus bMaxHP,6000+getrefine()/5*1000;},{},{}
+40813,aklskj1,<初级>阿喀琉斯残破盔甲,4,,,100,,5,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,5+getrefine(); bonus bLuk,-5-getrefine(); bonus bMaxHP,2000+getrefine()/5*1500;},{},{}
+40814,aklskj2,<中级>阿喀琉斯残破盔甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,10+getrefine(); bonus bLuk,-10-getrefine(); bonus bMaxHP,4000+getrefine()/5*1500;},{},{}
+40815,aklskj3,<高级>阿喀琉斯残破盔甲,4,,,100,,7,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus ballstats,15+getrefine(); bonus bLuk,-15-getrefine(); bonus bMaxHP,6000+getrefine()/5*1500;},{},{}
 
 //靴子
-40817,ydnxz1,<初级>雅典娜的战争靴子,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40818,ydnxz2,<中级>雅典娜的战争靴子,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40819,ydnxz3,<高级>雅典娜的战争靴子,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
+40817,ydnxz1,<初级>雅典娜的战争靴子,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40818,ydnxz2,<中级>雅典娜的战争靴子,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40819,ydnxz3,<高级>雅典娜的战争靴子,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
 
-40821,hdsxz1,<初级>哈迪斯的不洁战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40822,hdsxz2,<中级>哈迪斯的不洁战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40823,hdsxz3,<高级>哈迪斯的不洁战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
+40821,hdsxz1,<初级>哈迪斯的不洁战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40822,hdsxz2,<中级>哈迪斯的不洁战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40823,hdsxz3,<高级>哈迪斯的不洁战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
 
-40825,zsxz1,<初级>神王宙斯权力战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40826,zsxz2,<中级>神王宙斯权力战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40827,zsxz3,<高级>神王宙斯权力战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
+40825,zsxz1,<初级>神王宙斯权力战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40826,zsxz2,<中级>神王宙斯权力战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40827,zsxz3,<高级>神王宙斯权力战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
 
-40829,aklsxz1,<初级>阿喀琉斯残破战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40830,aklsxz2,<中级>阿喀琉斯残破战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40831,aklsxz3,<高级>阿喀琉斯残破战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
+40829,aklsxz1,<初级>阿喀琉斯残破战靴,4,,,100,,3,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,10; bonus bMaxSPrate,10; bonus bSpeedAddRate,10; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/5*1500;},{},{}
+40830,aklsxz2,<中级>阿喀琉斯残破战靴,4,,,100,,4,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,15; bonus bMaxSPrate,15; bonus bSpeedAddRate,15; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/5*1500;},{},{}
+40831,aklsxz3,<高级>阿喀琉斯残破战靴,4,,,100,,5,,1,0xFFFFFFFF,7,2,64,,1,1,0,{ bonus bMaxHPrate,20; bonus bMaxSPrate,20; bonus bSpeedAddRate,20; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/5*1500;},{},{}
 
 //披肩
-40833,ydnpf1,<初级>雅典娜的战争披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40834,ydnpf2,<中级>雅典娜的战争披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40835,ydnpf3,<高级>雅典娜的战争披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
+40833,ydnpf1,<初级>雅典娜的战争披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40834,ydnpf2,<中级>雅典娜的战争披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40835,ydnpf3,<高级>雅典娜的战争披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bStr,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
 
-40837,hdspf1,<初级>哈迪斯的不洁披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40838,hdspf2,<中级>哈迪斯的不洁披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40839,hdspf3,<高级>哈迪斯的不洁披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
+40837,hdspf1,<初级>哈迪斯的不洁披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40838,hdspf2,<中级>哈迪斯的不洁披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40839,hdspf3,<高级>哈迪斯的不洁披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bDex,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
 
-40841,zspf1,<初级>神王宙斯权力披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40842,zspf2,<中级>神王宙斯权力披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40843,zspf3,<高级>神王宙斯权力披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
+40841,zspf1,<初级>神王宙斯权力披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40842,zspf2,<中级>神王宙斯权力披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
+40843,zspf3,<高级>神王宙斯权力披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bInt,getrefine(); bonus bMaxHP,getrefine()/5*1000;},{},{}
 
-40845,aklspf1,<初级>阿喀琉斯残破披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40846,aklspf2,<中级>阿喀琉斯残破披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
-40847,aklspf3,<高级>阿喀琉斯残破披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/10*1000;},{},{}
+40845,aklspf1,<初级>阿喀琉斯残破披风,4,,,100,,3,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,5; bonus2 bSubEle,Ele_Neutral,5; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/5*1500;},{},{}
+40846,aklspf2,<中级>阿喀琉斯残破披风,4,,,100,,4,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,10; bonus2 bSubEle,Ele_Neutral,10; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/5*1500;},{},{}
+40847,aklspf3,<高级>阿喀琉斯残破披风,4,,,100,,5,,1,0xFFFFFFFF,7,2,4,,1,1,0,{ bonus bMdef,15; bonus2 bSubEle,Ele_Neutral,15; bonus bVit,getrefine(); bonus bMaxHP,getrefine()/5*1500;},{},{}
 
 //武器
 40901,zsqz1,<初级>宙斯之雷霆权杖,5,,,1000,150,,1,4,0x00000200,7,2,34,4,1,1,10,{ bonus2 bSkillAtk,83,getrefine(); bonus2 bSkillAtk,85,getrefine(); bonus2 bSkillAtk,89,getrefine(); bonus2 bSkillAtk,90,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; bonus bDelayrate,-getrefine(); if(getrefine()>=20){ bonus2 bSkillDelay,83,-1000; bonus2 bSkillDelay,85,-1000; bonus2 bSkillDelay,89,-1000;} },{},{}

@@ -17,7 +17,7 @@ OnBuyItem:
 	while (.@j < getarraysize(getd(".Shop"+@s))) {
 		if(getd(".Shop"+@s+"["+.@j+"]") == @bought_nameid[.@i]) 
 		{
-			WeaponDo(@bought_nameid,@bought_nameid);
+			WeaponDo(@bought_nameid);
 		}
 		.@j++; 
 	}
@@ -156,7 +156,7 @@ OnBuyItem:
 			}
 			mes "[武器制作]";
 			mes "制作成功";
-			getitem3 getarg(1),1,1,.@refine,0,.@card0,.@card1,.@card2,.@card3,.@OptID,.@OptVal,.@OptParam;
+			getitem3 getarg(0),1,1,.@refine,0,.@card0,.@card1,.@card2,.@card3,.@OptID,.@OptVal,.@OptParam;
 			close;
 		case 3:
 			close;

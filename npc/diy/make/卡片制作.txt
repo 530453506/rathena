@@ -6,6 +6,7 @@ prontera,146,125,5	script	卡片制作	716,{
 	@s=(select("铜卡"));
 	callshop "CSHOP"+@s,1;
 	npcshopattach "CSHOP"+@s;
+	close;
 	end;
 
 OnBuyItem:
@@ -13,7 +14,7 @@ OnBuyItem:
 	while (.@j < getarraysize(getd(".Shop"+@s))) {
 		if(getd(".Shop"+@s+"["+.@j+"]") == @bought_nameid[.@i]) 
 		{
-			CardDo(@bought_nameid,@bought_nameid);
+			CardDo(@bought_nameid,@bought_quantity);
 		}
 		.@j++; 
 	}
@@ -55,40 +56,40 @@ OnBuyItem:
 			case 39500: setarray .@shop[0],100,512,1; break;
 		}
 		mes "[卡片制作]";
-	    mes "- 制作 ^FF0000"+getitemname(@bought_nameid)+"^000000";
+	    mes "- 制作 ^FF0000"+getitemname(@bought_nameid)+" x " + @bought_quantity + "^000000";
 	    mes "- 请准备好下面材料！";
 		for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
 		    if (.@shop[@e] > 0) {
-		        mes " ^0066CC" + getitemname(.@shop[@e]) + "^000000 x " + ((countitem(.@shop[@e])>=.@shop[@e+1])? "":"") + "" + .@shop[@e+1] + " [^009900" + countitem(.@shop[@e]) + "^000000/^FF6600" + .@shop[@e+1] + "^000000]"+( countitem(.@shop[@e])>=.@shop[@e+1]?" ( ^D2691E已完成^000000 )":" ( ^999999未完成^000000 )");
+		        mes " ^0066CC" + getitemname(.@shop[@e]) + "^000000 x " + ((countitem(.@shop[@e])>=.@shop[@e+1]*@bought_quantity)? "":"") + "" + .@shop[@e+1]*@bought_quantity + " [^009900" + countitem(.@shop[@e]) + "^000000/^FF6600" + .@shop[@e+1]*@bought_quantity + "^000000]"+( countitem(.@shop[@e])>=.@shop[@e+1]*@bought_quantity?" ( ^D2691E已完成^000000 )":" ( ^999999未完成^000000 )");
 		    }
 		}
-	    mes " ^FF1493需要制作费用^000000 " + ((Zeny>=.@shop[0])? "^FF0000":"") + "" + .@shop[0] + "^000000 "+((Zeny>=.@shop[0])? "( ^D2691E已完成^000000 )":"( ^999999金钱不足^000000 )");
+	    mes " ^FF1493需要制作费用^000000 " + ((Zeny>=.@shop[0]*@bought_quantity)? "^FF0000":"") + "" + .@shop[0]*@bought_quantity + "^000000 "+((Zeny>=.@shop[0]*@bought_quantity)? "( ^D2691E已完成^000000 )":"( ^999999金钱不足^000000 )");
 		next;
 		switch(select("^0000FF制作^000000:结束对话")) {
 		case 1:	
-			if(Zeny < .@shop[0]) {
+			if(Zeny < .@shop[0]*@bought_quantity) {
 				mes "[卡片制作]";
 				mes "您的Zeny不够";
 				close;
 			}
 			for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
 				if(.@shop[@e] > 0) {
-				    if( countitem(.@shop[@e]) < .@shop[@e+1]) {
+				    if( countitem(.@shop[@e]) < .@shop[@e+1]*@bought_quantity) {
                 	    mes "[卡片制作]";
                 		mes "材料不足";
                 		close;
                 	}
 				}
 			}
-			zeny-=.@shop[0];
+			zeny-=.@shop[0]*@bought_quantity;
 			for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
 			    if (.@shop[@e] >0) {
-			        delitem .@shop[@e],.@shop[@e+1];
+			        delitem .@shop[@e],.@shop[@e+1]*@bought_quantity;
 			    }
 			}
 			mes "[卡片制作]";
 			mes "制作成功";
-			getitem getarg(1),1;
+			getitem getarg(0),getarg(1);
 			close;
 		case 3:
 			close;

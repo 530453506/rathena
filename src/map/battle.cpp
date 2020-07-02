@@ -3388,7 +3388,7 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 					sd->inventory_data[index] &&
 					sd->inventory_data[index]->type == IT_WEAPON)
 					wd->damage = sd->inventory_data[index]->weight*8/100; //80% of weight
-			    wd->damage += battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, i);   //技能增强:螺旋
+			    wd->damage += battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0);   //技能增强:螺旋
 				ATK_ADDRATE(wd->damage, wd->damage2, 50*skill_lv); //Skill modifier applies to weight only.
 			} else {
 				wd->damage = battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0); //Monsters have no weight and use ATK instead
@@ -3722,7 +3722,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 
 	switch(skill_id) {
         case BS_HAMMERFALL:
-            skillratio += 30 * skill_lv + sstatus->str; //技能增强:大地之击
+            skillratio += 30 * skill_lv + sstatus->str * 2; //技能增强:大地之击
             break;
         case SM_BASH:
         case MS_BASH:
@@ -3803,7 +3803,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			}
 			break;
 		case KN_BOWLINGBASH:
-            skillratio += 40 * skill_lv + sstatus->str; //技能增强:怪物互击
+            skillratio += 40 * skill_lv + sstatus->str * 2; //技能增强:怪物互击
             break;
         case MS_BOWLINGBASH:
 			skillratio += 40 * skill_lv;
@@ -6388,7 +6388,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						skillratio -= 30; // Offset only once
 						skillratio += 50 * skill_lv;
 #else
-						skillratio += 40 * skill_lv + sstatus->int_ * 40 / 100; //技能增强:怒雷
+						skillratio += 40 * skill_lv + sstatus->int_; //技能增强:暴风雪
 #endif
 						break;
 #ifdef RENEWAL
@@ -6504,10 +6504,10 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 						skillratio += 20 * skill_lv - 20 + sstatus->int_;    //技能增强:怒雷强击
 						break;
 					case WZ_METEOR:
-						skillratio += sstatus->int_ * 35 / 100; //技能增强:陨石
+						skillratio += sstatus->int_; //技能增强:陨石
 						break;
 					case PR_MAGNUS:
-					    skillratio += sstatus->int_ * 35 / 100; //技能增强:十字驱魔
+					    skillratio += sstatus->int_; //技能增强:十字驱魔
 						if (battle_check_undead(tstatus->race, tstatus->def_ele) || tstatus->race == RC_DEMON)
 							skillratio += 30;
 						break;
