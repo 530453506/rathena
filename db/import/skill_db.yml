@@ -1717,5 +1717,6 @@ Body:
         Time: 300000
       - Level: 10
         Time: 300000
+    Cooldown: 500
     Requires:
       SpCost: 120
