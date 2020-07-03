@@ -11225,7 +11225,11 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 				val1 = 1;
 			break;
 		case SC_DOUBLECAST:
-			val2 = 30+10*val1; // Trigger rate
+            val2 = 30+10*val1; // Trigger rate
+            struct map_session_data * s_sd = BL_CAST(BL_PC, src);
+            if (s_sd && !map_getmapflag(src.m, MF_GVG) && !map_getmapflag(src.m, MF_PVP)) {
+                val2 += s_sd->bonus.element_power * 4;
+            }
 			break;
 		case SC_KAIZEL:
 			val2 = 10*val1; // % of life to be revived with
