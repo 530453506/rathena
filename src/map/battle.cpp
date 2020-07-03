@@ -3745,7 +3745,8 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			break;
 		case AC_DOUBLE:
 		case MA_DOUBLE:
-			skillratio += 10 * (skill_lv - 1);
+//			skillratio += 10 * (skill_lv - 1);
+			skillratio += 10 * (skill_lv - 1) + sstatus->dex; //技能增强:二连矢
 			break;
 		case AC_SHOWER:
 		case MA_SHOWER:
@@ -4014,7 +4015,10 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			skillratio += 100 + 120 * skill_lv;
 			RE_LVL_DMOD(100);
 #else
-			skillratio += -60 + 40 * skill_lv;
+//			skillratio += -60 + 40 * skill_lv;
+			i = sstatus->str/10;
+			i*=i;
+			skillratio += -60 + 40 * skill_lv + i; //技能增强:黑暗瞬间
 #endif
 			break;
 		case SN_SHARPSHOOTING:
@@ -4023,7 +4027,10 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			skillratio += 50 + 200 * skill_lv;
 			RE_LVL_DMOD(100);
 #else
-			skillratio += 100 + 50 * skill_lv;
+//			skillratio += 100 + 50 * skill_lv;
+			i = sstatus->dex/10;
+			i*=i;
+			skillratio += 100 + 50 * skill_lv + i; //技能增强:锐利
 #endif
 			break;
 		case GN_FIRE_EXPANSION_ACID:
