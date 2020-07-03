@@ -3388,15 +3388,15 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 					sd->inventory_data[index] &&
 					sd->inventory_data[index]->type == IT_WEAPON)
 					wd->damage = sd->inventory_data[index]->weight*8/100; //80% of weight
-			    wd->damage += battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0);   //技能增强:螺旋
+			    ATK_ADD(wd->damage, wd->damage2, battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0));//技能增强:螺旋
 				ATK_ADDRATE(wd->damage, wd->damage2, 50*skill_lv); //Skill modifier applies to weight only.
 			} else {
 				wd->damage = battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0); //Monsters have no weight and use ATK instead
 			}
 
-			i = sstatus->str/10;
+			i = sstatus->str/20;
 			i*=i;
-			ATK_ADD(wd->damage, wd->damage2, i); //Add str bonus.
+			ATK_ADDRATE(wd->damage, wd->damage2, i); //Add str bonus.技能增强:螺旋
 			switch (tstatus->size) { //Size-fix. Is this modified by weapon perfection?
 				case SZ_SMALL: //Small: 125%
 					ATK_RATE(wd->damage, wd->damage2, 125);
@@ -3722,7 +3722,9 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 
 	switch(skill_id) {
         case BS_HAMMERFALL:
-            skillratio += 30 * skill_lv + sstatus->str * 2; //技能增强:大地之击
+            i = sstatus->str/10;
+            i*=i;
+            skillratio += 40 * skill_lv + i; //技能增强:大地之击
             break;
         case SM_BASH:
         case MS_BASH:
@@ -3803,7 +3805,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			}
 			break;
 		case KN_BOWLINGBASH:
-            skillratio += 40 * skill_lv + sstatus->str * 2; //技能增强:怪物互击
+            skillratio += 40 * skill_lv;
             break;
         case MS_BOWLINGBASH:
 			skillratio += 40 * skill_lv;
@@ -6344,7 +6346,7 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					case MG_EARTHBOLT:
 					case MG_COLDBOLT:
 					case MG_LIGHTNINGBOLT:
-                        MATK_ADD(sstatus->batk + sstatus->rhw.atk+ sstatus->rhw.atk2);  //技能增强:四系元素箭
+                        MATK_ADD(battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0));  //技能增强:四系元素箭
                         if (sc && sc->data[SC_SPELLFIST] && mflag&BF_SHORT)  {
 							skillratio += (sc->data[SC_SPELLFIST]->val4 * 100) + (sc->data[SC_SPELLFIST]->val1 * 50) - 100;// val4 = used bolt level, val2 = used spellfist level. [Rytech]
 							ad.div_ = 1; // ad mods, to make it work similar to regular hits [Xazax]

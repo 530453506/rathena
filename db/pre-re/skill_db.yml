@@ -12971,12 +12971,11 @@ Body:
     TargetType: Attack
     DamageFlags:
       IgnoreAtkCard: true
-    Flags:
-      AllowOnMado: true
     Range: -2
     Flags:
       IgnoreAutoGuard: true
       IgnoreCicada: true
+      AllowOnMado: true
     Hit: Single
     HitCount: 1
     Element: Weapon

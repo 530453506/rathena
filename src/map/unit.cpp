@@ -1308,7 +1308,8 @@ int unit_warp(struct block_list *bl,short m,short x,short y,clr_type type)
 	if (!unit_remove_map(bl, type))
 		return 3;
 
-	if (bl->m != m && battle_config.clear_unit_onwarp &&
+//	if (bl->m != m && battle_config.clear_unit_onwarp && 只要瞬移直接去除
+	if (battle_config.clear_unit_onwarp &&
 		battle_config.clear_unit_onwarp&bl->type)
 		skill_clear_unitgroup(bl);
 
