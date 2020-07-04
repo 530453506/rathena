@@ -2358,46 +2358,6 @@ int skill_onskillusage(struct map_session_data *sd, struct block_list *bl, uint1
                     default:
                         skill = MG_FIREBOLT;
                 }
-            } else if (skill == NJ_ZENYNAGE) {
-                switch (dstmd->db->status.def_ele) {
-                    case ELE_EARTH:
-                        skill = WZ_METEOR;
-                        break;
-                    case ELE_FIRE:
-                        skill = WZ_STORMGUST;
-                        break;
-                    case ELE_WATER:
-                        skill = WZ_VERMILION;
-                        break;
-                    case ELE_WIND:
-                        skill = WZ_HEAVENDRIVE;
-                        break;
-                    case ELE_UNDEAD:
-                        skill = WZ_METEOR;
-                        break;
-                    default:
-                        skill = WZ_METEOR;
-                }
-            } else if (skill == NJ_KUNAI) {
-                switch (dstmd->db->status.def_ele) {
-                    case ELE_EARTH:
-                        skill = NJ_BAKUENRYU;
-                        break;
-                    case ELE_FIRE:
-                        skill = NJ_HYOUSYOURAKU;
-                        break;
-                    case ELE_WATER:
-                        skill = NJ_RAIGEKISAI;
-                        break;
-                    case ELE_WIND:
-                        skill = NJ_BAKUENRYU;
-                        break;
-                    case ELE_UNDEAD:
-                        skill = NJ_BAKUENRYU;
-                        break;
-                    default:
-                        skill = NJ_RAIGEKISAI;
-                }
             }
         }
 

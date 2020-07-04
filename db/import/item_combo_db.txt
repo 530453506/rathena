@@ -52,17 +52,17 @@
 //刺客拳刃高级
 40803:40935,{ skill 376,20; skill 137,7; }
 //铁匠初级
-40801:40945,{ skill 110,6; skill 2263,1; }
-40801:40946,{ skill 110,6; skill 2263,1; }
-40801:40947,{ skill 110,6; skill 2263,1; }
-40802:40945,{ skill 110,6; skill 2263,1; }
-40803:40945,{ skill 110,6; skill 2263,1; }
+40801:40945,{ skill 110,7; skill 2263,1; }
+40801:40946,{ skill 110,7; skill 2263,1; }
+40801:40947,{ skill 110,7; skill 2263,1; }
+40802:40945,{ skill 110,7; skill 2263,1; }
+40803:40945,{ skill 110,7; skill 2263,1; }
 //铁匠中级
-40802:40946,{ skill 110,7; skill 2263,1; }
-40802:40947,{ skill 110,7; skill 2263,1; }
-40803:40946,{ skill 110,7; skill 2263,1; }
+40802:40946,{ skill 110,9; skill 2263,1; }
+40802:40947,{ skill 110,9; skill 2263,1; }
+40803:40946,{ skill 110,9; skill 2263,1; }
 //铁匠高级
-40803:40947,{ skill 110,8; skill 2263,1; }
+40803:40947,{ skill 110,11; skill 2263,1; }
 //法师初级
 40809:40901,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
 40809:40902,{ bonus2 bIgnoreMdefClassRate,CLASS_BOSS,20; bonus2 bIgnoreMdefClass,CLASS_BOSS,20; }
@@ -166,8 +166,8 @@
 40906:40813,{ bonus bVit,10; bonus bMaxHp,10000; }
 40907:40813,{ bonus bVit,10; bonus bMaxHp,10000; }
 //十字军中级
-40906:40814,{ bonus bVit,20; bonus bMaxHp,20000; }
-40906:40815,{ bonus bVit,20; bonus bMaxHp,20000; }
-40907:40814,{ bonus bVit,20; bonus bMaxHp,20000; }
+40906:40814,{ bonus bVit,25; bonus bMaxHp,25000; }
+40906:40815,{ bonus bVit,25; bonus bMaxHp,25000; }
+40907:40814,{ bonus bVit,25; bonus bMaxHp,25000; }
 //十字军高级
-40907:40815,{ bonus bVit,30; bonus bMaxHp,30000; }
+40907:40815,{ bonus bVit,40; bonus bMaxHp,40000; }

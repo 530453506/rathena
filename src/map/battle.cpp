@@ -3390,13 +3390,13 @@ static void battle_calc_skill_base_damage(struct Damage* wd, struct block_list *
 					wd->damage = sd->inventory_data[index]->weight*8/100; //80% of weight
 			    ATK_ADD(wd->damage, wd->damage2, battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0));//技能增强:螺旋
 				ATK_ADDRATE(wd->damage, wd->damage2, 50*skill_lv); //Skill modifier applies to weight only.
+				ATK_ADDRATE(wd->damage, wd->damage2, sstatus->str / 2);
 			} else {
 				wd->damage = battle_calc_base_damage(src, sstatus, &sstatus->rhw, sc, tstatus->size, 0); //Monsters have no weight and use ATK instead
 			}
-
-			i = sstatus->str/20;
-			i*=i;
-			ATK_ADDRATE(wd->damage, wd->damage2, i); //Add str bonus.技能增强:螺旋
+//			i = sstatus->str/10;
+//			i*=i;
+//			ATK_ADD(wd->damage, wd->damage2, i);
 			switch (tstatus->size) { //Size-fix. Is this modified by weapon perfection?
 				case SZ_SMALL: //Small: 125%
 					ATK_RATE(wd->damage, wd->damage2, 125);
@@ -3722,9 +3722,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 
 	switch(skill_id) {
         case BS_HAMMERFALL:
-            i = sstatus->str/10;
-            i*=i;
-            skillratio += 40 * skill_lv + i; //技能增强:大地之击
+            skillratio += 50 * skill_lv + sstatus->str * 3; //技能增强:大地之击
             break;
         case SM_BASH:
         case MS_BASH:
@@ -3932,7 +3930,8 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 #endif
 			break;
 		case MO_EXTREMITYFIST:
-			skillratio += 100 * (7 + sstatus->sp / 10);			
+//			skillratio += 100 * (7 + sstatus->sp / 10);
+			skillratio += 100 * (sstatus->sp / 10 - 66);	//技能增强;阿修罗
 #ifdef RENEWAL
 			if (wd->miscflag&1)
 				skillratio *= 2; // More than 5 spirit balls active
@@ -4016,9 +4015,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			RE_LVL_DMOD(100);
 #else
 //			skillratio += -60 + 40 * skill_lv;
-			i = sstatus->str/10;
-			i*=i;
-			skillratio += -60 + 40 * skill_lv + i; //技能增强:黑暗瞬间
+			skillratio += -60 + 40 * skill_lv + sstatus->str * 2; //技能增强:黑暗瞬间
 #endif
 			break;
 		case SN_SHARPSHOOTING:
@@ -4028,9 +4025,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			RE_LVL_DMOD(100);
 #else
 //			skillratio += 100 + 50 * skill_lv;
-			i = sstatus->dex/10;
-			i*=i;
-			skillratio += 100 + 50 * skill_lv + i; //技能增强:锐利
+			skillratio += 100 + 50 * skill_lv + sstatus->dex * 2; //技能增强:锐利
 #endif
 			break;
 		case GN_FIRE_EXPANSION_ACID:
@@ -4117,6 +4112,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			break;
 		case GS_TRACKING:
 			skillratio += 100 * (skill_lv + 1);
+			skillratio += 100 * (skill_lv + 1) + sstatus->dex * 5; //技能增强:百步穿杨
 			break;
 		case GS_PIERCINGSHOT:
 #ifdef RENEWAL
@@ -4936,7 +4932,7 @@ static void battle_attack_sc_bonus(struct Damage* wd, struct block_list *src, st
 		if (sc->data[SC_EDP]) {
 			switch(skill_id) {
 				case AS_SPLASHER:
-				case ASC_METEORASSAULT:
+				// case ASC_METEORASSAULT: //技能增强:黑暗瞬间
 				// Pre-Renewal only: Soul Breaker ignores EDP
 				// Renewal only: Grimtooth and Venom Knife ignore EDP
 				// Both: Venom Splasher and Meteor Assault ignore EDP [helvetica]
@@ -5891,6 +5887,7 @@ static struct Damage battle_calc_weapon_attack(struct block_list *src, struct bl
         if (src->type == BL_PC) {
             struct status_data *sstatus = status_get_status_data(src);
             ATK_ADD(wd.damage, wd.damage2, sstatus->max_hp * 5 / 100);  //技能增强:圣十字审判
+            ATK_ADDRATE(wd.damage, wd.damage2, sstatus->vit / 3);
         }
         return wd; //Enough, rest is not needed.
     }
@@ -6437,7 +6434,8 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 							skillratio += 20 * sd->spiritcharm;
 						break;
 					case NJ_BAKUENRYU:
-						skillratio += 50 + 150 * skill_lv;
+//						skillratio += 50 + 150 * skill_lv;
+						skillratio += 50 + 150 * skill_lv + sstatus->int_; //技能增强:爆炎龙
 						if(sd && sd->spiritcharm_type == CHARM_TYPE_FIRE && sd->spiritcharm > 0)
 							skillratio += 100 * sd->spiritcharm;
 						break;
@@ -6451,7 +6449,8 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 							skillratio += 20 * sd->spiritcharm;
 						break;
 					case NJ_HYOUSYOURAKU:
-						skillratio += 50 * skill_lv;
+//						skillratio += 50 * skill_lv;
+						skillratio += 50 * skill_lv + sstatus->int_; //技能增强:冰晶落
 						if(sd && sd->spiritcharm_type == CHARM_TYPE_WATER && sd->spiritcharm > 0)
 							skillratio += 100 * sd->spiritcharm;
 						break;
@@ -6459,7 +6458,8 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 #ifdef RENEWAL
 						skillratio += 100 * skill_lv;
 #else
-						skillratio += 60 + 40 * skill_lv;
+//						skillratio += 60 + 40 * skill_lv;
+						skillratio += 60 + 40 * skill_lv + sstatus->int_; //技能增强:雷击碎
 #endif
 						if(sd && sd->spiritcharm_type == CHARM_TYPE_WIND && sd->spiritcharm > 0)
 							skillratio += 20 * sd->spiritcharm;

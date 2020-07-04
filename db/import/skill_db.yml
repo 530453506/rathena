@@ -777,32 +777,16 @@ Body:
   - Id: 110
     Name: BS_HAMMERFALL #大地之击
     Description: Hammer Fall
-    MaxLevel: 5
+    MaxLevel: 11
     Type: Weapon
     TargetType: Ground
     DamageFlags:
       Splash: true
     Flags:
       AllowOnMado: true
-    Range: 2
+    Range: -5
     Hit: Multi_Hit
-    HitCount:
-      - Level: 1
-        Count: 1
-      - Level: 2
-        Count: 2
-      - Level: 3
-        Count: 3
-      - Level: 4
-        Count: 4
-      - Level: 5
-        Count: 5
-      - Level: 6
-        Count: 6
-      - Level: 7
-        Count: 7
-      - Level: 8
-        Count: 8
+    HitCount: 2
     SplashArea:
       - Level: 1
         Area: 2
@@ -819,6 +803,12 @@ Body:
       - Level: 7
         Area: 3
       - Level: 8
+        Area: 3
+      - Level: 9
+        Area: 3
+      - Level: 10
+        Area: 3
+      - Level: 11
         Area: 3
     Duration2: 5000
     Requires:
@@ -1566,6 +1556,155 @@ Body:
       ItemCost:
         - Item: Shadow_Orb
           Amount: 1
+  - Id: 536
+    Name: NJ_BAKUENRYU #爆炎龙
+    Description: Raging Fire Dragon
+    MaxLevel: 5
+    Type: Magic
+    TargetType: Attack
+    Range: 9
+    Hit: Multi_Hit
+    HitCount: -3
+    Element: Fire
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime: 3000
+    AfterCastActDelay: 500
+    Duration1: 100
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 20
+        - Level: 2
+          Amount: 25
+        - Level: 3
+          Amount: 30
+        - Level: 4
+          Amount: 35
+        - Level: 5
+          Amount: 40
+      ItemCost:
+        - Item: Flame_Stone
+          Amount: 1
+    Unit:
+      Id: Dummyskill
+      Layout: 2
+      Interval: 1000
+      Target: Enemy
+      Flag:
+        PathCheck: true
+  - Id: 539
+    Name: NJ_HYOUSYOURAKU #冰晶落
+    Description: Ice Meteor
+    MaxLevel: 5
+    Type: Magic
+    TargetType: Self
+    Hit: Single
+    HitCount: 1
+    Element: Water
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime:
+      - Level: 1
+        Time: 2000
+      - Level: 2
+        Time: 2500
+      - Level: 3
+        Time: 3000
+      - Level: 4
+        Time: 3500
+      - Level: 5
+        Time: 4000
+    AfterCastActDelay: 500
+    Duration1: 100
+    Duration2:
+      - Level: 1
+        Time: 5000
+      - Level: 2
+        Time: 10000
+      - Level: 3
+        Time: 15000
+      - Level: 4
+        Time: 20000
+      - Level: 5
+        Time: 25000
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 40
+        - Level: 2
+          Amount: 45
+        - Level: 3
+          Amount: 50
+        - Level: 4
+          Amount: 55
+        - Level: 5
+          Amount: 60
+      ItemCost:
+        - Item: Ice_Stone
+          Amount: 1
+    Unit:
+      Id: Dummyskill
+      Layout: 3
+      Interval: 1000
+      Target: Enemy
+      Flag:
+        PathCheck: true
+  - Id: 541
+    Name: NJ_RAIGEKISAI #雷击碎
+    Description: Lightning Strike of Destruction
+    MaxLevel: 5
+    Type: Magic
+    TargetType: Self
+    Range: 9
+    Hit: Single
+    HitCount: 1
+    Element: Wind
+    CopyFlags:
+      Skill:
+        Plagiarism: true
+        Reproduce: true
+    CastCancel: true
+    CastTime: 4000
+    Duration1: 100
+    Requires:
+      SpCost:
+        - Level: 1
+          Amount: 16
+        - Level: 2
+          Amount: 20
+        - Level: 3
+          Amount: 24
+        - Level: 4
+          Amount: 28
+        - Level: 5
+          Amount: 32
+      ItemCost:
+        - Item: Wind_Stone
+          Amount: 1
+    Unit:
+      Id: Dummyskill
+      Layout:
+        - Level: 1
+          Size: 2
+        - Level: 2
+          Size: 2
+        - Level: 3
+          Size: 3
+        - Level: 4
+          Size: 3
+        - Level: 5
+          Size: 4
+      Interval: 1000
+      Target: Enemy
+      Flag:
+        PathCheck: true
   - Id: 543
     Name: NJ_NEN #念
     Description: Soul

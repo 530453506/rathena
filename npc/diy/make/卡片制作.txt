@@ -6,7 +6,6 @@ prontera,146,125,5	script	¿¨Æ¬ÖÆ×÷	716,{
 	@s=(select("Í­¿¨"));
 	callshop "CSHOP"+@s,1;
 	npcshopattach "CSHOP"+@s;
-	close;
 	end;
 
 OnBuyItem:

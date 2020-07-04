@@ -66,6 +66,8 @@ min_skill_delay_limit: 150
 // 3 = remove both negative and positive buffs.
 debuff_on_logout: 1
 
+pc_status_def_rate: 30
+
 //===================================
 // VIP system
 //===================================
