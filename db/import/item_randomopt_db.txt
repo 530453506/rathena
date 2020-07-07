@@ -219,7 +219,7 @@ RDMOPT_SKILL_137,{bonus2 bSkillAtk,137,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_SKILL_379,{bonus2 bSkillAtk,379,getrandomoptinfo(ROA_VALUE); }
 RDMOPT_VAR_EXT,{bonus bBaseAtk,getrandomoptinfo(ROA_VALUE)*getrefine(); bonus bMAtk,getrandomoptinfo(ROA_VALUE)*getrefine();}
 
-RDMOPT_ELEMENT_POWER,{ bonus bElementPower,1; }
+RDMOPT_ELEMENT_POWER,{ bonus bElementPower,getrandomoptinfo(ROA_VALUE); }
 //物理攻击触发4系箭
 RDMOPT_ELEMENT_ATTACK,{ bonus3 bAutoSpell,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE); }
 //巫师技能触发4系箭
@@ -238,3 +238,9 @@ RDMOPT_ELEMENT_CRUSADER_BOLT,{bonus4 bAutoSpellOnSkill,254,"NJ_SYURIKEN",getrand
 RDMOPT_ELEMENT_BLACKSMITH_BOLT,{bonus4 bAutoSpellOnSkill,110,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus2 bSkillDelay,14,-1300;bonus2 bSkillDelay,19,-1300;bonus2 bSkillDelay,20,-1300;bonus2 bSkillDelay,800,-1300;}
 //贤者触发4系箭
 RDMOPT_ELEMENT_SAGE_BOLT,{bonus4 bAutoSpellOnSkill,14,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus4 bAutoSpellOnSkill,19,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus4 bAutoSpellOnSkill,20,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);bonus4 bAutoSpellOnSkill,800,"NJ_SYURIKEN",getrandomoptinfo(ROA_PARAM),getrandomoptinfo(ROA_VALUE);}
+//装饰品等级
+RDMOPT_ACC_LEFT_POWER,{bonus bMaxHP,1;}
+//无视boss魔防
+RDMOPT_CLASS_IGNORE_MDEF_BOSS,{bonus2 bIgnoreMdefClass,CLASS_BOSS,getrandomoptinfo(ROA_VALUE);}
+//炼金元素之心描述
+RDMOPT_ELEMENT_POWER_ALCHEMIST,{bonus bMaxHP,1;}

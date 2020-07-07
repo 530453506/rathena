@@ -1,7 +1,8 @@
 function	script	renwushouce	{
-mes "当前共有^FF0000["+ getusers(1) + "]^000000人在线";
+mes "当前在线人数:  [ ^FF0000"+getusers(1)+"^000000 ]";
 mes "在线积分:     [ ^FF0000"+paodian+"^000000 ]";
 mes "商城积分:     [ ^FF0000"+#CASHPOINTS+"^000000 ]";
+mes "初级BOSS积分: [ ^FF0000"+boss_cj+"^000000 ]";
 next;
 switch(select("^0088FF会员服务^000000","超级传送","安全拆卡","装备修理","学习技能"))
 {

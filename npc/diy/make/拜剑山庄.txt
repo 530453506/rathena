@@ -1,0 +1,141 @@
+
+prontera,156,125,4	script	拜剑山庄傲拜	1_M_WIZARD,{
+	mes "[拜剑山庄傲拜]";
+	mes "我能让你更强.";
+	mes "感兴趣吗?";
+	next;
+	switch(select("武器强化","元素之心","饰品升级")){
+	    case 1:
+	        .@id = getequipid(EQI_HAND_R);
+    	    if(.@id == -1) {
+    		    mes "请务必装备好你的武器.";
+    		    close;
+    		}
+	        switch(select("初级武器","中级武器","高级武器")){
+                case 1:
+                    for(.@i = 0; .@i < getarraysize(.allowedcj); ++.@i){
+                        if(.@id == .allowedcj[.@i])
+                            .@allowed = 1;
+                    }
+                    if(!.@allowed){
+                        mes "你的兵器不行.";
+                        close;
+                    }
+                    .@random = rand(9999999999) % 10 + 1;
+                    callfunc("weapon_update",.@random);
+                    break;
+                case 2:
+                    for(.@i = 0; .@i < getarraysize(.allowedcj); ++.@i){
+                        if(.@id == .allowedzj[.@i])
+                            .@allowed = 1;
+                    }
+                    if(!.@allowed){
+                        mes "你的兵器不行.";
+                        close;
+                    }
+                    .@random = rand(9999999999) % 10 + 11;
+                    callfunc("weapon_update",.@random);
+                    break;
+                case 3:
+                    for(.@i = 0; .@i < getarraysize(.allowedcj); ++.@i){
+                        if(.@id == .allowedgj[.@i])
+                            .@allowed = 1;
+                    }
+                    if(!.@allowed){
+                        mes "你的兵器不行.";
+                        close;
+                    }
+                    .@random = rand(9999999999) % 10 + 21;
+                    callfunc("weapon_update",.@random);
+                    break;
+	        }
+	        break;
+	    case 2:
+            .@id = getequipid(EQI_HAND_R);
+    	    for(.@i = 0; .@i < getarraysize(.allowedcj); ++.@i){
+    		    if(.@id == .allowedcj[.@i])
+    			    .@allowed = 1;
+    	    }
+    	    if(.@id == -1) {
+    	        mes "请务必装备好你的武器.";
+    		    close;
+    	    } else if(!.@allowed){
+    		    mes "你的兵器不行.";
+    		    close;
+    	    }
+	        callfunc "element_update";
+	        break;
+	    case 3:
+            callfunc "acc_update";
+            break;
+    }
+
+OnInit:
+	setarray .allowedcj[0],40901,40905,40913,1245,40921,40925,40929,40933,40937,40941,40945,40949,40953;
+	setarray .allowedzj[0],40902,40906,40914,1246,40922,40926,40930,40934,40938,40942,40946,40950,40954;
+	setarray .allowedgj[0],40903,40907,40915,1247,40923,40927,40931,40935,40939,40943,40947,40951,40955;
+}
+
+function	script	weapon_update	{
+    mes "想要强化 " + getitemname(getequipid(EQI_HAND_R)) + " 吗?";
+    next;
+    if(select("请.") == 1){
+        mes "[拜剑山庄傲拜]";
+        mes "*duang duang duang*";
+        progressbar "#00FF00",2;
+        next;
+        setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_EXT,getarg(0),0);
+        mes "[拜剑山庄傲拜]";
+        mes "幸不辱命.";
+        close;
+    }
+    close;
+    end;
+}
+
+function	script	acc_update	{
+	.@allowed = 41009;
+	.@max = 5;
+    .@id = getequipid(EQI_ACC_L);
+    .@lvl = getequiprandomoption(EQI_ACC_L,0,ROA_VALUE);
+    setarray .@cj[0],0,0,0,0,0,0;
+    if (.@allowed != .@id) {
+        mes "请装备^FF0000" + getitemname(.@allowed) + "^000000";
+        mes "再见";
+        close;
+    }
+    if (.@lvl >= .@max) {
+        mes "您的装备已经是最高等级了";
+        close;
+    }
+    mes "你的装备等级为Lv" + .@lvl +".";
+    if (.@lvl < 5) {
+        mes "升级需要初级boss积分 x " + .@cj[.@lvl+1];
+    }
+    mes "需要升级吗？";
+	next;
+	switch(select("好的","下次再说"))
+	{
+	    case 1:
+	        if (boss_cj < .@cj[.@lvl+1]) {
+                mes "[拜剑山庄傲拜]";
+	            mes "您的积分不足";
+	            close;
+	        }
+            mes "[拜剑山庄傲拜]";
+            mes "*duang duang duang*";
+            progressbar "#00FF00",2;
+            next;
+	        set boss_cj,boss_cj-.@cj[.@lvl+1];
+            setrandomoption(EQI_ACC_L,0,RDMOPT_ACC_LEFT_POWER,.@lvl+1,0);
+            setrandomoption(EQI_ACC_L,1,RDMOPT_VAR_MAXHPAMOUNT,(.@lvl+1)*1000,0);
+            mes "[拜剑山庄傲拜]";
+            mes "幸不辱命.";
+	        close;
+	    case 2:
+	        mes "[拜剑山庄傲拜]";
+	        mes "再见";
+	        close;
+    }
+    end;
+}

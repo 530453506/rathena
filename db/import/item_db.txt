@@ -233,8 +233,9 @@
 39156,cjtx,<初级>恶魔波利转蛋,11,100,,10,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "初级头下"; },{},{}
 39157,zjtx,<中级>恶魔波利转蛋,11,100,,10,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "中级头下"; },{},{}
 39158,gjtx,<高级>恶魔波利转蛋,11,100,,10,,,,,0xFFFFFFFF,7,2,,,,,,{callfunc "高级头下"; },{},{}
-39159,Fire_Acid_Bottle_Infinite,无限炼金套瓶,3,200,,10,,,,,,,,,,,,,{},{},{}
-39160,Poison_Bottle_Infinite,无限毒药瓶,3,200,,10,,,,,,,,,,,,,{},{},{}
+39159,Fire_Acid_Bottle_Infinite,无限炼金证明,3,200,,10,,,,,,,,,,,,,{},{},{}
+39160,Poison_Bottle_Infinite,无限毒药证明,3,200,,10,,,,,,,,,,,,,{},{},{}
+39161,Ninja_Infinite,无限忍者证明,3,200,,10,,,,,,,,,,,,,{},{},{}
 
 //
 39341,fm_cj,初级全能之石,6,20,,10,,,,,,,,,,,,,{ bonus bAllstats,3; bonus bLuk,-3; bonus2 bSubClass,Class_Boss,1; bonus2 bAddClass,Class_Boss,10; bonus2 bMagicAddClass,Class_Boss,10; },{},{}
@@ -749,8 +750,8 @@
 1247,hktdr3,<高级>赫卡忒短刃,5,,,1000,450,,1,4,0x00001000,7,2,2,4,1,1,1,{ bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=50){ bonus3 bAutoSpell,406,10,200; } else if(getrefine()>=35){ bonus3 bAutoSpell,406,10,150; } else if(getrefine()>=20){ bonus3 bAutoSpell,406,10,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,3; } },{},{}
 
 40921,tmsyf1,<初级>忒弥斯金斧,5,,,1000,150,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine(); bonus bDelayrate,-getrefine()/10*5; if(getrefine()>=20 && !getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ bonus4 bAutoSpellOnSkill,490,78,1,500; } },{},{}
-40922,tmsyf2,<中级>忒弥斯金斧,5,,,1000,300,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine(); bonus bDelayrate,-getrefine()/10*5; if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,490,78,1,750; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,490,78,1,500; } } },{},{}
-40923,tmsyf3,<高级>忒弥斯金斧,5,,,1000,450,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine(); bonus bDelayrate,-getrefine()/10*5; if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=50){ bonus4 bAutoSpellOnSkill,490,78,1,1000; } else if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,490,78,1,750; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,490,78,1,500; } } },{},{}
+40922,tmsyf2,<中级>忒弥斯金斧,5,,,1000,300,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine()*2; bonus bDelayrate,-getrefine()/10*5; if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,490,78,1,750; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,490,78,1,500; } } },{},{}
+40923,tmsyf3,<高级>忒弥斯金斧,5,,,1000,450,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine()*3; bonus bDelayrate,-getrefine()/10*5; if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=50){ bonus4 bAutoSpellOnSkill,490,78,1,1000; } else if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,490,78,1,750; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,490,78,1,500; } } },{},{}
 
 40925,hfstszc1,<初级>赫菲斯托斯之锤,5,,,1000,150,,1,4,0x00000100,7,2,34,4,1,1,8,{ bonus2 bSkillAtk,79,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; bonus bDelayrate,-getrefine(); if(getrefine()>=20 && !getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ bonus4 bAutoSpellOnSkill,79,78,1,1000; } },{},{}
 40926,hfstszc2,<中级>赫菲斯托斯之锤,5,,,1000,300,,1,4,0x00000100,7,2,34,4,1,1,8,{ bonus2 bSkillAtk,79,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; bonus bDelayrate,-getrefine(); if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,79,78,2,1000; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,79,78,1,1000; } } },{},{}

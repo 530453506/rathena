@@ -7094,7 +7094,13 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 				md.damage = (int)((int64)7*tstatus->vit*sstatus->int_*sstatus->int_ / (10*(tstatus->vit+sstatus->int_)));
 			else
 				md.damage = 0;
-			if (tsd) md.damage>>=1;
+			if (tsd) {
+			    md.damage>>=1;
+			} else {
+			    if (sd) {
+			        md.damage *= (sd->bonus.element_power +10)/10; //技能增强:强酸火烟
+			    }
+			}
 			break;
 #endif
 		case NJ_ZENYNAGE:

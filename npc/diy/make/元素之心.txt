@@ -1,0 +1,87 @@
+function	script	element_update	{
+    .@max = 5;
+    .@lvl = getequiprandomoption(EQI_HAND_R,1,ROA_VALUE);
+    .@ext = getequiprandomoption(EQI_HAND_R,0,ROA_ID);
+    if (!.@ext) {
+        mes "武器强化后才能附加元素之心！";
+        close;
+    }
+    if (.@lvl >= .@max) {
+        mes "您的装备已经是最高等级了";
+        close;
+    }
+    mes "你的元素之心等级为Lv" + .@lvl +".";
+    mes "要继续吗?";
+    next;
+    if(select("请.") == 1){
+        switch(.@lvl) {
+            case 0: .@value = 50; break;
+            case 1: .@value = 60; break;
+            case 2: .@value = 70; break;
+            case 3: .@value = 80; break;
+            case 4: .@value = 90; break;
+        }
+        .@lvl = .@lvl + 1;
+        mes "[拜剑山庄傲拜]";
+        mes "*duang duang duang*";
+        progressbar "#00FF00",2;
+        next;
+        setrandomoption(EQI_HAND_R,1,RDMOPT_ELEMENT_POWER,.@lvl,0);
+        switch(.@id){
+            case 1245:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,100,.@lvl*3);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                break;
+            case 40901:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_WIZARD_BOLT,250+.@lvl*50,.@lvl*3);
+                break;
+            case 40905:
+                setrandomoption(EQI_HAND_R,3,RDMOPT_ELEMENT_CRUSADER_BOLT,250+.@lvl*50,.@lvl*3);
+                break;
+            case 40913:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_ELEMENT_KNIGHT_BOLT,250+.@lvl*50,.@lvl*3);
+                setrandomoption(EQI_HAND_R,4,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                break;
+            case 40921:
+                //setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ALCHEMIST_BOLT,700+.@lvl*50,.@lvl*3);
+                //setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_POWER_ALCHEMIST,700+.@lvl*10,0);
+                break;
+            case 40925:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_PRIEST_BOLT,250+.@lvl*50,.@lvl*3);
+                break;
+            case 40929:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_VAR_MAXSPAMOUNT,.@lvl*200,0);
+                break;
+            case 40933:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                break;
+            case 40937:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                break;
+            case 40941:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_SAGE_BOLT,250+.@lvl*50,.@lvl*3);
+                break;
+            case 40945:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_ELEMENT_BLACKSMITH_BOLT,250+.@lvl*50,.@lvl*3);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                break;
+            case 40949:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_NINJA_BOLT,250+.@lvl*50,.@lvl*3);
+                break;
+            case 40953:
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                break;
+        }
+        mes "[拜剑山庄傲拜]";
+        mes "幸不辱命.";
+        close;
+    }
+    close;
+    end;
+}

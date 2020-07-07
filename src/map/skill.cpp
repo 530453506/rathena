@@ -16718,9 +16718,7 @@ bool skill_check_condition_castend(struct map_session_data* sd, uint16 skill_id,
                 } else {
                     break;
                 }
-            }
-		    //无限毒药瓶
-            if (require.itemid[i] == 678) {
+            } else if (require.itemid[i] == 678) { //无限毒药瓶
                 index[i] = pc_search_inventory(sd,39160);
                 if (index[i] < 0) {
                     clif_skill_fail( sd, skill_id, USESKILL_FAIL_NEED_ITEM, ( require.itemid[i] << 16 ) | require.amount[i] ); // [%s] required '%d' amount.
@@ -16728,7 +16726,15 @@ bool skill_check_condition_castend(struct map_session_data* sd, uint16 skill_id,
                 } else {
                     break;
                 }
-            }
+            } else if (require.itemid[i] >= 7521 && require.itemid[i] <= 7524) { //无限忍者石
+                index[i] = pc_search_inventory(sd,39161);
+                if (index[i] < 0) {
+                    clif_skill_fail( sd, skill_id, USESKILL_FAIL_NEED_ITEM, ( require.itemid[i] << 16 ) | require.amount[i] ); // [%s] required '%d' amount.
+                    return false;
+                } else {
+                    break;
+                }
+		    }
             if( require.itemid[i] == ITEMID_HOLY_WATER )
 				clif_skill_fail(sd,skill_id,USESKILL_FAIL_HOLYWATER,0); //Holy water is required.
 			else if( require.itemid[i] == ITEMID_RED_GEMSTONE )

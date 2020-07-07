@@ -11224,7 +11224,7 @@ int status_change_start(struct block_list* src, struct block_list* bl,enum sc_ty
 			if (val1 < 1)
 				val1 = 1;
 			break;
-		case SC_DOUBLECAST: {
+		case SC_DOUBLECAST: { //技能增强:双倍投掷
             struct map_session_data *s_sd = BL_CAST(BL_PC, src);
             if (s_sd && !map_getmapflag(src->m, MF_GVG) && !map_getmapflag(src->m, MF_PVP)) {
                 val2 = s_sd->bonus.element_power * 4;
