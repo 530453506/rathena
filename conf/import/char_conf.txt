@@ -5,5 +5,5 @@ pincode_enabled: no
 pincode_force: no
 server_name: mmro
 start_point_pre: prontera,155,101
-//login_ip: 47.102.106.26
-//char_ip: 47.102.106.26
+//login_ip: 47.100.174.37
+//char_ip: 47.100.174.37
