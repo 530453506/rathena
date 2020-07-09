@@ -9,6 +9,7 @@ max_hair_color: 250
 // max_cloth_color 服装颜色编号的最大值
 max_cloth_color: 552
 display_version: no
+display_hallucination: no
 
 //drops
 item_rate_card: 100000

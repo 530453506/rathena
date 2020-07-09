@@ -3,6 +3,20 @@
 // Structure of Database:
 // ID:ID:ID:ID,{ Script }
 
+//皮海龟
+4121:4137:4305,{ bonus2 bAddRace,RC_ALL,20; }
+//冰暴卡仑死灵
+4142:4318:4324,{ bonus2 bMagicAddRace,RC_ALL,20; }
+//蜜蜂蛇
+4132:4330,{ bonus bInt,5; bonus bMatkRate,5; bonus2 bResEff,Eff_Silence,10000; }
+//酋长英雄
+4135:4143,{ bonus bVit,5; bonus bMaxHPrate,5; bonus2 bResEff,Eff_Silence,10000; }
+//法老黑暗
+4148:4168,{ bonus bStr,5; bonus bAtkRate,5; bonus2 bResEff,Eff_Silence,10000; }
+//贝思波小白
+4372:4374,{ bonus bDex,5; bonus bAtkRate,5; bonus2 bResEff,Eff_Silence,10000; }
+
+
 //骑士初级
 40801:40913,{ skill 355,6; }
 40801:40914,{ skill 355,6; }
@@ -160,14 +174,14 @@
 //AB高级
 40803:40931,{ skill 2338,10; }
 //十字军初级
-40905:40813,{ bonus bVit,10; bonus bMaxHp,10000; }
-40905:40814,{ bonus bVit,10; bonus bMaxHp,10000; }
-40905:40815,{ bonus bVit,10; bonus bMaxHp,10000; }
-40906:40813,{ bonus bVit,10; bonus bMaxHp,10000; }
-40907:40813,{ bonus bVit,10; bonus bMaxHp,10000; }
+40905:40813,{ bonus bVit,10; bonus bMaxHP,10000; }
+40905:40814,{ bonus bVit,10; bonus bMaxHP,10000; }
+40905:40815,{ bonus bVit,10; bonus bMaxHP,10000; }
+40906:40813,{ bonus bVit,10; bonus bMaxHP,10000; }
+40907:40813,{ bonus bVit,10; bonus bMaxHP,10000; }
 //十字军中级
-40906:40814,{ bonus bVit,25; bonus bMaxHp,25000; }
-40906:40815,{ bonus bVit,25; bonus bMaxHp,25000; }
-40907:40814,{ bonus bVit,25; bonus bMaxHp,25000; }
+40906:40814,{ bonus bVit,25; bonus bMaxHP,25000; }
+40906:40815,{ bonus bVit,25; bonus bMaxHP,25000; }
+40907:40814,{ bonus bVit,25; bonus bMaxHP,25000; }
 //十字军高级
-40907:40815,{ bonus bVit,40; bonus bMaxHp,40000; }
+40907:40815,{ bonus bVit,40; bonus bMaxHP,40000; }

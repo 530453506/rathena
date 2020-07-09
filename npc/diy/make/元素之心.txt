@@ -46,7 +46,7 @@ function	script	element_update	{
             case 40921:
                 //setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ALCHEMIST_BOLT,700+.@lvl*50,.@lvl*3);
                 //setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
-                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_POWER_ALCHEMIST,700+.@lvl*10,0);
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_POWER_ALCHEMIST,.@lvl*10,0);
                 break;
             case 40925:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_PRIEST_BOLT,250+.@lvl*50,.@lvl*3);
