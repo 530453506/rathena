@@ -244,3 +244,5 @@ RDMOPT_ACC_LEFT_POWER,{bonus bMaxHP,1;}
 RDMOPT_CLASS_IGNORE_MDEF_BOSS,{bonus2 bIgnoreMdefClass,CLASS_BOSS,getrandomoptinfo(ROA_VALUE);}
 //炼金元素之心描述
 RDMOPT_ELEMENT_POWER_ALCHEMIST,{bonus bMaxHP,1;}
+//炼金强化专用
+RDMOPT_VAR_EXT_ALCHEMIST,{bonus bInt,getrandomoptinfo(ROA_VALUE)*getrefine()/10;}

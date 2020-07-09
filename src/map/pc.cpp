@@ -4263,10 +4263,10 @@ void pc_bonus2(struct map_session_data *sd,int type,int type2,int val)
 		break;
     case SP_IGNORE_MDEF_CLASS: // bonus2 bIgnoreMdefClass,c,n;
         PC_BONUS_CHK_CLASS(type2,SP_IGNORE_MDEF_CLASS);
-            if(sd->state.lr_flag != 2)
-                sd->ignore_fixed_mdef_by_class[type2] += val;
-            break;
-        default:
+        if(sd->state.lr_flag != 2)
+            sd->ignore_fixed_mdef_by_class[type2] += val;
+        break;
+    default:
 		if (current_equip_combo_pos > 0) {
 			ShowWarning("pc_bonus2: unknown bonus type %d %d %d in a combo with item #%d\n", type, type2, val, sd->inventory_data[pc_checkequip( sd, current_equip_combo_pos )]->nameid);
 		}

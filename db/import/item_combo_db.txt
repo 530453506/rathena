@@ -16,7 +16,6 @@
 //贝思波小白
 4372:4374,{ bonus bDex,5; bonus bAtkRate,5; bonus2 bResEff,Eff_Silence,10000; }
 
-
 //骑士初级
 40801:40913,{ skill 355,6; }
 40801:40914,{ skill 355,6; }

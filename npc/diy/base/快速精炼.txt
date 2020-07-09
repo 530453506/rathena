@@ -9,7 +9,7 @@ prontera.gat,146,107,5	script	快速精炼大师	63,{
     //    mes "欢迎下次再来.";
     //   	close;
     //}
-    switch(select("+4","+10","+20","变成4")) {
+    switch(select("+4","+10","+20","+35","变成4")) {
         case 1:
             .@max = 4;
             break;
@@ -20,6 +20,9 @@ prontera.gat,146,107,5	script	快速精炼大师	63,{
             .@max = 20;
             break;
         case 4:
+            .@max = 35;
+            break;
+        case 5:
          setarray .@indices[1], EQI_HEAD_TOP, EQI_ARMOR, EQI_HAND_L, EQI_HAND_R, EQI_GARMENT, EQI_SHOES;
             for(.@i = 1; .@i<getarraysize(.@indices); ++.@i) {
         		if(getequipisequiped(.@indices[.@i]) && getequipisenableref(.@indices[.@i])) {

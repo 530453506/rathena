@@ -6842,6 +6842,9 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 
 			ad.damage = ad.damage * (1000 + mdef) / (1000 + mdef * 10) - mdef2;
 #else
+			if (mdef < CHAR_MIN) {
+			    mdef = CHAR_MIN;
+			}
 			if(battle_config.magic_defense_type)
 				ad.damage = ad.damage - mdef*battle_config.magic_defense_type - mdef2;
 			else
@@ -7098,7 +7101,7 @@ struct Damage battle_calc_misc_attack(struct block_list *src,struct block_list *
 			    md.damage>>=1;
 			} else {
 			    if (sd) {
-			        md.damage *= (sd->bonus.element_power +10)/10; //技能增强:强酸火烟
+			        md.damage += md.damage/100*sd->bonus.element_power*7; //技能增强:强酸火烟
 			    }
 			}
 			break;

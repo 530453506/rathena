@@ -19,38 +19,39 @@
 2630,Brysinggamen,Å®Éñ¾±Á´,3,,,,,,,,,,,,,,,,{},{},{}
 
 //ÎäÆ÷
-4121,Phreeoni_Card,Æ¤Àï¶÷¿¨Æ¬,6,,,10,,,,,,,,2,,,,,{ bonus bHit,100; bonus2 bAddClass,Class_All,30; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
-4137,Drake_Card,º£µÁÖ®Íõ¿¨Æ¬,6,,,10,,,,,,,,2,,,,,{ bonus bNoSizeFix,0; bonus2 bAddClass,Class_All,30; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+4121,Phreeoni_Card,Æ¤Àï¶÷¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus bHit,100; bonus2 bAddClass,Class_All,30; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+4137,Drake_Card,º£µÁÖ®Íõ¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus bNoSizeFix,0; bonus2 bAddClass,Class_All,30; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
 4305,Turtle_General_Card,ÎÚ¹ê½«¾ü¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus3 bAutoSpell,"SM_MAGNUM",10,50; bonus2 bAddClass,Class_All,30; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
-4318,Knight_Windstorm_Card,±ù±©ÆïÊ¿¿¨Æ¬,6,,,10,,,,,,,,2,,,,,{ bonus bInt,5; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
-4324,Garm_Card,¿¨ÂØ¿¨Æ¬,6,,,10,,,,,,,,2,,,,,{ bonus bInt,5; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
-4142,Doppelganger_Card,ËÀÁé¿¨Æ¬,6,,,10,,,,,,,,2,,,,,{ bonus bInt,5; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+4318,Knight_Windstorm_Card,±ù±©ÆïÊ¿¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus bInt,5; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+4324,Garm_Card,¿¨ÂØ¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus bInt,5; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+4142,Doppelganger_Card,ËÀÁé¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus bInt,5; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
 4147,Baphomet_Card,°Í·çÌØ¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus bSplashRange,1; bonus2 bAddClass,Class_All,30; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
-4134,Dracula_Card,µÂ¹ÅÀ­²®¾ô¿¨Æ¬,6,,,10,,,,,,,,2,,,,,{ bonus bMaxHPrate,3; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
-4425,Atroce_Card,°¢ÌØÂÞË¹¿¨Æ¬,6,,,10,,,,,,,,2,,,,,{ bonus bInt,7; },{},{}
+4134,Dracula_Card,µÂ¹ÅÀ­²®¾ô¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus bMaxHPrate,3; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+4425,Atroce_Card,°¢ÌØÂÞË¹¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus bInt,7; },{},{}
 
-4386,Detale_Card,µÏËþÀÕÌ©ÎîÀÕË¹¿¨Æ¬,6,,,10,,,,,,,,16,,,,,{ bonus bMaxHP,3000; bonus2 bResEff,Eff_Freeze,10000; bonus5 bAutoSpellWhenHit,"SA_LANDPROTECTOR",1,70,BF_MAGIC,0; },{},{}
+4342,Rsx_0806_Card,RSX-0806¿¨Æ¬,6,20,,10,,,,,,,,16,,,,,{ bonus bVit,3; bonus bMaxHP,3000; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
+4386,Detale_Card,µÏËþÀÕÌ©ÎîÀÕË¹¿¨Æ¬,6,20,,10,,,,,,,,16,,,,,{ bonus bMaxHP,3000; bonus2 bResEff,Eff_Freeze,10000; bonus5 bAutoSpellWhenHit,"SA_LANDPROTECTOR",1,70,BF_MAGIC,0; },{},{}
 
 //Í·
-4132,Mistress_Card,·äºó¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bInt,8; bonus bNoGemStone,0; },{},{}
-4330,Dark_Snake_Lord_Card,Ä«Éß¾ý¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bInt,4; bonus bMaxHP,1000; },{},{}
-4143,Orc_Hero_Card,ÊÞÈËÓ¢ÐÛ¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bVit,8; },{},{}
-4135,Orc_Load_Card,ÊÞÈËÇõ³¤¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bVit,4; bonus bMaxHP,1000; },{},{}
-4148,Pharaoh_Card,·¨ÀÏÍõ¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bStr,8; },{},{}
-4168,Dark_Lord_Card,ºÚ°µÖ®Íõ¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bStr,4; bonus bMaxHP,1000; },{},{}
-4374,Apocalips_H_Card,±´Ë¼²¨¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bDex,8; },{},{}
-4372,Bacsojin_Card,°×ËØÕê¿¨Æ¬,6,,,10,,,,,,,,769,,,,,{ bonus bDex,4; bonus bMaxHP,1000; },{},{}
+4132,Mistress_Card,·äºó¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bInt,8; bonus bNoGemStone,0; },{},{}
+4330,Dark_Snake_Lord_Card,Ä«Éß¾ý¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bInt,4; bonus bMaxHP,1000; },{},{}
+4143,Orc_Hero_Card,ÊÞÈËÓ¢ÐÛ¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bVit,8; },{},{}
+4135,Orc_Load_Card,ÊÞÈËÇõ³¤¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bVit,4; bonus bMaxHP,1000; },{},{}
+4148,Pharaoh_Card,·¨ÀÏÍõ¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bStr,8; },{},{}
+4168,Dark_Lord_Card,ºÚ°µÖ®Íõ¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bStr,4; bonus bMaxHP,1000; },{},{}
+4374,Apocalips_H_Card,±´Ë¼²¨¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bDex,8; },{},{}
+4372,Bacsojin_Card,°×ËØÕê¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bDex,4; bonus bMaxHP,1000; },{},{}
 
 //Ð¬×Ó
 4131,Moonlight_Flower_Card,ÔÂÒ¹Ã¨¿¨Æ¬,6,20,,10,,,,,,,,64,,,,,{ bonus bSpeedAddRate,20; },{},{}
-4123,Eddga_Card,»¢Íõ¿¨Æ¬,6,,,10,,,,,,,,64,,,,,{ bonus bMaxHPrate,15; bonus bNoWalkDelay; },{},{}
-4376,Lady_Tanee_Card,àªÄÝÐ¡½ã¿¨Æ¬,6,,,10,,,,,,,,64,,,,,{ bonus bMaxHPrate,-20; bonus bMaxSPrate,25; },{},{}
-4236,Amon_Ra_Card,¹Å°£¼°Íõ¿¨Æ¬,6,,,10,,,,,,,,64,,,,,{ bonus bAllStats,5; skill 73,10; },{},{}
+4123,Eddga_Card,»¢Íõ¿¨Æ¬,6,20,,10,,,,,,,,64,,,,,{ bonus bMaxHPrate,15; bonus bNoWalkDelay; },{},{}
+4376,Lady_Tanee_Card,àªÄÝÐ¡½ã¿¨Æ¬,6,20,,10,,,,,,,,64,,,,,{ bonus bMaxHPrate,-20; bonus bMaxSPrate,25; },{},{}
+4236,Amon_Ra_Card,¹Å°£¼°Íõ¿¨Æ¬,6,20,,10,,,,,,,,64,,,,,{ bonus bAllStats,5; skill 73,10; },{},{}
 
 //ÊÎÆ·
-4128,Golden_Bug_Card,»Æ½ð³æ¿¨Æ¬,6,,,10,,,,,,,,136,,,,,{ bonus bInt,8; bonus bDex,8; },{},{}
-4144,Osiris_Card,¶íÈûÀïË¹¿¨Æ¬,6,,,10,,,,,,,,136,,,,,{ bonus bStr,8; bonus bDex,8; },{},{}
-4352,B_Ygnizem_Card,°µ¡ñ½£Ê¿ ÈüÄáÑÇ¿¨Æ¬,,20,,10,,,,,,,,136,,,,,{ bonus bVit,8; bonus bDex,8; },{},{}
+4128,Golden_Bug_Card,»Æ½ð³æ¿¨Æ¬,6,20,,10,,,,,,,,136,,,,,{ bonus bInt,8; bonus bDex,8; },{},{}
+4144,Osiris_Card,¶íÈûÀïË¹¿¨Æ¬,6,20,,10,,,,,,,,136,,,,,{ bonus bStr,8; bonus bDex,8; },{},{}
+4352,B_Ygnizem_Card,°µ¡ñ½£Ê¿ ÈüÄáÑÇ¿¨Æ¬,6,20,,10,,,,,,,,136,,,,,{ bonus bVit,8; bonus bDex,8; },{},{}
 
 5074,Ear_Of_Angel's_Wing,ÌìÊ¹³á°ò¶úÊÎ,4,0,,100,,0,,1,0xFFFFFFFF,7,2,512,,0,0,158,{bonus bAllStats,3;},{},{}
 12622,Boarding_Halter,×øÆïÓÃçÖÉþ,11,0,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_ALL_RIDING,-1,1; },{},{}
@@ -745,9 +746,9 @@
 1246,hktdr2,<ÖÐ¼¶>ºÕ¿¨ß¯¶ÌÈÐ,5,,,1000,300,,1,4,0x00001000,7,2,2,4,1,1,1,{ bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=35){ bonus3 bAutoSpell,406,10,150; } else if(getrefine()>=20){ bonus3 bAutoSpell,406,10,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,2; } },{},{}
 1247,hktdr3,<¸ß¼¶>ºÕ¿¨ß¯¶ÌÈÐ,5,,,1000,450,,1,4,0x00001000,7,2,2,4,1,1,1,{ bonus bCritAtkRate,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; if(getrefine()>=50){ bonus3 bAutoSpell,406,10,200; } else if(getrefine()>=35){ bonus3 bAutoSpell,406,10,150; } else if(getrefine()>=20){ bonus3 bAutoSpell,406,10,100; } if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)) { bonus bAtkRange,3; } },{},{}
 
-40921,tmsyf1,<³õ¼¶>ß¯ÃÖË¹½ð¸«,5,,,1000,150,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine(); bonus bDelayrate,-getrefine()/10*5; if(getrefine()>=20 && !getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ bonus4 bAutoSpellOnSkill,490,78,1,500; } },{},{}
-40922,tmsyf2,<ÖÐ¼¶>ß¯ÃÖË¹½ð¸«,5,,,1000,300,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine()*2; bonus bDelayrate,-getrefine()/10*5; if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,490,78,1,750; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,490,78,1,500; } } },{},{}
-40923,tmsyf3,<¸ß¼¶>ß¯ÃÖË¹½ð¸«,5,,,1000,450,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine()*3; bonus bDelayrate,-getrefine()/10*5; if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=50){ bonus4 bAutoSpellOnSkill,490,78,1,1000; } else if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,490,78,1,750; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,490,78,1,500; } } },{},{}
+40921,tmsyf1,<³õ¼¶>ß¯ÃÖË¹½ð¸«,5,,,1000,150,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine()/10*5; bonus bDelayrate,-getrefine()/10*5; if(getrefine()>=20 && !getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ bonus4 bAutoSpellOnSkill,490,78,1,500; } },{},{}
+40922,tmsyf2,<ÖÐ¼¶>ß¯ÃÖË¹½ð¸«,5,,,1000,300,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine()/10*5; bonus bDelayrate,-getrefine()/10*5; if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,490,78,1,750; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,490,78,1,500; } } },{},{}
+40923,tmsyf3,<¸ß¼¶>ß¯ÃÖË¹½ð¸«,5,,,1000,450,,1,4,0x00040000,7,2,34,4,1,1,7,{ bonus2 bSkillAtk,490,getrefine(); bonus bInt,getrefine()/10*5; bonus bDelayrate,-getrefine()/10*5; if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=50){ bonus4 bAutoSpellOnSkill,490,78,1,1000; } else if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,490,78,1,750; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,490,78,1,500; } } },{},{}
 
 40925,hfstszc1,<³õ¼¶>ºÕ·ÆË¹ÍÐË¹Ö®´¸,5,,,1000,150,,1,4,0x00000100,7,2,34,4,1,1,8,{ bonus2 bSkillAtk,79,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; bonus bDelayrate,-getrefine(); if(getrefine()>=20 && !getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ bonus4 bAutoSpellOnSkill,79,78,1,1000; } },{},{}
 40926,hfstszc2,<ÖÐ¼¶>ºÕ·ÆË¹ÍÐË¹Ö®´¸,5,,,1000,300,,1,4,0x00000100,7,2,34,4,1,1,8,{ bonus2 bSkillAtk,79,getrefine(); bonus bAtkRate,getrefine()/10*5; bonus bMatkRate,getrefine()/10*5; bonus bDelayrate,-getrefine(); if(!getmapflag(strcharinfo(3),mf_pvp) && !getmapflag(strcharinfo(3),mf_gvg)){ if(getrefine()>=35){ bonus4 bAutoSpellOnSkill,79,78,2,1000; } else if(getrefine()>=20){ bonus4 bAutoSpellOnSkill,79,78,1,1000; } } },{},{}
@@ -2947,7 +2948,7 @@
 4339,Mineral_Card,¿óÊ¯Ä§¿¨Æ¬,6,20,,10,,,,,,,,16,,,,,{ bonus bBaseAtk,-25; bonus bDef,3; },{},{}
 4340,Teddy_Bear_Card,ÍæÅ¼ÐÜ¿¨Æ¬,6,20,,10,,,,,,,,32,,,,,{ bonus2 bSubRace,RC_Undead,30; },{},{}
 4341,Metaling_Card,½ðÊô²¨Àû¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus3 bAutoSpell,"RG_STRIPWEAPON",1,50; },{},{}
-4342,Rsx_0806_Card,RSX-0806¿¨Æ¬,6,20,,10,,,,,,,,16,,,,,{ bonus bVit,3; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
+//4342,Rsx_0806_Card,RSX-0806¿¨Æ¬,6,20,,10,,,,,,,,16,,,,,{ bonus bVit,3; bonus bUnbreakableArmor; bonus bNoKnockback; },{},{}
 4343,Mole_Card,Ä¦¶û¿¨Æ¬,6,20,,10,,,,,,,,769,,,,,{ bonus bLuk,2; },{},{}
 4344,Anopheles_Card,Å±ÎÃ¿¨Æ¬,6,20,,10,,,,,,,,136,,,,,{ bonus3 bAddMonsterDropItem,12058,RC_Insect,50; },{},{}
 4345,Hill_Wind_Card,Ï£¶ûÊ¿±ø¿¨Æ¬,6,20,,10,,,,,,,,2,,,,,{ bonus2 bSkillAtk,"MG_THUNDERSTORM",5; bonus2 bSkillAtk,"WZ_JUPITEL",5; bonus2 bSkillAtk,"WZ_VERMILION",5; },{},{ heal 0,-50; }

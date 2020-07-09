@@ -1,0 +1,98 @@
+-	shop	YSHOP1	-1,512:-1
+prontera,134,113,5	script	影装制作	716,{
+	function	YDo;
+	mes "[影装制作]";
+	mes "^FF0000选择影装的类型^000000";
+	@s=(select("黑龙"));
+	callshop "YSHOP"+@s,1;
+	npcshopattach "YSHOP"+@s;
+	end;
+
+OnBuyItem:
+	.@j=0;
+	while (.@j < getarraysize(getd(".Shop"+@s))) {
+		if(getd(".Shop"+@s+"["+.@j+"]") == @bought_nameid[.@i]) 
+		{
+			YDo(@bought_nameid);
+		}
+		.@j++; 
+	}
+	end;
+
+	function	YDo    {
+		set @e,0;
+		deletearray .@shop[0],128;
+		switch(getarg(0)) 
+		{
+			Default: 
+				mes "[影装制作]";
+				mes "ID错误,请报告给GM!!";
+				mes "ID ["+@bought_nameid+"]";
+				close;
+			case 40651: setarray .@shop[0],100,512,1; break;
+			case 40652: setarray .@shop[0],100,512,1; break;
+			case 40653: setarray .@shop[0],100,512,1; break;
+			case 40654: setarray .@shop[0],100,512,1; break;
+			case 40655: setarray .@shop[0],100,512,1; break;
+			case 40656: setarray .@shop[0],100,512,1; break;
+			case 40657: setarray .@shop[0],100,512,1; break;
+		}
+		mes "[影装制作]";
+	    mes "- 制作 ^FF0000"+getitemname(@bought_nameid)+"^000000";
+	    mes "- 请准备好下面材料！";
+		for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
+		    if (.@shop[@e] > 0) {
+		        mes " ^0066CC" + getitemname(.@shop[@e]) + "^000000 x " + ((countitem(.@shop[@e])>=.@shop[@e+1])? "":"") + "" + .@shop[@e+1] + " [^009900" + countitem(.@shop[@e]) + "^000000/^FF6600" + .@shop[@e+1] + "^000000]"+( countitem(.@shop[@e])>=.@shop[@e+1]?" ( ^D2691E已完成^000000 )":" ( ^999999未完成^000000 )");
+		    }
+		}
+	    mes " ^FF1493需要制作费用^000000 " + ((Zeny>=.@shop[0])? "^FF0000":"") + "" + .@shop[0] + "^000000 "+((Zeny>=.@shop[0])? "( ^D2691E已完成^000000 )":"( ^999999金钱不足^000000 )");
+		next;
+		switch(select("^0000FF制作^000000:结束对话")) {
+		case 1:	
+			if(Zeny < .@shop[0]) {
+				mes "[影装制作]";
+				mes "您的Zeny不够";
+				close;
+			}
+			for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
+				if(.@shop[@e] > 0) {
+				    if( countitem(.@shop[@e]) < .@shop[@e+1]) {
+                	    mes "[影装制作]";
+                		mes "材料不足";
+                		close;
+                	}
+				}
+			}
+			zeny-=.@shop[0];
+			for(set @e,1;@e<=getarraysize(.@shop);set @e,@e+2) {
+			    if (.@shop[@e] >0) {
+			        delitem .@shop[@e],.@shop[@e+1];
+			    }
+			}
+			mes "[影装制作]";
+			mes "制作成功";
+			getitem getarg(0),1;
+			close;
+		case 3:
+			close;
+		}
+	}
+	
+OnInit:
+	waitingroom "[☆影装制作☆]",0;
+	.ShopCount= 1;
+	setarray .Shop1[0],40651,40652,40653,40654,40655,40656,40657;
+	.@i=1;
+	while (.@i <= .ShopCount)
+	{
+		.@j=0;
+		while (.@j < getarraysize(getd(".Shop"+.@i))) 
+		{
+			npcshopdelitem "YSHOP"+.@i,512;
+			npcshopadditem "YSHOP"+.@i, getd(".Shop"+.@i+"["+.@j+"]"), 1;
+			.@j++; 
+		}
+		.@i++; 
+	}
+	end;
+}

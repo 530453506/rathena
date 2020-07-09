@@ -4,7 +4,7 @@ prontera,156,125,4	script	拜剑山庄傲拜	1_M_WIZARD,{
 	mes "我能让你更强.";
 	mes "感兴趣吗?";
 	next;
-	switch(select("武器强化","元素之心","饰品升级")){
+	switch(select("武器强化","元素之心","饰品升级","BOSS卡")){
 	    case 1:
 	        .@id = getequipid(EQI_HAND_R);
     	    if(.@id == -1) {
@@ -63,11 +63,14 @@ prontera,156,125,4	script	拜剑山庄傲拜	1_M_WIZARD,{
     		    mes "你的兵器不行.";
     		    close;
     	    }
-	        callfunc "element_update";
+	        callfunc("element_update",.@id);
 	        break;
 	    case 3:
             callfunc "acc_update";
             break;
+        case 4:
+            callshop "BOSS卡#01",3;
+            close;
     }
 
 OnInit:
@@ -84,7 +87,11 @@ function	script	weapon_update	{
         mes "*duang duang duang*";
         progressbar "#00FF00",2;
         next;
-        setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_EXT,getarg(0),0);
+        if (getequipid(EQI_HAND_R) == 40921 || getequipid(EQI_HAND_R) == 40922 || getequipid(EQI_HAND_R) == 40923) {
+            setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_EXT_ALCHEMIST,getarg(0),0);
+        } else {
+            setrandomoption(EQI_HAND_R,0,RDMOPT_VAR_EXT,getarg(0),0);
+        }
         mes "[拜剑山庄傲拜]";
         mes "幸不辱命.";
         close;

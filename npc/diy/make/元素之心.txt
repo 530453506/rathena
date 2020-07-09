@@ -1,5 +1,5 @@
 function	script	element_update	{
-    .@max = 5;
+    .@max = 2;
     .@lvl = getequiprandomoption(EQI_HAND_R,1,ROA_VALUE);
     .@ext = getequiprandomoption(EQI_HAND_R,0,ROA_ID);
     if (!.@ext) {
@@ -15,11 +15,11 @@ function	script	element_update	{
     next;
     if(select("Çë.") == 1){
         switch(.@lvl) {
-            case 0: .@value = 50; break;
-            case 1: .@value = 60; break;
-            case 2: .@value = 70; break;
-            case 3: .@value = 80; break;
-            case 4: .@value = 90; break;
+            case 0: .@value = 60; break;
+            case 1: .@value = 70; break;
+            case 2: .@value = 80; break;
+            case 3: .@value = 90; break;
+            case 4: .@value = 100; break;
         }
         .@lvl = .@lvl + 1;
         mes "[°Ý½£É½×¯°Á°Ý]";
@@ -27,53 +27,79 @@ function	script	element_update	{
         progressbar "#00FF00",2;
         next;
         setrandomoption(EQI_HAND_R,1,RDMOPT_ELEMENT_POWER,.@lvl,0);
-        switch(.@id){
+        switch(getarg(0)){
             case 1245:
+            case 1246:
+            case 1247:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,100,.@lvl*3);
-                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS/2+10,.@value,0);
                 break;
             case 40901:
+            case 40902:
+            case 40903:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_WIZARD_BOLT,250+.@lvl*50,.@lvl*3);
                 break;
             case 40905:
+            case 40906:
+            case 40907:
                 setrandomoption(EQI_HAND_R,3,RDMOPT_ELEMENT_CRUSADER_BOLT,250+.@lvl*50,.@lvl*3);
                 break;
             case 40913:
+            case 40914:
+            case 40915:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
                 setrandomoption(EQI_HAND_R,3,RDMOPT_ELEMENT_KNIGHT_BOLT,250+.@lvl*50,.@lvl*3);
                 setrandomoption(EQI_HAND_R,4,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
                 break;
             case 40921:
+            case 40922:
+            case 40923:
                 //setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ALCHEMIST_BOLT,700+.@lvl*50,.@lvl*3);
                 //setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
-                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_POWER_ALCHEMIST,.@lvl*10,0);
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_POWER_ALCHEMIST,.@lvl*7,0);
                 break;
             case 40925:
+            case 40926:
+            case 40927:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_PRIEST_BOLT,250+.@lvl*50,.@lvl*3);
                 break;
             case 40929:
+            case 40930:
+            case 40931:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_VAR_MAXSPAMOUNT,.@lvl*200,0);
                 break;
             case 40933:
+            case 40934:
+            case 40935:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
                 setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
                 break;
             case 40937:
+            case 40938:
+            case 40939:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
                 setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
                 break;
             case 40941:
+            case 40942:
+            case 40943:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_SAGE_BOLT,250+.@lvl*50,.@lvl*3);
                 break;
             case 40945:
+            case 40946:
+            case 40947:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
                 setrandomoption(EQI_HAND_R,3,RDMOPT_ELEMENT_BLACKSMITH_BOLT,250+.@lvl*50,.@lvl*3);
-                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
+                setrandomoption(EQI_HAND_R,4,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
                 break;
             case 40949:
+            case 40950:
+            case 40951:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_NINJA_BOLT,250+.@lvl*50,.@lvl*3);
                 break;
             case 40953:
+            case 40954:
+            case 40955:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,150,.@lvl*3);
                 setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
                 break;
