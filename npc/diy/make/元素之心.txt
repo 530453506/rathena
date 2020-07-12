@@ -32,7 +32,7 @@ function	script	element_update	{
             case 1246:
             case 1247:
                 setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ATTACK,100,.@lvl*3);
-                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS/2+10,.@value,0);
+                setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value/2+10,0);
                 break;
             case 40901:
             case 40902:
@@ -42,7 +42,7 @@ function	script	element_update	{
             case 40905:
             case 40906:
             case 40907:
-                setrandomoption(EQI_HAND_R,3,RDMOPT_ELEMENT_CRUSADER_BOLT,250+.@lvl*50,.@lvl*3);
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_CRUSADER_BOLT,250+.@lvl*50,.@lvl*3);
                 break;
             case 40913:
             case 40914:
@@ -56,7 +56,7 @@ function	script	element_update	{
             case 40923:
                 //setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_ALCHEMIST_BOLT,700+.@lvl*50,.@lvl*3);
                 //setrandomoption(EQI_HAND_R,3,RDMOPT_CLASS_IGNORE_MDEF_BOSS,.@value,0);
-                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_POWER_ALCHEMIST,.@lvl*7,0);
+                setrandomoption(EQI_HAND_R,2,RDMOPT_ELEMENT_POWER_ALCHEMIST,.@lvl*10,0);
                 break;
             case 40925:
             case 40926:

@@ -4112,7 +4112,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			break;
 		case GS_TRACKING:
 			skillratio += 100 * (skill_lv + 1);
-			skillratio += 100 * (skill_lv + 1) + sstatus->dex * 5; //技能增强:百步穿杨
+			skillratio += 100 * (skill_lv + 1) + sstatus->dex * 2; //技能增强:百步穿杨
 			break;
 		case GS_PIERCINGSHOT:
 #ifdef RENEWAL
