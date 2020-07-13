@@ -1,5 +1,5 @@
 function	script	renwushouce	{
-mes "当前在线人数:  [ ^FF0000"+getusers(1)+"^000000 ]";
+mes "当前在线人数: [ ^FF0000"+getusers(1)+"^000000 ]";
 mes "在线积分:     [ ^FF0000"+paodian+"^000000 ]";
 mes "商城积分:     [ ^FF0000"+#CASHPOINTS+"^000000 ]";
 mes "初级BOSS积分: [ ^FF0000"+boss_cj+"^000000 ]";

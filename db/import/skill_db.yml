@@ -810,7 +810,7 @@ Body:
       Splash: true
     Flags:
       AllowOnMado: true
-    Range: -5
+    Range: 1
     Hit: Multi_Hit
     HitCount: 2
     SplashArea:

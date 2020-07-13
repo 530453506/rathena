@@ -51,6 +51,8 @@ Body:
     Sprite: OSIRIS
   - Mob: OSIRIS_4
     Sprite: OSIRIS
+  - Mob: OSIRIS_ZJ
+    Sprite: OSIRIS
   - Mob: BAPHOMET_1
     Sprite: BAPHOMET
   - Mob: BAPHOMET_2
@@ -58,6 +60,8 @@ Body:
   - Mob: BAPHOMET_3
     Sprite: BAPHOMET
   - Mob: BAPHOMET_4
+    Sprite: BAPHOMET
+  - Mob: BAPHOMET_ZJ
     Sprite: BAPHOMET
   - Mob: DOPPELGANGER_1
     Sprite: DOPPELGANGER
@@ -67,6 +71,8 @@ Body:
     Sprite: DOPPELGANGER
   - Mob: DOPPELGANGER_4
     Sprite: DOPPELGANGER
+  - Mob: DOPPELGANGER_ZJ
+    Sprite: DOPPELGANGER
   - Mob: MISTRESS_1
     Sprite: MISTRESS
   - Mob: MISTRESS_2
@@ -74,6 +80,8 @@ Body:
   - Mob: MISTRESS_3
     Sprite: MISTRESS
   - Mob: MISTRESS_4
+    Sprite: MISTRESS
+  - Mob: MISTRESS_ZJ
     Sprite: MISTRESS
   - Mob: GOLDEN_BUG_1
     Sprite: GOLDEN_BUG
@@ -83,6 +91,8 @@ Body:
     Sprite: GOLDEN_BUG
   - Mob: GOLDEN_BUG_4
     Sprite: GOLDEN_BUG
+  - Mob: GOLDEN_BUG_ZJ
+    Sprite: GOLDEN_BUG
   - Mob: DRAKE_1
     Sprite: DRAKE
   - Mob: DRAKE_2
@@ -90,6 +100,8 @@ Body:
   - Mob: DRAKE_3
     Sprite: DRAKE
   - Mob: DRAKE_4
+    Sprite: DRAKE
+  - Mob: DRAKE_ZJ
     Sprite: DRAKE
   - Mob: EDDGA_1
     Sprite: EDDGA
@@ -99,6 +111,8 @@ Body:
     Sprite: EDDGA
   - Mob: EDDGA_4
     Sprite: EDDGA
+  - Mob: EDDGA_ZJ
+    Sprite: EDDGA
   - Mob: MAYA_1
     Sprite: MAYA
   - Mob: MAYA_2
@@ -106,6 +120,8 @@ Body:
   - Mob: MAYA_3
     Sprite: MAYA
   - Mob: MAYA_4
+    Sprite: MAYA
+  - Mob: MAYA_ZJ
     Sprite: MAYA
   - Mob: MOONLIGHT_1
     Sprite: MOONLIGHT
@@ -115,6 +131,8 @@ Body:
     Sprite: MOONLIGHT
   - Mob: MOONLIGHT_4
     Sprite: MOONLIGHT
+  - Mob: MOONLIGHT_ZJ
+    Sprite: MOONLIGHT
   - Mob: PHARAOH_1
     Sprite: PHARAOH
   - Mob: PHARAOH_2
@@ -122,6 +140,8 @@ Body:
   - Mob: PHARAOH_3
     Sprite: PHARAOH
   - Mob: PHARAOH_4
+    Sprite: PHARAOH
+  - Mob: PHARAOH_ZJ
     Sprite: PHARAOH
   - Mob: PHREEONI_1
     Sprite: PHREEONI
@@ -131,6 +151,8 @@ Body:
     Sprite: PHREEONI
   - Mob: PHREEONI_4
     Sprite: PHREEONI
+  - Mob: PHREEONI_ZJ
+    Sprite: PHREEONI
   - Mob: ORC_LORD_1
     Sprite: ORC_LORD
   - Mob: ORC_LORD_2
@@ -138,6 +160,8 @@ Body:
   - Mob: ORC_LORD_3
     Sprite: ORC_LORD
   - Mob: ORC_LORD_4
+    Sprite: ORC_LORD
+  - Mob: ORC_LORD_ZJ
     Sprite: ORC_LORD
   - Mob: KNIGHT_OF_WINDSTORM_1
     Sprite: KNIGHT_OF_WINDSTORM
@@ -147,6 +171,8 @@ Body:
     Sprite: KNIGHT_OF_WINDSTORM
   - Mob: KNIGHT_OF_WINDSTORM_4
     Sprite: KNIGHT_OF_WINDSTORM
+  - Mob: KNIGHT_OF_WINDSTORM_ZJ
+    Sprite: KNIGHT_OF_WINDSTORM
   - Mob: GARM_1
     Sprite: GARM
   - Mob: GARM_2
@@ -154,6 +180,8 @@ Body:
   - Mob: GARM_3
     Sprite: GARM
   - Mob: GARM_4
+    Sprite: GARM
+  - Mob: GARM_ZJ
     Sprite: GARM
   - Mob: DARK_LORD_1
     Sprite: DARK_LORD
@@ -163,6 +191,8 @@ Body:
     Sprite: DARK_LORD
   - Mob: DARK_LORD_4
     Sprite: DARK_LORD
+  - Mob: DARK_LORD_ZJ
+    Sprite: DARK_LORD
   - Mob: TURTLE_GENERAL_1
     Sprite: TURTLE_GENERAL
   - Mob: TURTLE_GENERAL_2
@@ -170,6 +200,8 @@ Body:
   - Mob: TURTLE_GENERAL_3
     Sprite: TURTLE_GENERAL
   - Mob: TURTLE_GENERAL_4
+    Sprite: TURTLE_GENERAL
+  - Mob: TURTLE_GENERAL_ZJ
     Sprite: TURTLE_GENERAL
   - Mob: LORD_OF_DEATH_1
     Sprite: LORD_OF_DEATH
@@ -179,6 +211,8 @@ Body:
     Sprite: LORD_OF_DEATH
   - Mob: LORD_OF_DEATH_4
     Sprite: LORD_OF_DEATH
+  - Mob: LORD_OF_DEATH_ZJ
+    Sprite: LORD_OF_DEATH
   - Mob: DRACULA_1
     Sprite: DRACULA
   - Mob: DRACULA_2
@@ -186,6 +220,8 @@ Body:
   - Mob: DRACULA_3
     Sprite: DRACULA
   - Mob: DRACULA_4
+    Sprite: DRACULA
+  - Mob: DRACULA_ZJ
     Sprite: DRACULA
   - Mob: DARK_SNAKE_LORD_1
     Sprite: DARK_SNAKE_LORD
@@ -195,14 +231,8 @@ Body:
     Sprite: DARK_SNAKE_LORD
   - Mob: DARK_SNAKE_LORD_4
     Sprite: DARK_SNAKE_LORD
-  - Mob: INCANTATION_SAMURAI_1
-    Sprite: INCANTATION_SAMURAI
-  - Mob: INCANTATION_SAMURAI_2
-    Sprite: INCANTATION_SAMURAI
-  - Mob: INCANTATION_SAMURAI_3
-    Sprite: INCANTATION_SAMURAI
-  - Mob: INCANTATION_SAMURAI_4
-    Sprite: INCANTATION_SAMURAI
+  - Mob: DARK_SNAKE_LORD_ZJ
+    Sprite: DARK_SNAKE_LORD
   - Mob: AMON_RA_1
     Sprite: AMON_RA
   - Mob: AMON_RA_2
@@ -210,6 +240,8 @@ Body:
   - Mob: AMON_RA_3
     Sprite: AMON_RA
   - Mob: AMON_RA_4
+    Sprite: AMON_RA
+  - Mob: AMON_RA_ZJ
     Sprite: AMON_RA
   - Mob: RSX_0806_1
     Sprite: RSX_0806
@@ -219,6 +251,8 @@ Body:
     Sprite: RSX_0806
   - Mob: RSX_0806_4
     Sprite: RSX_0806
+  - Mob: RSX_0806_ZJ
+    Sprite: RSX_0806
   - Mob: LADY_TANEE_1
     Sprite: LADY_TANEE
   - Mob: LADY_TANEE_2
@@ -226,6 +260,8 @@ Body:
   - Mob: LADY_TANEE_3
     Sprite: LADY_TANEE
   - Mob: LADY_TANEE_4
+    Sprite: LADY_TANEE
+  - Mob: LADY_TANEE_ZJ
     Sprite: LADY_TANEE
   - Mob: DETALE_1
     Sprite: DETALE
@@ -235,6 +271,8 @@ Body:
     Sprite: DETALE
   - Mob: DETALE_4
     Sprite: DETALE
+  - Mob: DETALE_ZJ
+    Sprite: DETALE
   - Mob: ORK_HERO_1
     Sprite: ORK_HERO
   - Mob: ORK_HERO_2
@@ -242,6 +280,8 @@ Body:
   - Mob: ORK_HERO_3
     Sprite: ORK_HERO
   - Mob: ORK_HERO_4
+    Sprite: ORK_HERO
+  - Mob: ORK_HERO_ZJ
     Sprite: ORK_HERO
   - Mob: APOCALIPS_H_1
     Sprite: APOCALIPS_H
@@ -251,6 +291,8 @@ Body:
     Sprite: APOCALIPS_H
   - Mob: APOCALIPS_H_4
     Sprite: APOCALIPS_H
+  - Mob: APOCALIPS_H_ZJ
+    Sprite: APOCALIPS_H
   - Mob: BACSOJIN_1
     Sprite: BACSOJIN
   - Mob: BACSOJIN_2
@@ -258,6 +300,8 @@ Body:
   - Mob: BACSOJIN_3
     Sprite: BACSOJIN
   - Mob: BACSOJIN_4
+    Sprite: BACSOJIN
+  - Mob: BACSOJIN_ZJ
     Sprite: BACSOJIN
   - Mob: ATROCE_1
     Sprite: ATROCE
@@ -267,6 +311,8 @@ Body:
     Sprite: ATROCE
   - Mob: ATROCE_4
     Sprite: ATROCE
+  - Mob: ATROCE_ZJ
+    Sprite: ATROCE
   - Mob: B_YGNIZEM_1
     Sprite: B_YGNIZEM
   - Mob: B_YGNIZEM_2
@@ -274,6 +320,8 @@ Body:
   - Mob: B_YGNIZEM_3
     Sprite: B_YGNIZEM
   - Mob: B_YGNIZEM_4
+    Sprite: B_YGNIZEM
+  - Mob: B_YGNIZEM_ZJ
     Sprite: B_YGNIZEM
   - Mob: DADDY
     Sprite: PUPA

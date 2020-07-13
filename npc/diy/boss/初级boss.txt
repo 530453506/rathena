@@ -17,8 +17,8 @@ function	script	初级BOSS区	{
 	end;
 }
 
-prontera.gat,156,119,0,0	monster	--ja--	3409,1,0,0,0
-prontera.gat,156,121,0,0	monster	--ja--	3409,1,0,0,0
+prontera.gat,156,119,0,0	monster	--ja--	3400,1,0,0,0
+prontera.gat,156,121,0,0	monster	--ja--	3400,1,0,0,0
 
 // 怪物设定
 boss_cj1.gat,0,0,0,0	monster	--ja--	3520,6,0,0,0

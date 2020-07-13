@@ -104,7 +104,7 @@ kjl_cj:
 	mes "----中级道场奖励----";
 	mes "固定奖励: " +$@Dc_Win_Zeny_2+ " ROZ";
 	mes "所有队员平分";
-	for (set .@a,0;.@a<8;set .@a,.@a+1)
+	for (set .@a,0;.@a<1;set .@a,.@a+1)
 	mes "^0000FF["+getitemname($@Dc_Item_Id_2[.@a])+"]^000000 X ^FF0000"+$@Dc_Item_Num_2[.@a]+"^000000";
 	close;
 }

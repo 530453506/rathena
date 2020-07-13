@@ -66,13 +66,10 @@
 9202,Swordman_Egg,剑士宠物蛋,7,20,,0,,,,,,,,,,,,,{},{},{}
 
 
-
-
 // 自定义消耗品
 39001,Fountain_Of_Life,生命之泉,0,800,,80,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,20; },{},{}
-39002,Fountain_Of_Magic,魔法之泉,0,20,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 0,20; },{},{}
-39003,Magic_Spectacles_Weapon,魔力放大镜(武器),11,40,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc("recording",39003); },{},{}
-39004,Magic_Spectacles_Armor,魔力放大镜(防具),11,40,,50,,,,,0xFFFFFFFF,63,2,,,,,,{ callfunc "Ldentify"; },{},{}
+39002,Ref_T_Potion,基因药水-α,0,10,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_REF_T_POTION,120000,0; sc_start SC_BABY,120000,0;},{},{}
+//39003,Ref_T_Potion,基因药水-β,0,10,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_LIFEINSURANCE,120000,0; },{},{}
 // Cash点数兑换箱子
 39006,Cash_Box_1,1点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 1"; },{},{}
 39007,Cash_Box_5,5点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 5"; },{},{}
