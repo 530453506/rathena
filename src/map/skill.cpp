@@ -2948,6 +2948,7 @@ short skill_blown(struct block_list* src, struct block_list* target, char count,
 static int skill_magic_reflect(struct block_list* src, struct block_list* bl, int type)
 {
 	struct status_change *sc = status_get_sc(bl);
+	struct status_change *ssc = status_get_sc(src);
 	struct map_session_data* sd = BL_CAST(BL_PC, bl);
 
 	if (!sc || !sc->data[SC_KYOMU]) { // Kyomu doesn't reflect
@@ -2955,6 +2956,9 @@ static int skill_magic_reflect(struct block_list* src, struct block_list* bl, in
 		if (sd && sd->bonus.magic_damage_return && type && rnd()%100 < sd->bonus.magic_damage_return)
 			return 1;
 	}
+    if (ssc && ssc->data[SC_NOMAGICREFLECT]) {
+        return 0;
+    }
 
 	// Magic Mirror reflection - Bypasses Boss check
 	if (sc && sc->data[SC_MAGICMIRROR] && rnd()%100 < sc->data[SC_MAGICMIRROR]->val2)

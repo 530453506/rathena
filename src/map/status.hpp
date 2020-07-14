@@ -934,6 +934,7 @@ enum sc_type : int16 {
 	SC_REUSE_LIMIT_LUXANIMA,
 	SC_ENSEMBLEFATIGUE,
 
+    SC_NOMAGICREFLECT, //魔法反射无效
 #ifdef RENEWAL
 	SC_EXTREMITYFIST2, //! NOTE: This SC should be right before SC_MAX, so it doesn't disturb if RENEWAL is disabled
 #endif

@@ -313,6 +313,8 @@
 3309,Pharaoh@NPC_ENERGYDRAIN,chase,200,1,2000,0,5000,yes,target,always,0,,,,,,,
 3309,Pharaoh@NPC_ENERGYDRAIN,chase,200,1,10000,0,5000,yes,target,skillused,18,,,,,,,
 3309,Pharaoh@NPC_GUIDEDATTACK,chase,172,5,500,0,20000,no,target,always,0,,,,,,,
+3309,Pharaoh@NPC_MAGICMIRROR,attack,671,1,10000,0,60000,yes,self,always,0,,,,,,,
+
 //皮里恩
 3310,Phreeoni@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,,
 3310,Phreeoni@AL_TELEPORT,idle,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,,
@@ -468,6 +470,8 @@
 3319,Amon Ra@AL_TELEPORT,idle,26,1,10000,0,0,yes,self,rudeattacked,,,,,,,,
 3319,Amon Ra@AL_TELEPORT,walk,26,1,5000,0,5000,yes,self,rudeattacked,,,,,,,,
 3319,Amon Ra@AL_HEAL,idle,28,11,10000,0,10000,yes,self,myhpltmaxrate,50,,,,,,,
+3319,Amon Ra@NPC_MAGICMIRROR,attack,671,1,10000,0,60000,yes,self,always,0,,,,,,,
+
 //RSX-0806
 3320,RSX 0806@NPC_AGIUP,chase,350,5,2000,0,60000,no,self,always,0,,,,,,6,
 3320,RSX 0806@NPC_POWERUP,attack,349,5,2000,0,60000,no,self,always,0,,,,,,6,

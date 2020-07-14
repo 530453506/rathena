@@ -68,8 +68,7 @@
 
 // 自定义消耗品
 39001,Fountain_Of_Life,生命之泉,0,800,,80,,,,,0xFFFFFFFF,63,2,,,,,,{ percentheal 20,20; },{},{}
-39002,Ref_T_Potion,基因药水-α,0,10,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_REF_T_POTION,120000,0; sc_start SC_BABY,120000,0;},{},{}
-//39003,Ref_T_Potion,基因药水-β,0,10,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_LIFEINSURANCE,120000,0; },{},{}
+39002,Ref_T_Potion,基因药水-α,0,10,,10,,,,,0xFFFFFFFF,63,2,,,,,,{ sc_start SC_REF_T_POTION,120000,0; sc_start SC_NOMAGICREFLECT,120000,0; sc_start SC_BABY,120000,0;},{},{}
 // Cash点数兑换箱子
 39006,Cash_Box_1,1点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 1"; },{},{}
 39007,Cash_Box_5,5点Cash兑换箱子,2,0,,0,,,,,0xFFFFFFFF,63,2,,,,,,{ atcommand "@cash 5"; },{},{}

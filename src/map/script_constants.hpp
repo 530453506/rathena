@@ -1593,6 +1593,7 @@
 	export_constant(SC_LUXANIMA);
 	export_constant(SC_REUSE_LIMIT_LUXANIMA);
 	export_constant(SC_ENSEMBLEFATIGUE);
+	export_constant(SC_NOMAGICREFLECT);
 #ifdef RENEWAL
 	export_constant(SC_EXTREMITYFIST2);
 #endif
