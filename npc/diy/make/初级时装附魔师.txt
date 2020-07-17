@@ -1,0 +1,67 @@
+function	script	初级时装附魔师	{
+	mes "[初级时装附魔师]";
+	mes "^FF0000我可以将装备进行附魔^000000.";
+	mes "^FF0000把你要附魔的装备穿在身上.^000000";
+	mes "^FF0000随身物品不能有相同的装备.^000000";
+	next;
+	mes "[初级时装附魔师]";
+	mes "成功率100%";
+	mes "每次附魔需要^FF0000" + getarg(0) + "Z^000000以及";
+	mes "^FF0000" + getitemname(getarg(1)) +" x" + getarg(2) + "^000000";
+	mes "是否要附魔";
+	next;
+	switch(select("我要附魔:下次再说")){
+	    case 1:
+        	if (Zeny < getarg(0)) {
+        		mes "[初级时装附魔师]";
+        		mes "你可没有足够的金钱,先去赚点钱再来吧!";
+        		close;
+        	}
+        	if (countitem(getarg(1))<getarg(2)) {
+        		mes "[初级时装附魔师]";
+        		mes "附魔道具不足!";
+        		close;
+        	}
+		    set $@gfmRetPart11$,getequipname(EQI_COSTUME_HEAD_TOP);
+		    set $@gfmRetPart12$,getequipname(EQI_COSTUME_HEAD_MID);
+		    set $@gfmRetPart13$,getequipname(EQI_COSTUME_HEAD_LOW);
+		    set $@gfmRetPart14$,getequipname(EQI_COSTUME_GARMENT);
+		    set $@gfmmenu$,$@gfmRetPart11$+":"+$@gfmRetPart12$+":"+$@gfmRetPart13$+":"+$@gfmRetPart14$;
+	        switch(select($@gfmmenu$)){
+	            case 1: set $@gfmpart,EQI_COSTUME_HEAD_TOP; break;
+	            case 2: set $@gfmpart,EQI_COSTUME_HEAD_MID; break;
+	            case 3: set $@gfmpart,EQI_COSTUME_HEAD_LOW; break;
+	            case 4: set $@gfmpart,EQI_COSTUME_GARMENT; break;
+	        }
+		    if (getequipisequiped($@gfmpart) == 0|| countitem(getequipid($@gfmpart))!=1||getitemslots(getequipid($@gfmpart))==4) {
+			    mes "[初级时装附魔师]";
+			    mes "无法附魔";
+			    close;
+		    }
+	        mes "[初级时装附魔师]";
+	        mes "请选择需要附魔的属性!";
+	        next;
+	        switch(select("物理BOSS增伤","魔法BOSS增伤","人型减伤")) {
+	            case 1: .@reward = 39341; break;
+	            case 2: .@reward = 39344; break;
+	            case 3: .@reward = 39347; break;
+	        }
+	        atcommand "@effect 111";
+	        set $@gfmitemid,getequipid($@gfmpart);
+	        set $@j,getequiprefinerycnt($@gfmpart);
+	        set $@card01,getequipcardid($@gfmpart,0);
+	        set $@card02,getequipcardid($@gfmpart,1);
+	        set $@card03,getequipcardid($@gfmpart,2);
+	        set zeny,zeny-getarg(0);
+	        delitem getarg(1),getarg(2);
+	        delitem $@gfmitemid,1;
+	        getitem2 $@gfmitemid, 1, 1, $@j, 0, $@card01, $@card02, $@card03, .@reward;
+	        mes "大功告成了!这是你的装备,请收好!";
+	        close;
+
+	    case 2:
+	        mes "[初级时装附魔师]";
+	        mes "等你想好了再来找我吧";
+	        close;
+	}
+}

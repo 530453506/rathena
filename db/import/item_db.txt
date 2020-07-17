@@ -229,11 +229,19 @@
 39160,Poison_Bottle_Infinite,无限毒药证明,3,200,,10,,,,,,,,,,,,,{},{},{}
 39161,Ninja_Infinite,无限忍者证明,3,200,,10,,,,,,,,,,,,,{},{},{}
 
-//
-39341,fm_cj,初级全能之石,6,20,,10,,,,,,,,,,,,,{ bonus bAllstats,3; bonus bLuk,-3; bonus2 bSubClass,Class_Boss,1; bonus2 bAddClass,Class_Boss,10; bonus2 bMagicAddClass,Class_Boss,10; },{},{}
-39342,fm_zj,中级全能之石,6,20,,10,,,,,,,,,,,,,{ bonus bAllstats,5; bonus bLuk,-5; bonus2 bSubClass,Class_Boss,2; bonus2 bAddClass,Class_Boss,20; bonus2 bMagicAddClass,Class_Boss,20; },{},{}
-39343,fm_gj,高级全能之石,6,20,,10,,,,,,,,,,,,,{ bonus bAllstats,10; bonus bLuk,-10; bonus2 bSubClass,Class_Boss,3; bonus2 bAddClass,Class_Boss,30; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
-39344,fm_cx,神佑初心,3,20,,10,,,,,,,,,,,,,{ bonus bAllstats,10;},{},{}
+39331,fm_sj_1,时装附魔券Lv1,3,20,,,,,,,,,,,,,,,{},{},{}
+39332,fm_sj_2,时装附魔券Lv2,3,20,,,,,,,,,,,,,,,{},{},{}
+39333,fm_sj_3,时装附魔券Lv3,3,20,,,,,,,,,,,,,,,{},{},{}
+
+39341,sd_1,恶魔之眼Lv1,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,5; bonus bLuk,-5; bonus bMaxHP,2000; bonus2 bSubClass,Class_Boss,2; bonus2 bAddClass,Class_Boss,10; },{},{}
+39342,sd_2,恶魔之眼Lv2,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,10; bonus bLuk,-10; bonus bMaxHP,4000; bonus2 bSubClass,Class_Boss,4; bonus2 bAddClass,Class_Boss,20; },{},{}
+39343,sd_3,恶魔之眼Lv3,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,15; bonus bLuk,-15; bonus bMaxHP,6000; bonus2 bSubClass,Class_Boss,6; bonus2 bAddClass,Class_Boss,30; },{},{}
+39344,ts_1,天使之泪Lv1,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,5; bonus bLuk,-5; bonus bMaxHP,2000; bonus2 bSubClass,Class_Boss,2; bonus2 bMagicAddClass,Class_Boss,10; },{},{}
+39345,ts_2,天使之泪Lv2,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,10; bonus bLuk,-10; bonus bMaxHP,4000; bonus2 bSubClass,Class_Boss,4; bonus2 bMagicAddClass,Class_Boss,20; },{},{}
+39346,ts_3,天使之泪Lv3,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,15; bonus bLuk,-15; bonus bMaxHP,6000; bonus2 bSubClass,Class_Boss,6; bonus2 bMagicAddClass,Class_Boss,30; },{},{}
+39347,dd_1,大地结晶Lv1,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,5; bonus bLuk,-5; bonus bMaxHP,3000; bonus2 bSubRace,RC_DemiHuman,2; bonus2 bSubRace,RC_Player_Human,2; },{},{}
+39348,dd_2,大地结晶Lv2,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,10; bonus bLuk,-5; bonus bMaxHP,5000; bonus2 bSubRace,RC_DemiHuman,4; bonus2 bSubRace,RC_Player_Human,4; },{},{}
+39349,dd_3,大地结晶Lv3,6,20,,10,,,,,,,,,,,,,{ bonus bAllStats,15; bonus bLuk,-5; bonus bMaxHP,7000; bonus2 bSubRace,RC_DemiHuman,6; bonus2 bSubRace,RC_Player_Human,6; },{},{}
 
 //
 39489,Shecil_Card_I,[进阶]暗●神射手卡片,6,20,,10,,,,,,,,769,,,,,{ bonus bDex,3; },{},{}
@@ -493,30 +501,30 @@
 40193,anye15,炼狱妖火<紫>,4,20,,100,,0,,1,0xFFFFFFFF,7,2,4096,,1,0,2091,{},{},{}
 
 //披肩
-40201,pj_yh,永恒之翼,4,0,,0,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,1,{},{},{}
-40202,pj_mxj,冒险家背包,4,0,,0,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,2,{},{},{}
-40203,pj_yhd,永恒堕天使之翼,4,0,,0,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,3,{},{},{}
-40204,C_Amistr_Bag,艾咪斯可鲁包,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,4,{},{},{}
-40205,Love_Dad_Wings_2012,永恒军天使之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,5,{},{},{}
-40206,C_Kirin_Wing,麒麟之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,6,{},{},{}
-//40207,Ribbon_Piamat,Ribbon Piamat,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,7,{},{},{}
-40208,Wings_of_Seraph,永恒炽天使之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,8,{},{},{}
-40209,pj_fh,幸福之翼,4,0,,0,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,9,{},{},{}
-40210,C_GreatDevilWing,撒旦之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,10,{},{},{}
-40211,C_Little_Devil_Wings,小恶魔翅膀,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,12,{},{},{}
-40212,C_Cupids_Pink_Wings,粉红邱比特翅膀,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,14,{},{},{}
-40213,C_Poring_Bag,波利背包,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,16,{},{},{}
-40214,C_Wings_of_Uriel,乌列尔之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,17,{},{},{}
-//40215,Angel_Feather,Angel Feather,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,18,{},{},{}
-40216,C_SwordWing,天鹅之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,19,{},{},{}
-40217,C_Blue_Fairy_Wing,蓝色精灵之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,21,{},{},{}
-40218,C_Thanatos_Sword,魔剑,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,23,{},{},{}
-40219,C_Wings_of_Michael,米迦勒之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,24,{},{},{}
-40220,GiantCatBag,猫猫背包,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,25,{},{},{}
-40221,C_PinkButterfly_Wing,粉色精灵之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,35,{},{},{}
-40222,C_GoldButterfly_Wing,金色精灵之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,36,{},{},{}
-40223,C_Wings_of_Gabriel,加百利之翼,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,37,{},{},{}
-40224,Violet_Halo,紫罗兰之轮,4,0,,0,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,39,{},{},{}
+40201,pj_yh,永恒之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,1,{},{},{}
+40202,pj_mxj,冒险家背包,4,20,,100,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,2,{},{},{}
+40203,pj_yhd,永恒堕天使之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,3,{},{},{}
+40204,C_Amistr_Bag,艾咪斯可鲁包,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,4,{},{},{}
+40205,Love_Dad_Wings_2012,永恒军天使之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,5,{},{},{}
+40206,C_Kirin_Wing,麒麟之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,6,{},{},{}
+//40207,Ribbon_Piamat,Ribbon Piamat,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,7,{},{},{}
+40208,Wings_of_Seraph,永恒炽天使之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,8,{},{},{}
+40209,pj_fh,幸福之翼,4,20,,100,,0,,1,0xFFFFFFFF,7,2,8192,,1,0,9,{},{},{}
+40210,C_GreatDevilWing,撒旦之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,10,{},{},{}
+40211,C_Little_Devil_Wings,小恶魔翅膀,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,12,{},{},{}
+40212,C_Cupids_Pink_Wings,粉红邱比特翅膀,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,14,{},{},{}
+40213,C_Poring_Bag,波利背包,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,16,{},{},{}
+40214,C_Wings_of_Uriel,乌列尔之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,17,{},{},{}
+//40215,Angel_Feather,Angel Feather,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,18,{},{},{}
+40216,C_SwordWing,天鹅之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,19,{},{},{}
+40217,C_Blue_Fairy_Wing,蓝色精灵之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,21,{},{},{}
+40218,C_Thanatos_Sword,魔剑,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,23,{},{},{}
+40219,C_Wings_of_Michael,米迦勒之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,24,{},{},{}
+40220,GiantCatBag,猫猫背包,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,25,{},{},{}
+40221,C_PinkButterfly_Wing,粉色精灵之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,35,{},{},{}
+40222,C_GoldButterfly_Wing,金色精灵之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,36,{},{},{}
+40223,C_Wings_of_Gabriel,加百利之翼,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,37,{},{},{}
+40224,Violet_Halo,紫罗兰之轮,4,20,,100,,0,,1,0xFFFFFFFF,63,2,8192,,1,0,39,{},{},{}
 //新手装备
 40291,nnew_84,暖心之帽,4,,,200,,3,,1,0xFFFFFFFF,7,2,256,,0,1,2022,{bonus bAllStats,3;},{},{}
 40292,nnew_132,暖心爱神翼,4,,,200,,0,,1,0xFFFFFFFF,7,2,512,,0,0,2023,{bonus bAllStats,3;},{},{}
@@ -672,7 +680,7 @@
 
 //铠甲
 40801,ydnkj1,<初级>雅典娜的战争盔甲,4,,,100,,5,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus bAllStats,5+getrefine(); bonus bLuk,-5-getrefine(); bonus bMaxHP,2000+getrefine()/5*1000;},{},{}
-40802,ydnkj2,<中级>雅典娜的战争盔甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus bAllStats,10+getrefine(); bonus bLuk,-10-getrefine(); bonus bMaxHP,4000+getrefine()/5*1000;},{},{}
+40802,ydnkj2,<中级>雅典娜的战争盔甲,4,,,100,,6,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus bAllStats,10+getrefine(); bonus bLuk,-10-getrefine(); bonus bMaxHP,5000+getrefine()/5*1000;},{},{}
 40803,ydnkj3,<高级>雅典娜的战争盔甲,4,,,100,,7,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus bAllStats,15+getrefine(); bonus bLuk,-15-getrefine(); bonus bMaxHP,6000+getrefine()/5*1000;},{},{}
 
 40805,hdskj1,<初级>哈迪斯的不洁盔甲,4,,,100,,5,,1,0xFFFFFFFF,7,2,16,,1,1,0,{ bonus bAllStats,5+getrefine(); bonus bLuk,-5-getrefine(); bonus bMaxHP,2000+getrefine()/5*1000;},{},{}

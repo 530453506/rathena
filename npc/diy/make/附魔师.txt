@@ -1,0 +1,23 @@
+prontera,134,125,5	script	附魔师	716,{
+	mes "[附魔师]";
+	mes "可以帮你的装备附上各种属性";
+	mes "每件装备可以无限附魔";
+	mes "后一种会覆盖前一种的属性";
+    next;
+    switch(select("时装附魔")) {
+        case 1:
+            switch(select("初级时装附魔")) {
+                case 1: callfunc("初级时装附魔师",.sj1[0],.sj1[1],.sj1[2]); break;
+                //case 2: callfunc("中级时装附魔师",.sj2[0],.sj2[1],.sj2[2]); break;
+                //case 3: callfunc("高级时装附魔师",.sj3[0],.sj3[1],.sj3[2]); break;
+            }
+    }
+
+    OnInit:
+        setarray .sj1[0],0,39331,1;
+        setarray .sj2[0],0,39332,1;
+        setarray .sj3[0],0,39333,1;
+	    waitingroom "[☆附魔系统☆]",0;
+        end;
+}
+
