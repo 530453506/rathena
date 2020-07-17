@@ -7,6 +7,7 @@ function	script	vip_status	{
 	    sc_start SC_BLESSING,600000,10; // 30
         sc_start SC_INCREASEAGI,600000,10; // 32
         sc_start SC_ASSUMPTIO,600000,10; // 115
+        sc_start SC_ANGELUS,600000,10; // 天使壁障
 	//}
 	//if (vip_status(VIP_STATUS_ACTIVE)) {
 		sc_start SC_STRFOOD,600000,10; //STR+10
