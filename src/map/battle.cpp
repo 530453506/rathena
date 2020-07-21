@@ -3869,10 +3869,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			break;
 		case RG_RAID:
 #ifdef RENEWAL
-			if (status_get_class_(target) == CLASS_BOSS)
-				skillratio += 10 * skill_lv; // !TODO: Did this change as well?
-			else
-				skillratio += 50 + skill_lv * 150;
+			skillratio += -100 + 50 + skill_lv * 150;
 #else
 			skillratio += 40 * skill_lv;
 #endif
@@ -4046,7 +4043,7 @@ static int battle_calc_attack_skill_ratio(struct Damage* wd, struct block_list *
 			break;
 		case AS_SPLASHER:
 #ifdef RENEWAL
-			skillratio += 400 + 100 * skill_lv;
+			skillratio += -100 + 400 + 100 * skill_lv;
 #else
 			skillratio += 400 + 50 * skill_lv;
 #endif
@@ -6515,12 +6512,12 @@ struct Damage battle_calc_magic_attack(struct block_list *src,struct block_list 
 					case WZ_METEOR:
 						skillratio += sstatus->int_; //技能增强:陨石
 						break;
-					case PR_MAGNUS:
-					    skillratio += sstatus->int_; //技能增强:十字驱魔
-						if (battle_check_undead(tstatus->race, tstatus->def_ele) || tstatus->race == RC_DEMON)
-							skillratio += 30;
-						break;
 #endif
+                    case PR_MAGNUS:
+                        skillratio += sstatus->int_; //技能增强:十字驱魔
+                        if (battle_check_undead(tstatus->race, tstatus->def_ele) || tstatus->race == RC_DEMON)
+                            skillratio += 30;
+                        break;
 					case AB_JUDEX:
 						skillratio += -100 + 300 + 40 * skill_lv;
 						RE_LVL_DMOD(100);
