@@ -14,7 +14,7 @@
 //                  in field Value. Depending on the implementation values assigned by scripts to parameters will affect
 //                  runtime values, such as Zeny, as well (see pc_readparam/pc_setparam).
 
-//bAddDamage  2097
-//bTransferAttr   2098
-//bElementPower 2099
-//bIgnoreMdefClass  2100
+//bAddDamage  2099
+//bTransferAttr   2100
+//bElementPower 2101
+//bIgnoreMdefClass  2102
