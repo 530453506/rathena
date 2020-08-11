@@ -759,6 +759,7 @@
 	export_constant2("bTransferAttr",SP_TRANSFER_ATTR);
     export_constant2("bElementPower",SP_ELEMENT_POWER);
     export_constant2("bIgnoreMdefClass",SP_IGNORE_MDEF_CLASS);
+	export_constant2("bMagicSubDefEle", SP_MAGIC_SUBDEF_ELE);
 
 	/* equip indices */
 	export_constant(EQI_COMPOUND_ON);
@@ -7838,6 +7839,7 @@
 	export_constant(UNT_GROUNDDRIFT_POISON);
 	export_constant(UNT_GROUNDDRIFT_WATER);
 	export_constant(UNT_GROUNDDRIFT_FIRE);
+	export_constant(UNT_EARTHQUAKE);
 	export_constant(UNT_EVILLAND);
 	export_constant(UNT_EPICLESIS);
 	export_constant(UNT_EARTHSTRAIN);
