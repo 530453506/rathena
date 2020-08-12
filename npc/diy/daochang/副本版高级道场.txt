@@ -96,7 +96,7 @@ function	script	高级道场	{
            	for (.@i=0;.@i<.@partymembercount;.@i++) {
            		if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
            				continue;
-           		set @Dc_Win_CJ,1;
+           		set @Dc_Win_GJ,1;
            	}
            	end;
     }
@@ -186,12 +186,12 @@ OnGoTo:
 
 3@dc,50,49,4	script	高级道场领奖	76,{
 	mes "[高级道场领奖]";
-	if (@Dc_Win_CJ == 1 && instance_id(IM_PARTY)) {
+	if (@Dc_Win_GJ == 1 && instance_id(IM_PARTY)) {
 		set @Pay,rand(getarraysize($@Dc_Item_Id_3));
 		getitem $@Dc_Item_Id_3[@Pay],$@Dc_Item_Num_3[@Pay];
 		set @money,$@Dc_Win_Zeny_3 / 'User;
 		set zeny,zeny+@money;
-		set @Dc_Win_CJ,0;
+		set @Dc_Win_GJ,0;
 		mes "[ROZ提示] -本次获取< "+@money+" > Z. ";
 	}
 	mes "请等待被传送出去！！";

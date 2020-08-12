@@ -1,0 +1,39 @@
+1@paybl	mapflag	nobranch
+1@paybl	mapflag	nomemo
+1@paybl	mapflag	nowarp
+1@paybl	mapflag	nowarpto
+1@paybl	mapflag	nogo
+1@paybl	mapflag	nosave
+1@paybl	mapflag	monster_noteleport
+1@paybl	mapflag	noicewall
+1@paybl	mapflag	partylock
+
+2@paybl	mapflag	nobranch
+2@paybl	mapflag	nomemo
+2@paybl	mapflag	nowarp
+2@paybl	mapflag	nowarpto
+2@paybl	mapflag	nogo
+2@paybl	mapflag	nosave
+2@paybl	mapflag	monster_noteleport
+2@paybl	mapflag	noicewall
+2@paybl	mapflag	partylock
+
+3@paybl	mapflag	nobranch
+3@paybl	mapflag	nomemo
+3@paybl	mapflag	nowarp
+3@paybl	mapflag	nowarpto
+3@paybl	mapflag	nogo
+3@paybl	mapflag	nosave
+3@paybl	mapflag	monster_noteleport
+3@paybl	mapflag	noicewall
+3@paybl	mapflag	partylock
+
+4@paybl	mapflag	nobranch
+4@paybl	mapflag	nomemo
+4@paybl	mapflag	nowarp
+4@paybl	mapflag	nowarpto
+4@paybl	mapflag	nogo
+4@paybl	mapflag	nosave
+4@paybl	mapflag	monster_noteleport
+4@paybl	mapflag	noicewall
+4@paybl	mapflag	partylock

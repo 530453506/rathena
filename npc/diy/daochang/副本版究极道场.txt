@@ -96,7 +96,7 @@ function	script	究极道场	{
            	for (.@i=0;.@i<.@partymembercount;.@i++) {
            		if ( !isloggedin(.@partymemberaid[.@i]) || !attachrid(.@partymemberaid[.@i]) )
            				continue;
-           		set @Dc_Win_CJ,1;
+           		set @Dc_Win_JJ,1;
            	}
            	end;
     }
@@ -186,12 +186,12 @@ OnGoTo:
 
 4@dc,50,49,4	script	究极道场领奖	76,{
 	mes "[究极道场领奖]";
-	if (@Dc_Win_CJ == 1 && instance_id(IM_PARTY)) {
+	if (@Dc_Win_JJ == 1 && instance_id(IM_PARTY)) {
 		set @Pay,rand(getarraysize($@Dc_Item_Id_4));
 		getitem $@Dc_Item_Id_4[@Pay],$@Dc_Item_Num_4[@Pay];
 		set @money,$@Dc_Win_Zeny_4 / 'User;
 		set zeny,zeny+@money;
-		set @Dc_Win_CJ,0;
+		set @Dc_Win_JJ,0;
 		mes "[ROZ提示] -本次获取< "+@money+" > Z. ";
 	}
 	mes "请等待被传送出去！！";

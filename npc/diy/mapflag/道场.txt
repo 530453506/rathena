@@ -7,6 +7,8 @@
 1@dc	mapflag	nowarp
 1@dc	mapflag	nowarpto
 1@dc	mapflag	nogo
+1@dc	mapflag	noicewall
+1@dc	mapflag	monster_noteleport
 
 2@dc	mapflag	nomemo
 2@dc	mapflag	noteleport
@@ -16,6 +18,8 @@
 2@dc	mapflag	nowarp
 2@dc	mapflag	nowarpto
 2@dc	mapflag	nogo
+2@dc	mapflag	noicewall
+2@dc	mapflag	monster_noteleport
 
 3@dc	mapflag	nomemo
 3@dc	mapflag	noteleport
@@ -25,6 +29,8 @@
 3@dc	mapflag	nowarp
 3@dc	mapflag	nowarpto
 3@dc	mapflag	nogo
+3@dc	mapflag	noicewall
+3@dc	mapflag	monster_noteleport
 
 4@dc	mapflag	nomemo
 4@dc	mapflag	noteleport
@@ -34,3 +40,5 @@
 4@dc	mapflag	nowarp
 4@dc	mapflag	nowarpto
 4@dc	mapflag	nogo
+4@dc	mapflag	noicewall
+4@dc	mapflag	monster_noteleport

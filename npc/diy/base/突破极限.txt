@@ -1,0 +1,121 @@
+function	script	突破极限	{
+    mes "[孙燕姿]";
+    if (metempsychosis < 10) {
+        mes "人物满转时才能使用本服务";
+        close;
+    }
+    if (BaseLevel < 99) {
+        mes "人物等级达到99时才能使用本服务";
+        close;
+    }
+    mes "当前突破极限等级: " + (topLevel+1) + "/100";
+    mes "每升5级可以获得新称号。";
+    mes "1-20每级需要筑基之石，20w。";
+    mes "21-40每级需要结丹之石，40w。";
+    mes "41-60每级需要元婴之石，60w。";
+    mes "61-80每级需要大乘之石，80w。";
+    mes "81-100每级需要飞仙之石，100w。";
+    next;
+    switch(select("筑基","结丹","元婴","大乘","飞仙")) {
+        case 1:
+            if (topLevel > 19) {
+                mes "[孙燕姿]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if (countitem(39034) < 1 || Zeny < 200000) {
+                mes "[孙燕姿]";
+                mes "您的材料或金钱不足。";
+                close;
+            }
+            delitem 39034,1;
+            set zeny,zeny-200000;
+            break;
+
+        case 2:
+            if (topLevel < 20 || baselevel > 39) {
+                mes "[孙燕姿]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if (countitem(39035) < 1 || Zeny < 400000) {
+                mes "[孙燕姿]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39035,1;
+            set zeny,zeny-400000;
+            break;
+
+        case 3:
+            if (topLevel < 40 || baselevel > 59) {
+                mes "[孙燕姿]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if (countitem(39036) < 1 || Zeny < 600000) {
+                mes "[孙燕姿]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39036,1;
+            set zeny,zeny-600000;
+            break;
+
+        case 4:
+            if (topLevel < 60 || baselevel > 79) {
+                mes "[孙燕姿]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if (countitem(39037) < 1 || Zeny < 800000) {
+                mes "[孙燕姿]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39037,1;
+            set zeny,zeny-800000;
+            break;
+
+        case 5:
+            if (topLevel < 80 || baselevel > 99) {
+                mes "[孙燕姿]";
+                mes "您的等级不符合要求。";
+                close;
+            }
+            if (countitem(39038) < 1 || Zeny < 1000000) {
+                mes "[孙燕姿]";
+                mes "您的材料不足。";
+                close;
+            }
+            delitem 39038,1;
+            set zeny,zeny-1000000;
+    }
+    set BaseLevel,98;
+    set topLevel,topLevel+1;
+    switch (topLevel) {
+        case 5: achievementcomplete 110010; break;
+        case 10: achievementcomplete 110011; break;
+        case 15: achievementcomplete 110012; break;
+        case 20: achievementcomplete 110013; break;
+        case 25: achievementcomplete 110014; break;
+        case 30: achievementcomplete 110015; break;
+        case 35: achievementcomplete 110016; break;
+        case 40: achievementcomplete 110017; break;
+        case 45: achievementcomplete 110018; break;
+        case 50: achievementcomplete 110019; break;
+        case 55: achievementcomplete 110020; break;
+        case 60: achievementcomplete 110021; break;
+        case 65: achievementcomplete 110022; break;
+        case 70: achievementcomplete 110023; break;
+        case 75: achievementcomplete 110024; break;
+        case 80: achievementcomplete 110025; break;
+        case 85: achievementcomplete 110026; break;
+        case 90: achievementcomplete 110027; break;
+        case 95: achievementcomplete 110028; break;
+        case 100: achievementcomplete 110029; break;
+    }
+    close;
+    end;
+}
+

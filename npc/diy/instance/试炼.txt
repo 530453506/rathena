@@ -1,0 +1,40 @@
+prontera,164,125,3	script	试炼挑战	734,{
+	mes "[试炼管理员]";
+	mes "欢迎挑战试炼，我们供提供了4个等级的试炼提供挑战，每个试炼奖励也不同，你做好准备了吗？";
+	next;
+	switch(select("初级试炼","中级试炼","高级试炼","究极试炼"))
+	{
+		case 1:callfunc "初级试炼"; break;
+		case 2:callfunc "中级试炼"; break;
+		case 3:callfunc "高级试炼"; break;
+		case 4:callfunc "究极试炼"; break;
+	}
+
+OnInit:
+	waitingroom "[☆试炼挑战☆]",0;
+end;
+}
+
+-	script	OnInit_SL	-1,{
+OnInit:
+	//s 初级
+    $@1paybl_zeny = 100000; //报名费用
+	$@1paybl_min = 1; //队伍最少挑战人数
+	$@1paybl_max = 6; //队伍最多挑战人数
+	setarray $@1paybl_win_item_id[0],512;
+	setarray $@1paybl_win_item_num[0],1;
+	setarray $@1paybl_mob_id[0],3520,3521,3522,3523,3524,3525,3526,3528,3529,3530,3531,3532,3533,3534,3535,3536,3537,3539,3542,3544,3545,3546,3550,3553,3554,3555;
+	setarray $@1paybl_mob_num[0],8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8;
+
+	//s 中级
+	$@2paybl_count = 5; //每日次数
+    $@2paybl_zeny = 200000; //报名费用
+	$@2paybl_min = 1; //队伍最少挑战人数
+	$@2paybl_max = 6; //队伍最多挑战人数
+	setarray $@2paybl_win_item_id[0],512;
+	setarray $@2paybl_win_item_num[0],1;
+	setarray $@2paybl_mob_id[0],3590,3591,3592,3593,3594,3595,3596,3598,3599,3600,3601,3602,3603,3604,3605,3606,3607,3609,3612,3614,3615,3616,3620,3623,3624,3625;
+	setarray $@2paybl_mob_num[0],8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8;
+	end;
+}
+		

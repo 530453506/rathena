@@ -142,4 +142,123 @@ Body:
     Score: 100
     Reward:
       TitleID: 1009
-
+  - ID: 110010
+    Group: "AG_DIY"
+    Name: "突破极限等级达到5级"
+    Score: 100
+    Reward:
+      TitleID: 1010
+  - ID: 110011
+    Group: "AG_DIY"
+    Name: "突破极限等级达到10级"
+    Score: 100
+    Reward:
+      TitleID: 1011
+  - ID: 110012
+    Group: "AG_DIY"
+    Name: "突破极限等级达到15级"
+    Score: 100
+    Reward:
+      TitleID: 1012
+  - ID: 110013
+    Group: "AG_DIY"
+    Name: "突破极限等级达到20级"
+    Score: 100
+    Reward:
+      TitleID: 1013
+  - ID: 110014
+    Group: "AG_DIY"
+    Name: "突破极限等级达到25级"
+    Score: 100
+    Reward:
+      TitleID: 1014
+  - ID: 110015
+    Group: "AG_DIY"
+    Name: "突破极限等级达到30级"
+    Score: 100
+    Reward:
+      TitleID: 1015
+  - ID: 110016
+    Group: "AG_DIY"
+    Name: "突破极限等级达到35级"
+    Score: 100
+    Reward:
+      TitleID: 1016
+  - ID: 110017
+    Group: "AG_DIY"
+    Name: "突破极限等级达到40级"
+    Score: 100
+    Reward:
+      TitleID: 1017
+  - ID: 110018
+    Group: "AG_DIY"
+    Name: "突破极限等级达到45级"
+    Score: 100
+    Reward:
+      TitleID: 1018
+  - ID: 110019
+    Group: "AG_DIY"
+    Name: "突破极限等级达到50级"
+    Score: 100
+    Reward:
+      TitleID: 1019
+  - ID: 110020
+    Group: "AG_DIY"
+    Name: "突破极限等级达到55级"
+    Score: 100
+    Reward:
+      TitleID: 1020
+  - ID: 110021
+    Group: "AG_DIY"
+    Name: "突破极限等级达到60级"
+    Score: 100
+    Reward:
+      TitleID: 1021
+  - ID: 110022
+    Group: "AG_DIY"
+    Name: "突破极限等级达到65级"
+    Score: 100
+    Reward:
+      TitleID: 1022
+  - ID: 110023
+    Group: "AG_DIY"
+    Name: "突破极限等级达到70级"
+    Score: 100
+    Reward:
+      TitleID: 1023
+  - ID: 110024
+    Group: "AG_DIY"
+    Name: "突破极限等级达到75级"
+    Score: 100
+    Reward:
+      TitleID: 1024
+  - ID: 110025
+    Group: "AG_DIY"
+    Name: "突破极限等级达到80级"
+    Score: 100
+    Reward:
+      TitleID: 1025
+  - ID: 110026
+    Group: "AG_DIY"
+    Name: "突破极限等级达到85级"
+    Score: 100
+    Reward:
+      TitleID: 1026
+  - ID: 110027
+    Group: "AG_DIY"
+    Name: "突破极限等级达到90级"
+    Score: 100
+    Reward:
+      TitleID: 1027
+  - ID: 110028
+    Group: "AG_DIY"
+    Name: "突破极限等级达到95级"
+    Score: 100
+    Reward:
+      TitleID: 1028
+  - ID: 110029
+    Group: "AG_DIY"
+    Name: "突破极限等级达到100级"
+    Score: 100
+    Reward:
+      TitleID: 1029
