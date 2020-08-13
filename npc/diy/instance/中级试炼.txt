@@ -22,7 +22,7 @@ function	script	中级试炼	{
 			close;
 		}
 		close2;
-		instance_enter("sl_cj",-1,-1,getcharid(0),instance_id(IM_PARTY));
+		instance_enter("sl_zj",-1,-1,getcharid(0),instance_id(IM_PARTY));
 		end;
 	}
 L_Reset:
@@ -80,12 +80,12 @@ L_Reset:
 	if(instance_id(IM_PARTY)) {
     	instance_destroy(instance_id(IM_PARTY));
     }
-	if(instance_create("sl_cj") < 0) {
-	    mes "shibai: " +  instance_create("sl_cj");
+	if(instance_create("sl_zj") < 0) {
+	    mes "shibai: " +  instance_create("sl_zj");
 	    mes "创建失败，请稍后重试";
 	    close;
 	}
-	switch(instance_enter("dc_cj",instance_id(IM_PARTY))) {
+	switch(instance_enter("sl_zj",instance_id(IM_PARTY))) {
     	case IE_OTHER:
     	case IE_NOINSTANCE:
     		mes "请稍后重试.";

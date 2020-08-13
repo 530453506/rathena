@@ -93,7 +93,7 @@ L_Reset:
 	    mes "创建失败，请稍后重试";
 	    close;
 	}
-	switch(instance_enter("dc_cj",instance_id(IM_PARTY))) {
+	switch(instance_enter("sl_cj",instance_id(IM_PARTY))) {
     	case IE_OTHER:
     	case IE_NOINSTANCE:
     		mes "请稍后重试.";
