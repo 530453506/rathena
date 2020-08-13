@@ -90,6 +90,7 @@ function	script	Í»ÆÆ¼«ÏÞ	{
             }
             delitem 39038,1;
             set zeny,zeny-1000000;
+            break;
     }
     set BaseLevel,98;
     set topLevel,topLevel+1;
