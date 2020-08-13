@@ -118,7 +118,7 @@ OnInstanceInit:
     killmonsterall instance_mapname("1@paybl");
 	disablenpc instance_npcname("1paybl_warp_0");
 	disablenpc instance_npcname("初级试炼BOSS");
-	enablenpc instance_npcname("战斗员");
+	enablenpc instance_npcname("初级战斗员");
 	end;
 OnMain:
 	for (set .@i,0;.@i<getarraysize($@1paybl_mob_id);set .@i,.@i+1) {
@@ -146,10 +146,10 @@ OnDead2:
 	end;
 }
 
-1@paybl,20,160,3	script	战斗员	588,{
+1@paybl,20,160,3	script	初级战斗员	588,{
 	instance_announce instance_id(IM_PARTY),"[副本提示] 挑战开始",bc_map;
 	doevent instance_npcname("1payblKillEvent",instance_id(IM_PARTY))+"::OnMain";
-    disablenpc instance_npcname("战斗员",instance_id(IM_PARTY));
+    disablenpc instance_npcname("初级战斗员",instance_id(IM_PARTY));
 	close;
 }
 
