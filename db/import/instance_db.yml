@@ -72,29 +72,29 @@ Body:
     IdleTimeOut: 300
     Enter:
       Map: 1@paybl
-      X: 0
-      Y: 0
+      X: 20
+      Y: 165
   - Id: 10
     Name: sl_zj
     TimeLimit: 3600
     IdleTimeOut: 300
     Enter:
       Map: 2@paybl
-      X: 0
-      Y: 0
+      X: 20
+      Y: 165
   - Id: 11
     Name: sl_gj
     TimeLimit: 3600
     IdleTimeOut: 300
     Enter:
       Map: 3@paybl
-      X: 0
-      Y: 0
+      X: 20
+      Y: 165
   - Id: 12
     Name: sl_jj
     TimeLimit: 3600
     IdleTimeOut: 300
     Enter:
       Map: 4@paybl
-      X: 0
-      Y: 0
+      X: 20
+      Y: 165
