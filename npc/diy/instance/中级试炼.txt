@@ -100,8 +100,9 @@ L_Reset:
            				continue;
            		set @Sl_Win_ZJ,1;
            	}
+           	announce "[公告] 队伍 "+getpartyname(getcharid(1))+" 进入了中级试练。",bc_all;
+            end;
     }
-	announce "[公告] 队伍 "+getpartyname(getcharid(1))+" 进入了初级试练。",bc_all;
 kjl_cj:
 	mes "----中级试炼奖励----";
 	for (set .@a,0;.@a<1;set .@a,.@a+1)
@@ -111,17 +112,19 @@ kjl_cj:
 
 //----> 副本中杀死最后的BOSS所触发的事件
 
--	script	2payblKillEvent	-1,{
+2@paybl,0,0,0	script	2payblKillEvent	-1,{
 OnInstanceInit:
     set 'zjboss,0;
     killmonsterall instance_mapname("2@paybl");
 	disablenpc instance_npcname("2paybl_warp_0");
 	disablenpc instance_npcname("中级试炼BOSS");
-	for (set .@i,0;.@i<getarraysize($@2paybl_mob_id);set .@i,.@i+1) {
-	    monster "2@paybl",0,0,"--ja--",$@2paybl_mob_id[.@i],$@2paybl_mob_num[.@i],"2payblKillEvent::OnDead1";
-	}	
+	enablenpc instance_npcname("战斗员");
 	end;
-
+OnMain:
+	for (set .@i,0;.@i<getarraysize($@2paybl_mob_id);set .@i,.@i+1) {
+	    monster instance_mapname("2@paybl",instance_id(IM_PARTY)),0,0,"--ja--",$@2paybl_mob_id[.@i],$@2paybl_mob_num[.@i],instance_npcname("2payblKillEvent")+"::OnDead1";
+	}
+	end;
 OnDead1:
 	set .@map$, instance_mapname("2@paybl");
 	set .@mob_dead_num,mobcount(.@map$,instance_npcname("2payblKillEvent")+"::OnDead1");
@@ -143,6 +146,13 @@ OnDead2:
 	end;
 }
 
+2@paybl,20,160,3	script	战斗员	588,{
+	instance_announce instance_id(IM_PARTY),"[副本提示] 挑战开始",bc_map;
+	doevent instance_npcname("2payblKillEvent",instance_id(IM_PARTY))+"::OnMain";
+    disablenpc instance_npcname("战斗员",instance_id(IM_PARTY));
+	close;
+}
+
 2@paybl,235,125,0	script	2paybl_warp_0	45,1,1,{
     end;
 OnTouch:
@@ -162,7 +172,7 @@ OnTouch:
 2@paybl,235,125,4	script	中级试炼BOSS	685,5,5,{
 	end;
 OnTouch:
-	monster "2@paybl",235,125,"--ja--",3566,1,"2payblKillEvent::OnDead2";
+    monster instance_mapname("2@paybl",instance_id(IM_PARTY)),235,125,"--ja--",3566,1,instance_npcname("2payblKillEvent")+"::OnDead2";
 	disablenpc instance_npcname("中级试炼BOSS");
 	end;
 }

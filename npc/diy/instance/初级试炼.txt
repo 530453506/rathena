@@ -100,8 +100,9 @@ L_Reset:
            				continue;
            		set @Sl_Win_CJ,1;
            	}
+           	announce "[公告] 队伍 "+getpartyname(getcharid(1))+" 进入了初级试练。",bc_all;
+            end;
     }
-	announce "[公告] 队伍 "+getpartyname(getcharid(1))+" 进入了初级试练。",bc_all;
 kjl_cj:
 	mes "----初级试炼奖励----";
 	for (set .@a,0;.@a<1;set .@a,.@a+1)
