@@ -126,7 +126,7 @@ OnInstanceInit:
 	disablenpc instance_npcname("1paybl_warp_0");
 	disablenpc instance_npcname("≥ıº∂ ‘¡∂BOSS");
 	for (set .@i,0;.@i<getarraysize($@1paybl_mob_id);set .@i,.@i+1) {
-	    monster "1@paybl",0,0,"--ja--",$@1paybl_mob_id[.@i],$@1paybl_mob_num[.@i],"1payblKillEvent::OnDead1";
+	    monster instance_mapname("1@paybl",instance_id(IM_PARTY)),0,0,"--ja--",$@1paybl_mob_id[.@i],$@1paybl_mob_num[.@i],instance_npcname("1payblKillEvent")+"::OnDead1";
 	}	
 	end;
 
@@ -170,7 +170,7 @@ OnTouch:
 1@paybl,235,125,4	script	≥ıº∂ ‘¡∂BOSS	685,5,5,{
 	end;
 OnTouch:
-	monster "1@paybl",235,125,"--ja--",3565,1,"1payblKillEvent::OnDead2";
+    monster instance_mapname("1@paybl",instance_id(IM_PARTY)),235,125,"--ja--",3565,1,instance_npcname("1payblKillEvent")+"::OnDead2";
 	disablenpc instance_npcname("≥ıº∂ ‘¡∂BOSS");
 	end;
 }
