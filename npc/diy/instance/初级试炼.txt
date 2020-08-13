@@ -119,17 +119,17 @@ kjl_cj:
 
 //----> 副本中杀死最后的BOSS所触发的事件
 
--	script	1payblKillEvent	-1,{
+1@paybl,0,0,0	script	1payblKillEvent	-1,{
 OnInstanceInit:
     set 'cjboss,0;
+    instance_announce instance_id(IM_PARTY),"[副本提示] 现在可以通过当前地图某处的传送阵离开并领奖了",bc_map;
     killmonsterall instance_mapname("1@paybl");
 	disablenpc instance_npcname("1paybl_warp_0");
 	disablenpc instance_npcname("初级试炼BOSS");
 	for (set .@i,0;.@i<getarraysize($@1paybl_mob_id);set .@i,.@i+1) {
 	    monster instance_mapname("1@paybl",instance_id(IM_PARTY)),0,0,"--ja--",$@1paybl_mob_id[.@i],$@1paybl_mob_num[.@i],instance_npcname("1payblKillEvent")+"::OnDead1";
-	}	
+	}
 	end;
-
 OnDead1:
 	set .@map$, instance_mapname("1@paybl");
 	set .@mob_dead_num,mobcount(.@map$,instance_npcname("1payblKillEvent")+"::OnDead1");
